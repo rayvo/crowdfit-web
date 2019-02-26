@@ -1,28 +1,73 @@
 <div class="login-page" [@routerTransition]>
-    <div class="row justify-content-md-center">
-        <div class="col-md-4">
-            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
-            <h1>Crowd Fit</h1>
-            <form role="form">
-                <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="name" placeholder="{{ '이름' | translate }}">
-                    </div>
+   <div class="row justify-content-md-center">
+      <div class="col-md-4">
+            <img src="assets/images/logo.png" width="80px" />
 
-                    <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="email" placeholder="{{ '이메일' | translate }}">
-                    </div>
 
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="password" placeholder="{{ '비밀번호' | translate }}">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="cpassword" placeholder="{{ '비밀번호 확인' | translate }}">
-                    </div>
-                </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']">{{ 'Register' | translate }}</a>&nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/login']">{{ 'Log in' | translate }}</a>
-            </form>
+
+    
+    
+        <h4 class="card-title mt-3 text-center">회원가입</h4>
+        
+        
+    
+        <form role="form">
+        <div class="form-content">
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+             </div>
+            <input name="이름" class="form-control" id="name" placeholder="{{ '이름' | translate }}" type="text">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+             </div>
+            <input name="이메일" class="form-control" id="email" placeholder="{{ '이메일 주소' | translate }}">
+        </div> <!-- form-group// -->
+       
+         <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input name="비밀번호" class="form-control" id="password" placeholder="{{ '비밀번호' | translate }}" type="password">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input class="form-control" id="cpassword" placeholder="{{ '비밀번호 확인' | translate }}" type="password">
+        </div> <!-- form-group// -->      
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+            </div>
+            <input name="휴대폰 번호" class="form-control" placeholder="휴대폰 번호" type="number" style="max-width: 60%; border-radius: 3px;"> 
+            <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">인증번호받기</a>
         </div>
+        <div class="form-group input-group">    
+            <input name="인증번호입력" class="form-control" placeholder="인증번호입력" type="number" style="max-width: 60%; border-radius: 3px;">
+            <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">확인</a>
+        </div> <!-- form-group// -->
+       
+    
+        <div class="form-group input-group">
+            <button type="submit" class="btn btn-primary btn-block"[routerLink]="['/dashboard']"> 가입하기  </button>
+        </div> 
+        <div class="form-group input-group" style="margin-top: -10px;">
+            <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>      
+        </div> <!-- form-group// -->      
+    </div>                                                   
+    </form>
+   
+   
     </div>
+    </div> 
+    <!--container end.//-->
+
 </div>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+
