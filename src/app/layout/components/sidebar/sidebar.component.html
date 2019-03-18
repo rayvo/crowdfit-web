@@ -2,34 +2,124 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
     
     <div class="list-group">
-        <a class="list-group-item" routerLink="/menu">
-            <i class="fa fa-plus"></i>&nbsp;
-            <span>메뉴관리</span>
-        </a>
-        <a class="list-group-item" routerLink="/resident">
-            <i class="fa fa-plus"></i>&nbsp;
-            <span>입주민관리</span>
-        </a>
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('menu-pages')">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>메뉴관리 </span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'menu-pages'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="/menu/bulletinboard" >
+                            <span>공지사항관리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/menu/danji" >
+                            <span>단지안내관리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/menu/community" >
+                            <span>커뮤니티</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/menu/culturecourse" >
+                            <span>문화 강좌</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('resident-pages')">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>입주민관리 </span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'resident-pages'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="/resident/generalresident" >
+                            <span>일반 입주자 관리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/resident/communitymember" >
+                            <span>커뮤니티 멤버관리</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
         <a class="list-group-item" routerLink="/staff">
             <i class="fa fa-plus"></i>&nbsp;
             <span>직원관리</span>
         </a>
-        <a class="list-group-item" routerLink="/accounting">
-            <i class="fa fa-plus"></i>&nbsp;
-            <span>회계관리</span>
-        </a>
+
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('accounting-pages')">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>회계관리 </span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'accounting-pages'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="/accounting/wage" >
+                            <span>급여관리 </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/accounting/sales" >
+                            <span>매출관리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/accounting/costnotice" >
+                            <span>관리비 알림</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
         <a class="list-group-item" routerLink="/store">
             <i class="fa fa-plus"></i>&nbsp;
             <span>스토어관리</span>
         </a>
+
         <a class="list-group-item" routerLink="/locker">
             <i class="fa fa-plus"></i>&nbsp;
             <span>락커좌석관리</span>
         </a>
-        <a class="list-group-item" routerLink="/class">
-            <i class="fa fa-plus"></i>&nbsp;
-            <span>수업관리</span>
-        </a>
+
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('class-pages')">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>수업관리 </span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'class-pages'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="/class/gx" >
+                            <span>GX관리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/class/lesson" >
+                            <span>레슨관리</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
         <a class="list-group-item" routerLink="/attendence">
             <i class="fa fa-plus"></i>&nbsp;
             <span>출석관리</span>

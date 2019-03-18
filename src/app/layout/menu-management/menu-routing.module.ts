@@ -1,7 +1,7 @@
 import { BulletinBoardManagementComponent } from '../bulletin-board-management/bulletin-board-management.component';
-import { CommunityComponent } from './community/community.component';
-import { CultureCourseComponent } from './culture-course/culture-course.component';
-import { DanjiManagementComponent } from './danji-management/danji-management.component';
+import { CommunityComponent } from '../community/community.component';
+import { CultureCourseComponent } from '../culture-course/culture-course.component';
+import { DanjiManagementComponent } from '../danji-management/danji-management.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

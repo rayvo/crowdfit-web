@@ -1,7 +1,7 @@
 import { MenuModule } from './menu.module';
 
 
-describe('DashboardModule', () => {
+describe('MenuModule', () => {
   let menuModule: MenuModule;
 
   beforeEach(() => {
