@@ -13,6 +13,7 @@ import { LockerManagementComponent } from './locker-management/locker-management
 import { AttendenceManagementComponent } from './attendence-management/attendence-management.component';
 import { ServiceCenterComponent } from './service-center/service-center.component';
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { PermissionSettingsComponent } from './permission-settings/permission-se
         AttendenceManagementComponent,
         ServiceCenterComponent,
         PermissionSettingsComponent,
+        FooterComponent,
      ]
 })
 export class LayoutModule {}
