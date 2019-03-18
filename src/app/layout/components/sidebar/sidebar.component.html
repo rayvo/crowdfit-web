@@ -1,5 +1,90 @@
+
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    
     <div class="list-group">
+        <a class="list-group-item" routerLink="/menu">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>메뉴관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/resident">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>입주민관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/staff">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>직원관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/accounting">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>회계관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/store">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>스토어관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/locker">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>락커좌석관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/class">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>수업관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/attendence">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>출석관리</span>
+        </a>
+        <a class="list-group-item" routerLink="/service-center">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>생활관리지원</span>
+        </a>
+        <a class="list-group-item" routerLink="/settings">
+            <i class="fa fa-plus"></i>&nbsp;
+            <span>권한설정</span>
+        </a>
+    </div>
+</nav>
+<!--
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    
+    <div class="list-group">
+        <a routerLink="/menu" [routerLinkActive]="['router-link-active']" class="list-group-item">메뉴관리</a><br>
+        
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages')">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>메뉴관리 </span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pages'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="/menu/bulletinboard" >
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>공지사항관리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/menu/danji" >
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>단지안내관리</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/menu/community" >
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>커뮤니티</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/menu/culturecourse" >
+                            <i class="fa fa-monument"></i>&nbsp;
+                            <span>문화 강좌</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Dashboard' | translate }}</span>
@@ -28,6 +113,7 @@
             <i class="fa fa-th-list"></i>&nbsp;
             <span>{{ 'Component' | translate }}</span>
         </a>
+        
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">
                 <i class="fa fa-plus"></i>&nbsp;
@@ -149,3 +235,4 @@
         <span>{{ 'Collapse Sidebar' | translate }}</span>
     </div>
 </nav>
+-->
