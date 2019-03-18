@@ -1,22 +1,41 @@
 <div class="login-page" [@routerTransition]>
     <div class="row justify-content-md-center">
         <div class="col-md-4">
-            <img src="assets/images/logo.png" width="150px" />
-            <h1>Crowd Fit TEST</h1>
+            <img src="assets/images/logo.png" width="80px" />
+            <h5>더 좋은 운동으로 가는 길</h5>
+            <h1>Crowd Fit</h1>
             <form role="form">
                 <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="email" placeholder="{{ '이메일' | translate }}">
-                    </div>
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                            </div>
+                            <input type="text" name="이메일" ng-model="name" class="form-control" id="email" placeholder="{{ '이메일' | translate }}">
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input type="password"name="비밀번호" class="form-control" id="password" placeholder="{{ '비밀번호' | translate }}" type="password">
+                        </div> <!-- form-group// -->
 
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="password" placeholder="{{ '비밀번호' | translate }}">
-                    </div>
-                </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()">{{ 'Log in' | translate }}</a>
+                    
+
+
+                  
+                    
+               
+                <a class="btn btn-primary" [routerLink]="['/dashboard']" (click)="onLoggedin()">{{ '로그인' | translate }}</a>
                 &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">{{ 'Register' | translate }}</a>
+                <div class="form-group input-group" style="margin-top: -10px;">
+                <a [routerLink]="['/signup']">{{ '회원가입' | translate }}</a>
+                <a>|</a>
+                <a [routerLink]="['/*']">{{ '비밀번호 찾기' | translate }}</a>
+                </div>
+                </div>            
             </form>
         </div>
     </div>
 </div>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">

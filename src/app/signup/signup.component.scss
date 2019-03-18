@@ -1,2 +1,63 @@
 // shared css for the login and signup page
 @import "../login/login.component.scss";
+
+
+h6{margin-left: 20px;}
+h4{font-weight: 200;}
+.form-control { 
+    background-color:  rgba(255, 255, 255, 0.4);
+    }
+
+
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-group {
+    padding: 0 0;
+    input::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 1) !important;
+    }
+
+    input:-moz-placeholder {
+        /* Firefox 18- */
+        color: rgba(255, 255, 255, 1) !important;
+    }
+
+    input::-moz-placeholder {
+        /* Firefox 19+ */
+        color: rgba(255, 255, 255, 1) !important;
+    }
+
+    input:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 1) !important;
+    }
+}
+.form-content {
+    padding:60px 0 20px 0;
+}
