@@ -1,3 +1,587 @@
-<p>
-  bulletin-board-management works!
-</p>
+<div class="container">
+<div class="border-bottom">
+  <h4>메뉴관리</h4>
+</div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">메뉴관리</li>
+    <li class="breadcrumb-item active" aria-current="page">공지사항관리</li>
+  </ol>
+</nav>
+<button type="button" class="btn btn" style="margin-right:10px; color:#fff; background-color:#f37a20;">공지사항관리</button>
+<a href=#><button type="button" class="btn btn-secondary" style="margin-right:10px;">단지안내관리</button></a>
+<a href=#><button type="button" class="btn btn-secondary" style="margin-right:10px;">커뮤니티</button></a>
+<a href=#><button type="button" class="btn btn-secondary">문화강좌</button></a>
+
+  <div class="row">
+    <div class="col-sm rounded mx-auto">
+      
+        <h3 class="border-bottom ">공지사항</h3>
+      
+      <table class="table">
+        
+          
+            
+         
+        
+        <tbody>
+          <tr>
+            <th scope="row">목록보기</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline1">
+                    <label class="custom-control-label" for="defaultInline1">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline2">
+                <label class="custom-control-label" for="defaultInline2">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline3">
+                <label class="custom-control-label" for="defaultInline3">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline4">
+                <label class="custom-control-label" for="defaultInline4">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">읽기권한</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline5">
+                    <label class="custom-control-label" for="defaultInline5">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline6">
+                <label class="custom-control-label" for="defaultInline6">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline7">
+                <label class="custom-control-label" for="defaultInline7">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline8">
+                <label class="custom-control-label" for="defaultInline8">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">쓰기권한</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline9">
+                    <label class="custom-control-label" for="defaultInline9">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline10">
+                <label class="custom-control-label" for="defaultInline10">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline11">
+                <label class="custom-control-label" for="defaultInline11">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline12">
+                <label class="custom-control-label" for="defaultInline12">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">댓글쓰기</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline13">
+                    <label class="custom-control-label" for="defaultInline13">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline14">
+                <label class="custom-control-label" for="defaultInline14">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline15">
+                <label class="custom-control-label" for="defaultInline15">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline16">
+                <label class="custom-control-label" for="defaultInline16">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">강제 삭제</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline17">
+                    <label class="custom-control-label" for="defaultInline17">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline18">
+                <label class="custom-control-label" for="defaultInline18">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline19">
+                <label class="custom-control-label" for="defaultInline19">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline20">
+                <label class="custom-control-label" for="defaultInline20">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+              <th scope="row">작성글 숨기기</th>
+              <td>
+                  <div class="custom-control custom-checkbox custom-control-inline">
+                      <input type="checkbox" class="custom-control-input orange" id="defaultInline21">
+                      <label class="custom-control-label" for="defaultInline21">비회원</label>
+                    </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline22">
+                  <label class="custom-control-label" for="defaultInline22">직원</label>
+                  </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline23">
+                  <label class="custom-control-label" for="defaultInline23">입주민</label>
+                </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline24">
+                  <label class="custom-control-label" for="defaultInline24">관리자
+                    </label>
+                    </div>
+                  </td>
+            </tr>
+          <tr>
+            <th scope="row">공지게시판 설정</th>
+            
+         <td colspan="4">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline25">
+                <label class="custom-control-label" for="defaultInline25">
+                  네, 관리자만 공지글 올리기
+                  </label>
+                  </div>
+              <br>            
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="defaultInline26">
+                    <label class="custom-control-label" for="defaultInline26">
+                      아니요, 회원 누구나 공지글 올리기
+                    </label>
+                    </div>
+          </td>        
+          </tr>
+         <td colspan="5" style="text-align: center;">
+          <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button></a>
+          <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
+          </td>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="col-sm rounded mx-auto">
+      
+        <h3 class="border-bottom ">토크박스</h3>
+      
+      <table class="table">
+        
+          
+            
+         
+        
+        <tbody>
+          <tr>
+            <th scope="row">목록보기</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline1">
+                    <label class="custom-control-label" for="defaultInline1">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline2">
+                <label class="custom-control-label" for="defaultInline2">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline3">
+                <label class="custom-control-label" for="defaultInline3">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline4">
+                <label class="custom-control-label" for="defaultInline4">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">읽기권한</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline5">
+                    <label class="custom-control-label" for="defaultInline5">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline6">
+                <label class="custom-control-label" for="defaultInline6">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline7">
+                <label class="custom-control-label" for="defaultInline7">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline8">
+                <label class="custom-control-label" for="defaultInline8">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">쓰기권한</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline9">
+                    <label class="custom-control-label" for="defaultInline9">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline10">
+                <label class="custom-control-label" for="defaultInline10">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline11">
+                <label class="custom-control-label" for="defaultInline11">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline12">
+                <label class="custom-control-label" for="defaultInline12">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">댓글쓰기</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline13">
+                    <label class="custom-control-label" for="defaultInline13">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline14">
+                <label class="custom-control-label" for="defaultInline14">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline15">
+                <label class="custom-control-label" for="defaultInline15">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline16">
+                <label class="custom-control-label" for="defaultInline16">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">강제 삭제</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline17">
+                    <label class="custom-control-label" for="defaultInline17">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline18">
+                <label class="custom-control-label" for="defaultInline18">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline19">
+                <label class="custom-control-label" for="defaultInline19">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline20">
+                <label class="custom-control-label" for="defaultInline20">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+              <th scope="row">작성글 숨기기</th>
+              <td>
+                  <div class="custom-control custom-checkbox custom-control-inline">
+                      <input type="checkbox" class="custom-control-input orange" id="defaultInline21">
+                      <label class="custom-control-label" for="defaultInline21">비회원</label>
+                    </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline22">
+                  <label class="custom-control-label" for="defaultInline22">직원</label>
+                  </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline23">
+                  <label class="custom-control-label" for="defaultInline23">입주민</label>
+                </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline24">
+                  <label class="custom-control-label" for="defaultInline24">관리자
+                    </label>
+                    </div>
+                  </td>
+            </tr>
+          <tr>
+            <th scope="row">토크박스 설정</th>
+            
+         <td colspan="4">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline25">
+                <label class="custom-control-label" for="defaultInline25">
+                  네, 관리자만 공지글 올리기
+                  </label>
+                  </div>
+              <br>            
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="defaultInline26">
+                    <label class="custom-control-label" for="defaultInline26">
+                      아니요, 회원 누구나 공지글 올리기
+                    </label>
+                    </div>
+          </td>
+        </tr>  
+          <td colspan="5" style="text-align: center;">
+              <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button></a>
+              <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
+              </td>      
+         
+          
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="col-sm  rounded mx-auto">
+      
+        <h3 class="border-bottom ">아나바다</h3>
+      
+      <table class="table">
+        
+          
+            
+         
+        
+        <tbody>
+          <tr>
+            <th scope="row">목록보기</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline1">
+                    <label class="custom-control-label" for="defaultInline1">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline2">
+                <label class="custom-control-label" for="defaultInline2">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline3">
+                <label class="custom-control-label" for="defaultInline3">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline4">
+                <label class="custom-control-label" for="defaultInline4">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">읽기권한</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline5">
+                    <label class="custom-control-label" for="defaultInline5">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline6">
+                <label class="custom-control-label" for="defaultInline6">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline7">
+                <label class="custom-control-label" for="defaultInline7">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline8">
+                <label class="custom-control-label" for="defaultInline8">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">쓰기권한</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline9">
+                    <label class="custom-control-label" for="defaultInline9">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline10">
+                <label class="custom-control-label" for="defaultInline10">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline11">
+                <label class="custom-control-label" for="defaultInline11">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline12">
+                <label class="custom-control-label" for="defaultInline12">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">댓글쓰기</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline13">
+                    <label class="custom-control-label" for="defaultInline13">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline14">
+                <label class="custom-control-label" for="defaultInline14">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline15">
+                <label class="custom-control-label" for="defaultInline15">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline16">
+                <label class="custom-control-label" for="defaultInline16">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+            <th scope="row">강제 삭제</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline17">
+                    <label class="custom-control-label" for="defaultInline17">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline18">
+                <label class="custom-control-label" for="defaultInline18">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline19">
+                <label class="custom-control-label" for="defaultInline19">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline20">
+                <label class="custom-control-label" for="defaultInline20">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+          <tr>
+              <th scope="row">작성글 숨기기</th>
+              <td>
+                  <div class="custom-control custom-checkbox custom-control-inline">
+                      <input type="checkbox" class="custom-control-input orange" id="defaultInline21">
+                      <label class="custom-control-label" for="defaultInline21">비회원</label>
+                    </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline22">
+                  <label class="custom-control-label" for="defaultInline22">직원</label>
+                  </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline23">
+                  <label class="custom-control-label" for="defaultInline23">입주민</label>
+                </div>
+                </td>
+              <td><div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline24">
+                  <label class="custom-control-label" for="defaultInline24">관리자
+                    </label>
+                    </div>
+                  </td>
+            </tr>
+          <tr>
+            <th scope="row">아나바다 설정</th>
+            
+         <td colspan="4">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline25">
+                <label class="custom-control-label" for="defaultInline25">
+                  네, 관리자만 공지글 올리기
+                  </label>
+                  </div>
+              <br>            
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="defaultInline26">
+                    <label class="custom-control-label" for="defaultInline26">
+                      아니요, 회원 누구나 공지글 올리기
+                    </label>
+                    </div>
+          </td>
+        </tr> 
+          <td colspan="5" style="text-align: center;">
+              <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button></a>
+              <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
+              </td>       
+          
+          
+        </tbody>
+      </table>
+    </div>   
+    
+  </div>
+  
+</div>

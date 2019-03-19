@@ -1,13 +1,13 @@
-$topnav-background-color: #222;
+$topnav-background-color: #404041;
 .sidebar {
     border-radius: 0;
     position: fixed;
     z-index: 1000;
-    top: 56px;
+    top: 71px;
     left: 235px;
-    width: 235px;
+    width: 200px;
     margin-left: -235px;
-    margin-bottom: 112px;
+    margin-bottom: 0;
     border: none;
     border-radius: 0;
     overflow-y: auto;
@@ -96,7 +96,7 @@ $topnav-background-color: #222;
                     }
                 }
                 .list-group-item:hover {
-                    background: darken($topnav-background-color, 5%);
+                    background: #f37a20;
                 }
             }
         }

@@ -20,6 +20,12 @@
              <input name="이름" class="form-control" id="name" placeholder="{{ '이름' | translate }}" type="text">
          </div> <!-- form-group// -->
          <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                 </div>
+                <input name="닉네임" class="form-control" id="nick-name" placeholder="{{ '닉네임' | translate }}" type="text">
+            </div> <!-- form-group// -->
+         <div class="form-group input-group">
              <div class="input-group-prepend">
                  <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
               </div>
@@ -48,28 +54,7 @@
          <div class="form-group input-group">    
              <input name="인증번호입력" class="form-control" placeholder="인증번호입력" type="number" style="max-width: 60%; border-radius: 3px;">
              <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">확인</a>
-         </div> <!-- form-group// -->
-         <div class="form-group input-group">
-             <div class="custom-control custom-checkbox mr-sm-2">
-               <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-               <label class="custom-control-label" for="customControlAutosizing">아파트 주민이십니까?</label>
-             </div>
-         </div>
-         <div class="form-group input-group">
-             <div class="input-group-prepend">
-                 <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-             </div>
-         <select class="custom-select" style="max-width: 100%;">
-             <option selected="">아파트 이름</option>
-             <option value="1">그린워크</option>
-             <option value="2">풍림아이원</option>
-             <option value="3">자이하버뷰</option>
-         </select>
-         </div>
-         <div class="form-group input-group">    
-             <input name="동" class="form-control" placeholder="동입력" type="number" style="max-width: 45%; border-radius: 3px;">
-             <div class="hypon" style="width:10%;">-</div>
-             <input name="호" class="form-control" placeholder="호수입력" type="number" style="max-width: 45%; border-radius: 3px;">
+       
              
          </div> <!-- form-group// -->
          <div class="form-group input-group">
