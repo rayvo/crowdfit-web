@@ -18,7 +18,7 @@ const routes: Routes = [
             { path: 'resident', loadChildren: './resident-management/resident.module#ResidentModule' },
             { path: 'staff', component: StaffManagementComponent },
             { path: 'accounting', loadChildren: './accounting-management/accounting.module#AccountingModule' },
-            { path: 'store', component: StoreManagementComponent },
+            { path: 'store', loadChildren: './store-management/store.module#StoreModule' },
             { path: 'locker', component: LockerManagementComponent },
             { path: 'class', loadChildren: './class-management/class.module#ClassModule' },
             { path: 'attendence', component: AttendenceManagementComponent },

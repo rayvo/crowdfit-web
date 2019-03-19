@@ -1,6 +1,6 @@
-import { CostNoticeManagementComponent } from '../cost-notice-management/cost-notice-management.component';
-import { SalesManagementComponent } from '../sales-management/sales-management.component';
-import { WageManagementComponent } from '../wage-management/wage-management.component';
+import { CostNoticeManagementComponent } from './cost-notice-management/cost-notice-management.component';
+import { SalesManagementComponent } from './sales-management/sales-management.component';
+import { WageManagementComponent } from './wage-management/wage-management.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

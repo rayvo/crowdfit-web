@@ -88,10 +88,38 @@
             </li>
         </div>
 
-        <a class="list-group-item" routerLink="/store">
-            <i class="fa fa-plus"></i>&nbsp;
-            <span>스토어관리</span>
-        </a>
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('store-pages')">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>스토어관리 </span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'store-pages'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="/store/product" >
+                            <span>상품관리 </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/store/submanagement" >
+                            <span>스토어관리 </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/store/vendor" >
+                            <span>판매자관리  </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/store/notice" >
+                            <span>공지사항  </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+
 
         <a class="list-group-item" routerLink="/locker">
             <i class="fa fa-plus"></i>&nbsp;
