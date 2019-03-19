@@ -8,7 +8,6 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StaffManagementComponent } from './staff-management/staff-management.component';
-import { StoreManagementComponent } from './store-management/store-management.component';
 import { LockerManagementComponent } from './locker-management/locker-management.component';
 import { AttendenceManagementComponent } from './attendence-management/attendence-management.component';
 import { ServiceCenterComponent } from './service-center/service-center.component';
@@ -27,7 +26,6 @@ import { FooterComponent } from './components/footer/footer.component';
         SidebarComponent,
         HeaderComponent,
         StaffManagementComponent,
-        StoreManagementComponent,
         LockerManagementComponent,
         AttendenceManagementComponent,
         ServiceCenterComponent,
