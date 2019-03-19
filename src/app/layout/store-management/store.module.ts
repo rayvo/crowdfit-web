@@ -12,6 +12,9 @@ import { StoreSubmanagementComponent } from './store-submanagement/store-submana
 import { VendorManagementComponent } from './vendor-management/vendor-management.component';
 import { StoreNoticeComponent } from './store-notice/store-notice.component';
 import { StoreRoutingModule } from './store-routing.module';
+import { VendorModule } from './vendor-management/vendor.module';
+import { ProductModule } from './store-product-management/product.module';
+import { VendorRoutingModule } from './vendor-management/vendor-routing.module';
 
 
 @NgModule({
@@ -22,13 +25,15 @@ import { StoreRoutingModule } from './store-routing.module';
     FormsModule,
     HttpClientModule,
     StoreRoutingModule,
+    VendorModule,
+    ProductModule,
   ],
   declarations: [
       StoreManagementComponent,
-      StoreProductManagementComponent,
       StoreSubmanagementComponent,
-      VendorManagementComponent,
       StoreNoticeComponent,
+      VendorManagementComponent,
+      StoreProductManagementComponent,
   ],
   providers: [],
   bootstrap: [StoreManagementComponent]

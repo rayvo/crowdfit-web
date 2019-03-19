@@ -24,7 +24,6 @@ import { ProductRoutingModule } from './product-routing.module';
     ProductRoutingModule,
   ],
   declarations: [
-      StoreProductManagementComponent,
       StoreProductRegistrationComponent,
       StoreProductEditComponent,
       StoreProductPhotosComponent,

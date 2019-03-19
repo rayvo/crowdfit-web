@@ -22,7 +22,6 @@ import { VendorRoutingModule } from './vendor-routing.module';
     VendorRoutingModule,
   ],
   declarations: [
-      VendorManagementComponent,
       VendorInformationComponent,
       VendorApprovalInformationComponent,
   ],

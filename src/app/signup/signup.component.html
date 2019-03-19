@@ -13,42 +13,56 @@
      
          <form role="form">
          <div class="form-content">
+         
+         <!-- NAME -->
          <div class="form-group input-group">
              <div class="input-group-prepend">
                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
               </div>
-             <input name="이름" class="form-control" id="name" placeholder="{{ '이름' | translate }}" type="text">
-         </div> <!-- form-group// -->
+             <input name="username" [(ngModel)]="newUser.username" class="form-control" id="username" placeholder="{{ '이름' | translate }}" type="text" >
+         </div> 
+
+         <!-- EMAIL -->
          <div class="form-group input-group">
              <div class="input-group-prepend">
                  <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
               </div>
-             <input name="이메일" class="form-control" id="email" placeholder="{{ '이메일 주소' | translate }}">
-         </div> <!-- form-group// -->
+             <input name="이메일" [(ngModel)]="newUser.email" class="form-control" id="email" placeholder="{{ '이메일 주소' | translate }}">
+         </div> 
         
+         <!-- PASSWORD -->
           <div class="form-group input-group">
              <div class="input-group-prepend">
                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
              </div>
-             <input name="비밀번호" class="form-control" id="password" placeholder="{{ '비밀번호' | translate }}" type="password">
-         </div> <!-- form-group// -->
+             <input name="비밀번호" [(ngModel)]="newUser.password" class="form-control" id="password" placeholder="{{ '비밀번호' | translate }}" type="password">
+         </div> 
+
+         <!-- CPASSWORD -->      
          <div class="form-group input-group">
              <div class="input-group-prepend">
                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
              </div>
-             <input class="form-control" id="cpassword" placeholder="{{ '비밀번호 확인' | translate }}" type="password">
-         </div> <!-- form-group// -->      
+             <input name="cpassword" [(ngModel)]="newUser.cpassword" class="form-control" id="cpassword" placeholder="{{ '비밀번호 확인' | translate }}" type="password">
+         </div> 
+
+        <!-- PhoneNumber -->
          <div class="form-group input-group">
              <div class="input-group-prepend">
                  <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
              </div>
-             <input name="휴대폰 번호" class="form-control" placeholder="휴대폰 번호" type="number" style="max-width: 60%; border-radius: 3px;"> 
+             <input name="휴대폰 번호" [(ngModel)]="newUser.phonenumber" class="form-control" placeholder="휴대폰 번호" type="number" style="max-width: 60%; border-radius: 3px;"> 
              <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">인증번호받기</a>
          </div>
+         
+        <!-- PhoneNumberVerificationNumber -->
          <div class="form-group input-group">    
              <input name="인증번호입력" class="form-control" placeholder="인증번호입력" type="number" style="max-width: 60%; border-radius: 3px;">
              <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">확인</a>
-         </div> <!-- form-group// -->
+         </div> 
+
+         
+        <!-- Apt Checkbox 
          <div class="form-group input-group">
              <div class="custom-control custom-checkbox mr-sm-2">
                <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
@@ -71,9 +85,13 @@
              <div class="hypon" style="width:10%;">-</div>
              <input name="호" class="form-control" placeholder="호수입력" type="number" style="max-width: 45%; border-radius: 3px;">
              
-         </div> <!-- form-group// -->
+
+         </div> -->
+
+         
          <div class="form-group input-group">
-             <button type="submit" class="btn btn-primary btn-block"[routerLink]="['/dashboard']"> 가입하기  </button>
+             <button type="submit" class="btn btn-primary btn-block" (click)="createUser()">가입하기</button>
+             <!--</button>[routerLink]="['/menu']"> -->
          </div> 
          <div class="form-group input-group" style="margin-top: -10px;">
              <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>      
