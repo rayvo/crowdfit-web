@@ -42,8 +42,8 @@ export class UserService {
     const body = {
       username: userData.username,
       email: userData.email,
-      nickname: 'a',
-      fullname: 'aaa',
+      nickname: 'seungyboy',
+      fullname: 'Haseung Lee',
       password: userData.password,
       phonenumber: '+821022223333',
     };

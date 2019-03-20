@@ -43,6 +43,7 @@ export class SignupComponent implements OnInit {
                 // idk what to put here
             },
             error => {
+                // Make error show up on screen
                 console.log(error);
             }
         );
