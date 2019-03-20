@@ -11,6 +11,7 @@ import { StoreProductManagementComponent } from './store-product-management/stor
 import { StoreSubmanagementComponent } from './store-submanagement/store-submanagement.component';
 import { VendorManagementComponent } from './vendor-management/vendor-management.component';
 import { StoreNoticeComponent } from './store-notice/store-notice.component';
+import { StoreRoutingModule } from './store-routing.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { StoreNoticeComponent } from './store-notice/store-notice.component';
     NgbAlertModule,
     FormsModule,
     HttpClientModule,
+    StoreRoutingModule,
   ],
   declarations: [
       StoreManagementComponent,
