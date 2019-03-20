@@ -15,6 +15,7 @@ $topnav-background-color: #404041;
     bottom: 0;
     overflow-x: hidden;
     padding-bottom: 40px;
+    font-size: 0.9em;
     white-space: nowrap;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
@@ -30,8 +31,11 @@ $topnav-background-color: #404041;
             border-radius: 0;
             color:#d0d1d1;
             text-decoration: none;
+             
+            
             .fa {
                 margin-right: 10px;
+               
             }
         }
         a:hover {
@@ -45,7 +49,7 @@ $topnav-background-color: #404041;
         .header-fields {
             padding-top: 10px;
         
-            > .list-group-item:first-child {
+            .list-group-item:first-child {
                 border-top: 1px solid rgba(255, 255, 255, 0.2);
             }
         }
@@ -54,6 +58,7 @@ $topnav-background-color: #404041;
         *:focus {
             border-radius: none;
             border: none;
+            
         }
         .panel-title {
             font-size: 1rem;
@@ -76,6 +81,7 @@ $topnav-background-color: #404041;
                 color:#d0d1d1;
                 outline: none;
                 outline-offset: -2px;
+                
             }
         }
         .panel-title:hover {
@@ -92,11 +98,12 @@ $topnav-background-color: #404041;
                     a {
                         color: #999;
                     }
-                    a:hover {
+                    a:hover, a:focus {
                         color: #fff;
+                        
                     }
                 }
-                .list-group-item:hover {
+                .list-group-item:hover{
                     background: #f37a20;
                 }
             }
@@ -105,11 +112,20 @@ $topnav-background-color: #404041;
 }
 
 .nested-menu {
+    
+    
     .list-group-item {
         cursor: pointer;
     }
     .nested {
         list-style-type: none;
+        font-size: 0.8em;
+    }
+
+     ul.submenu a:hover{
+        
+        background: none;
+          
     }
     ul.submenu {
         display: none;
@@ -125,6 +141,10 @@ $topnav-background-color: #404041;
                     color: #d0d1d1;
                     padding: 10px;
                     display: block;
+                    text-decoration: none;
+                }
+                a:hover, a:focus {
+                    color: #f37a20;
                 }
             }
         }

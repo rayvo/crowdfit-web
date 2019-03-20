@@ -5,7 +5,7 @@
     <div class="list-group">
 
         <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('menu-pages')">
+            <a class="list-group-item" routerLink="/menu/bulletinboard"  (click)="addExpandClass('menu-pages')">
                 <i class="fas fa-list-ul"></i>&nbsp;
                 <span>메뉴관리 </span>
             </a>
@@ -13,12 +13,12 @@
                 <ul class="submenu">
                     <li>
                         <a routerLink="/menu/bulletinboard" >
-                            <span>공지사항관리</span>
+                            <span>공지사항</span>
                         </a>
                     </li>
                     <li>
                         <a routerLink="/menu/danji" >
-                            <span>단지안내관리</span>
+                            <span>단지안내</span>
                         </a>
                     </li>
                     <li>
@@ -37,7 +37,7 @@
 
 
         <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('resident-pages')">
+            <a class="list-group-item" routerLink="/resident/generalresident"(click)="addExpandClass('resident-pages')">
                 <i class="far fa-address-card"></i>&nbsp;
                 <span>입주민관리 </span>
             </a>
@@ -58,14 +58,14 @@
         </div>
 
         <a class="list-group-item" routerLink="/staff">
-            <i class="fa fa-user"></i>&nbsp;
+            <i class="fas fa-user-friends"></i>&nbsp;
             <span>직원관리</span>
         </a>
 
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('accounting-pages')">
-                <i class="fa fa-plus"></i>&nbsp;
+                <i class="fas fa-calculator"></i>&nbsp;
                 <span>회계관리 </span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'accounting-pages'">
@@ -91,7 +91,7 @@
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('store-pages')">
-                <i class="fa fa-plus"></i>&nbsp;
+                <i class="fas fa-shopping-cart"></i>&nbsp;
                 <span>스토어관리 </span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'store-pages'">
@@ -123,14 +123,14 @@
 
 
         <a class="list-group-item" routerLink="/locker">
-            <i class="fa fa-plus"></i>&nbsp;
+            <i class="fas fa-lock"></i>&nbsp;
             <span>락커좌석관리</span>
         </a>
 
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('class-pages')">
-                <i class="fa fa-plus"></i>&nbsp;
+                <i class="fas fa-chalkboard-teacher"></i>&nbsp;
                 <span>수업관리 </span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'class-pages'">
@@ -150,15 +150,15 @@
         </div>
 
         <a class="list-group-item" routerLink="/attendence">
-            <i class="fa fa-plus"></i>&nbsp;
+            <i class="far fa-check-circle"></i>&nbsp;
             <span>출석관리</span>
         </a>
         <a class="list-group-item" routerLink="/service-center">
-            <i class="star-of-life"></i>&nbsp;
+            <i class="fas fa-coffee"></i>&nbsp;
             <span>생활관리지원</span>
         </a>
         <a class="list-group-item" routerLink="/settings">
-            <i class="fa fa-plus"></i>&nbsp;
+            <i class="fas fa-shield-alt"></i>&nbsp;
             <span>권한설정</span>
         </a>
     </div>
