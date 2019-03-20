@@ -6,14 +6,11 @@ import { VendorManagementComponent } from './vendor-management/vendor-management
 import { StoreNoticeComponent } from './store-notice/store-notice.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'product', pathMatch: 'full' },
-  { path: 'product', loadChildren: './store-product-management/product.module#ProductModule' },
-  // component: StoreProductManagementComponent},
-  { path: 'submanagement', component: StoreSubmanagementComponent},
-  { path: 'vendor', loadChildren: './vendor-management/vendor.module#VendorModule' },
-  // component: VendorManagementComponent},
+  { path: '', redirectTo: 'product', pathMatch: 'full'},
+  { path: 'product', component: StoreProductManagementComponent },
+  { path: 'submanagement', component: StoreSubmanagementComponent },
+  { path: 'vendor', component: VendorManagementComponent },
   { path: 'notice', component: StoreNoticeComponent},
-
 ];
 
 @NgModule({

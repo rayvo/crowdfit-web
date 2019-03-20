@@ -13,6 +13,7 @@ import { AttendenceManagementComponent } from './attendence-management/attendenc
 import { ServiceCenterComponent } from './service-center/service-center.component';
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { StoreManagementComponent } from './store-management/store-management.component';
 
 @NgModule({
     imports: [

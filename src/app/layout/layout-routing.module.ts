@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { StaffManagementComponent } from './staff-management/staff-management.component';
-import { StoreManagementComponent } from './store-management/store-management.component';
 import { LockerManagementComponent } from './locker-management/locker-management.component';
 import { AttendenceManagementComponent } from './attendence-management/attendence-management.component';
 import { ServiceCenterComponent } from './service-center/service-center.component';
@@ -13,7 +12,7 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'menu', pathMatch: 'prefix' },
+            // { path: '', redirectTo: 'menu', pathMatch: 'prefix' },
             { path: 'menu', loadChildren: './menu-management/menu.module#MenuModule' },
             { path: 'resident', loadChildren: './resident-management/resident.module#ResidentModule' },
             { path: 'staff', component: StaffManagementComponent },
