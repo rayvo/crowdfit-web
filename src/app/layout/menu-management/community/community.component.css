@@ -1,0 +1,24 @@
+th,tr,td{border:none;
+    font-size: 0.9em; 
+    font-weight: 500;
+    }
+
+td{
+padding: 0;
+vertical-align: middle;
+text-align: right;}
+.plusimg {
+   margin-top: 10px;
+   width:100%;
+    height:400px;
+   background-color:#ddd;
+text-align: center;}
+   .col-sm2
+   {
+   margin:90px 20px;
+ 
+width: auto;
+padding:20px;
+   height: 300px;
+   background-color: #fff;
+  border:1px solid #ccc; }
