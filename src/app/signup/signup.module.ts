@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { SignupRoutingModule } from './signup-routing.module';
 import { SignupComponent } from './signup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupForComponent } from './signup-for/signup-for.component';
 import { SignupAsAptComponent } from './signup-as-apt/signup-as-apt.component';
 import { SignupAsClubComponent } from './signup-as-club/signup-as-club.component';
@@ -15,7 +15,9 @@ import { SignupClubMemberComponent } from './signup-as-club/signup-club-member/s
 import { SignupClubStaffComponent } from './signup-as-club/signup-club-staff/signup-club-staff.component';
 import { SignupClubAdminComponent } from './signup-as-club/signup-club-admin/signup-club-admin.component';
 
-// import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+
+
 
 @NgModule({
   imports: [
@@ -23,7 +25,10 @@ import { SignupClubAdminComponent } from './signup-as-club/signup-club-admin/sig
     TranslateModule,
     SignupRoutingModule,
     FormsModule,
-    // MatFor
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+
   ],
   declarations: [
     SignupComponent,

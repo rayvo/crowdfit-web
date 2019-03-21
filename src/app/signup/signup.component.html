@@ -1,97 +1,78 @@
 <div class="login-page" [@routerTransition]>
-    <div class="row justify-content-md-center">
-       <div class="col-md-4">
-             <img src="assets/images/logo.png" width="80px" />
- 
- 
- 
-     
-     
-         <h4 class="card-title mt-3 text-center">회원가입</h4>
-         
-         
-     
-         <form role="form">
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <img src="assets/images/logo.png" width="80px" />
 
-         <!-- Name -->
-         <div class="form-content">
-         <div class="form-group input-group">
-             <div class="input-group-prepend">
-                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-              </div>
-             <input name="이름" class="form-control" id="name" placeholder="{{ '이름' | translate }}" type="text">
-             
-             <!--mat-hint>Hint</mat-hint>-->
+      <h4 class="card-title mt-3 text-center">회원가입</h4>
 
-         </div> 
+      <form role="form" [formGroup]="newUser" (ngSubmit)="onSubmit()">
+        <div class="form-content">
+          <div class="form-group">
+            <!--input-group">-->
 
+            <mat-form-field appearance="standard">
+              <!-- <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+              </div>-->
+              <input matInput formControlName="username" placeholder="이름" type="text" class="form-control" />
+              <mat-hint>A username hint???</mat-hint>
+              <mat-error *ngIf="(username.dirty || username.touched) && username.invalid">{{ getUsernameErrorMessage() }}</mat-error>
+            </mat-form-field>
+          </div>
 
+          <div class="form-group">
+            <!--input-group">-->
+            <mat-form-field appearance="standard">
+              <!--<div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+              </div>-->
+              <input matInput formControlName="email" placeholder="이메일 주소" type="text" class="form-control" />
+              <mat-hint>Enter a vaild email</mat-hint>
+              <mat-error *ngIf="(email.dirty || email.touched) && email.invalid">{{ getEmailErrorMessage() }}</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- 
-         <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                 </div>
-                <input name="닉네임" class="form-control" id="nick-name" placeholder="{{ '닉네임' | translate }}" type="text">
-            </div>
-        -->
+          <div class="form-group">
+            <!--input-group">-->
+            <mat-form-field appearance="standard">
+              <!--<div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                      </div>-->
 
-         <div class="form-group input-group">
-             <div class="input-group-prepend">
-                 <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-              </div>
-             <input name="이메일" class="form-control" id="email" placeholder="{{ '이메일 주소' | translate }}">
-         </div>
-         
+              <input matInput formControlName="password" placeholder="비밀번호" type="password" class="form-control" />
+              <mat-hint>Atleast 8 Chars long</mat-hint>
+              <mat-error *ngIf="(password.dirty || password.touched) && password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+            </mat-form-field>
+          </div>
 
+          <div class="form-group">
+            <!--input-group">-->
+
+            <mat-form-field appearance="standard">
+              <!--<div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                          </div>-->
+
+              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" type="password" class="form-control" />
+              <mat-hint>Passwords must match</mat-hint>
+              <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords are different. They should be equal!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <br><br>
+          <!-- SUBMIT BUTTON -->
           <div class="form-group input-group">
-             <div class="input-group-prepend">
-                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-             </div>
-             <input name="비밀번호" class="form-control" id="password" placeholder="{{ '비밀번호' | translate }}" type="password">
-         </div> 
-         
+            <button [disabled]="!newUser.valid" type="submit" class="btn btn-primary btn-block" routerLink="/signup/welcome">
+              가입하기
+            </button>
+          </div>
 
-         <div class="form-group input-group">
-             <div class="input-group-prepend">
-                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-             </div>
-             <input class="form-control" id="cpassword" placeholder="{{ '비밀번호 확인' | translate }}" type="password">
-         </div> 
-         
-         
-         <div class="form-group input-group">
-             <div class="input-group-prepend">
-                 <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-             </div>
-             <input name="휴대폰 번호" class="form-control" placeholder="휴대폰 번호" type="number" style="max-width: 60%; border-radius: 3px;"> 
-             <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">인증번호받기</a>
-         </div>
-         <div class="form-group input-group">    
-             <input name="인증번호입력" class="form-control" placeholder="인증번호입력" type="number" style="max-width: 60%; border-radius: 3px;">
-             <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">확인</a>
-             
-       
-             
-         </div> <!-- form-group// -->
-         <div class="form-group input-group">
-             <button type="submit" class="btn btn-primary btn-block" routerLink='/signup/welcome'> 가입하기  </button>
-         </div> 
-         <div class="form-group input-group" style="margin-top: -10px;">
-             <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>      
-         </div> <!-- form-group// -->      
-     </div>                                                   
-     </form>
-    
-    
-     </div>
-     </div> 
-     <!--container end.//-->
- 
- </div>
- 
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
- 
- 
- 
- 
+          <div class="form-group input-group" style="margin-top: -10px;">
+            <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>
+          </div>
+        </div>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
+      </form>
+    </div>
+  </div>
+</div>
