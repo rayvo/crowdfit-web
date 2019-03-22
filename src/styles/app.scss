@@ -10,6 +10,8 @@
         display: none !important;
     }
 }
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+body{font-family: 'NanumSquareRound',sans-serif;}
 
 nav .breadcrumb {
   padding-left: 0;
@@ -17,7 +19,8 @@ nav .breadcrumb {
 }
 
 
-body,.breadcrumb {background-color: #e2e2e1;
+body,.breadcrumb   {
+    background-color: #e2e2e1;
 }
 h4{
 font-size: 1.2em;
@@ -42,6 +45,7 @@ color:#929497  ;
     left: 0;
     padding: 0;
 }
+.table{color: #58595b;}
 .col-sm {
     background-color: #fff;
      border: 1px solid #ccc;
@@ -66,3 +70,6 @@ button.manager {
    float:  right;
 }
 .borderless{border: none;}
+
+.right{position: absolute; right: 0;}
+

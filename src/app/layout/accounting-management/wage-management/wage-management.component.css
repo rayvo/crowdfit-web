@@ -1,2 +1,5 @@
+table{padding: 0;}
 
-td{border:none; font-size: 0.9em; font-weight: 500;margin:0 auto;}
+td{ font-size: 0.9em; font-weight: 500;margin:0 auto;}
+.borderless{border:none;}
+td button {font-size: 0.8em;}
