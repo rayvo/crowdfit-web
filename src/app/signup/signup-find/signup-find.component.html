@@ -1,9 +1,26 @@
-<h2>
-  This is where the person would look up the address of what they're looking for <br>
-  Depening on what they signed up as in the previous two pages, <br> the items below would be different<br>
+<ng-container>
 
-</h2>
-<nav>
+  <select class="form-control">
+    <option>주소1</option>
+  </select>
+  <select class="form-control">
+    <option>주소2</option>
+  </select>
+  <select class="form-control">
+    <option>주소3</option>
+  </select>
+
+  <mat-form-field appearance="standard">
+    
+      <input matInput formControlName="username" placeholder="텍스트적는곳" type="text" class="form-control " />
+
+</mat-form-field>
+  <nav>
+
+    <a routerLink='/*'>
+      사업자등록증첨부
+    </a>
+
     <a routerLink='/*'>
       스토어 회원권 구매
     </a>
@@ -11,3 +28,4 @@
       승인요청
     </a>
   </nav>
+</ng-container>
