@@ -45,7 +45,7 @@
               <mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>
               <input matInput formControlName="cpassword" placeholder="비밀번호 확인" class="form-control" />
               <mat-hint>Passwords must match</mat-hint>
-              <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords are different. They should be equal!</mat-error>
+              <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords do not match</mat-error>
             </mat-form-field>
           </div>
 
@@ -85,7 +85,8 @@
           <br /><br />
           <!-- SUBMIT BUTTON -->
           <div class="form-group input-group">
-            <button [disabled]="!newUser.valid" type="submit" class="btn btn-primary btn-block" routerLink="/signup/welcome">
+            <!-- TODO to the button below add [disabled]="!newUser.valid" so that the user cannot press the button until it's valid-->
+            <button  type="submit" class="btn btn-primary btn-block" routerLink="/signup/welcome">
               가입하기
             </button>
           </div>

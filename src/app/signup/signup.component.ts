@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
     }
 
     newUser: FormGroup;
-    passwordMatcher = new RepeatPasswordEStateMatcher();
+    passwordMatcher = new RepeatPasswordEStateMatcher;
 
 
     ngOnInit() {}
