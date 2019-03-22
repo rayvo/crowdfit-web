@@ -31,7 +31,7 @@
           <div class="form-group">
             <mat-form-field appearance="standard">
               <mat-icon matPrefix class="fa fa-lock"></mat-icon>
-              <input matInput formControlName="password" placeholder="비밀번호" type="password" class="form-control" />
+              <input matInput formControlName="password" placeholder="비밀번호" type="password" class="form-control" required />
               <mat-hint>Atleast 8 Chars long</mat-hint>
               <mat-error *ngIf="(password.dirty || password.touched) && password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
             </mat-form-field>
@@ -41,9 +41,9 @@
           <div class="form-group">
             <mat-form-field appearance="standard">
               <mat-icon matPrefix class="fa fa-lock"></mat-icon>
-              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" type="password" class="form-control" />
+              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" type="password" class="form-control" [errorStateMatcher]="passwordMatcher" />
               <mat-hint>Passwords must match</mat-hint>
-              <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords are different. They should be equal!</mat-error>
+              <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords do not match</mat-error>
             </mat-form-field>
           </div>
 
