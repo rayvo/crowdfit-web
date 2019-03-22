@@ -43,7 +43,7 @@
           <div class="form-group">
             <mat-form-field appearance="standard">
               <mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>
-              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" class="form-control" />
+              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" type="password" [errorStateMatcher]=passwordMatcher class="form-control" />
               <mat-hint>Passwords must match</mat-hint>
               <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords do not match</mat-error>
             </mat-form-field>
