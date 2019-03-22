@@ -15,7 +15,7 @@ import { SignupClubMemberComponent } from './signup-as-club/signup-club-member/s
 import { SignupClubStaffComponent } from './signup-as-club/signup-club-staff/signup-club-staff.component';
 import { SignupClubAdminComponent } from './signup-as-club/signup-club-admin/signup-club-admin.component';
 
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material';
 
 
 
@@ -26,6 +26,7 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
     SignupRoutingModule,
     FormsModule,
     MatInputModule,
+    MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
 
