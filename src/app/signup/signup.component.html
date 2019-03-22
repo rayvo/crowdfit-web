@@ -7,17 +7,17 @@
 
       <form role="form" [formGroup]="newUser" (ngSubmit)="onSubmit()">
         <div class="form-content">
-
-
+          <!-- USERNAME -->
           <div class="form-group">
             <mat-form-field appearance="standard">
               <mat-icon matPrefix class="fa fa-user"></mat-icon>
-              <input matInput formControlName="username" placeholder="이름" type="text" class="form-control"/>
+              <input matInput formControlName="username" placeholder="이름" type="text" class="form-control" />
               <mat-hint>Atleast 8 chars</mat-hint>
               <mat-error *ngIf="(username.dirty || username.touched) && username.invalid">{{ getUsernameErrorMessage() }}</mat-error>
             </mat-form-field>
           </div>
 
+          <!-- EMAIL -->
           <div class="form-group">
             <mat-form-field appearance="standard">
               <mat-icon matPrefix class="fa fa-envelope"></mat-icon>
@@ -27,6 +27,7 @@
             </mat-form-field>
           </div>
 
+          <!-- PASSWORD -->
           <div class="form-group">
             <mat-form-field appearance="standard">
               <mat-icon matPrefix class="fa fa-lock"></mat-icon>
@@ -36,12 +37,45 @@
             </mat-form-field>
           </div>
 
+          <!-- PASSWORD CONFIRMATION -->
           <div class="form-group">
             <mat-form-field appearance="standard">
               <mat-icon matPrefix class="fa fa-lock"></mat-icon>
-              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" type="password" class="form-control" />
+              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" placeholder="휴대폰 번호" class="form-control" />
               <mat-hint>Passwords must match</mat-hint>
               <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords are different. They should be equal!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--PHONE NUMBER -->
+          <div class="form-group">
+            <mat-form-field appearance="standard">
+              <mat-icon matPrefix class="fa fa-lock"></mat-icon>
+              <input
+                matInput
+                formControlName="phonenumber"
+                placeholder="휴대폰 번호"
+                type="number"
+                class="form-control"
+                style="max-width: 60%; border-radius: 3px;"
+              />
+              <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">인증번호받기</a>
+            </mat-form-field>
+          </div>
+
+          <!--PHONE NUMBER VERIFICATION -->
+          <div class="form-group">
+            <mat-form-field appearance="standard">
+              <input
+                matInput
+                name="인증번호입력"
+                formControlName="phoneverificationnumber"
+                placeholder="인증번호입력"
+                type="number"
+                class="form-control"
+                style="max-width: 60%; border-radius: 3px;"
+              />
+              <a class="btn btn-primary btn-block" style="max-width: 40%; margin-left: 10px;">확인</a>
             </mat-form-field>
           </div>
 
