@@ -47,6 +47,7 @@ export class SignupComponent implements OnInit {
             password: new FormControl('', PasswordValidation),
             cpassword: new FormControl(''),
             phonenumber: new FormControl(''),
+            phoneverificationnumber: new FormControl(''),
 
         }, { validators: RepeatPasswordValidator });
     }
