@@ -12,6 +12,9 @@ import { StoreSubmanagementComponent } from './store-submanagement/store-submana
 import { VendorManagementComponent } from './vendor-management/vendor-management.component';
 import { StoreNoticeComponent } from './store-notice/store-notice.component';
 import { StoreRoutingModule } from './store-routing.module';
+import { StoreProductEnrollmentComponent } from './store-product-management/store-product-enrollment/store-product-enrollment.component';
+import { StoreProductModifiedComponent } from './store-product-management/store-product-modified/store-product-modified.component';
+import { StorePicStorageComponent } from './store-product-management/store-pic-storage/store-pic-storage.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { StoreRoutingModule } from './store-routing.module';
       StoreSubmanagementComponent,
       VendorManagementComponent,
       StoreNoticeComponent,
+      StoreProductEnrollmentComponent,
+      StoreProductModifiedComponent,
+      StorePicStorageComponent,
   ],
   providers: [],
   bootstrap: [StoreManagementComponent]
