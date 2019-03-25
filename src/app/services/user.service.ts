@@ -9,12 +9,13 @@ import { map } from 'rxjs/operators';
 
 
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
 
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'Token 5e6c0c547c721757428f20cb1f35397e64fdd396'
+    'Authorization': 'tokenbf0d63523bdc926d23c33bb4d27e9a635cbc9698'
   })
 };
 
@@ -38,28 +39,40 @@ export class UserService {
   }
   */
 
-  createUser(userData): Observable<any> {
+      // nickname: 'seungyboy',
+      // fullname: 'Haseung Lee',
+  createUser(userData): Observable < any > {
+    console.log('NEXT IS userData ####');
+    console.log(userData);
+    console.log(userData.value);
+    let phonenullcheck = '1';
+    if ( userData.value.phone === '' ) {
+      phonenullcheck = null;
+    } else {
+      phonenullcheck = userData.value.phone;
+    }
+
     const body = {
-      username: userData.username,
-      email: userData.email,
-      nickname: 'seungyboy',
-      fullname: 'Haseung Lee',
-      password: userData.password,
-      phonenumber: '+821022223333',
+      username: userData.value.username ,
+      email: userData.value.email,
+      password: userData.value.password,
+      phone: phonenullcheck,
     };
+    console.log('NEXT IS BODY ####');
+    console.log(body);
     return this.http.post(this.serverUrl + '/api/users/', body, httpOptions);
   }
 
-  loginUser(): Observable<any> {
+  loginUser(): Observable < any > {
     // return this.http.post('http://210.105.48.120:8000/api/users/', userData);
     return this.http.get(this.serverUrl + '/api/users/', httpOptions);
   }
 
-  getAllUsers(): Observable<any> {
+  getAllUsers(): Observable < any > {
     return this.http.post(this.serverUrl + '/api/users/', httpOptions);
   }
 
-  getOneUser(aUsername): Observable<any> {
+  getOneUser(aUsername): Observable < any > {
     return this.http.get(this.serverUrl + '/api/users/15/', httpOptions);
   }
 

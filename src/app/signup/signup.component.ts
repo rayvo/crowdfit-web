@@ -41,12 +41,12 @@ export class SignupComponent implements OnInit {
 
     createFormGroup() {
         return new FormGroup({
-            id: new FormControl(-1),
+            // id: new FormControl(-1),
             username: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', PasswordValidation),
             cpassword: new FormControl(''),
-            phonenumber: new FormControl(''),
+            phone: new FormControl(''),
             phoneverificationnumber: new FormControl(''),
 
         }, { validators: RepeatPasswordValidator });
@@ -74,8 +74,8 @@ export class SignupComponent implements OnInit {
     get cpassword() {
         return this.newUser.get('cpassword');
     }
-    get phonenumber() {
-        return this.newUser.get('phonenumber');
+    get phone() {
+        return this.newUser.get('phone');
     }
 
     // getErrorMessage() {
@@ -107,6 +107,7 @@ export class SignupComponent implements OnInit {
 
 
     createUser = () => {
+        console.log(this.newUser);
         this.user.createUser(this.newUser).subscribe(
             data => {
                 // idk what to put here
@@ -117,6 +118,7 @@ export class SignupComponent implements OnInit {
             }
         );
     }
+
 
 }
 
