@@ -1,30 +1,29 @@
 <ng-container>
+  
+  <br><br>
+  <h2>Type dorojuso below</h2>
+  <input name="jusoKeyword" placeholder="텍스트적는곳" type="text" class="form-control " />
 
-  <select class="form-control">
-    <option>주소1</option>
-  </select>
-  <select class="form-control">
-    <option>주소2</option>
-  </select>
-  <select class="form-control">
-    <option>주소3</option>
-  </select>
+  <a type="button" (click)="jusoSearch()" >검색</a>
+  <!--
+<h2>List of apts</h2>
+<ul>
+  <li *ngFor="let juso of jusos">
+    <h2 (click)="aptClicked(apt)">{{apt.name}}</h2>
+  </li>
+</ul>
+-->
 
-  <mat-form-field appearance="standard">
-    
-      <input matInput formControlName="username" placeholder="텍스트적는곳" type="text" class="form-control " />
 
-</mat-form-field>
   <nav>
-
-    <a routerLink='/*'>
+    <a routerLink="/*">
       사업자등록증첨부
     </a>
 
-    <a routerLink='/*'>
+    <a routerLink="/*">
       스토어 회원권 구매
     </a>
-    <a routerLink='/signup/applied'>
+    <a routerLink="/signup/applied">
       승인요청
     </a>
   </nav>
