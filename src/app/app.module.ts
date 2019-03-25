@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { FormsModule } from '@angular/forms';
+import { StoreProcuctRoutingModule } from './layout/store-management/store-product-management/store-procuct-routing.module';
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -37,6 +38,7 @@ export const createTranslateLoader = (http: HttpClient) => {
             }
         }),
         AppRoutingModule,
+        StoreProcuctRoutingModule,
     ],
     declarations: [AppComponent],
     providers: [AuthGuard],
