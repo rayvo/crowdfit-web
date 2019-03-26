@@ -1,17 +1,13 @@
 
-import {  StoreProductModifiedComponent } from './store-management/store-product-management/store-product-modified.component';
+
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'modified', pathMatch: 'full' },
-  { path: 'modified', component:  StoreProductModifiedComponent},
-
-
 ];
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class StoreProcuctRoutingModule { }
