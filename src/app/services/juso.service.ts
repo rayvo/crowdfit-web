@@ -12,12 +12,12 @@ export class JusoService {
 
   constructor( private http: HttpClient, ) { }
 
-  serverUrl = 'http://www.juso.go.kr/addrlink/addrLinkApi.do';
+  jusoApiUrl = 'http://www.juso.go.kr/addrlink/addrLinkApi.do';
   myConfmKey = 'U01TX0FVVEgyMDE5MDMyNTE2NDExNTEwODYwMTQ=';
   myResultType = 'json';
 
-  searchJuso(jusoKeyword): Observable <any> {
-    return this.http.get(this.serverUrl + '?' +
+  getJusos(jusoKeyword): Observable <any> {
+    return this.http.get(this.jusoApiUrl + '?' +
     'confmKey=' + this.myConfmKey + '&' +
     'resultType=' + this.myResultType + '&' +
     'keyword=' + jusoKeyword

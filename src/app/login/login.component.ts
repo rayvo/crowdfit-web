@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { routerTransition } from '../router.animations';
 import { UserService } from '../services/user.service';
-import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-login',

@@ -1,30 +1,35 @@
-<ng-container>
-  
-  <br><br>
-  <h2>Type dorojuso below</h2>
-  <input name="jusoKeyword" placeholder="텍스트적는곳" type="text" class="form-control " />
+<br /><br />
+<h2>Type dorojuso below</h2>
+<input [(ngModel)]="jusoKeyword" placeholder="텍스트적는곳" type="text" class="form-control " />
 
-  <a type="button" (click)="jusoSearch()" >검색</a>
-  <!--
-<h2>List of apts</h2>
+<a type="button" (click)="searchJusos()">검색</a>
+
+<h2>List of jusos</h2>
 <ul>
-  <li *ngFor="let juso of jusos">
-    <h2 (click)="aptClicked(apt)">{{apt.name}}</h2>
+  <li *ngFor="let juso of lessDetailJusos">
+    <label (click)="jusoClicked(juso)">{{ juso.jibunAddr }}</label>
   </li>
 </ul>
--->
 
+<h2>Selected Juso</h2>
+<ul>
+  <li *ngFor="let juso of selectedJuso">
+    <label>{{ juso.jibunAddr }}</label>
+  </li>
+</ul>
 
-  <nav>
-    <a routerLink="/*">
-      사업자등록증첨부
-    </a>
+<br /><br /><br />
+<nav>
+  <a routerLink="/*">
+    사업자등록증첨부
+  </a>
 
-    <a routerLink="/*">
-      스토어 회원권 구매
-    </a>
-    <a routerLink="/signup/applied">
-      승인요청
-    </a>
-  </nav>
-</ng-container>
+  <a routerLink="/*">
+    스토어 회원권 구매
+  </a>
+  <a routerLink="/signup/applied">
+    승인요청
+  </a>
+</nav>
+<br /><br /><br />
+<br /><br /><br />
