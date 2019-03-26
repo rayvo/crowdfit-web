@@ -1,12 +1,13 @@
-export interface User {
-    uid: string;
-    name: string;
+export class User {
+    id: number;
+    username: string;
     email: string;
-    phone: string;
-    address: string;
-    usertype: string;
+    nickname: string;
+    fullname: string;
     birthday: string;
-    avatar?: string;
+    gender: number;
+    phone: string;
+    bloodtype: string;
   }
 
   export interface EmailPasswordPair {

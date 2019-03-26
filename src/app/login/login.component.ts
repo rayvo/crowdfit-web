@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { routerTransition } from '../router.animations';
 import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private translate: TranslateService,
         public router: Router,
-        private user: UserService
+        private user: UserService,
+        private auth: AuthService,
         ) {
             this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
             this.translate.setDefaultLang('en');
@@ -39,9 +41,8 @@ export class LoginComponent implements OnInit {
     }
 
     loginUser = () => {
-        this.user.loginUser().subscribe(
+        this.auth.login().subscribe(
             data => {
-                // idk what to do here
                 console.log('');
             }, error => {
                 console.log(error);

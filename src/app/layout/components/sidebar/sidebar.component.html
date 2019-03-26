@@ -1,176 +1,183 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous"
+/>
 
-<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+<nav class="sidebar" [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }">
+  <div class="list-group">
 
-    <div class="list-group">
-
-        <div class="nested-menu">
-            <a class="list-group-item" routerLink="/menu/bulletinboard" (click)="addExpandClass('menu-pages')">
-                <i class="fas fa-list-ul"></i>&nbsp;
-                <span>메뉴관리 </span>
+    <!--메뉴관리-->
+    <div class="nested-menu">
+      <a class="list-group-item" routerLink="/menu/bulletinboard" (click)="addExpandClass('menu-pages')">
+        <i class="fas fa-list-ul"></i>&nbsp;
+        <span>메뉴관리 </span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'menu-pages'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/menu/bulletinboard">
+              <span>공지사항</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'menu-pages'">
-                <ul class="submenu">
-                    <li>
-                        <a routerLink="/menu/bulletinboard">
-                            <span>공지사항</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/menu/danji">
-                            <span>단지안내</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/menu/community">
-                            <span>커뮤니티</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/menu/culturecourse">
-                            <span>문화 강좌</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-
-
-        <div class="nested-menu">
-            <a class="list-group-item" routerLink="/resident/generalresident"
-                (click)="addExpandClass('resident-pages')">
-                <i class="far fa-address-card"></i>&nbsp;
-                <span>입주민관리 </span>
+          </li>
+          <li>
+            <a routerLink="/menu/danji">
+              <span>단지안내</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'resident-pages'">
-                <ul class="submenu">
-                    <li>
-                        <a routerLink="/resident/generalresident">
-                            <span>일반 입주자 관리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/resident/communitymember">
-                            <span>커뮤니티 멤버관리</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-
-        <a class="list-group-item" routerLink="/staff">
-            <i class="fas fa-user-friends"></i>&nbsp;
-            <span>직원관리</span>
-        </a>
-
-
-        <div class="nested-menu">
-            <a class="list-group-item" routerLink="/accounting/wage" (click)="addExpandClass('accounting-pages')">
-                <i class="fas fa-calculator"></i>&nbsp;
-                <span>회계관리 </span>
+          </li>
+          <li>
+            <a routerLink="/menu/community">
+              <span>커뮤니티</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'accounting-pages'">
-                <ul class="submenu">
-                    <li>
-                        <a routerLink="/accounting/wage">
-                            <span>급여관리 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/accounting/sales">
-                            <span>매출관리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/accounting/costnotice">
-                            <span>관리비 알림</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-
-        <div class="nested-menu">
-            <a class="list-group-item" routerLink="/store/product" (click)="addExpandClass('store-pages')">
-                <i class="fas fa-shopping-cart"></i>&nbsp;
-                <span>스토어관리 </span>
+          </li>
+          <li>
+            <a routerLink="/menu/culturecourse">
+              <span>문화 강좌</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'store-pages'">
-                <ul class="submenu">
-                    <li>
-                        <a routerLink="/store/product">
-                            <span>상품관리 </span>
-                        </a>
-                        <ul class="submenu">
-                            <li>
-                                    <a routerLink="/store/product">상품등록</a>
-                                </li>
-                                <li>
-                                        <a routerLink="/store/product/modified">상품조회/수정</a>
-                                    </li>
-                                    <li>
-                                            <a routerLink="/store/sto/product">사진보관함</a>
-                                        </li>
-                          
-                        </ul>
-                    </li>
-                    <li>
-                        <a routerLink="/store/vendor">
-                            <span>판매자관리 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/store/notice">
-                            <span>공지사항 </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-
-
-
-        <a class="list-group-item" routerLink="/locker">
-            <i class="fas fa-lock"></i>&nbsp;
-            <span>락커좌석관리</span>
-        </a>
-
-
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('class-pages')">
-                <i class="fas fa-chalkboard-teacher"></i>&nbsp;
-                <span>수업관리 </span>
-            </a>
-            <li class="nested" [class.expand]="showMenu === 'class-pages'">
-                <ul class="submenu">
-                    <li>
-                        <a routerLink="/class/gx">
-                            <span>GX관리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/class/lesson">
-                            <span>레슨관리</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </div>
-
-        <a class="list-group-item" routerLink="/attendence">
-            <i class="far fa-check-circle"></i>&nbsp;
-            <span>출석관리</span>
-        </a>
-        <a class="list-group-item" routerLink="/service-center">
-            <i class="fas fa-coffee"></i>&nbsp;
-            <span>생활관리지원</span>
-        </a>
-        <a class="list-group-item" routerLink="/settings">
-            <i class="fas fa-shield-alt"></i>&nbsp;
-            <span>권한설정</span>
-        </a>
+          </li>
+        </ul>
+      </li>
     </div>
+
+    <!--입주민관리-->
+    <div class="nested-menu">
+      <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
+        <i class="far fa-address-card"></i>&nbsp;
+        <span>입주민관리 </span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'resident-pages'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/resident/generalresident">
+              <span>일반 입주자 관리</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/resident/communitymember">
+              <span>커뮤니티 멤버관리</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <!--직원관리-->
+    <a class="list-group-item" routerLink="/staff">
+      <i class="fas fa-user-friends"></i>&nbsp;
+      <span>직원관리</span>
+    </a>
+
+    <div class="nested-menu">
+      <a class="list-group-item" routerLink="/accounting/wage" (click)="addExpandClass('accounting-pages')">
+        <i class="fas fa-calculator"></i>&nbsp;
+        <span>회계관리 </span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'accounting-pages'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/accounting/wage">
+              <span>급여관리 </span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/accounting/sales">
+              <span>매출관리</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/accounting/costnotice">
+              <span>관리비 알림</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <!--스토어관리-->
+    <div class="nested-menu">
+      <a class="list-group-item" routerLink="/store/product" (click)="addExpandClass('store-pages')">
+        <i class="fas fa-shopping-cart"></i>&nbsp;
+        <span>스토어관리 </span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'store-pages'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/store/product" >
+              <span>상품관리 </span>
+            </a>
+            <ul class="submenu" >
+                <li>
+                    <a routerLink="/store/product/enrollment">상품등록</a>
+                </li>
+                <li>
+                    <a routerLink="/store/product/modified">상품조회/수정</a>
+                </li>
+                <li>
+                    <a routerLink="/store/product/picstorage">사진보관함</a>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <a routerLink="/store/vendor">
+              <span>판매자관리 </span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/store/notice">
+              <span>공지사항 </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <!--락커좌석관리-->  
+    <a class="list-group-item" routerLink="/locker">
+      <i class="fas fa-lock"></i>&nbsp;
+      <span>락커좌석관리</span>
+    </a>
+
+    <!--수업관리-->
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('class-pages')">
+        <i class="fas fa-chalkboard-teacher"></i>&nbsp;
+        <span>수업관리 </span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'class-pages'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/class/gx">
+              <span>GX관리</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/class/lesson">
+              <span>레슨관리</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <!--출석관리-->
+    <a class="list-group-item" routerLink="/attendence">
+      <i class="far fa-check-circle"></i>&nbsp;
+      <span>출석관리</span>
+    </a>
+
+    <!--생활관리지원-->
+    <a class="list-group-item" routerLink="/service-center">
+      <i class="fas fa-coffee"></i>&nbsp;
+      <span>생활관리지원</span>
+    </a>
+
+    <!--권한설정-->
+    <a class="list-group-item" routerLink="/settings">
+      <i class="fas fa-shield-alt"></i>&nbsp;
+      <span>권한설정</span>
+    </a>
+  </div>
 </nav>
 <!--
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
