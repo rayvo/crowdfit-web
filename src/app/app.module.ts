@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -10,7 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { FormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { StoreProcuctRoutingModule } from './layout/store-management/store-product-management/store-procuct-routing.module';
+
+
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -25,6 +28,8 @@ export const createTranslateLoader = (http: HttpClient) => {
 
 @NgModule({
     imports: [
+        BrowserAnimationsModule,
+        MatButtonModule, MatCheckboxModule,
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -45,3 +50,5 @@ export const createTranslateLoader = (http: HttpClient) => {
     bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+

@@ -7,9 +7,9 @@ import { CanActivate, Router } from '@angular/router/';
 })
 export class RoleGuard implements CanActivate {
 
+  constructor(private router: Router) {}
 
-
-  canActivate(private router: Router) {
+  canActivate() {
 
     if (1) {// user.Role === next.data.role) {
       return true;

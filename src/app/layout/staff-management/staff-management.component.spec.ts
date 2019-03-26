@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StaffManagementComponent } from './staff-management.component';
-
+import {MatTableModule} from '@angular/material/table';
 describe('StaffManagementComponent', () => {
   let component: StaffManagementComponent;
   let fixture: ComponentFixture<StaffManagementComponent>;

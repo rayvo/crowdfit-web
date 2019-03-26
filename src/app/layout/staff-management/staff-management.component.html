@@ -14,241 +14,38 @@
     <a routerLink=#></a> <button type="button" class="btn btn-secondary manager">매니저초대</button>
 
   </div>
-  <div class="row">
-    <div class="col-sm rounded mx-auto;">
-      <p>승인대기입주민(<a class="orange">n</a>)</p>
-      <table class="table ">
-        <tbody>
-          <tr>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-            <td>
-              성명
-            </td>
-            <td>
-              부서
-            </td>
-            <td>
-              직책
-            </td>
-            <td>
-              연락처
-            </td>
-            <td>
-              승인여부
-            </td>
-            <td>
-              승인자
-            </td>
-            <td>
-              삭제
-            </td>
-          </tr>
-          <tr>
-            <td colspan="7" class="g">
-            </td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7">
-            </td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7">
-            </td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7">
-            </td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7">
-            </td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7">
-            </td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7">
-                <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;" /></a>
-            </td>
-          </tr>
-
-
-        </tbody>
-      </table>
-    </div>
-    <div class="col-sm rounded mx-auto;">
-      <p>승인직원 현황(<a class="orange">n</a>)</p>
-      <table class="table">
-        <tbody>
-          <tr>
-
-            <td>
-              성명
-            </td>
-            <td>
-              부서
-            </td>
-            <td>
-              직책
-            </td>
-            <td>
-              연락처
-            </td>
-            <td>
-              승인여부
-            </td>
-            <td>
-              승인자
-            </td>
-            <td>
-              승인일자
-            </td>
-            <td>
-              첨부
-            </td>
-            <td>
-              유형
-            </td>
-          </tr>
-
-          <tr>
-              <td colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-                  <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;" /></a>
-              </td>
-            </tr>
-
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm rounded mx-auto;">
-      <p>퇴직직원 현황(<a class="orange">n</a>)</p>
-      <table class="table ">
-        <tbody>
-          <tr>
-
-            <td>
-              성명
-            </td>
-            <td>
-              부서
-            </td>
-            <td>
-              직책
-            </td>
-            <td>
-              연락처
-            </td>
-            <td>
-              퇴사일자
-            </td>
-            <td>
-              퇴사사유
-            </td>
-            
-          </tr>
-          <tr>
-              <td colspan="6">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-              </td>
-            </tr>
-            <tr>
-              <td class="boderless" colspan="9">
-                  <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;" /></a>
-              </td>
-            </tr>
-
-
-        </tbody>
-      </table>
-    </div>
-    <div class="col-sm rounded mx-auto;">
-      <p>직원정보 근무편성</p>
-      <table class="table ">
-        <tbody>
-          <tr>
-
-            <td>
-            </td>
-          <tr>
-              <tr>
-                  <td colspan="9">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="boderless" colspan="9">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="boderless" colspan="9">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="boderless" colspan="9">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="boderless" colspan="9">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="boderless" colspan="9">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="boderless" colspan="9">
-                      <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;" /></a>
-                  </td>
-                </tr>
-    
-
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
 </div>
