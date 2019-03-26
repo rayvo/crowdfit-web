@@ -6,6 +6,7 @@ import { LockerManagementComponent } from './locker-management/locker-management
 import { AttendenceManagementComponent } from './attendence-management/attendence-management.component';
 import { ServiceCenterComponent } from './service-center/service-center.component';
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
+import { AuthGuard } from '../shared';
 
 const routes: Routes = [
     {
@@ -34,7 +35,8 @@ const routes: Routes = [
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' }
             */
-        ]
+        ],
+        canActivate: [AuthGuard]
     }
 ];
 

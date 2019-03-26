@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'tokenbf0d63523bdc926d23c33bb4d27e9a635cbc9698'
+    // 'Authorization': 'tokenbf0d63523bdc926d23c33bb4d27e9a635cbc9698'
   })
 };
 
@@ -23,7 +23,7 @@ export class AuthService {
 
 
   login(): Observable<any> {
-    return  this.http.get(this.serverUrl + '/api/users/', httpOptions);
+    return  this.http.get(this.serverUrl + '/api/v2/auth/', httpOptions);
   }
 
 }

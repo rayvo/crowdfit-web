@@ -13,7 +13,13 @@ import { FormGroup } from '@angular/forms';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'tokenbf0d63523bdc926d23c33bb4d27e9a635cbc9698'
+    'Authorization': localStorage.getItem('token')
+  })
+};
+const httpOptionsNoAuth = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    // 'Content-Type':  'application/x-www-form-urlencoded',
   })
 };
 
@@ -37,12 +43,7 @@ export class UserService {
   }
   */
 
-      // nickname: 'seungyboy',
-      // fullname: 'Haseung Lee',
   createUser(userData): Observable < any > {
-    console.log('NEXT IS userData ####');
-    console.log(userData);
-    console.log(userData.value);
     let phonenullcheck = '1';
     if ( userData.value.phone === '' ) {
       phonenullcheck = null;
@@ -56,28 +57,26 @@ export class UserService {
       password: userData.value.password,
       phone: phonenullcheck,
     };
-    console.log('NEXT IS BODY ####');
-    console.log(body);
+
     return this.http.post(this.serverUrl + '/api/users/', body, httpOptions);
   }
 
-  loginUser(): Observable < any > {
-    // return this.http.post('http://210.105.48.120:8000/api/users/', userData);
-    return this.http.get(this.serverUrl + '/api/users/', httpOptions);
+  login(userData): Observable<any> {
+    return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptionsNoAuth);
   }
 
-  getAllUsers(): Observable < any > {
-    return this.http.post(this.serverUrl + '/api/users/', httpOptions);
-  }
 
-  getOneUser(aUsername): Observable < any > {
-    return this.http.get(this.serverUrl + '/api/users/15/', httpOptions);
-  }
 
 }
 
 
+// getAllUsers(): Observable < any > {
+//   return this.http.post(this.serverUrl + '/api/users/', httpOptions);
+// }
 
+// getOneUser(aUsername): Observable < any > {
+//   return this.http.get(this.serverUrl + '/api/users/15/', httpOptions);
+// }
 
 /*
  * This was made by Taeyu and is outdated.

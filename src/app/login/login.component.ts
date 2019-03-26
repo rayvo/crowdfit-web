@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
         private translate: TranslateService,
         public router: Router,
         private user: UserService,
-        private auth: AuthService,
         ) {
             this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
             this.translate.setDefaultLang('en');
@@ -36,15 +35,17 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {}
 
-    onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
-    }
+    // onLoggedin() {
+    //     localStorage.setItem('isLoggedin', 'true');
+    // }
 
     loginUser = () => {
-        this.auth.login().subscribe(
+        this.user.login(this.existingUser).subscribe(
             data => {
-                console.log('');
-            }, error => {
+                localStorage.setItem('isLoggedin', 'true');
+                localStorage.setItem('token', data.token);
+            },
+            error => {
                 console.log(error);
             }
         );

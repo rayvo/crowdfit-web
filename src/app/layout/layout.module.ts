@@ -13,24 +13,25 @@ import { AttendenceManagementComponent } from './attendence-management/attendenc
 import { ServiceCenterComponent } from './service-center/service-center.component';
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthGuard } from '../shared';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        LayoutRoutingModule,
-        TranslateModule,
-        NgbDropdownModule
-    ],
-    declarations: [
-        LayoutComponent,
-        SidebarComponent,
-        HeaderComponent,
-        StaffManagementComponent,
-        LockerManagementComponent,
-        AttendenceManagementComponent,
-        ServiceCenterComponent,
-        PermissionSettingsComponent,
-        FooterComponent,
-     ]
+  imports: [
+      CommonModule,
+      LayoutRoutingModule,
+      TranslateModule,
+      NgbDropdownModule],
+  declarations: [
+    LayoutComponent,
+    SidebarComponent,
+    HeaderComponent,
+    StaffManagementComponent,
+    LockerManagementComponent,
+    AttendenceManagementComponent,
+    ServiceCenterComponent,
+    PermissionSettingsComponent,
+    FooterComponent
+  ],
+  providers: [AuthGuard]
 })
 export class LayoutModule {}
