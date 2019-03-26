@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'product', pathMatch: 'full'},
   { path: 'product', component: StoreProductManagementComponent,
     children: [
-        { path: '', redirectTo: 'modified', pathMatch: 'full' },
+        { path: '', redirectTo: 'enrollment', pathMatch: 'full' },
         { path: 'modified', component:  StoreProductModifiedComponent},
         { path: 'enrollment', component:  StoreProductEnrollmentComponent},
         { path: 'picstorage', component:  StorePicStorageComponent},
