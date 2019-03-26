@@ -5,20 +5,21 @@ import { SignupForComponent } from './signup-for/signup-for.component';
 import { SignupAppliedComponent } from './signup-applied/signup-applied.component';
 import { SignupAsComponent } from './signup-as/signup-as.component';
 import { SignupFindComponent } from './signup-find/signup-find.component';
+import { AuthGuard } from '../shared';
 
 const routes: Routes = [
     { path: '', component: SignupComponent },
-    { path: 'welcome', component: SignupForComponent },
-    { path: 'as', component: SignupAsComponent },
-    { path: 'find', component: SignupFindComponent },
-    { path: 'applied', component: SignupAppliedComponent },
-
+    { path: 'welcome', component: SignupForComponent, canActivate: [AuthGuard] },
+    { path: 'as', component: SignupAsComponent, canActivate: [AuthGuard] },
+    { path: 'find', component: SignupFindComponent, canActivate: [AuthGuard] },
+    { path: 'applied', component: SignupAppliedComponent, canActivate: [AuthGuard] },
 
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [AuthGuard]
 })
 export class SignupRoutingModule {
 }

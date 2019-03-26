@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
     //     localStorage.setItem('isLoggedin', 'true');
     // }
 
+    // WARNING: I (Haseung) copy pasted this code into signup.component.ts
+    // If you make changes here make sure to put changes into signup.component.ts as well
     loginUser = () => {
         this.user.login(this.existingUser).subscribe(
             data => {

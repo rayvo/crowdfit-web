@@ -84,14 +84,14 @@
 
           <br /><br />
           <!-- SUBMIT BUTTON -->
-          <div class="form-group input-group">
             <!-- TODO to the button below add [disabled]="!newUser.valid" so that the user cannot press the button until it's valid-->
-            <!-- TODO routerLink="/signup/welcome" -->
-            <button  type="submit" class="btn btn-primary btn-block" [disabled]="!newUser.valid" routerLink="/signup/welcome" >
+            <!-- TODO routerLink="/signup/welcome" --> 
+            <!-- type="submit" -->
+          <div class="form-group input-group">
+            <button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" > 
               가입하기
             </button>
           </div>
-
           <div class="form-group input-group" style="margin-top: -10px;">
             <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>
           </div>

@@ -13,7 +13,7 @@ import { FormGroup } from '@angular/forms';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': localStorage.getItem('token')
+    // 'Authorization': localStorage.getItem('token')
   })
 };
 const httpOptionsNoAuth = {
@@ -31,10 +31,10 @@ export class UserService {
 
   constructor( private http: HttpClient, ) { }
 
-  registerUser(userData): Observable<any> {
-    // return this.http.post('http://210.105.48.120:8000/api/users/', userData);
-    return this.http.post(this.serverUrl + '/api/users/', userData, httpOptions);
-  }
+  // registerUser(userData): Observable<any> {
+  //   // return this.http.post('http://210.105.48.120:8000/api/users/', userData);
+  //   return this.http.post(this.serverUrl + '/api/users/', userData, httpOptions);
+  // }
 
   /*
   loginUser(userData): Observable<any> {
@@ -59,6 +59,8 @@ export class UserService {
     };
 
     return this.http.post(this.serverUrl + '/api/users/', body, httpOptions);
+
+    // return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptionsNoAuth);
   }
 
   login(userData): Observable<any> {
