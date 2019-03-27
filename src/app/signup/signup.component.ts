@@ -118,11 +118,14 @@ export class SignupComponent implements OnInit {
                     email: this.newUser.value.email,
                     password: this.newUser.value.password
                 };
-                console.log(toLoginUser);
+                // WARNING: I (Haseung) copy pasted this code from login.component.ts
+                // If you make changes here make sure to put changes into login.component.ts - loginUser method as well
+                // I know it's bad coding but it works for now.
                 this.user.login(toLoginUser).subscribe(
                     data2 => {
                         localStorage.setItem('isLoggedin', 'true');
                         localStorage.setItem('token', data2.token);
+                        localStorage.setItem('id', String(data2.id));
                     },
                     error => {
                         console.log(error);

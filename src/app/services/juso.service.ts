@@ -19,15 +19,28 @@ export class JusoService {
   constructor( private http: HttpClient, ) { }
 
   serverUrl = 'http://192.168.1.6:8000';
-  jusoApiUrl = 'http://www.juso.go.kr/addrlink/addrLinkApi.do';
-  myConfmKey = 'U01TX0FVVEgyMDE5MDMyNTE2NDExNTEwODYwMTQ=';
-  myResultType = 'json';
+  // Non-popup version
+  jusoApiUrl1 = 'http://www.juso.go.kr/addrlink/addrLinkApi.do';
+  myConfmKey1 = 'U01TX0FVVEgyMDE5MDMyNTE2NDExNTEwODYwMTQ=';
+  myResultType1 = 'json';
+  // Popup version
+  jusoApiUrl2 = 'http://www.juso.go.kr/addrlink/addrLinkUrl.do';
+  myConfmKey2 = 'U01TX0FVVEgyMDE5MDMyNzE0NTYxMDEwODYwODY=';
+  myResultType2 = 4;
+
 
   getJusos(jusoKeyword): Observable <any> {
-    return this.http.get(this.jusoApiUrl + '?' +
-    'confmKey=' + this.myConfmKey + '&' +
-    'resultType=' + this.myResultType + '&' +
+    return this.http.get(this.jusoApiUrl1 + '?' +
+    'confmKey=' + this.myConfmKey1 + '&' +
+    'resultType=' + this.myResultType1 + '&' +
     'keyword=' + jusoKeyword
+    );
+  }
+
+  getJusosPopup(): Observable <any> {
+    return this.http.get(this.jusoApiUrl2 + '?' +
+    'confmKey=' + this.myConfmKey2 + '&' +
+    'resultType=' + this.myResultType2
     );
   }
 

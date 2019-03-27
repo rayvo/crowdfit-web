@@ -17,44 +17,16 @@ export class SignupForComponent implements OnInit {
   }
 
   nonmemberClicked = () => {
-    this.user.setUserRole({id: 1} , 1).subscribe(
-      data => {
-
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    localStorage.setItem('role', '1');
   }
   residentClicked = () => {
-    this.user.setUserRole({id: 1} , 3).subscribe(
-      data => {
-
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    localStorage.setItem('role', '3');
   }
   staffClicked = () => {
-    this.user.setUserRole({id: 1} , 2).subscribe(
-      data => {
-
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    localStorage.setItem('role', '2');
   }
   adminClicked = () => {
-    this.user.setUserRole({id: 1} , 4).subscribe(
-      data => {
-
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    localStorage.setItem('role', '4');
   }
 
 }

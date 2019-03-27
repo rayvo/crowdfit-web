@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { routerTransition } from '../router.animations';
 import { UserService } from '../services/user.service';
 
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -39,12 +40,14 @@ export class LoginComponent implements OnInit {
     // }
 
     // WARNING: I (Haseung) copy pasted this code into signup.component.ts
-    // If you make changes here make sure to put changes into signup.component.ts as well
+    // If you make changes here make sure to put changes into signup.component.ts - createUser method as well
+    // I know it's bad coding but it works for now.
     loginUser = () => {
         this.user.login(this.existingUser).subscribe(
             data => {
                 localStorage.setItem('isLoggedin', 'true');
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('id', String(data.id));
             },
             error => {
                 console.log(error);

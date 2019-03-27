@@ -46,17 +46,50 @@ export class UserService {
 
   login(userData): Observable<any> {
     return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions);
+    // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
+    // When i logout send last feature
+    // when routing update localStorage's last feature
   }
 
-  setUserRole(userData, myRole): Observable<any> {
+  getSingleUser(userId): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/users/' + userId, httpOptions);
+  }
+
+  setUserRole(userId, userRole): Observable<any> {
     const body = {
-      user: userData.id,
-      role: myRole,
+      user: userId,
+      role: userRole,
       isActive: true,
     };
     return this.http.post(this.serverUrl + '/api/userrole/', body, httpOptions);
   }
 
+  setUserStatusWait(userId): Observable<any> {
+    const body = {
+      user: userId,
+      status: 1,
+      isActive: true,
+    };
+    return this.http.post(this.serverUrl + '/api/userstatus/', body, httpOptions);
+  }
+
+  setUserStatusApproved(userId): Observable<any> {
+    const body = {
+      user: userId,
+      status: 2,
+      isActive: true,
+    };
+    return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
+  }
+
+  setUserStatusEvicted(userId): Observable<any> {
+    const body = {
+      user: userId,
+      status: 3,
+      isActive: false,
+    };
+    return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
+  }
 
 }
 
