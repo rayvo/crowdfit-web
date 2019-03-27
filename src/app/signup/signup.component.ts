@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { RepeatPasswordEStateMatcher, PasswordValidation, RepeatPasswordValidator } from './signup.validators';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -16,7 +17,11 @@ import { RepeatPasswordEStateMatcher, PasswordValidation, RepeatPasswordValidato
 
 export class SignupComponent implements OnInit {
 
-    constructor(private translate: TranslateService,  private user: UserService) {
+    constructor(
+        private translate: TranslateService,
+        private user: UserService,
+        private router: Router,
+        ) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -107,13 +112,26 @@ export class SignupComponent implements OnInit {
 
 
     createUser = () => {
-        console.log(this.newUser);
         this.user.createUser(this.newUser).subscribe(
             data => {
-                // idk what to put here
+                const toLoginUser = {
+                    email: this.newUser.value.email,
+                    password: this.newUser.value.password
+                };
+                console.log(toLoginUser);
+                this.user.login(toLoginUser).subscribe(
+                    data2 => {
+                        localStorage.setItem('isLoggedin', 'true');
+                        localStorage.setItem('token', data2.token);
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
+                this.router.navigate(['/signup/welcome']);
             },
             error => {
-                // Make error show up on screen
+                console.log('error \n' );
                 console.log(error);
             }
         );

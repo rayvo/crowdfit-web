@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { routerTransition } from '../router.animations';
 import { UserService } from '../services/user.service';
-import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -39,6 +38,8 @@ export class LoginComponent implements OnInit {
     //     localStorage.setItem('isLoggedin', 'true');
     // }
 
+    // WARNING: I (Haseung) copy pasted this code into signup.component.ts
+    // If you make changes here make sure to put changes into signup.component.ts as well
     loginUser = () => {
         this.user.login(this.existingUser).subscribe(
             data => {
