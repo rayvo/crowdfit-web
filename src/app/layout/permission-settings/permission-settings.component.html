@@ -1,17 +1,268 @@
-<div class="container">
+
+  <div class="container">
     <div class="border-bottom">
-      <h4>직원관리</h4>
+      <h4>권한설정</h4>
     </div>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">직원관리</li>
-  
+        <li class="breadcrumb-item active" aria-current="page">권한설정</li>
+        <li class="breadcrumb-item active" aria-current="page">메뉴관리</li>
+      
       </ol>
     </nav>
-    <div class=btn-container>
-      <a routerLink=#><button type="button" class="btn btn-orange" style=" margin-right:10px;">초대하기</button></a>
-      <a routerLink=#></a> <button type="button" class="btn btn-secondary">검색하기</button>
-      <a routerLink=#></a> <button type="button" class="btn btn-secondary manager">매니저초대</button>
+    <div class="btn-container">
+      <a routerLink="#"><button type="button" class="btn btn-orange" style=" margin-right:10px;">메뉴관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">입주민관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">직원관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">회계관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">스토어관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">락커좌석관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">수업관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">출석관리</button></a>
+      <a routerLink="#"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">생활지원관리</button></a>
+      
+      
+    </div>
+    <div class="col-sm rounded mx-auto;">
+        
+      <h3 class="border-bottom ">메뉴관리</h3>
+    
+    <table class="table ">
+       
+        
+          
+       
+      
+      <tbody>
+        <tr>
+          <th scope="row">목록보기</th>
+          <td>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input orange" id="defaultInline1">
+                  <label class="custom-control-label" for="defaultInline1">비회원</label>
+                </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline2">
+              <label class="custom-control-label" for="defaultInline2">직원</label>
+              </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline3">
+              <label class="custom-control-label" for="defaultInline3">입주민</label>
+            </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline4">
+              <label class="custom-control-label" for="defaultInline4">관리자
+                </label>
+                </div>
+              </td>
+        </tr>
+        <tr>
+          <th scope="row">읽기권한</th>
+          <td>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input orange" id="defaultInline5">
+                  <label class="custom-control-label" for="defaultInline5">비회원</label>
+                </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline6">
+              <label class="custom-control-label" for="defaultInline6">직원</label>
+              </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline7">
+              <label class="custom-control-label" for="defaultInline7">입주민</label>
+            </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline8">
+              <label class="custom-control-label" for="defaultInline8">관리자
+                </label>
+                </div>
+              </td>
+        </tr>
+        <tr>
+          <th scope="row">쓰기권한</th>
+          <td>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input orange" id="defaultInline9">
+                  <label class="custom-control-label" for="defaultInline9">비회원</label>
+                </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline10">
+              <label class="custom-control-label" for="defaultInline10">직원</label>
+              </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline11">
+              <label class="custom-control-label" for="defaultInline11">입주민</label>
+            </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline12">
+              <label class="custom-control-label" for="defaultInline12">관리자
+                </label>
+                </div>
+              </td>
+        </tr>
+        <tr>
+          <th scope="row">댓글쓰기</th>
+          <td>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input orange" id="defaultInline13">
+                  <label class="custom-control-label" for="defaultInline13">비회원</label>
+                </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline14">
+              <label class="custom-control-label" for="defaultInline14">직원</label>
+              </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline15">
+              <label class="custom-control-label" for="defaultInline15">입주민</label>
+            </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline16">
+              <label class="custom-control-label" for="defaultInline16">관리자
+                </label>
+                </div>
+              </td>
+        </tr>
+        <tr>
+          <th scope="row">강제 삭제</th>
+          <td>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input orange" id="defaultInline17">
+                  <label class="custom-control-label" for="defaultInline17">비회원</label>
+                </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline18">
+              <label class="custom-control-label" for="defaultInline18">직원</label>
+              </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline19">
+              <label class="custom-control-label" for="defaultInline19">입주민</label>
+            </div>
+            </td>
+          <td><div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline20">
+              <label class="custom-control-label" for="defaultInline20">관리자
+                </label>
+                </div>
+              </td>
+        </tr>
+        <tr>
+            <th scope="row">작성글 숨기기</th>
+            <td>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input orange" id="defaultInline21">
+                    <label class="custom-control-label" for="defaultInline21">비회원</label>
+                  </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline22">
+                <label class="custom-control-label" for="defaultInline22">직원</label>
+                </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline23">
+                <label class="custom-control-label" for="defaultInline23">입주민</label>
+              </div>
+              </td>
+            <td><div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="defaultInline24">
+                <label class="custom-control-label" for="defaultInline24">관리자
+                  </label>
+                  </div>
+                </td>
+          </tr>
+        <tr>
+          <th scope="row">공지게시판 설정</th>
+          
+       <td colspan="4">
+          <div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline25">
+              <label class="custom-control-label" for="defaultInline25">
+                네, 관리자만 공지글 올리기
+                </label>
+                </div>
+            <br>            
+              <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="defaultInline26">
+                  <label class="custom-control-label" for="defaultInline26">
+                    아니요, 회원 누구나 공지글 올리기
+                  </label>
+                  </div>
+        </td>        
+        </tr>
+       <td colspan="5" style="text-align: center;">
+        <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button></a>
+        <a href=#><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
+        </td>
+      </tbody>
+    </table>
+  </div>
+    <!-- Filter Search Bar -->
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
+    </mat-form-field>
   
-    </div>
-    </div>
+   
+  
+    <!-- APPROVED LIST TABLE -->
+    <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>성명</th>
+        <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+      </ng-container>
+  
+      <!-- Department Column -->
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef>부서</th>
+        <td mat-cell *matCellDef="let person">{{ person.department }}</td>
+      </ng-container>
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>직책</th>
+        <td mat-cell *matCellDef="let person">{{ person.position }}</td>
+      </ng-container>
+  
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>연락처</th>
+        <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+      </ng-container>
+  
+      <!-- ApprovedBy Column -->
+      <ng-container matColumnDef="approvedBy">
+        <th mat-header-cell *matHeaderCellDef>승인자</th>
+        <td mat-cell *matCellDef="let person">{{ person.approvedBy }}</td>
+      </ng-container>
+  
+      <!-- ApprovedDate Column -->
+      <ng-container matColumnDef="approvedDate">
+        <th mat-header-cell *matHeaderCellDef>승인일자</th>
+        <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+    </table>
+  
+   
+  
+    
+  </div>
+  
+
+

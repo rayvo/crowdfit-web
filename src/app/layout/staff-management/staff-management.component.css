@@ -7,4 +7,10 @@ p {
 
 table {
   width: 100%;
+  border: 1px solid #777; 
+}
+
+.mat-elevation-z8{
+  box-shadow: none;
+ 
 }
