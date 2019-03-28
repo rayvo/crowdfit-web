@@ -1,18 +1,20 @@
-<h2 mat-dialog-title>Type dorojuso below</h2>
+<h2 mat-dialog-title>Type 주소 below</h2>
 <mat-dialog-content class="mat-typography">
   <mat-form-field>
     <input matInput [(ngModel)]="jusoKeyword" placeholder="텍스트적는곳" />
   </mat-form-field>
-  <a type="button" (click)="searchJusos()">주소검색</a>
-
-  <h2>List of jusos</h2>
+  <button mat-button>
+    <a (click)="searchJusos()">주소검색</a>
+  </button>
+  <br /><br />
   <ul>
     <li *ngFor="let juso of lessDetailJusos">
       <label (click)="jusoClicked(juso)">{{ juso.jibunAddr }}</label>
     </li>
   </ul>
 </mat-dialog-content>
-<h2>Selected Juso</h2>
+<br /><br />
+<label matLabel>Selected Juso</label><br>
 <label>{{ selectedJuso.jibunAddr }}</label>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
