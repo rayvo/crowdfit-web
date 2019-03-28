@@ -18,11 +18,13 @@ export class SignupFindJusoComponent {
   fullDetailJusos = [];
   lessDetailJusos = [];
   selectedJuso;
+  selectedJusoStringed;
 
   jusoKeyword;
 
   constructor(private juso: JusoService, private user: UserService, private dialog: MatDialog) {
-    this.selectedJuso = [{ id: -1, jibunAddr: '' }];
+    this.selectedJuso = { id: -1, jibunAddr: '' };
+    this.selectedJusoString = '';
     this.jusoKeyword = '';
   }
 
@@ -37,8 +39,6 @@ export class SignupFindJusoComponent {
           this.lessDetailJusos.push({ id: i, jibunAddr: j.jibunAddr });
           i++;
         }
-        console.log(data.results.juso);
-
       },
       error => {
         console.log(error);
@@ -46,7 +46,7 @@ export class SignupFindJusoComponent {
     );
   }
   jusoClicked = juso => {
-    console.log(juso);
-    this.selectedJuso = [juso];
-  }
+    this.selectedJuso = juso;
+    this.selectedJusoStringed = JSON.stringify(this.fullDetailJusos[juso.id]);
+}
 }

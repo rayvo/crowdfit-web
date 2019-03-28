@@ -1,16 +1,35 @@
-
-
-<br /><br /><br />
+<br />
+<br />
+<br />
 
 <a type="button" (click)="openJusoDialog()">주소검색</a>
+<br />
+
+
+<h2>Selected Juso</h2>
+<label>{{ parsedJuso.jibunAddr }}</label>
+<br>
+<!--TODO ONLY SHOW AFTER A JUSO IS SELECTED-->
+<mat-form-field>
+  <input matInput [(ngModel)]="aptDetails" placeholder="상세주소입력" />
+</mat-form-field>
+<label>동</label>
+<br>
+<mat-form-field>
+  <input matInput [(ngModel)]="aptDetails2" placeholder="상세주소입력" />
+</mat-form-field>
+<label>호</label>
+
+
+<!--TODO ONLY SHOW FOR 관리자-->
 <nav>
   <a routerLink="/*">
     사업자등록증첨부
   </a>
-
+<!--
   <a routerLink="/*">
     스토어 회원권 구매
-  </a>
+  </a>-->
   <a (click)="applyClicked()" routerLink="/signup/applied">
     승인요청
   </a>
