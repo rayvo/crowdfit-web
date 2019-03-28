@@ -14,7 +14,7 @@ import { ServiceCenterComponent } from './service-center/service-center.componen
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -23,6 +23,9 @@ import { MatTableModule } from '@angular/material/table';
       TranslateModule,
       NgbDropdownModule,
       MatTableModule,
+      MatFormFieldModule,
+      MatInputModule,
+
     ],
   declarations: [
     LayoutComponent,

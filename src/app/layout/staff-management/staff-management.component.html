@@ -13,6 +13,11 @@
     <button type="button" class="btn btn-secondary manager">매니저초대</button>
   </div>
 
+  <!-- Filter Search Bar -->
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="필터 이름??" />
+  </mat-form-field>
+
   <!-- WAIT LIST TABLE -->
   <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
     <!-- Name Column -->
@@ -30,7 +35,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
   </table>
-<br>
+
+  <br />
   <!-- APPROVED LIST TABLE -->
   <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
     <!-- Name Column -->
@@ -56,24 +62,24 @@
       <th mat-header-cell *matHeaderCellDef>연락처</th>
       <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
     </ng-container>
-    
+
     <!-- ApprovedBy Column -->
     <ng-container matColumnDef="approvedBy">
       <th mat-header-cell *matHeaderCellDef>승인자</th>
       <td mat-cell *matCellDef="let person">{{ person.approvedBy }}</td>
     </ng-container>
-    
+
     <!-- ApprovedDate Column -->
     <ng-container matColumnDef="approvedDate">
       <th mat-header-cell *matHeaderCellDef>승인일자</th>
       <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
     </ng-container>
 
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
   </table>
-  <br>
+
+  <br />
   <!-- EVICTED LIST TABLE -->
   <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
     <!-- Name Column -->
@@ -99,19 +105,18 @@
       <th mat-header-cell *matHeaderCellDef>연락처</th>
       <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
     </ng-container>
-    
+
     <!-- EvictedDate Column -->
     <ng-container matColumnDef="evictedDate">
       <th mat-header-cell *matHeaderCellDef>퇴사일자</th>
       <td mat-cell *matCellDef="let person">{{ person.evictedDate }}</td>
     </ng-container>
-    
+
     <!-- Reason Column -->
     <ng-container matColumnDef="reason">
       <th mat-header-cell *matHeaderCellDef>퇴사사유</th>
       <td mat-cell *matCellDef="let person">{{ person.reason }}</td>
     </ng-container>
-
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
