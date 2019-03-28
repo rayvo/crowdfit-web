@@ -12,162 +12,108 @@
     <a routerLink="#"></a> <button type="button" class="btn btn-secondary">검색하기</button> <a routerLink="#"></a>
     <button type="button" class="btn btn-secondary manager">매니저초대</button>
   </div>
-  <div class="row">
-    <div class="col-sm rounded mx-auto;">
-      <p>승인대기입주민(<a class="orange">n</a>)</p>
-      <table class="table ">
-        <tbody>
-          <tr>
-            <td>성명</td>
-            <td>부서</td>
-            <td>직책</td>
-            <td>연락처</td>
-            <td>승인여부</td>
-            <td>승인자</td>
-            <td>삭제</td>
-          </tr>
-          <tr>
-            <td colspan="7" class="g"></td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7"></td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7"></td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7"></td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7"></td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7"></td>
-          </tr>
-          <tr>
-            <td class="boderless g" colspan="7">
-              <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;"/></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-sm rounded mx-auto;">
-      <p>승인직원 현황(<a class="orange">n</a>)</p>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>성명</td>
-            <td>부서</td>
-            <td>직책</td>
-            <td>연락처</td>
-            <td>승인여부</td>
-            <td>승인자</td>
-            <td>승인일자</td>
-            <td>첨부</td>
-            <td>유형</td>
-          </tr>
 
-          <tr>
-            <td colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9">
-              <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;"/></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm rounded mx-auto;">
-      <p>퇴직직원 현황(<a class="orange">n</a>)</p>
-      <table class="table ">
-        <tbody>
-          <tr>
-            <td>성명</td>
-            <td>부서</td>
-            <td>직책</td>
-            <td>연락처</td>
-            <td>퇴사일자</td>
-            <td>퇴사사유</td>
-          </tr>
-          <tr>
-            <td colspan="6"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9">
-              <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;"/></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-sm rounded mx-auto;">
-      <p>직원정보 근무편성</p>
-      <table class="table ">
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
+  <!-- WAIT LIST TABLE -->
+  <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>성명</th>
+      <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+    </ng-container>
 
-          <tr></tr>
-          <tr>
-            <td colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9"></td>
-          </tr>
-          <tr>
-            <td class="boderless" colspan="9">
-              <a href="#"> <img src="assets/images/c-plus.png" width="30px" style="float: right;"/></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>연락처</th>
+      <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+  </table>
+<br>
+  <!-- APPROVED LIST TABLE -->
+  <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>성명</th>
+      <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+    </ng-container>
+
+    <!-- Department Column -->
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef>부서</th>
+      <td mat-cell *matCellDef="let person">{{ person.department }}</td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>직책</th>
+      <td mat-cell *matCellDef="let person">{{ person.position }}</td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>연락처</th>
+      <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+    </ng-container>
+    
+    <!-- ApprovedBy Column -->
+    <ng-container matColumnDef="approvedBy">
+      <th mat-header-cell *matHeaderCellDef>승인자</th>
+      <td mat-cell *matCellDef="let person">{{ person.approvedBy }}</td>
+    </ng-container>
+    
+    <!-- ApprovedDate Column -->
+    <ng-container matColumnDef="approvedDate">
+      <th mat-header-cell *matHeaderCellDef>승인일자</th>
+      <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+  </table>
+  <br>
+  <!-- EVICTED LIST TABLE -->
+  <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>성명</th>
+      <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+    </ng-container>
+
+    <!-- Department Column -->
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef>부서</th>
+      <td mat-cell *matCellDef="let person">{{ person.department }}</td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>직책</th>
+      <td mat-cell *matCellDef="let person">{{ person.position }}</td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>연락처</th>
+      <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+    </ng-container>
+    
+    <!-- EvictedDate Column -->
+    <ng-container matColumnDef="evictedDate">
+      <th mat-header-cell *matHeaderCellDef>퇴사일자</th>
+      <td mat-cell *matCellDef="let person">{{ person.evictedDate }}</td>
+    </ng-container>
+    
+    <!-- Reason Column -->
+    <ng-container matColumnDef="reason">
+      <th mat-header-cell *matHeaderCellDef>퇴사사유</th>
+      <td mat-cell *matCellDef="let person">{{ person.reason }}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+  </table>
 </div>

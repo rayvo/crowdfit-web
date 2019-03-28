@@ -4,7 +4,7 @@
 @import "utils";
 @import "rtl";
 @import "responsive";
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @media print {
      .breadcrumb {
         display: none !important;
@@ -57,7 +57,7 @@ h3{
     font-size: 1.2em;
     width: 200px;
     text-align: center;
-    margin: 60px auto; }
+    margin: 20px auto; }
 
 .btn-container{
     margin-top: -20px;
@@ -73,3 +73,8 @@ button.manager {
 
 .right{position: absolute; right: 0;}
 
+.orange{color: orange;}
+
+table {
+    width: 100%;
+  }
