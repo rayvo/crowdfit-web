@@ -14,13 +14,16 @@ import { ServiceCenterComponent } from './service-center/service-center.componen
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
       CommonModule,
       LayoutRoutingModule,
       TranslateModule,
-      NgbDropdownModule],
+      NgbDropdownModule,
+      MatTableModule,
+    ],
   declarations: [
     LayoutComponent,
     SidebarComponent,

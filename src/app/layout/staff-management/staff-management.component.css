@@ -1,4 +1,10 @@
-p{color:#808080;}
-.boderless{border: none;
-  
+p {
+  color: #808080;
+}
+.boderless {
+  border: none;
+}
+
+table {
+  width: 100%;
 }
