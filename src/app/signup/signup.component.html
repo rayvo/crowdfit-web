@@ -6,95 +6,86 @@
       <h4 class="card-title mt-3 text-center">회원가입</h4>
 
       <form role="form" [formGroup]="newUser" (ngSubmit)="createUser()">
-        <div class="form-content">
-          <!-- USERNAME -->
-          <div class="form-group" >
-            
-            <mat-form-field appearance="standard">
-               <mat-icon matPrefix class="fa fa-user  input-group-text"></mat-icon>
-               <input matInput formControlName="username" placeholder="이름" type="text" class="form-control " />
-              <!--<mat-hint>Atleast 8 chars</mat-hint>-->
-              <mat-error *ngIf="(username.dirty || username.touched) && username.invalid">{{ getUsernameErrorMessage() }}</mat-error>
-            </mat-form-field>
-       
-          </div>
+        <!-- USERNAME -->
+        <mat-form-field>
+          <mat-icon matPrefix class="fa fa-user  input-group-text"></mat-icon>
+          <input matInput formControlName="username" placeholder="이름" type="text" class="form-control " />
+          <!--<mat-hint>Atleast 8 chars</mat-hint>-->
+          <mat-error *ngIf="(username.dirty || username.touched) && username.invalid">{{ getUsernameErrorMessage() }}</mat-error>
+        </mat-form-field>
 
-          <!-- EMAIL -->
-          <div class="form-group">
-            <mat-form-field appearance="standard">
-              <mat-icon matPrefix class="fa fa-envelope input-group-text"></mat-icon>
-              <input matInput formControlName="email" placeholder="이메일 주소" type="text" class="form-control" />
-              <!--<mat-hint>Enter a vaild email</mat-hint>-->
-              <mat-error *ngIf="(email.dirty || email.touched) && email.invalid">{{ getEmailErrorMessage() }}</mat-error>
-            </mat-form-field>
-          </div>
+        <!-- EMAIL -->
+        <mat-form-field>
+          <mat-icon matPrefix class="fa fa-envelope input-group-text"></mat-icon>
+          <input matInput formControlName="email" placeholder="이메일 주소" type="text" class="form-control" />
+          <!--<mat-hint>Enter a vaild email</mat-hint>-->
+          <mat-error *ngIf="(email.dirty || email.touched) && email.invalid">{{ getEmailErrorMessage() }}</mat-error>
+        </mat-form-field>
 
-          <!-- PASSWORD -->
-          <div class="form-group">
-            <mat-form-field appearance="standard">
-              <mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>
-              <input matInput formControlName="password" placeholder="비밀번호" type="password" class="form-control" />
-              <!--<mat-hint>Atleast 8 Chars long</mat-hint>-->
-              <mat-error *ngIf="(password.dirty || password.touched) && password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
-            </mat-form-field>
-          </div>
+        <!-- PASSWORD -->
+        <mat-form-field>
+          <mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>
+          <input matInput formControlName="password" placeholder="비밀번호" type="password" class="form-control" />
+          <!--<mat-hint>Atleast 8 Chars long</mat-hint>-->
+          <mat-error *ngIf="(password.dirty || password.touched) && password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+        </mat-form-field>
 
-          <!-- PASSWORD CONFIRMATION -->
-          <div class="form-group">
-            <mat-form-field appearance="standard">
-              <mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>
-              <input matInput formControlName="cpassword" placeholder="비밀번호 확인" type="password" [errorStateMatcher]=passwordMatcher class="form-control" />
-              <!--<mat-hint>Passwords must match</mat-hint>-->
-              <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords do not match</mat-error>
-            </mat-form-field>
-          </div>
+        <!-- PASSWORD CONFIRMATION -->
+        <mat-form-field>
+          <mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>
+          <input
+            matInput
+            formControlName="cpassword"
+            placeholder="비밀번호 확인"
+            type="password"
+            [errorStateMatcher]="passwordMatcher"
+            class="form-control"
+          />
+          <!--<mat-hint>Passwords must match</mat-hint>-->
+          <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords do not match</mat-error>
+        </mat-form-field>
 
-          <!--PHONE NUMBER -->
-          <div class="form-group">
-            <mat-form-field appearance="standard">
-              <mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>
-              <input
-                matInput
-                formControlName="phone"
-                placeholder="휴대폰 번호"
-                type="text"
-                class="form-control"
-                style="max-width: 60%; border-radius: 3px;"
-              />
-              <a class="btn btn-primary btn-block" style="max-width: 38%; margin-left: 10px;">인증번호받기</a>
-            </mat-form-field>
-          </div>
+        <!--PHONE NUMBER -->
+        <mat-form-field appearance="standard">
+          <mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>
+          <input
+            matInput
+            formControlName="phone"
+            placeholder="휴대폰 번호"
+            type="text"
+            class="form-control"
+            style="max-width: 60%; border-radius: 3px;"
+          />
+          <a class="btn btn-primary btn-block" style="max-width: 38%; margin-left: 10px;">인증번호받기</a>
+        </mat-form-field>
 
-          <!--PHONE NUMBER VERIFICATION -->
-          <div class="form-group">
-            <mat-form-field appearance="standard">
-                <mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>
-              <input
-                matInput
-                name="인증번호입력"
-                formControlName="phoneverificationnumber"
-                placeholder="인증번호입력"
-                type="text"
-                class="form-control"
-                style="max-width: 60%; border-radius: 3px;"
-              />
-              <a class="btn btn-primary btn-block" style="width: 38%; margin-left: 10px;" >확인</a>
-            </mat-form-field>
-          </div>
+        <!--PHONE NUMBER VERIFICATION -->
+        <mat-form-field appearance="standard">
+          <mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>
+          <input
+            matInput
+            name="인증번호입력"
+            formControlName="phoneverificationnumber"
+            placeholder="인증번호입력"
+            type="text"
+            class="form-control"
+            style="max-width: 60%; border-radius: 3px;"
+          />
+          <a class="btn btn-primary btn-block" style="width: 38%; margin-left: 10px;">확인</a>
+        </mat-form-field>
 
-          <br /><br />
-          <!-- SUBMIT BUTTON -->
-            <!-- TODO to the button below add [disabled]="!newUser.valid" so that the user cannot press the button until it's valid-->
-            <!-- TODO routerLink="/signup/welcome" --> 
-            <!-- type="submit" -->
-          <div class="form-group input-group">
-            <button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" > 
-              가입하기
-            </button>
-          </div>
-          <div class="form-group input-group" style="margin-top: -10px;">
-            <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>
-          </div>
+        <br /><br />
+        <!-- SUBMIT BUTTON -->
+        <!-- TODO to the button below add [disabled]="!newUser.valid" so that the user cannot press the button until it's valid-->
+        <!-- TODO routerLink="/signup/welcome" -->
+        <!-- type="submit" -->
+        <div class="form-group input-group">
+          <button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block">
+            가입하기
+          </button>
+        </div>
+        <div class="form-group input-group" style="margin-top: -10px;">
+          <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>
         </div>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
       </form>

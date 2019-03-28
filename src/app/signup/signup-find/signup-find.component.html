@@ -11,14 +11,25 @@
 <br>
 <!--TODO ONLY SHOW AFTER A JUSO IS SELECTED-->
 <mat-form-field>
-  <input matInput [(ngModel)]="aptDetails" placeholder="상세주소입력" />
+  <input matInput [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
 </mat-form-field>
 <label>동</label>
 <br>
 <mat-form-field>
-  <input matInput [(ngModel)]="aptDetails2" placeholder="상세주소입력" />
+  <input matInput [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
 </mat-form-field>
 <label>호</label>
+
+<br><br><br>
+<label>부서</label>
+<mat-form-field>
+  <input matInput [(ngModel)]="department" placeholder="커뮤니티" />
+</mat-form-field>
+<br>
+<label>직책</label>
+<mat-form-field>
+  <input matInput [(ngModel)]="position" placeholder="트레이너" />
+</mat-form-field>
 
 
 <!--TODO ONLY SHOW FOR 관리자-->

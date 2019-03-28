@@ -14,21 +14,20 @@ export class SignupFindComponent {
 
   selectedJuso;
   parsedJuso;
-  aptDetails;
-  aptDetails2;
+  aptDetailsDong;
+  aptDetailsHo;
+  department;
+  position;
+
 
   constructor(private juso: JusoService, private user: UserService, private dialog: MatDialog) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
     this.parsedJuso = {};
-    this.aptDetails = '';
-    this.aptDetails2 = '';
+    this.aptDetailsDong = '';
+    this.aptDetailsHo = '';
+    this.department = '';
+    this.position = '';
   }
-
-  /* Make one that uses the popup window
-  searchJusos = () => {
-
-  }
-  */
 
   openJusoDialog() {
     const dialogRef = this.dialog.open(SignupFindJusoComponent);
