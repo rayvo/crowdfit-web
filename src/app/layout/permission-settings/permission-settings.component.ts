@@ -52,8 +52,6 @@ export class PermissionSettingsComponent  {
   dataSource2 = new MatTableDataSource(APPROVED_DATA);
 
 
-  constructor() { }
-
   applyFilter(filterValue: string) {
 
     this.dataSource2.filter = filterValue.trim().toLowerCase();
