@@ -45,6 +45,10 @@ export class UserService {
   }
 
   login(userData): Observable<any> {
+    const body = {
+      email: userData.value.email,
+      password: userData.value.password,
+    };
     return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions);
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
     // When i logout send last feature
@@ -130,7 +134,7 @@ export class UserService {
     return this.http.post(this.serverUrl + '/api/household/', body, httpOptions);
   }
 
-  createHouseholdOccupied( aptId, dong, num, status ): Observable<any> {
+  createHouseholdAvailable( aptId, dong, num, status ): Observable<any> {
     const body = {
       apt: aptId,
       addDong: dong,
@@ -150,7 +154,7 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/household/', body, httpOptions);
   }
 
-  setHouseholdOccupied( aptId, dong, num, status ): Observable<any> {
+  setHouseholdAvailable( aptId, dong, num, status ): Observable<any> {
     const body = {
       apt: aptId,
       addDong: dong,
@@ -172,7 +176,7 @@ export class UserService {
     return this.http.post(this.serverUrl + '/api/TODO/', body, httpOptions);
   }
 
-  setUserHousehold( userId ): Observable<any> {
+  setUserHousehold( userId, hhId, isOwner ): Observable<any> {
     const body = {
       user: userId,
       household: hhId,
@@ -183,20 +187,20 @@ export class UserService {
 
   createRFP( rId, fId, pId ): Observable<any> {
     const body = {
-      role = rId,
-      feature = fId,
-      permission = pId,
-      isActive = true,
+      role: rId,
+      feature: fId,
+      permission: pId,
+      isActive: true,
     };
     return this.http.post(this.serverUrl + '/api/rolefeaturepermission/', body, httpOptions);
   }
 
   setRFP( rId, fId, pId ): Observable<any> {
     const body = {
-      role = rId,
-      feature = fId,
-      permission = pId,
-      isActive = true,
+      role: rId,
+      feature: fId,
+      permission: pId,
+      isActive: true,
     };
     return this.http.put(this.serverUrl + '/api/rolefeaturepermission/', body, httpOptions);
   }
@@ -210,7 +214,7 @@ export class UserService {
     return this.http.post(this.serverUrl + '/api/userexerinfo/', body, httpOptions);
   }
 
-  createUserExerInfo( userId, userHeight, userWeight ) {
+  setUserExerInfo( userId, userHeight, userWeight ) {
     const body = {
       user: userId,
       height: userHeight,

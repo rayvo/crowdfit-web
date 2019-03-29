@@ -65,7 +65,12 @@ export class SignupFindComponent {
       }
     );
 
-    this.user.createUserHousehold().subscribe(
+    /*
+    this.user.createUserHousehold(
+      localStorage.getItem('id'),
+      localStorage.getItem('hhId'),
+      localStorage.getItem('isOwner')
+    ).subscribe(
       data => {
 
       },
@@ -73,5 +78,6 @@ export class SignupFindComponent {
         console.log(error);
       }
     );
+    */
   }
 }

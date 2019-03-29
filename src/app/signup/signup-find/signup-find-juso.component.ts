@@ -24,7 +24,7 @@ export class SignupFindJusoComponent {
 
   constructor(private juso: JusoService, private user: UserService, private dialog: MatDialog) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
-    this.selectedJusoString = '';
+    this.selectedJusoStringed = '';
     this.jusoKeyword = '';
   }
 
