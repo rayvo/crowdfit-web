@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Some Title about user</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-label>이름: {{ data.name }}</mat-label><br>
+  <mat-label>연락처: {{ data.phone }}</mat-label>
+  <button mat-button>첨부파일 다운</button>
+</mat-dialog-content>
+<br /><br /><br />
+<mat-dialog-actions align="end">
+  <!--[mat-dialog-close]="delete"-->
+  <!-- TODO Add a function to these button -->
+  <!-- TODO Show/Hide conditions-->
+  <button mat-button mat-dialog-close *ngIf="data.type == 1">삭제</button>
+  <button mat-button mat-dialog-close *ngIf="data.type == 1">승인</button>
+  <button mat-button mat-dialog-close *ngIf="data.type == 2">퇴사</button>
+  <button mat-button mat-dialog-close *ngIf="data.type == 3">Close</button>
+</mat-dialog-actions>

@@ -14,13 +14,20 @@ import { PermissionSettingsComponent } from './permission-settings/permission-se
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
 import { MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule } from '@angular/material';
-import { PermissionStaffManagementComponent } from './permission-settings/permission-staff-management/permission-staff-management.component';
-import { PermissionResidentManagementComponent } from './permission-settings/permission-resident-management/permission-resident-management.component';
-import { PermissionStoreManagementComponent } from './permission-settings/permission-store-management/permission-store-management.component';
-import { PermissionAccountingManagementComponent } from './permission-settings/permission-accounting-management/permission-accounting-management.component';
-import { PermissionClassManagementComponent } from './permission-settings/permission-class-management/permission-class-management.component';
-import { PermissionLockerManagementComponent } from './permission-settings/permission-locker-management/permission-locker-management.component';
-import { PermissionAttendenceManagementComponent } from './permission-settings/permission-attendence-management/permission-attendence-management.component';
+import { PermissionStaffManagementComponent
+} from './permission-settings/permission-staff-management/permission-staff-management.component';
+import { PermissionResidentManagementComponent
+} from './permission-settings/permission-resident-management/permission-resident-management.component';
+import { PermissionStoreManagementComponent
+} from './permission-settings/permission-store-management/permission-store-management.component';
+import { PermissionAccountingManagementComponent
+} from './permission-settings/permission-accounting-management/permission-accounting-management.component';
+import { PermissionClassManagementComponent
+} from './permission-settings/permission-class-management/permission-class-management.component';
+import { PermissionLockerManagementComponent
+} from './permission-settings/permission-locker-management/permission-locker-management.component';
+import { PermissionAttendenceManagementComponent
+} from './permission-settings/permission-attendence-management/permission-attendence-management.component';
 import { PermissionServiceCenterComponent } from './permission-settings/permission-service-center/permission-service-center.component';
 
 @NgModule({
