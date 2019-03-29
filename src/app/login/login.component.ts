@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
     // If you make changes here make sure to put changes into signup.component.ts - createUser method as well
     // I know it's bad coding but it works for now.
     loginUser = () => {
-        console.log(this.existingUser);
         this.user.login(this.existingUser).subscribe(
             data => {
                 localStorage.setItem('isLoggedin', 'true');

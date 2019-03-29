@@ -22,7 +22,7 @@ export class SignupFindComponent {
 
   constructor(private juso: JusoService, private user: UserService, private dialog: MatDialog) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
-    this.parsedJuso = {};
+    this.parsedJuso = '';
     this.aptDetailsDong = '';
     this.aptDetailsHo = '';
     this.department = '';
@@ -43,6 +43,10 @@ export class SignupFindComponent {
   }
 
   // TODO When applying as 직원 be able to put 부서 and 직책 in somewhere
+  getLS(key) {
+    return localStorage.getItem(key);
+  }
+  
 
 
   // UserRole, UserStatus, Country (Always id=1), City, Address, Apt, Household

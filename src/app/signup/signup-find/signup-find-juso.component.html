@@ -14,7 +14,7 @@
   </ul>
 </mat-dialog-content>
 <br /><br />
-<label matLabel>Selected Juso</label><br>
+<label matLabel *ngIf="selectedJuso.jibunAddr != '' " >Selected Juso</label><br>
 <label>{{ selectedJuso.jibunAddr }}</label>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>

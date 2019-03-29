@@ -46,8 +46,8 @@ export class UserService {
 
   login(userData): Observable<any> {
     const body = {
-      email: userData.value.email,
-      password: userData.value.password,
+      email: userData.email,
+      password: userData.password,
     };
     return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions);
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)

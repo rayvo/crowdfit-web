@@ -20,10 +20,10 @@ export class SignupForComponent implements OnInit {
     localStorage.setItem('role', '1');
   }
   residentClicked = () => {
-    localStorage.setItem('role', '3');
+    localStorage.setItem('role', '2');
   }
   staffClicked = () => {
-    localStorage.setItem('role', '2');
+    localStorage.setItem('role', '3');
   }
   adminClicked = () => {
     localStorage.setItem('role', '4');

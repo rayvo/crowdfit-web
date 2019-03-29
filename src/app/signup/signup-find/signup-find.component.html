@@ -6,28 +6,28 @@
 <br />
 
 
-<label>Selected Juso</label><br>
+<label *ngIf="parsedJuso != ''" >Selected Juso</label><br>
 <label>{{ parsedJuso.jibunAddr }}</label>
 <br>
 <!--TODO ONLY SHOW AFTER A JUSO IS SELECTED-->
-<mat-form-field>
+<mat-form-field *ngIf="parsedJuso != ''"  >
   <input matInput [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
 </mat-form-field>
-<label>동</label>
+<label *ngIf="parsedJuso != ''">동</label>
 <br>
-<mat-form-field>
+<mat-form-field *ngIf="parsedJuso != ''">
   <input matInput [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
 </mat-form-field>
-<label>호</label>
+<label *ngIf="parsedJuso != ''">호</label>
 
 <br><br><br>
-<label>부서</label>
-<mat-form-field>
+<label *ngIf="getLSRole('ro')=='3'">부서</label>
+<mat-form-field *ngIf="getLSRole()=='3'">
   <input matInput [(ngModel)]="department" placeholder="커뮤니티" />
 </mat-form-field>
 <br>
-<label>직책</label>
-<mat-form-field>
+<label *ngIf="getLSRole()=='3'">직책</label>
+<mat-form-field *ngIf="getLSRole()=='3'">
   <input matInput [(ngModel)]="position" placeholder="트레이너" />
 </mat-form-field>
 
