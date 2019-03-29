@@ -10,17 +10,12 @@
 
     <!--메뉴관리-->
     <div class="nested-menu">
-      <a class="list-group-item" routerLink="/menu/bulletinboard" (click)="addExpandClass('menu-pages')">
+      <a class="list-group-item" routerLink="/menu/danji" (click)="addExpandClass('menu-pages')">
         <i class="fas fa-list-ul"></i>&nbsp;
         <span>메뉴관리 </span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'menu-pages'">
         <ul class="submenu">
-          <li>
-            <a routerLink="/menu/bulletinboard">
-              <span>공지사항</span>
-            </a>
-          </li>
           <li>
             <a routerLink="/menu/danji">
               <span>단지안내</span>

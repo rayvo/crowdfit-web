@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 
-import { BulletinBoardManagementComponent } from './bulletin-board-management/bulletin-board-management.component';
 import { CommunityComponent } from './community/community.component';
 import { CultureCourseComponent } from './culture-course/culture-course.component';
 import { DanjiManagementComponent } from './danji-management/danji-management.component';
@@ -23,7 +22,6 @@ import { MenuRoutingModule } from './menu-routing.module';
     MenuRoutingModule,
   ],
   declarations: [
-    BulletinBoardManagementComponent,
     CommunityComponent,
     CultureCourseComponent,
     DanjiManagementComponent,
