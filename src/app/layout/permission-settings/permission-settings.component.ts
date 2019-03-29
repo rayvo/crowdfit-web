@@ -22,14 +22,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},*/
 ];
 
-export interface WaitList {
-  name: string;
-  phone: string;
-}
-const WAIT_DATA: WaitList[] = [
-  { name: 'Person A John', phone: '0101111AAAA' },
-  { name: 'Person B Sarah', phone: '0102222BBBB' },
-];
 
 export interface ApprovedList {
   name: string;
@@ -43,21 +35,7 @@ export interface ApprovedList {
 const APPROVED_DATA: ApprovedList[] = [
   { name: 'Person C Elijah', department: 'Cdept', position: 'Third', phone: '0103333CCCC', approvedBy: 'Habced', approvedDate: 'Jan 1' },
   { name: 'Person D Alyssa', department: 'Ddept', position: 'Fourth', phone: '0104444DDDD', approvedBy: 'Habced', approvedDate: 'March20' },
-];
 
-export interface EvictedList {
-  name: string;
-  department: string;
-  position: string;
-  phone: string;
-  evictedDate: string;
-  reason: string;
-
-}
-const EVICTED_DATA: EvictedList[] = [
-  { name: 'Person E Mike', department: 'Edept', position: 'Fifth', phone: '0105555EEEE', evictedDate: 'Jan 4', reason: 'Did Not Work' },
-  { name: 'Person F Grace', department:
-  'Fdept', position: 'Sixth', phone: '0106666FFFF', evictedDate: 'March 23', reason: 'Slept At Work' },
 ];
 
 
@@ -68,21 +46,18 @@ const EVICTED_DATA: EvictedList[] = [
 })
 export class PermissionSettingsComponent  {
 
-  displayedColumns1: string[] = ['name', 'phone', ];
-  dataSource1 = new MatTableDataSource(WAIT_DATA);
+
 
   displayedColumns2: string[] = ['name', 'department', 'position', 'phone', 'approvedBy', 'approvedDate' ];
   dataSource2 = new MatTableDataSource(APPROVED_DATA);
 
-  displayedColumns3: string[] = ['name', 'department', 'position', 'phone', 'evictedDate', 'reason' ];
-  dataSource3 = new MatTableDataSource(EVICTED_DATA);
 
   constructor() { }
 
   applyFilter(filterValue: string) {
-    this.dataSource1.filter = filterValue.trim().toLowerCase();
+
     this.dataSource2.filter = filterValue.trim().toLowerCase();
-    this.dataSource3.filter = filterValue.trim().toLowerCase();
+
   }
 
 
