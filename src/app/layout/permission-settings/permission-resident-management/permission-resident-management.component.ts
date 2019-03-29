@@ -2,16 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 
 
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 
-
-
-
-
-/**
- * @title Basic checkboxes
- */
 
 
 
@@ -53,11 +44,12 @@ const APPROVED_DATA: ApprovedList[] = [
 
 
 @Component({
-  selector: 'app-permission-settings',
-  templateUrl: './permission-settings.component.html',
-  styleUrls: ['./permission-settings.component.css']
+  selector: 'app-permission-resident-management',
+  templateUrl: './permission-resident-management.component.html',
+  styleUrls: ['./permission-resident-management.component.scss']
 })
-export class PermissionSettingsComponent  {
+
+export class PermissionResidentManagementComponent {
 
 
 
@@ -75,4 +67,13 @@ export class PermissionSettingsComponent  {
 
 
 }
+
+
+
+
+
+
+
+
+
 

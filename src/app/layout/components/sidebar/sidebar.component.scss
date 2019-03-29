@@ -38,7 +38,7 @@ $topnav-background-color: #404041;
                
             }
         }
-        a:hover {
+        a:hover, a:focus {
             background:  #f37a20;
             color: #fff;
         }
@@ -145,6 +145,7 @@ $topnav-background-color: #404041;
                 }
                 a:hover, a:focus {
                     color: #f37a20;
+                    background: none;
                 }
             }
         }

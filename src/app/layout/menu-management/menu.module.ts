@@ -12,6 +12,7 @@ import { CultureCourseComponent } from './culture-course/culture-course.componen
 import { DanjiManagementComponent } from './danji-management/danji-management.component';
 import { MenuManagementComponent } from './menu-management.component';
 import { MenuRoutingModule } from './menu-routing.module';
+import { MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { MenuRoutingModule } from './menu-routing.module';
     FormsModule,
     HttpClientModule,
     MenuRoutingModule,
+    MatCheckboxModule
   ],
   declarations: [
     BulletinBoardManagementComponent,
