@@ -28,14 +28,13 @@ export class SignupFindJusoComponent {
     this.jusoKeyword = '';
   }
 
-
   searchJusos = () => {
     this.juso.getJusos(this.jusoKeyword).subscribe(
       data => {
         this.fullDetailJusos = data.results.juso;
         this.lessDetailJusos = [];
         let i = 0;
-        for ( const j of data.results.juso ) {
+        for (const j of data.results.juso) {
           this.lessDetailJusos.push({ id: i, jibunAddr: j.jibunAddr });
           i++;
         }
@@ -45,8 +44,10 @@ export class SignupFindJusoComponent {
       }
     );
   }
+
   jusoClicked = juso => {
     this.selectedJuso = juso;
     this.selectedJusoStringed = JSON.stringify(this.fullDetailJusos[juso.id]);
-}
+  }
+
 }

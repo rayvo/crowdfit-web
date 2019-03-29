@@ -10,33 +10,36 @@
 <label>{{ parsedJuso.jibunAddr }}</label>
 <br>
 <!--TODO ONLY SHOW AFTER A JUSO IS SELECTED-->
-<mat-form-field *ngIf="parsedJuso != ''"  >
+<mat-form-field *ngIf="getLS('role')=='2' && parsedJuso != ''"  >
   <input matInput [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
 </mat-form-field>
-<label *ngIf="parsedJuso != ''">동</label>
+<label *ngIf="getLS('role')=='2' && parsedJuso != ''">동</label>
 <br>
-<mat-form-field *ngIf="parsedJuso != ''">
+<mat-form-field *ngIf="getLS('role')=='2' && parsedJuso != ''">
   <input matInput [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
 </mat-form-field>
-<label *ngIf="parsedJuso != ''">호</label>
+<label *ngIf="getLS('role')=='2' && parsedJuso != ''">호</label>
 
-<br><br><br>
-<label *ngIf="getLS('role')=='3'">부서</label>
-<mat-form-field *ngIf="getLS('role')=='3'">
+<br>
+<label  *ngIf="getLS('role')=='3' && parsedJuso != ''" >부서</label>
+<mat-form-field *ngIf="getLS('role')=='3' && parsedJuso != ''">
   <input matInput [(ngModel)]="department" placeholder="커뮤니티" />
 </mat-form-field>
 <br>
-<label *ngIf="getLS('role')=='3'">직책</label>
-<mat-form-field *ngIf="getLS('role')=='3'">
+<label *ngIf="getLS('role')=='3' && parsedJuso != ''">직책</label>
+<mat-form-field *ngIf="getLS('role')=='3' && parsedJuso != ''">
   <input matInput [(ngModel)]="position" placeholder="트레이너" />
 </mat-form-field>
 
 
 <!--TODO ONLY SHOW FOR 관리자-->
-<nav>
-  <a routerLink="/*">
+<nav >
+  <a  *ngIf="getLS('role')=='4'" routerLink="/*">
     사업자등록증첨부
-  </a>
+  </a><br><br>
+  <a  *ngIf="getLS('role')=='3'" routerLink="/*">
+    첨부
+  </a><br><br>
 <!--
   <a routerLink="/*">
     스토어 회원권 구매

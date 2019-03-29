@@ -46,11 +46,12 @@ export class SignupFindComponent {
   getLS(key) {
     return localStorage.getItem(key);
   }
-  
+
 
 
   // UserRole, UserStatus, Country (Always id=1), City, Address, Apt, Household
   applyClicked = () => {
+    /*
     this.user.createUserRole(Number(localStorage.getItem('id')), Number(localStorage.getItem('role'))).subscribe(
       data => {},
       error => {
@@ -60,7 +61,7 @@ export class SignupFindComponent {
 
     // TODO
     // For now just assume one user is staff.
-    // We will have to initialize these things when we deploy the sytem later
+    // We will have to initialize these things when we deploy the system later
     // FOr now a random user was createde as staff
     this.user.createUserStatusWait(Number(localStorage.getItem('id'))).subscribe(
       data => {},

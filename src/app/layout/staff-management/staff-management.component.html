@@ -18,7 +18,7 @@
   </mat-form-field>
 
   <!-- WAIT LIST TABLE -->
-  <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8" >
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>성명</th>
@@ -32,12 +32,12 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns1" (click)="openDialogWait(row)"></tr>
   </table>
 
   <br />
   <!-- APPROVED LIST TABLE -->
-  <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8" >
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>성명</th>
@@ -75,12 +75,12 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2" (click)="openDialogApproved(row)"></tr>
   </table>
 
   <br />
   <!-- EVICTED LIST TABLE -->
-  <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8" >
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>성명</th>
@@ -118,7 +118,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns3" (click)="openDialogOut(row)"></tr>
   </table>
 
 

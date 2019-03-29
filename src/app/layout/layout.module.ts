@@ -8,13 +8,15 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StaffManagementComponent } from './staff-management/staff-management.component';
+import { SMPopupComponent } from './staff-management/sm-popup.component';
 import { LockerManagementComponent } from './locker-management/locker-management.component';
 import { AttendenceManagementComponent } from './attendence-management/attendence-management.component';
 import { ServiceCenterComponent } from './service-center/service-center.component';
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
-import { MatTableModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { MatTableModule, MatFormFieldModule, MatInputModule } from '@angular/mat
       MatTableModule,
       MatFormFieldModule,
       MatInputModule,
-
+      MatDialogModule,
+      FormsModule,
     ],
   declarations: [
     LayoutComponent,
@@ -36,7 +39,11 @@ import { MatTableModule, MatFormFieldModule, MatInputModule } from '@angular/mat
     AttendenceManagementComponent,
     ServiceCenterComponent,
     PermissionSettingsComponent,
-    FooterComponent
+    FooterComponent,
+    SMPopupComponent,
+  ],
+  entryComponents: [
+    SMPopupComponent,
   ],
   providers: [AuthGuard]
 })

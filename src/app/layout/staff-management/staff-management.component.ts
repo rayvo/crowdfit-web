@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material';
+
+import { SMPopupComponent } from './sm-popup.component';
 
 
 export interface PeriodicElement {
@@ -24,11 +27,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export interface WaitList {
   name: string;
+  department: string;
+  position: string;
   phone: string;
 }
 const WAIT_DATA: WaitList[] = [
-  { name: 'Person A John', phone: '0101111AAAA' },
-  { name: 'Person B Sarah', phone: '0102222BBBB' },
+  { name: 'Person A John', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+  { name: 'Person B Sarah', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
 ];
 
 export interface ApprovedList {
@@ -67,6 +72,11 @@ const EVICTED_DATA: EvictedList[] = [
   styleUrls: ['./staff-management.component.css']
 })
 export class StaffManagementComponent {
+
+  constructor(
+    private dialog: MatDialog,
+    ) { }
+
   displayedColumns1: string[] = ['name', 'phone', ];
   dataSource1 = new MatTableDataSource(WAIT_DATA);
 
@@ -83,6 +93,61 @@ export class StaffManagementComponent {
     this.dataSource3.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor() { }
+
+  openDialogWait(row: any) {
+    const dialogRef = this.dialog.open(SMPopupComponent, {
+      width: '250px',
+      data: {
+        name: row.name,
+        phone: row.phone
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  openDialogApproved() {
+    const dialogRef = this.dialog.open(SMPopupComponent, {
+      width: '250px',
+      data: {
+        name: 'asdf',
+        phone: 'fdsa'
+      }
+
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  openDialogOut() {
+    const dialogRef = this.dialog.open(SMPopupComponent, {
+      width: '250px',
+      data: {
+        name: 'asdf',
+        phone: 'fdsa'
+      }
+
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
 }
