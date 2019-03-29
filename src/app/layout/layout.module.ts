@@ -8,7 +8,6 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { StaffManagementComponent } from './staff-management/staff-management.component';
-import { SMPopupComponent } from './staff-management/sm-popup.component';
 import { LockerManagementComponent } from './locker-management/locker-management.component';
 import { AttendenceManagementComponent } from './attendence-management/attendence-management.component';
 import { ServiceCenterComponent } from './service-center/service-center.component';
@@ -17,6 +16,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
 import { MatTableModule, MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { SMPopupComponent } from './staff-management/sm-popup.component';
+import { SMPopApproveComponent } from './staff-management/sm-pop-approve.component';
+import { SMPopDeleteComponent } from './staff-management/sm-pop-delete.component';
+import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
+import { SMPopOutComponent } from './staff-management/sm-pop-out.component';
+
 
 @NgModule({
   imports: [
@@ -41,9 +46,17 @@ import { FormsModule } from '@angular/forms';
     PermissionSettingsComponent,
     FooterComponent,
     SMPopupComponent,
+    SMPopApproveComponent,
+    SMPopDeleteComponent,
+    SMPopFileComponent,
+    SMPopOutComponent,
   ],
   entryComponents: [
     SMPopupComponent,
+    SMPopApproveComponent,
+    SMPopDeleteComponent,
+    SMPopFileComponent,
+    SMPopOutComponent,
   ],
   providers: [AuthGuard]
 })

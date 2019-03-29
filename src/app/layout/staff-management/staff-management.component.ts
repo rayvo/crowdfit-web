@@ -57,10 +57,10 @@ const EVICTED_DATA: EvictedList[] = [
 export class StaffManagementComponent {
   constructor(private dialog: MatDialog) {}
 
-  displayedColumns1: string[] = ['name', 'department', 'position', 'phone'];
+  displayedColumns1: string[] = ['name', 'department', 'position', 'phone', 'file', 'approve', 'delete' ];
   dataSource1 = new MatTableDataSource(WAIT_DATA);
 
-  displayedColumns2: string[] = ['name', 'department', 'position', 'phone', 'approvedBy', 'approvedDate'];
+  displayedColumns2: string[] = ['name', 'department', 'position', 'phone', 'approvedBy', 'approvedDate', 'file', 'out'];
   dataSource2 = new MatTableDataSource(APPROVED_DATA);
 
   displayedColumns3: string[] = ['name', 'department', 'position', 'phone', 'evictedDate', 'reason'];
@@ -92,6 +92,15 @@ export class StaffManagementComponent {
       }
     );
   }
+  showFile(row: any) {
+
+  }
+  approveClick(row: any) {
+
+  }
+  deleteClick(row: any) {
+
+  }
 
   // TODO get list of people that have been approved
   getApprovedData() {}
@@ -111,6 +120,9 @@ export class StaffManagementComponent {
         console.log(error);
       }
     );
+  }
+  outClick(row: any) {
+
   }
 
   // TODO get list of people that have been evicted/movedout
