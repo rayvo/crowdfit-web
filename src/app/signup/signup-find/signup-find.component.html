@@ -21,13 +21,13 @@
 <label *ngIf="parsedJuso != ''">호</label>
 
 <br><br><br>
-<label *ngIf="getLSRole('ro')=='3'">부서</label>
-<mat-form-field *ngIf="getLSRole()=='3'">
+<label *ngIf="getLS('role')=='3'">부서</label>
+<mat-form-field *ngIf="getLS('role')=='3'">
   <input matInput [(ngModel)]="department" placeholder="커뮤니티" />
 </mat-form-field>
 <br>
-<label *ngIf="getLSRole()=='3'">직책</label>
-<mat-form-field *ngIf="getLSRole()=='3'">
+<label *ngIf="getLS('role')=='3'">직책</label>
+<mat-form-field *ngIf="getLS('role')=='3'">
   <input matInput [(ngModel)]="position" placeholder="트레이너" />
 </mat-form-field>
 
