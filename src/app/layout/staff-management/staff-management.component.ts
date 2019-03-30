@@ -122,7 +122,22 @@ export class StaffManagementComponent {
     );
   }
   outClick(row: any) {
+    const dialogRef = this.dialog.open(SMPopupComponent, {
+      width: '250px',
+      data: {
+        name: row.name,
+        dept: row.department,
+        dept: row.position,
+        phone: row.phone,
+      }
+    });
 
+    dialogRef.afterClosed().subscribe(
+      result => {},
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   // TODO get list of people that have been evicted/movedout

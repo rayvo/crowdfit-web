@@ -72,6 +72,12 @@ import { PermissionServiceCenterComponent } from './permission-settings/permissi
     PermissionAttendenceManagementComponent,
     PermissionServiceCenterComponent
   ],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
+  entryComponents: [
+    SMPopApproveComponent,
+    SMPopDeleteComponent,
+    SMPopFileComponent,
+    SMPopOutComponent,
+  ]
 })
 export class LayoutModule { }
