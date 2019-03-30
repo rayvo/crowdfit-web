@@ -104,7 +104,7 @@ export class UserService {
     return this.http.post(this.serverUrl + '/api/userstatus/', body, httpOptions);
   }
 
-  createUserStatusApproved(userId): Observable<any> {
+  setUserStatusApproved(userId): Observable<any> {
     const body = {
       user: userId,
       status: 3,
@@ -114,7 +114,7 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
   }
 
-  createUserStatusEvicted(userId): Observable<any> {
+  setUserStatusEvicted(userId): Observable<any> {
     const body = {
       user: userId,
       status: 4,
@@ -122,6 +122,10 @@ export class UserService {
       isActive: false,
     };
     return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
+  }
+
+  getUserStatuses(): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/userstatus/', httpOptions);
   }
 
   createHouseholdOccupied( aptId, dong, num, status ): Observable<any> {
