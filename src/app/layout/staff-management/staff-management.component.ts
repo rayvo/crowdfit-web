@@ -4,10 +4,7 @@ import { MatDialog } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 
 import { SMPopupComponent } from './sm-popup.component';
-import { SMPopApproveComponent } from './sm-pop-approve.component';
-import { SMPopDeleteComponent } from './sm-pop-delete.component';
 import { SMPopFileComponent } from './sm-pop-file.component';
-import { SMPopOutComponent } from './sm-pop-out.component';
 
 export interface PeriodicElement {
   name: string;
