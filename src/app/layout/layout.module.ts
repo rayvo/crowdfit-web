@@ -13,7 +13,7 @@ import { ServiceCenterComponent } from './service-center/service-center.componen
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
-import { MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule } from '@angular/material';
+import { MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDialogModule } from '@angular/material';
 import { SMPopApproveComponent } from './staff-management/sm-pop-approve.component';
 import { SMPopDeleteComponent } from './staff-management/sm-pop-delete.component';
 import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
@@ -44,6 +44,7 @@ import { PermissionServiceCenterComponent } from './permission-settings/permissi
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatDialogModule,
 
   ],
   declarations: [
