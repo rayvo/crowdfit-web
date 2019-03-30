@@ -14,10 +14,8 @@ import { PermissionSettingsComponent } from './permission-settings/permission-se
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
 import { MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDialogModule } from '@angular/material';
-import { SMPopApproveComponent } from './staff-management/sm-pop-approve.component';
-import { SMPopDeleteComponent } from './staff-management/sm-pop-delete.component';
-import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
-import { SMPopOutComponent } from './staff-management/sm-pop-out.component';
+
+import { SMPopupComponent } from './staff-management/sm-popup.component';
 import { PermissionStaffManagementComponent
 } from './permission-settings/permission-staff-management/permission-staff-management.component';
 import { PermissionResidentManagementComponent
@@ -57,10 +55,7 @@ import { PermissionServiceCenterComponent } from './permission-settings/permissi
     FooterComponent,
 
     StaffManagementComponent,
-    SMPopApproveComponent,
-    SMPopDeleteComponent,
-    SMPopFileComponent,
-    SMPopOutComponent,
+    SMPopupComponent,
 
     PermissionSettingsComponent,
     PermissionStaffManagementComponent,
@@ -74,10 +69,7 @@ import { PermissionServiceCenterComponent } from './permission-settings/permissi
   ],
   providers: [AuthGuard],
   entryComponents: [
-    SMPopApproveComponent,
-    SMPopDeleteComponent,
-    SMPopFileComponent,
-    SMPopOutComponent,
+    SMPopupComponent,
   ]
 })
 export class LayoutModule { }

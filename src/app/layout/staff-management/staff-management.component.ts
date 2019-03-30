@@ -3,6 +3,10 @@ import { MatTableDataSource } from '@angular/material';
 import { MatDialog } from '@angular/material';
 
 import { SMPopupComponent } from './sm-popup.component';
+import { SMPopApproveComponent } from './sm-pop-approve.component';
+import { SMPopDeleteComponent } from './sm-pop-delete.component';
+import { SMPopFileComponent } from './sm-pop-file.component';
+import { SMPopOutComponent } from './sm-pop-out.component';
 
 export interface PeriodicElement {
   name: string;
@@ -75,88 +79,38 @@ export class StaffManagementComponent {
 
   // TODO get list of people waiting to be approved
   getWaitData() {}
-  openDialogWait(row: any) {
+  // TODO get list of people that have been approved
+  getApprovedData() {}
+  // TODO get list of people that have been evicted/movedout
+  getOutData() {}
+
+  openDialog( personInfo: any, btnType: any, newStatus: any ) {
     const dialogRef = this.dialog.open(SMPopupComponent, {
       width: '250px',
       data: {
-        name: row.name,
-        phone: row.phone,
-        type: 1,
+        name: personInfo.name,
+        dept: personInfo.department,
+        pos: personInfo.position,
+        phone: personInfo.phone,
+        type: btnType,
       }
     });
 
     dialogRef.afterClosed().subscribe(
-      result => {},
+      result => {
+        // TODO Change userStatus of person to newStatus
+        console.log(btnType + ' person: ' + result);
+      },
       error => {
         console.log(error);
       }
     );
+
   }
+
   showFile(row: any) {
 
   }
-  approveClick(row: any) {
 
-  }
-  deleteClick(row: any) {
 
-  }
-
-  // TODO get list of people that have been approved
-  getApprovedData() {}
-  openDialogApproved(row: any) {
-    const dialogRef = this.dialog.open(SMPopupComponent, {
-      width: '250px',
-      data: {
-        name: row.name,
-        phone: row.phone,
-        type: 2,
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(
-      result => {},
-      error => {
-        console.log(error);
-      }
-    );
-  }
-  outClick(row: any) {
-    const dialogRef = this.dialog.open(SMPopupComponent, {
-      width: '250px',
-      data: {
-        name: row.name,
-        dept: row.department,
-        dept: row.position,
-        phone: row.phone,
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(
-      result => {},
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  // TODO get list of people that have been evicted/movedout
-  getOutData() {}
-  openDialogOut(row: any) {
-    const dialogRef = this.dialog.open(SMPopupComponent, {
-      width: '250px',
-      data: {
-        name: row.name,
-        phone: row.phone,
-        type: 3,
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(
-      result => {},
-      error => {
-        console.log(error);
-      }
-    );
-  }
 }
