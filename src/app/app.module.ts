@@ -14,7 +14,6 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { StoreProcuctRoutingModule } from './layout/store-management/store-product-management/store-procuct-routing.module';
 
 
-
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
     /* for development
