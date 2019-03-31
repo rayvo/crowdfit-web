@@ -62,7 +62,7 @@ export class StaffManagementComponent {
     private dialog: MatDialog,
     private user: UserService,
     ) {
-      getStaffData();
+      this.getStaffData();
     }
 
   displayedColumns1: string[] = ['name', 'department', 'position', 'phone', 'file', 'approve', 'delete' ];
@@ -82,7 +82,7 @@ export class StaffManagementComponent {
   }
 
   // TODO Finish when I get the db
-  getStaffData() {
+  getStaffData() {/*
     allData = this.user.getUserStatuses().results;
     for ( const data of allData ) {
       switch ( data.status ) {
@@ -99,7 +99,7 @@ export class StaffManagementComponent {
         default:
           break;
       }
-    }
+    }*/
   }
 
   openDialog( personInfo: any, btnType: any, newStatus: any ) {
