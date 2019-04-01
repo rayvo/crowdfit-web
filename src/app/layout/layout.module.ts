@@ -13,7 +13,9 @@ import { ServiceCenterComponent } from './service-center/service-center.componen
 import { PermissionSettingsComponent } from './permission-settings/permission-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthGuard } from '../shared';
-import { MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDialogModule, MatPaginatorModule } from '@angular/material';
+import {
+  MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDialogModule, MatPaginatorModule,
+} from '@angular/material';
 
 import { SMPopupComponent } from './staff-management/sm-popup.component';
 import { PermissionStaffManagementComponent

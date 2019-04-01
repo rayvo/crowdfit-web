@@ -9,9 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { FormsModule } from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { StoreProcuctRoutingModule } from './layout/store-management/store-product-management/store-procuct-routing.module';
+import { NoAuthGuard } from './shared/guard/no-auth.guard';
 
 
 
@@ -46,7 +47,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         StoreProcuctRoutingModule,
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard],
+    providers: [AuthGuard, NoAuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

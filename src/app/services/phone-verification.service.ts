@@ -32,7 +32,7 @@ export class PhoneVerificationService {
 	curl -X POST "https://apis.aligo.in/send/" \
 R	--data-urlencode "key=xxxxx" \
 R	--data-urlencode "user_id=xxxxx" \
-R	--data-urlencode "sender=025114560" \
+R	--data-urlencode "sender=0328340852" \
 R	--data-urlencode "receiver=01111111111,01111111112" \
 R	--data-urlencode "destination=01111111111|홍길동,01111111112|아무개" \
 R	--data-urlencode "msg=%고객명%님! 안녕하세요. API TEST SEND" \

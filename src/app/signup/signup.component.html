@@ -65,13 +65,13 @@
           <input
             matInput
             name="인증번호입력"
-            formControlName="phoneverificationnumber"
+            formControlName="vNum"
             placeholder="인증번호입력"
             type="text"
             class="form-control"
             style="max-width: 60%; border-radius: 3px;"
           />
-          <a class="btn btn-primary btn-block" style="width: 38%; margin-left: 10px;">확인</a>
+          <a class="btn btn-primary btn-block" style="width: 38%; margin-left: 10px;" (click)="sendVerification()">확인</a>
         </mat-form-field>
 
         <br /><br />

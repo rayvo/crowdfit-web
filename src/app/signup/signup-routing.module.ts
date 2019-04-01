@@ -5,11 +5,14 @@ import { SignupForComponent } from './signup-for/signup-for.component';
 import { SignupAppliedComponent } from './signup-applied/signup-applied.component';
 import { SignupFindComponent } from './signup-find/signup-find.component';
 import { AuthGuard } from '../shared';
+import { NoAuthGuard } from '../shared/guard/no-auth.guard';
 
 const routes: Routes = [
-    { path: '', component: SignupComponent },
-    { path: 'welcome', component: SignupForComponent, canActivate: [AuthGuard] },
-    { path: 'find', component: SignupFindComponent, canActivate: [AuthGuard] },
+    { path: '', component: SignupComponent, canActivate: [NoAuthGuard]},
+    // TODO { path: 'welcome', component: SignupForComponent, canActivate: [AuthGuard] },
+    { path: 'welcome', component: SignupForComponent },
+    // TODO { path: 'find', component: SignupFindComponent, canActivate: [AuthGuard] },
+    { path: 'find', component: SignupFindComponent },
     { path: 'applied', component: SignupAppliedComponent, canActivate: [AuthGuard] },
 
 ];
