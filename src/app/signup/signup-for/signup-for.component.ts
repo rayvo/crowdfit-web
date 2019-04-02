@@ -16,17 +16,18 @@ export class SignupForComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*
   nonmemberClicked = () => {
     localStorage.setItem('role', '1');
-  }
+  }*/
   residentClicked = () => {
-    localStorage.setItem('role', '2');
-  }
-  staffClicked = () => {
     localStorage.setItem('role', '3');
   }
+  staffClicked = () => {
+    localStorage.setItem('role', '2');
+  }
   adminClicked = () => {
-    localStorage.setItem('role', '4');
+    localStorage.setItem('role', '1');
   }
 
 }

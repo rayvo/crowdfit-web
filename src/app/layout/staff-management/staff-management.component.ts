@@ -16,7 +16,13 @@ export interface WaitList {
 }
 const WAIT_DATA: WaitList[] = [
   { id: 1, name: 'John', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-  { id: 2, name: 'Sarah', department: 'Bdept', position: 'Second', phone: '0102222BBBB' }
+  { id: 2, name: 'Sarah', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+  { id: 1, name: 'Asdf', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+  { id: 2, name: 'Sdfg', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+  { id: 1, name: 'Dfgh', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+  { id: 2, name: 'Fghj', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+  { id: 1, name: 'Ghjk', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+  { id: 2, name: 'Hjkl', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
 ];
 
 export interface ApprovedList {

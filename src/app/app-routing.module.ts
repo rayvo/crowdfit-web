@@ -5,8 +5,7 @@ import { AuthGuard } from './shared';
 import { NoAuthGuard } from './shared/guard/no-auth.guard';
 
 const routes: Routes = [
-    { path: '', loadChildren: './layout/layout.module#LayoutModule' },
- // TODO { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
+    { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
     { path: 'login', loadChildren: './login/login.module#LoginModule', canActivate: [NoAuthGuard] },
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },

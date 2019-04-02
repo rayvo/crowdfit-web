@@ -9,10 +9,8 @@ import { NoAuthGuard } from '../shared/guard/no-auth.guard';
 
 const routes: Routes = [
     { path: '', component: SignupComponent, canActivate: [NoAuthGuard]},
-    // TODO { path: 'welcome', component: SignupForComponent, canActivate: [AuthGuard] },
-    { path: 'welcome', component: SignupForComponent },
-    // TODO { path: 'find', component: SignupFindComponent, canActivate: [AuthGuard] },
-    { path: 'find', component: SignupFindComponent },
+    { path: 'welcome', component: SignupForComponent, canActivate: [AuthGuard] },
+    { path: 'find', component: SignupFindComponent, canActivate: [AuthGuard] },
     { path: 'applied', component: SignupAppliedComponent, canActivate: [AuthGuard] },
 
 ];

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignupFindComponent } from './signup-find.component';
-import { MyJusoSearchDialogComponent } from './signup-find-juso.component';
+import { SignupFindJusoComponent } from './signup-find-juso.component';
 
 describe('SignupFindComponent', () => {
   let component: SignupFindComponent;
@@ -25,18 +25,18 @@ describe('SignupFindComponent', () => {
   });
 });
 describe('MyJusoSearchDialogComponent', () => {
-  let component: MyJusoSearchDialogComponent;
-  let fixture: ComponentFixture<MyJusoSearchDialogComponent>;
+  let component: SignupFindJusoComponent;
+  let fixture: ComponentFixture<SignupFindJusoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyJusoSearchDialogComponent ]
+      declarations: [ SignupFindJusoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyJusoSearchDialogComponent);
+    fixture = TestBed.createComponent(SignupFindJusoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType} from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
 
@@ -239,6 +239,14 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/userexerinfo/', body, httpOptions);
   }
 
+  fileUpload( fileName, fileUrl, fileSize ) {
+    const body = {
+      file_name: fileName,
+      file_url: fileUrl,
+      file_size: fileSize
+    };
+    return this.http.post(this.serverUrl + '/api/documentfile', body, {reportProgress: true, observe: 'events'});
+  }
 }
 
 

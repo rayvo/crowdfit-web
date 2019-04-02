@@ -122,7 +122,7 @@ export class SignupComponent implements OnInit {
         if ( this.vNum.value === this.verificationNum ) {
             // make valid
         } else {
-            this.vNum.hasError('required') ? 'Could not verify' : '';
+            return this.vNum.hasError('required') ? 'Could not verify' : '';
         }
     }
 
