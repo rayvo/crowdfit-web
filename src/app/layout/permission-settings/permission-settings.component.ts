@@ -1,17 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 
-
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { routerTransition } from '../../router.animations';
 
 
 
 
 
-/**
- * @title Basic checkboxes
- */
 
 
 
@@ -50,6 +45,7 @@ const APPROVED_DATA: ApprovedList[] = [
   { name: 'Person D Alyssa', department: 'Ddept', position: 'Fourth', phone: '0104444DDDD', approvedBy: 'Habced', approvedDate: 'March20' },
 
 ];
+
 
 
 @Component({

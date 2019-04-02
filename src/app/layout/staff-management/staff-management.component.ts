@@ -65,7 +65,7 @@ export class StaffManagementComponent implements OnInit {
     private user: UserService,
     ) {
       this.getStaffData();
-  }
+    }
 
   displayedColumns1: string[] = ['name', 'department', 'position', 'phone', 'file', 'approve', 'delete' ];
   dataSource1 = new MatTableDataSource(WAIT_DATA);

@@ -1,25 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PermissionSettingsComponent } from './permission-settings.component';
+import { PermissionSettingsModule } from './permission-settings.module';
 
-describe('PermissionSettingsComponent', () => {
-  let component: PermissionSettingsComponent;
-  let fixture: ComponentFixture<PermissionSettingsComponent>;
+describe('PermissionSettingsModule', () => {
+  let permissionSettingsModule: PermissionSettingsModule;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PermissionSettingsComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PermissionSettingsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    permissionSettingsModule = new PermissionSettingsModule();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create an instance', () => {
+    expect(permissionSettingsModule).toBeTruthy();
   });
 });
