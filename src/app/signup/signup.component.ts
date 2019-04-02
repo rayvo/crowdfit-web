@@ -40,6 +40,7 @@ export class SignupComponent implements OnInit {
 
     newUser: FormGroup;
     passwordMatcher = new RepeatPasswordEStateMatcher;
+    verificationNum = -1;
 
 
     ngOnInit() {}
@@ -52,7 +53,7 @@ export class SignupComponent implements OnInit {
             password: new FormControl('', PasswordValidation),
             cpassword: new FormControl(''),
             phone: new FormControl(''),
-            phoneverificationnumber: new FormControl(''),
+            vNum: new FormControl(-2, [Validators.required]),
 
         }, { validators: RepeatPasswordValidator });
     }
@@ -82,6 +83,9 @@ export class SignupComponent implements OnInit {
     get phone() {
         return this.newUser.get('phone');
     }
+    get vNum() {
+        return this.newUser.get('vNum');
+    }
 
     // getErrorMessage() {
     //   return this.newUser.get.hasError('required') ? 'You must enter a value' :
@@ -110,6 +114,17 @@ export class SignupComponent implements OnInit {
     // }
 
 
+    sendVerification() {
+        this.verificationNum = Math.floor((Math.random() * 500000) + 1);
+    }
+
+    checkVerification() {
+        if ( this.vNum.value === this.verificationNum ) {
+            // make valid
+        } else {
+            this.vNum.hasError('required') ? 'Could not verify' : '';
+        }
+    }
 
     createUser = () => {
         this.user.createUser(this.newUser).subscribe(

@@ -35,7 +35,7 @@ export class UserService {
     }
 
     const body = {
-      username: userData.value.username ,
+      username: userData.value.username,
       email: userData.value.email,
       password: userData.value.password,
       phone: phonenullcheck,
@@ -84,10 +84,21 @@ export class UserService {
     const body = {
       user: userId,
       status: 1,
-      staff: 30,
+      // TODO What should be staff status when it's first made?
+      // staff: localStorage.getItem('id'),
       isActive: true,
     };
     return this.http.post(this.serverUrl + '/api/userstatus/', body, httpOptions);
+  }
+
+  setUserStatusNone(userId): Observable<any> {
+    const body = {
+      user: userId,
+      status: 1,
+      // staff: localStorage.getItem('id'),
+      isActive: true,
+    };
+    return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
   }
 
   // TODO : For User Status Wait, Approved, and Evicted
@@ -98,17 +109,18 @@ export class UserService {
     const body = {
       user: userId,
       status: 2,
-      staff: 30,
+      // staff: localStorage.getItem('id'),
       isActive: true,
     };
     return this.http.post(this.serverUrl + '/api/userstatus/', body, httpOptions);
   }
 
+
   setUserStatusApproved(userId): Observable<any> {
     const body = {
       user: userId,
       status: 3,
-      staff: 30,
+      staff: localStorage.getItem('id'),
       isActive: true,
     };
     return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
@@ -117,8 +129,8 @@ export class UserService {
   setUserStatusEvicted(userId): Observable<any> {
     const body = {
       user: userId,
-      status: 4,
-      staff: 30,
+      status: 5, // 4: 퇴거 신청 , 5: 퇴거 완로
+      staff: localStorage.getItem('id'),
       isActive: false,
     };
     return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
