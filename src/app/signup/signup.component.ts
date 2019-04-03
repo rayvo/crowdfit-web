@@ -126,7 +126,7 @@ export class SignupComponent implements OnInit {
         }
     }
 
-    createUser = () => {
+    createUser = () => {/*
         this.user.createUser(this.newUser).subscribe(
             // TODO create: createUserStatusNone
             data => {
@@ -153,7 +153,7 @@ export class SignupComponent implements OnInit {
                 console.log('error \n' );
                 console.log(error);
             }
-        );
+        );*/
     }
 
 

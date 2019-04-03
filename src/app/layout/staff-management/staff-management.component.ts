@@ -138,7 +138,7 @@ export class StaffManagementComponent implements OnInit {
     }*/
   }
 
-  openDialog( personInfo: any, btnType: any ) {
+  openDialog( personInfo: any, btnType: any ) {/*
     const dialogRef = this.dialog.open(SMPopupComponent, {
       width: '250px',
       data: {
@@ -177,7 +177,7 @@ export class StaffManagementComponent implements OnInit {
       error => {
         console.log(error);
       }
-    );
+    );*/
 
   }
 

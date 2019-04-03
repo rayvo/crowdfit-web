@@ -58,7 +58,7 @@ export class SignupFindComponent {
   uploadFile( file ) {
     const selectedFiles = file.target.files;
 
-    this.user.fileUpload(
+    this.user.createDocFile(
       selectedFiles[0].name,
       selectedFiles[0] ,
       selectedFiles[0].type,
