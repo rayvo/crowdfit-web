@@ -18,7 +18,7 @@ export class PhoneVerificationService {
 
 
   phoneApiUrl = 'https://apis.aligo.in/send/';
-  phoneApiUrlMass = 'htps://apis.aligo.in/send_mass';
+  phoneApiUrlMass = 'htps://apis.aligo.in/send_mass/';
 
   KEY = 'ir3zj8kqg6blbnlkj4lnyquaymhzk5pt';
   USER_ID = 'crowdfit';
@@ -55,5 +55,18 @@ R	--data-urlencode "msg=%고객명%님! 안녕하세요. API TEST SEND" \
     return this.http.post(this.phoneApiUrl , body, httpOptions );
   }
 
+  /*
+  sendMassMessage(myReceivers, myDestinations, myMsg): Observable < any > {
+    const body = {
+      key: this.KEY,
+      user_id: this.USER_ID,
+      sender: this.SENDER,
+      receiver: myReceivers,
+      destination: myDestinations,
+      msg: myMsg
+    };
+    return this.http.post(this.phoneApiUrlMass, body, httpOptions );
+  }
+  */
 
 }

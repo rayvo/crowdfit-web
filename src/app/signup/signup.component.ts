@@ -6,6 +6,7 @@ import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm } from '
 import { ErrorStateMatcher } from '@angular/material';
 import { RepeatPasswordEStateMatcher, PasswordValidation, RepeatPasswordValidator } from './signup.validators';
 import { Router } from '@angular/router';
+import { PhoneVerificationService } from '../services/phone-verification.service';
 
 @Component({
     selector: 'app-signup',
@@ -20,6 +21,7 @@ export class SignupComponent implements OnInit {
     constructor(
         private translate: TranslateService,
         private user: UserService,
+        private phoneV: PhoneVerificationService,
         private router: Router,
         ) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
@@ -53,7 +55,7 @@ export class SignupComponent implements OnInit {
             password: new FormControl('', PasswordValidation),
             cpassword: new FormControl(''),
             phone: new FormControl(''),
-            vNum: new FormControl(-2, [Validators.required]),
+            vNum: new FormControl('', [Validators.required]),
 
         }, { validators: RepeatPasswordValidator });
     }
@@ -113,9 +115,25 @@ export class SignupComponent implements OnInit {
     //     }
     // }
 
-
+    // TODO Check if working
     sendVerification() {
-        this.verificationNum = Math.floor((Math.random() * 500000) + 1);
+        this.verificationNum = Math.floor((Math.random() * 500000) + 499999);
+        const phon = this.newUser.get('phone').value;
+        const dest = phon + '|' + this.newUser.get('username').value;
+        console.log('############################');
+        console.log(this.verificationNum);
+        console.log(phon);
+        console.log(dest);
+        console.log('############################');
+        this.phoneV.sendMessage( phon, dest, this.verificationNum ).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                console.log(error);
+            }
+        );
+
     }
 
     checkVerification() {

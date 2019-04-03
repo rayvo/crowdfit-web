@@ -83,7 +83,7 @@ export class UserService {
       desc: input.desc,
       // lat: ?,
       // lon: ?,
-      address_id: jusoInfo.bdMgtSn, // ? (admCd+rnMgtSn) or bdMgtSn
+      // address_id: jusoInfo.bdMgtSn, // ? (admCd+rnMgtSn) or bdMgtSn
       is_active: false
 
     };
