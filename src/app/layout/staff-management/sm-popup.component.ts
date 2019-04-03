@@ -5,6 +5,8 @@ import { StaffManagementComponent } from './staff-management.component';
 
 export interface DialogData {
   name: string;
+  dept: string;
+  pos: string;
   phone: string;
   type: number;
 }

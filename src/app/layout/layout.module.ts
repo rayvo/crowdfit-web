@@ -17,6 +17,7 @@ import { MatTableModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, 
 } from '@angular/material';
 
 import { SMPopupComponent } from './staff-management/sm-popup.component';
+import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { SMPopupComponent } from './staff-management/sm-popup.component';
 
     StaffManagementComponent,
     SMPopupComponent,
+    SMPopFileComponent,
 
 
 
@@ -51,6 +53,7 @@ import { SMPopupComponent } from './staff-management/sm-popup.component';
   providers: [AuthGuard],
   entryComponents: [
     SMPopupComponent,
+    SMPopFileComponent,
   ]
 })
 export class LayoutModule { }
