@@ -86,6 +86,7 @@ export class UserService {
       status: 1,
       // TODO What should be staff status when it's first made?
       // staff: localStorage.getItem('id'),
+      // document_file: null
       isActive: true,
     };
     return this.http.post(this.serverUrl + '/api/userstatus/', body, httpOptions);
@@ -96,6 +97,7 @@ export class UserService {
       user: userId,
       status: 1,
       // staff: localStorage.getItem('id'),
+      // document_file: null
       isActive: true,
     };
     return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
@@ -110,11 +112,21 @@ export class UserService {
       user: userId,
       status: 2,
       // staff: localStorage.getItem('id'),
+      // document_file: null
       isActive: true,
     };
     return this.http.post(this.serverUrl + '/api/userstatus/', body, httpOptions);
   }
-
+  setUserStatusWait(userId): Observable<any> {
+    const body = {
+      user: userId,
+      status: 2,
+      // staff: localStorage.getItem('id'),
+      // document_file: null
+      isActive: true,
+    };
+    return this.http.put(this.serverUrl + '/api/userstatus/', body, httpOptions);
+  }
 
   setUserStatusApproved(userId): Observable<any> {
     const body = {
@@ -239,13 +251,13 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/userexerinfo/', body, httpOptions);
   }
 
-  fileUpload( fileName, fileUrl, fileSize ) {
-    const body = {
-      file_name: fileName,
-      file_url: fileUrl,
-      file_size: fileSize
-    };
-    return this.http.post(this.serverUrl + '/api/documentfile', body, {reportProgress: true, observe: 'events'});
+  fileUpload( fileName, fileUrl, fileType, fileSize ) {
+    const formData = new FormData();
+    formData.append('file_name', fileName );
+    formData.append('file_url', fileUrl );
+    formData.append('file_type', fileType );
+    formData.append('file_size', fileSize );
+    return this.http.post(this.serverUrl + '/api/documentfile/', formData, {reportProgress: true, observe: 'events'} );
   }
 }
 

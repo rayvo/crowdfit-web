@@ -56,15 +56,14 @@ export class SignupFindComponent {
   }
 
   uploadFile( file ) {
-    // TODO The below params are probably wrong. recheck file_url
     const selectedFiles = file.target.files;
-    console.log('SELECTDFILES########');
-    console.log(selectedFiles[0] );
-    console.log( selectedFiles[0].file );
-    console.log(selectedFiles[0].name);
-    console.log(selectedFiles[0].size);
 
-    this.user.fileUpload( selectedFiles[0].name, selectedFiles[0] , selectedFiles[0].size ).subscribe(
+    this.user.fileUpload(
+      selectedFiles[0].name,
+      selectedFiles[0] ,
+      selectedFiles[0].type,
+      (selectedFiles[0].size / 1024)
+      ).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.percentDone = Math.round(100 * event.loaded / event.total);
@@ -78,6 +77,7 @@ export class SignupFindComponent {
     );
   }
 
+  // TODO For CEO, let them add desc to apt
 
 
   // UserRole, UserStatus, Country (Always id=1), City, Address, Apt, Household
@@ -94,6 +94,7 @@ export class SignupFindComponent {
     // For now just assume one user is staff.
     // We will have to initialize these things when we deploy the system later
     // FOr now a random user was createde as staff
+    // Use setUserStatusWait
     this.user.createUserStatusWait(Number(localStorage.getItem('id'))).subscribe(
       data => {},
       error => {

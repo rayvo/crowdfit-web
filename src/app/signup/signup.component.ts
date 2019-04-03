@@ -128,6 +128,7 @@ export class SignupComponent implements OnInit {
 
     createUser = () => {
         this.user.createUser(this.newUser).subscribe(
+            // TODO create: createUserStatusNone
             data => {
                 const toLoginUser = {
                     email: this.newUser.value.email,
