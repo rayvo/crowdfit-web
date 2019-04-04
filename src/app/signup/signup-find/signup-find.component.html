@@ -1,7 +1,28 @@
+
+
+<h2>
+  Welcome to CROWDFIT!<br>
+  What would you like to sign up for?<br><br>
+</h2>
+
+<nav>
+
+  <a (click)="residentClicked()">
+    커뮤니티 입주인
+  </a>
+  <a (click)="staffClicked()">
+    커뮤니티 직원
+  </a>
+  <a (click)="adminClicked()">
+    커뮤니티 대표
+  </a>
+  
+</nav>
 <br />
 <br />
 <br />
 
+<!-- TODO This button only shows up when a person has clicked a role -->
 <a type="button" (click)="openJusoDialog()">주소검색</a>
 <br />
 
@@ -9,25 +30,43 @@
 <label>{{ parsedJuso.jibunAddr }}</label>
 <br />
 
-<mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
+
+<!-- Predetermined Numbers -->
+<mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
   <input matInput [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
 </mat-form-field>
-<label *ngIf="getLS('role') == '2' && parsedJuso != ''">동</label>
-<br />
-<mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
+<label *ngIf="getLS('role') == '3' && parsedJuso != ''">동</label>
+<br *ngIf="getLS('role') == '3' && parsedJuso != ''"/>
+<mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
   <input matInput [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
 </mat-form-field>
-<label *ngIf="getLS('role') == '2' && parsedJuso != ''">호</label>
+<label *ngIf="getLS('role') == '3' && parsedJuso != ''">호</label>
 
-<label *ngIf="getLS('role') == '3' && parsedJuso != ''">부서</label>
-<mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
+<!-- Predetermined Numbers -->
+<label *ngIf="getLS('role') == '2' && parsedJuso != ''">부서</label>
+<mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
   <input matInput [(ngModel)]="department" placeholder="커뮤니티" />
 </mat-form-field>
-<br />
-<label *ngIf="getLS('role') == '3' && parsedJuso != ''">직책</label>
-<mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
+<br *ngIf="getLS('role') == '2' && parsedJuso != ''"/>
+<label *ngIf="getLS('role') == '2' && parsedJuso != ''">직책</label>
+<mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
   <input matInput [(ngModel)]="position" placeholder="트레이너" />
 </mat-form-field>
+
+<!-- Predetermined Numbers -->
+<!-- TODO FOR CEO: -->
+<!-- ADD PHONE TEXTBOX AND DESCRIPTION TEXTBOX  -->
+<label *ngIf="getLS('role') == '1' && parsedJuso != ''">Phone</label>
+<mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
+  <input matInput [(ngModel)]="aptPhone" placeholder="032XXXXXXX" />
+</mat-form-field>
+<br *ngIf="getLS('role') == '1' && parsedJuso != ''"/>
+<label *ngIf="getLS('role') == '1' && parsedJuso != ''">Description</label>
+<mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
+  <input matInput [(ngModel)]="aptDescription" placeholder="Some sort of description about apt" />
+</mat-form-field>
+
+
 <br><br><br>
 
 <input type="file" (change)="uploadFile($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg,.png">

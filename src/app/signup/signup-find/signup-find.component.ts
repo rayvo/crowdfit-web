@@ -20,6 +20,8 @@ export class SignupFindComponent {
   aptDetailsHo;
   department;
   position;
+  aptPhone;
+  aptDescription;
 
   percentDone: number;
   uploadSuccess: boolean;
@@ -35,6 +37,18 @@ export class SignupFindComponent {
     this.aptDetailsHo = '';
     this.department = '';
     this.position = '';
+    this.aptPhone = '';
+    this.aptDescription = '';
+  }
+
+  residentClicked = () => {
+    localStorage.setItem('role', '3'); // something predetermined
+  }
+  staffClicked = () => {
+    localStorage.setItem('role', '2'); // something predetermined
+  }
+  adminClicked = () => {
+    localStorage.setItem('role', '1'); // something predetermined
   }
 
   openJusoDialog() {
@@ -58,11 +72,9 @@ export class SignupFindComponent {
   uploadFile( file ) {
     const selectedFiles = file.target.files;
 
-    this.user.createDocFile(
-      selectedFiles[0].name,
-      selectedFiles[0] ,
-      selectedFiles[0].type,
-      (selectedFiles[0].size / 1024)
+    this.user.uploadFile(
+      localStorage.getItem('id'),
+      selectedFiles[0]
       ).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {

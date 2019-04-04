@@ -20,11 +20,11 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  // POST	/api/users/
-  // "fullname: INPUT,
-  // email: INPUT,
-  // password: INPUT,
-  // phone: INPUT"
+  // POST	/api/v2/create_user/
+  // fullname: TEXT,
+  // email: TEXT,
+  // password: TEXT,
+  // phone: TEXT
   createUser(userData): Observable<any> {
     let phonenullcheck = '1';
     if (userData.value.phone === '') {
@@ -34,19 +34,18 @@ export class UserService {
     }
 
     const body = {
-      username: userData.value.username,
+      fullname: userData.value.username,
       email: userData.value.email,
       password: userData.value.password,
       phone: phonenullcheck
     };
 
-    return this.http.post(this.serverUrl + '/api/users/', body, httpOptions);
+    return this.http.post(this.serverUrl + '/api/v2/create_user/', body, httpOptions);
   }
 
   // POST	/api/v2/auth/
-  // "email: INPUT,
-  // password: INPUT"
-
+  // email: INPUT,
+  // password: INPUT
   loginUser(userData): Observable<any> {
     return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions);
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
@@ -56,21 +55,19 @@ export class UserService {
 
 
   // POST	/api/address/
-  // "name: .bdNm,
-  // cityId: **siNm,
-  // a_gu: .sggNm,
-  // a_dong: emdNm,
-  // a_road: rn,
-  // a_detail: buldMnnm + buldSlno,
-  // postcode: zipNo,
-  // phone: INPUT,
-  // desc: INPUT,
-  // lat: ?,
-  // lon: ?,
-  // address_id: ? (admCd+rnMgtSn) or bdMgtSn
-  // is_active: false"
-
-  createApt( jusoInfo, input ): Observable<any> {
+  // name: TEXT
+  // city_id: INT
+  // address_gu: TEXT
+  // address_dong: TEXT
+  // address_road: TEXT
+  // address_detail: TEXT
+  // postcode: TEXT
+  // phone:TEXT
+  // latitude:decimal
+  // longitude:decimal
+  // description:TEXT
+  // user_role_status_id: INT
+  createApt( jusoInfo, input, ursId ): Observable<any> {
     const body = {
       name: jusoInfo.bdNm,
       cityId: jusoInfo.siNm,
@@ -80,26 +77,46 @@ export class UserService {
       a_detail: '' + jusoInfo.buldMnnm + jusoInfo.buldSlno,
       postcode: jusoInfo.zipNo,
       phone: input.phone,
-      desc: input.desc,
       // lat: ?,
       // lon: ?,
-      // address_id: jusoInfo.bdMgtSn, // ? (admCd+rnMgtSn) or bdMgtSn
-      is_active: false
-
+      desc: input.desc,
+      user_role_status_id: ursId,
     };
-    return this.http.post(this.serverUrl + '/api/address/', body, httpOptions);
+    return this.http.post(this.serverUrl + '/api/v2/apartment/', body, httpOptions);
   }
 
   // PUT	/api/address/
-  // "id: id
-  // is_active: true"
-
-  updateApt( data, boo ): Observable<any> {
+  // apartment_id: INT
+  // name: TEXT
+  // city_id: INT
+  // address_gu: TEXT
+  // address_dong: TEXT
+  // address_road: TEXT
+  // address_detail: TEXT
+  // postcode: TEXT
+  // phone:TEXT
+  // latitude:TEXT
+  // longitude:TEXT
+  // description:TEXT
+  // is_active: BOOLEAN
+  // user_role_status_id: INT
+  updateApt( apt, myActive, ursId ): Observable<any> {
     const body = {
-      id: data,
-      is_active: boo
+      apartment_id: apt.id,
+      name: apt.name,
+      city_id: apt.city_id,
+      address_gu: apt.address_gu,
+      address_dong: apt.address_dong,
+      address_detail: apt.address_detail,
+      postcode: apt.postcode,
+      phone: apt.phone,
+      // lat: ?,
+      // lon: ?,
+      description: apt.description,
+      is_active: myActive,
+      user_role_status_id: ursId,
     };
-    return this.http.put(this.serverUrl + '/api/address/', body, httpOptions);
+    return this.http.put(this.serverUrl + 	'/api/v2/apartment/' + apt.id, body, httpOptions);
   }
 
   // POST	/api/address/
@@ -114,33 +131,30 @@ export class UserService {
     return this.http.post(this.serverUrl + '/api/address/', body, httpOptions);
   }
 
-  // GET	/api/address/?
-  // is_active : boolean
-  getAptByIsActive( param ): Observable<any> {
-    const params = new HttpParams().set('is_active', param);
-    return this.http.get(this.serverUrl + '/api/address/', {headers: httpOptions.headers, params: params});
-  }
+
 
   // POST	/api/department/
-  // "name: INPUT,
+  // name: INPUT,
   // apartment_id: FUNCTION,
-  // description: INPUT,"
-  createDept( myName, myId, myDesc): Observable <any> {
+  // description: INPUT,
+  // user_role_status_id: INT
+  createDept( myName, myId, myDesc, ursId ): Observable <any> {
     const body = {
       name: myName,
       apartment_id: myId,
-      description: myDesc
+      description: myDesc,
+      user_role_status_id: ursId,
     };
-    return this.http.post(this.serverUrl + '/api/department/', body, httpOptions);
+    return this.http.post(this.serverUrl + '/api/v2/department/', body, httpOptions);
   }
 
   // POST	/api/role/
-  // "role INPUT,
+  // role INPUT,
   // description: INPUT,
-  // is_active: boolean"
+  // user_role_status_id: INT
   createRole(myRole, myDesc, myActive): Observable<any> {
     const body = {
-      role: MatYearView,
+      role: myRole,
       description: myDesc,
       is_active: myActive
     };
@@ -148,33 +162,38 @@ export class UserService {
   }
 
   // PUT	/api/role/
-  // "id: id
-  // is_active: true"
-
-  updateRole(myId, myActive): Observable < any > {
+  // id: INT
+  // role: TEXT,
+  // description: TEXT
+  // is_active: BOOLEAN
+  // user_role_status_id: INT
+  updateRole(role, myActive, ursId): Observable < any > {
     const body = {
-      id: myId,
-      is_active: myActive
+      id: role.id,
+      role: role.id,
+      description: role.description,
+      is_active: myActive,
+      user_role_status_id: ursId,
     };
     return this.http.put(this.serverUrl + '/api/role/', body, httpOptions);
   }
 
   //   POST	/api/departmentrole/
-  //   "department_id: FUNCTION,
-  // role_id: FUNCTION,
-  // is_active: boolean"
-  createDeptRole( myId, myRoleId, myActive): Observable < any > {
+  // department_id: INT,
+  // role_id: INT
+  // user_role_status_id: INT
+  createDeptRole( myId, myRoleId, ursId): Observable < any > {
     const body = {
       id: myId,
       role_id: myRoleId,
-      is_active: myActive
+      user_role_status_id: ursId
     };
     return this.http.post(this.serverUrl + '/api/departmentrole/', body, httpOptions);
   }
 
   //   PUT	/api/departmentrole/
-  //   "id: id
-  // is_active: true"
+  // id: id
+  // is_active: true
   updateDeptRole(myId, myActive): Observable < any > {
     const body = {
       id: myId,
@@ -183,19 +202,77 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/departmentrole/', body, httpOptions);
   }
 
-  // POST	/api/documentfile/	"
-  // file_name: file_name
-  // file_url: **File
-  // file_type: file_type,
-  // file_size: file_size,"
-  createDocFile(fileName, fileUrl, fileType, fileSize) {
+  // POST	/api/v2/upload_doc_file/
+  // user_id: INT
+  // doc_file: file,
+  uploadFile(userId, file ): Observable < any > {
     const formData = new FormData();
-    formData.append('file_name', fileName);
-    formData.append('file_url', fileUrl);
-    formData.append('file_type', fileType);
-    formData.append('file_size', fileSize);
-    return this.http.post(this.serverUrl + '/api/documentfile/', formData, { reportProgress: true, observe: 'events' });
+    formData.append('user_id', userId);
+    formData.append('doc_file', file);
+    return this.http.post(this.serverUrl + '/api/v2/upload_doc_file/', formData, { reportProgress: true, observe: 'events' });
   }
+
+
+  // Can't add body to delete, thus passing ????
+  // DELETE	/api/v2/upload_doc_file/
+  // document_file_id: INT
+  // user_id: INT
+  deleteFile( fileId, userId  ): Observable < any > {
+    // const formData = new FormData();
+    // formData.append('document_file_id', fileId);
+    // formData.append('user_id', userId);
+    // const options = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //   }),
+    //   body: {
+    //     id: 1,
+    //     name: 'test',
+    //   },
+    // };
+    return this.http.delete(this.serverUrl + '/api/v2/upload_doc_file/'  + fileId, options);
+  }
+
+  // PUT /api/v2/upload_doc_file/
+  // document_file_id: INT
+  // doc_file: file
+  // user_id: INT
+  updateFile( fileId, file, userId ): Observable < any > {
+    const formData = new FormData();
+    formData.append('document_file_id', fileId);
+    formData.append('doc_file', file);
+    formData.append('user_id', userId);
+    return this.http.put(this.serverUrl + '/api/v2/upload_doc_file/', formData, httpOptions);
+  }
+
+  // POST /api/v2/request_user_role_status
+  // user_id: INT
+  // department_role_id: INT
+  // document_file_id: INT/NULL
+  userRegister( userId, drId, fileId ): Observable<any> {
+    const body = {
+      user_id: userId,
+      department_role_id: drId,
+      document_file_id: fileId,
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/request_user_role_status', body, httpOptions);
+  }
+
+
+  // TODO on xls file it says document_id instead of document_file_id
+  // POST TODO CHECK LINK!!!!
+  // user_id: INT
+  // department_role_id: INT
+  // document_file_id: INT/NULL
+  ceoRegister( userId, aptId, fileId ): Observable<any> {
+    const body = {
+      user_id: userId,
+      apt_id: aptId,
+      document_file_id: fileId,
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/???????', body, httpOptions);
+  }
+
 
   //   POST	/api/userrolestatus/
   // "user_id: localStorage,
@@ -204,14 +281,14 @@ export class UserService {
   // staff_id: null,
   // document_file_id: null,
   // is_active: false"
-  createURSApplying(): Observable < any > {
+/*  createURSApplying(): Observable < any > {
     const body = {
       user_id: localStorage.getItem('id'),
       status_id: 1, // something predetermined
       is_active: false,
     };
     return this.http.post(this.serverUrl + '/api/userrolestatus/', body, httpOptions);
-  }
+  } */
 
   //   PUT	/api/userrolestatus/
   //   "id: No Change
