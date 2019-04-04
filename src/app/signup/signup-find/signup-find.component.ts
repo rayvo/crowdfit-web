@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JusoService } from 'src/app/services/juso.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material';
 import { SignupFindJusoComponent } from './signup-find-juso.component';
-import { HttpClient } from 'selenium-webdriver/http';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup-find',
@@ -12,8 +12,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
   styleUrls: ['./signup-find.component.scss'],
   providers: [JusoService, UserService]
 })
-export class SignupFindComponent {
-
+export class SignupFindComponent implements OnInit {
   selectedJuso;
   parsedJuso;
   aptDetailsDong;
@@ -26,11 +25,14 @@ export class SignupFindComponent {
   percentDone: number;
   uploadSuccess: boolean;
 
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
 
   constructor(
     private user: UserService,
     private dialog: MatDialog,
-    ) {
+    private formBuilder: FormBuilder) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
     this.parsedJuso = '';
     this.aptDetailsDong = '';
@@ -41,22 +43,33 @@ export class SignupFindComponent {
     this.aptDescription = '';
   }
 
-  residentClicked = () => {
-    localStorage.setItem('role', '3'); // something predetermined
+  ngOnInit() {
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this.formBuilder.group({
+      thirdCtrl1: ['', Validators.required],
+      thirdCtrl2: ['', Validators.required]
+    });
   }
-  staffClicked = () => {
-    localStorage.setItem('role', '2'); // something predetermined
+
+
+  roleClicked = (role) => {
+    localStorage.setItem('role', role); // something predetermined
+    this.firstFormGroup.controls['firstCtrl'].setErrors(null);
   }
-  adminClicked = () => {
-    localStorage.setItem('role', '1'); // something predetermined
-  }
+
 
   openJusoDialog() {
     const dialogRef = this.dialog.open(SignupFindJusoComponent);
 
     dialogRef.afterClosed().subscribe(
       result => {
-        this.parsedJuso = JSON.parse( result );
+        this.parsedJuso = JSON.parse(result);
+        this.secondFormGroup.controls['secondCtrl'].setErrors(null);
       },
       error => {
         console.log(error);
@@ -69,16 +82,13 @@ export class SignupFindComponent {
     return localStorage.getItem(key);
   }
 
-  uploadFile( file ) {
+  uploadFile(file) {
     const selectedFiles = file.target.files;
 
-    this.user.uploadFile(
-      localStorage.getItem('id'),
-      selectedFiles[0]
-      ).subscribe(
+    this.user.uploadFile(localStorage.getItem('id'), selectedFiles[0]).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
-          this.percentDone = Math.round(100 * event.loaded / event.total);
+          this.percentDone = Math.round((100 * event.loaded) / event.total);
         } else if (event instanceof HttpResponse) {
           this.uploadSuccess = true;
         }
@@ -90,7 +100,6 @@ export class SignupFindComponent {
   }
 
   // TODO For CEO, let them add desc to apt
-
 
   // UserRole, UserStatus, Country (Always id=1), City, Address, Apt, Household
   applyClicked = () => {

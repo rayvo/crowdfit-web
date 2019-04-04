@@ -5,10 +5,10 @@ import { AuthGuard } from './shared';
 import { NoAuthGuard } from './shared/guard/no-auth.guard';
 
 const routes: Routes = [
-    // { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
-    // { path: 'login', loadChildren: './login/login.module#LoginModule', canActivate: [NoAuthGuard] },
-    { path: '', loadChildren: './layout/layout.module#LayoutModule' },
-    { path: 'login', loadChildren: './login/login.module#LoginModule' },
+    { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
+    { path: 'login', loadChildren: './login/login.module#LoginModule', canActivate: [NoAuthGuard] },
+    // { path: '', loadChildren: './layout/layout.module#LayoutModule' },
+    // { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },
     { path: 'access-denied', loadChildren: './access-denied/access-denied.module#AccessDeniedModule' },

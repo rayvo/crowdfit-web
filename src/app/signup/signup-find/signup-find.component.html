@@ -1,93 +1,114 @@
+<h2>Welcome to CROWDFIT!<br /></h2>
+
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>What would you like to sign up as?</ng-template>
+
+      <!-- Roles are predetermined -->
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle (click)="roleClicked(3)">커뮤니티 입주인</mat-button-toggle>
+        <mat-button-toggle (click)="roleClicked(2)">커뮤니티 직원</mat-button-toggle>
+        <mat-button-toggle (click)="roleClicked(1)">커뮤니티 대표</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
 
 
-<h2>
-  Welcome to CROWDFIT!<br>
-  What would you like to sign up for?<br><br>
-</h2>
+      <!-- TODO This button only shows up when a person has clicked a role -->
+      <a type="button" (click)="openJusoDialog()">주소검색</a>
+      <br />
 
-<nav>
+      <label *ngIf="parsedJuso != ''">Selected Juso</label><br />
+      <label>{{ parsedJuso.jibunAddr }}</label>
+      <br />
 
-  <a (click)="residentClicked()">
-    커뮤니티 입주인
-  </a>
-  <a (click)="staffClicked()">
-    커뮤니티 직원
-  </a>
-  <a (click)="adminClicked()">
-    커뮤니티 대표
-  </a>
-  
-</nav>
-<br />
-<br />
-<br />
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Fill out Details</ng-template>
 
-<!-- TODO This button only shows up when a person has clicked a role -->
-<a type="button" (click)="openJusoDialog()">주소검색</a>
-<br />
+      <!-- Predetermined Numbers -->
+      <mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
+        <input matInput formControlName='thirdCtrl1' [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
+      </mat-form-field>
+      <label *ngIf="getLS('role') == '3' && parsedJuso != ''">동</label>
+      <br *ngIf="getLS('role') == '3' && parsedJuso != ''" />
+      <mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
+        <input matInput formControlName='thirdCtrl2' [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
+      </mat-form-field>
+      <label *ngIf="getLS('role') == '3' && parsedJuso != ''">호</label>
 
-<label *ngIf="parsedJuso != ''">Selected Juso</label><br />
-<label>{{ parsedJuso.jibunAddr }}</label>
-<br />
+      <!-- Predetermined Numbers -->
+      <label *ngIf="getLS('role') == '2' && parsedJuso != ''">부서</label>
+      <mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
+        <input matInput formControlName='thirdCtrl1' [(ngModel)]="department" placeholder="커뮤니티" />
+      </mat-form-field>
+      <br *ngIf="getLS('role') == '2' && parsedJuso != ''" />
+      <label *ngIf="getLS('role') == '2' && parsedJuso != ''">직책</label>
+      <mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
+        <input matInput formControlName='thirdCtrl2' [(ngModel)]="position" placeholder="트레이너" />
+      </mat-form-field>
 
+      <!-- Predetermined Numbers -->
+      <label *ngIf="getLS('role') == '1' && parsedJuso != ''">Phone</label>
+      <mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
+        <input matInput formControlName='thirdCtrl1' [(ngModel)]="aptPhone" placeholder="032XXXXXXX" />
+      </mat-form-field>
+      <br *ngIf="getLS('role') == '1' && parsedJuso != ''" />
+      <label *ngIf="getLS('role') == '1' && parsedJuso != ''">Description</label>
+      <mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
+        <input matInput formControlName='thirdCtrl2' [(ngModel)]="aptDescription" placeholder="Some sort of description about apt" />
+      </mat-form-field>
 
-<!-- Predetermined Numbers -->
-<mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
-  <input matInput [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
-</mat-form-field>
-<label *ngIf="getLS('role') == '3' && parsedJuso != ''">동</label>
-<br *ngIf="getLS('role') == '3' && parsedJuso != ''"/>
-<mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
-  <input matInput [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
-</mat-form-field>
-<label *ngIf="getLS('role') == '3' && parsedJuso != ''">호</label>
+      <br /><br /><br />
 
-<!-- Predetermined Numbers -->
-<label *ngIf="getLS('role') == '2' && parsedJuso != ''">부서</label>
-<mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
-  <input matInput [(ngModel)]="department" placeholder="커뮤니티" />
-</mat-form-field>
-<br *ngIf="getLS('role') == '2' && parsedJuso != ''"/>
-<label *ngIf="getLS('role') == '2' && parsedJuso != ''">직책</label>
-<mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
-  <input matInput [(ngModel)]="position" placeholder="트레이너" />
-</mat-form-field>
+      <input type="file" (change)="uploadFile($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg,.png" />
 
-<!-- Predetermined Numbers -->
-<!-- TODO FOR CEO: -->
-<!-- ADD PHONE TEXTBOX AND DESCRIPTION TEXTBOX  -->
-<label *ngIf="getLS('role') == '1' && parsedJuso != ''">Phone</label>
-<mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
-  <input matInput [(ngModel)]="aptPhone" placeholder="032XXXXXXX" />
-</mat-form-field>
-<br *ngIf="getLS('role') == '1' && parsedJuso != ''"/>
-<label *ngIf="getLS('role') == '1' && parsedJuso != ''">Description</label>
-<mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
-  <input matInput [(ngModel)]="aptDescription" placeholder="Some sort of description about apt" />
-</mat-form-field>
+      <nav>
+        <a *ngIf="getLS('role') == '1'" routerLink="/*"> 사업자등록증첨부 </a>
+        <br *ngIf="getLS('role') == '1'" />
+        <br *ngIf="getLS('role') == '1'" />
+        <a *ngIf="getLS('role') == '2'" routerLink="/*"> 첨부 </a>
+        <br *ngIf="getLS('role') == '2'" />
+        <br *ngIf="getLS('role') == '2'" />
+        <a *ngIf="getLS('role') == '3'" routerLink="/*"> 등본 첨부 </a>
+        <br *ngIf="getLS('role') == '3'" />
+        <br *ngIf="getLS('role') == '3'" />
+      </nav>
 
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
 
-<br><br><br>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
 
-<input type="file" (change)="uploadFile($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg,.png">
-
-
-
-<nav>
-  <a *ngIf="getLS('role') == '1'" routerLink="/*"> 사업자등록증첨부 </a>
-  <br *ngIf="getLS('role') == '1'" />
-  <br *ngIf="getLS('role') == '1'" />
-  <a *ngIf="getLS('role') == '2'" routerLink="/*"> 첨부 </a>
-  <br *ngIf="getLS('role') == '2'" />
-  <br *ngIf="getLS('role') == '2'" />
-  <a *ngIf="getLS('role') == '3'" routerLink="/*"> 등본 첨부 </a>
-  <br *ngIf="getLS('role') == '3'" />
-  <br *ngIf="getLS('role') == '3'" />
-  
-
-  <a (click)="applyClicked()" routerLink="/signup/applied">
-    승인요청
-  </a>
-</nav>
+<a (click)="applyClicked()" routerLink="/signup/applied">
+  승인요청
+</a>
 <br /><br /><br />
 <br /><br /><br />

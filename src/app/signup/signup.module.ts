@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatFormFieldModule, MatInputModule, MatIconModule, MatDialogModule } from '@angular/material';
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatIconModule,
+  MatDialogModule,
+  MatButtonToggleModule,
+  MatStepperModule,
+  MatButtonModule,
+} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SignupRoutingModule } from './signup-routing.module';
@@ -23,6 +31,9 @@ import { SignupFindJusoComponent } from './signup-find/signup-find-juso.componen
     MatIconModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatButtonToggleModule,
+    MatStepperModule,
+    MatButtonModule,
 
   ],
   declarations: [

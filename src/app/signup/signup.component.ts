@@ -144,7 +144,7 @@ export class SignupComponent implements OnInit {
         }
     }
 
-    createUser = () => {/*
+    createUser = () => {
         this.user.createUser(this.newUser).subscribe(
             // TODO create: createUserStatusNone
             data => {
@@ -155,11 +155,15 @@ export class SignupComponent implements OnInit {
                 // WARNING: I (Haseung) copy pasted this code from login.component.ts
                 // If you make changes here make sure to put changes into login.component.ts - loginUser method as well
                 // I know it's bad coding but it works for now.
-                this.user.login(toLoginUser).subscribe(
+                this.user.loginUser(toLoginUser).subscribe(
                     data2 => {
                         localStorage.setItem('isLoggedin', 'true');
                         localStorage.setItem('token', data2.token);
                         localStorage.setItem('id', String(data2.id));
+                        // double check names for below
+                        localStorage.setItem('listlastFeature', JSON.stringify(data2.last_app_features));
+                        localStorage.setItem('listurs', JSON.stringify(data2.userrolestatus));
+                        localStorage.setItem('listapts', JSON.stringify(data2.associatedApt));
                     },
                     error => {
                         console.log(error);
@@ -171,7 +175,7 @@ export class SignupComponent implements OnInit {
                 console.log('error \n' );
                 console.log(error);
             }
-        );*/
+        );
     }
 
 

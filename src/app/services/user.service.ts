@@ -230,7 +230,7 @@ export class UserService {
     //     name: 'test',
     //   },
     // };
-    return this.http.delete(this.serverUrl + '/api/v2/upload_doc_file/'  + fileId, options);
+    return this.http.delete(this.serverUrl + '/api/v2/upload_doc_file/'  + fileId, httpOptions);
   }
 
   // PUT /api/v2/upload_doc_file/
