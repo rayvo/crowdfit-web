@@ -69,7 +69,14 @@ export class SignupFindComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       result => {
         this.parsedJuso = JSON.parse(result);
-        this.secondFormGroup.controls['secondCtrl'].setErrors(null);
+        // TODO
+        // DOUBLE CHECK the function isAvailableApt
+        const isAvailable = this.user.isAvailableApt(/*SomeData*/this.parsedJuso);
+        if (/* Not Availble */true) {
+          this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
+        } else {
+          this.secondFormGroup.controls['secondCtrl'].setErrors(null);
+        }
       },
       error => {
         console.log(error);
