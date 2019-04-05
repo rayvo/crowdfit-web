@@ -99,17 +99,7 @@
 
       <input type="file" (change)="uploadFile($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg,.png" />
 
-      <nav>
-        <a *ngIf="getLS('role') == '1'" routerLink="/*"> 사업자등록증첨부 </a>
-        <br *ngIf="getLS('role') == '1'" />
-        <br *ngIf="getLS('role') == '1'" />
-        <a *ngIf="getLS('role') == '2'" routerLink="/*"> 첨부 </a>
-        <br *ngIf="getLS('role') == '2'" />
-        <br *ngIf="getLS('role') == '2'" />
-        <a *ngIf="getLS('role') == '3'" routerLink="/*"> 등본 첨부 </a>
-        <br *ngIf="getLS('role') == '3'" />
-        <br *ngIf="getLS('role') == '3'" />
-      </nav>
+      
 
       <div>
         <button mat-button matStepperPrevious>Back</button>
@@ -119,8 +109,10 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-
-    You are now done.
+    Some sort of closing statement i guess??
+    <a (click)="applyClicked()" routerLink="/signup/applied">
+      승인요청
+    </a>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
@@ -128,9 +120,7 @@
   </mat-step>
 </mat-vertical-stepper>
 
-<a (click)="applyClicked()" routerLink="/signup/applied">
-  승인요청
-</a>
+
 <br /><br /><br />
 <br /><br /><br />
 </div>

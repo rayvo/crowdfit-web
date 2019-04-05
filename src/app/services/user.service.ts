@@ -128,7 +128,7 @@ export class UserService {
       address_detail: data.detail,
       address_id: data.id
     };
-    return this.http.post(this.serverUrl + '/api/address/', body, httpOptions);
+    return this.http.post(this.serverUrl + '/api/v2/apartment/', body, httpOptions);
   }
 
 
@@ -290,8 +290,8 @@ export class UserService {
     return this.http.post(this.serverUrl + '/api/userrolestatus/', body, httpOptions);
   } */
 
-  //   PUT	/api/userrolestatus/
-  //   "id: No Change
+  // PUT	/api/userrolestatus/
+  // "id: No Change
   // user_id: No Change
   // department_role_id: FUNCTION,
   // status_id: ***
