@@ -1,8 +1,9 @@
-<h2 mat-dialog-title>Type 주소 below</h2>
+<h2 mat-dialog-title>주소 </h2>
 <mat-dialog-content class="mat-typography">
   <mat-form-field>
-    <input matInput [(ngModel)]="jusoKeyword" placeholder="텍스트적는곳" />
+    <input matInput [(ngModel)]="jusoKeyword" placeholder="ex)동이름,아파트이름, 초성 등" />
   </mat-form-field>
+
   <button mat-button>
     <a (click)="searchJusos()">주소검색</a>
   </button>
@@ -20,3 +21,8 @@
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button [mat-dialog-close]="selectedJusoStringed" cdkFocusInitial>Select</button>
 </mat-dialog-actions>
+
+
+<style>
+.mat-typography{width: 350px;}
+</style>
