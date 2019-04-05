@@ -63,15 +63,15 @@
           <ng-template matStepLabel>상세주소를 입력하세요.</ng-template>
 
           <!-- Predetermined Numbers -->
-          <mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
+          <mat-form-field *ngIf="getLS('role') == '3'">
             <input matInput formControlName="thirdCtrl1" [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
           </mat-form-field>
-          <label *ngIf="getLS('role') == '3' && parsedJuso != ''">동</label>
-          <br *ngIf="getLS('role') == '3' && parsedJuso != ''" />
-          <mat-form-field *ngIf="getLS('role') == '3' && parsedJuso != ''">
+          <label *ngIf="getLS('role') == '3'">동</label>
+          <br *ngIf="getLS('role') == '3'" />
+          <mat-form-field *ngIf="getLS('role') == '3' ">
             <input matInput formControlName="thirdCtrl2" [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
           </mat-form-field>
-          <label *ngIf="getLS('role') == '3' && parsedJuso != ''">호</label>
+          <label *ngIf="getLS('role') == '3' ">호</label>
 
           <!-- Predetermined Numbers -->
           <!--
@@ -84,9 +84,9 @@
       <mat-form-field *ngIf="getLS('role') == '2' && parsedJuso != ''">
         <input matInput formControlName='thirdCtrl2' [(ngModel)]="position" placeholder="트레이너" />
       </mat-form-field>-->
-          <mat-form-field>
-            <mat-label>부서 직책</mat-label>
-            <mat-select [formControl]="deptControl">
+          <mat-form-field *ngIf="getLS('role') == '2'">
+            <mat-label >부서 직책</mat-label>
+            <mat-select matSelect *ngIf="getLS('role') == '2'" formControlName="deptControl" >
               <mat-optgroup *ngFor="let group of deptGroups" [label]="group.name">
                 <mat-option *ngFor="let pos of group.pos" [value]="pos.value">
                   {{ pos.viewValue }}
@@ -96,13 +96,13 @@
           </mat-form-field>
 
           <!-- Predetermined Numbers -->
-          <label *ngIf="getLS('role') == '1' && parsedJuso != ''">Phone</label>
-          <mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
+          <label *ngIf="getLS('role') == '1'">Phone</label>
+          <mat-form-field *ngIf="getLS('role') == '1'">
             <input matInput formControlName="thirdCtrl1" [(ngModel)]="aptPhone" placeholder="032XXXXXXX" />
           </mat-form-field>
-          <br *ngIf="getLS('role') == '1' && parsedJuso != ''" />
-          <label *ngIf="getLS('role') == '1' && parsedJuso != ''">Description</label>
-          <mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
+          <br *ngIf="getLS('role') == '1'" />
+          <label *ngIf="getLS('role') == '1'">Description</label>
+          <mat-form-field *ngIf="getLS('role') == '1'">
             <input matInput formControlName="thirdCtrl2" [(ngModel)]="aptDescription" placeholder="Some sort of description about apt" />
           </mat-form-field>
 
