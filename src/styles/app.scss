@@ -5,6 +5,8 @@
 @import "rtl";
 @import "responsive";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// theme.scss
+
 @media print {
      .breadcrumb {
         display: none !important;
