@@ -2,7 +2,7 @@
       <div class="container">
 
     <mat-card>
-      <h1>역할등록</h1></mat-card>
+      역할등록</mat-card>
 <mat-vertical-stepper [linear]="true" #stepper>
 
   <mat-step [stepControl]="firstFormGroup">
@@ -13,7 +13,7 @@
       <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
 
         <mat-button-toggle (click)="roleClicked(3)">
-          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+          <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
             <path
               d="M6 7v-7h13v10h5v14h-23v-17h5zm0 16v-4h-1v4h1zm8-4h-3v4h3v-4zm6 0h-1v4h1v-4zm2-7h-3v6h2v4h1v-10zm-5-10h-9v20h1v-5h7v5h1v-20zm-13 20v-4h2v-9h-3v13h1zm17-6h-1v-2h1v2zm-17-2h1v2h-1v-2zm8 1h-2v-2h2v2zm3 0h-2v-2h2v2zm-10-4v2h-1v-2h1zm7 1h-2v-2h2v2zm3 0h-2v-2h2v2zm-3-3h-2v-2h2v2zm3 0h-2v-2h2v2zm-3-3h-2v-2h2v2zm3 0h-2v-2h2v2z" />
             </svg>
@@ -33,7 +33,7 @@
       </mat-button-toggle-group>
 
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext class="next border-top-0">다음</button>
       </div>
     </form>
   </mat-step>
@@ -44,16 +44,16 @@
 
 
       <!-- TODO This button only shows up when a person has clicked a role -->
-      <a type="button" (click)="openJusoDialog()">주소검색</a>
+      <a type="button" class=juso-serch (click)="openJusoDialog()">주소검색</a>
       <br />
 
-      <label *ngIf="parsedJuso != ''">Selected Juso</label><br />
+      <label *ngIf="parsedJuso != ''">검색된 주소</label><br />
       <label>{{ parsedJuso.jibunAddr }}</label>
       <br />
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>뒤로</button>
+        <button mat-button matStepperNext>다음</button>
       </div>
     </form>
   </mat-step>
@@ -91,7 +91,7 @@
       <br *ngIf="getLS('role') == '1' && parsedJuso != ''" />
       <label *ngIf="getLS('role') == '1' && parsedJuso != ''">Description</label>
       <mat-form-field *ngIf="getLS('role') == '1' && parsedJuso != ''">
-        <input matInput formControlName='thirdCtrl2' [(ngModel)]="aptDescription"
+        <input matInput formControlName='thirdC77trl2' [(ngModel)]="aptDescription"
           placeholder="Some sort of description about apt" />
       </mat-form-field>
 
