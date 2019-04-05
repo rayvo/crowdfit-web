@@ -94,7 +94,6 @@ export class SignupFindComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       result => {
-        console.log( result != null );
         if ( result != null ) {
           this.parsedJuso = JSON.parse(result);
           // TODO
