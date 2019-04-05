@@ -39,24 +39,36 @@ nav a {
 }
 nav a:visited,
 a:link {
-  color:#f37a20;
+
 }
 nav a:hover {
 }
 nav a.active {
-  color: #039be5;
+  color:  #f37a20;
 }
 mat-button-toggle-group {
-  margin-left: 12px;
+  
   :hover,:link{
     background-color: #f37a20;
-  color: #fff;}
+  color: #fff;
+fill:#fff;
+border:1fx solid  #f37a20;}
 
 }
-mat-card{
- background-color:#eee;}
+mat-card{margin-bottom: 10px;
+}
 
-.container{width: 500px; margin: 40px auto;}
+.container{width: 500px; height: auto; margin: 40px auto;}
+.next{
+  width:400px;
+  background: #eee;}
 
 
-a svg:hover{color: #fff;}
+.icon{width: 40px;}
+
+
+
+
+
+.mat-step-icon-selected
+{background-color:  #f37a20; }
