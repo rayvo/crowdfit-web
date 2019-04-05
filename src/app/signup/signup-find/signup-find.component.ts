@@ -4,7 +4,18 @@ import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material';
 import { SignupFindJusoComponent } from './signup-find-juso.component';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
+export interface Pos {
+  value: string;
+  viewValue: string;
+}
+
+export interface Dept {
+  name: string;
+  pos: Pos[];
+}
+
 
 @Component({
   selector: 'app-signup-find',
@@ -29,10 +40,14 @@ export class SignupFindComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
+  deptGroups: Dept[];
+  deptControl = new FormControl();
+
   constructor(
     private user: UserService,
     private dialog: MatDialog,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder
+  ) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
     this.parsedJuso = '';
     this.aptDetailsDong = '';
@@ -59,6 +74,17 @@ export class SignupFindComponent implements OnInit {
 
   roleClicked = (role) => {
     localStorage.setItem('role', role); // something predetermined
+    if (role === 2) {
+      this.setDeptPosList();
+      this.thirdFormGroup.controls['thirdCtrl1'].setErrors(null);
+      this.thirdFormGroup.controls['thirdCtrl2'].setErrors(null);
+      this.deptControl.setErrors({'incorrect': true});
+    } else {
+      this.thirdFormGroup.controls['thirdCtrl1'].setErrors({'incorrect': true});
+      this.thirdFormGroup.controls['thirdCtrl2'].setErrors({'incorrect': true});
+      this.deptControl.setErrors({'incorrect': null});
+    }
+
     this.firstFormGroup.controls['firstCtrl'].setErrors(null);
   }
 
@@ -94,6 +120,41 @@ export class SignupFindComponent implements OnInit {
   getLS(key) {
     return localStorage.getItem(key);
   }
+
+  setDeptPosList() {
+    // TODO
+    // Call getDPByApt in the db
+    // For now temp and fake data
+    this.deptGroups = [
+      {
+        name: 'Management',
+        pos: [
+          {value: '1', viewValue: 'General'},
+          {value: '2', viewValue: 'English Affairs'},
+          {value: '3', viewValue: 'Quality Assurance'}
+        ]
+      },
+      {
+        name: 'Finance',
+        pos: [
+          {value: '4', viewValue: 'Wages' },
+          {value: '5', viewValue: 'Budget'},
+        ]
+      },
+      {
+        name: 'Human Resource',
+        pos: [
+          {value: '6', viewValue: 'Head' },
+          {value: '7', viewValue: 'Emergency Affairs'},
+          {value: '8', viewValue: 'Rule Enforcement'},
+        ]
+      },
+
+    ];
+
+  }
+
+
 
   uploadFile(file) {
     const selectedFiles = file.target.files;
