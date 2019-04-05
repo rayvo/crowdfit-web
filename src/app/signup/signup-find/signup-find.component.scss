@@ -1,3 +1,19 @@
+.login-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background: url(/assets/images/mypage/bg2.jpg) no-repeat scroll center center / cover;
+  text-align: center;
+  padding: 3em;
+
+}
+
+
+
+
 h1 {
   font-size: 1.2em;
   color: #999;
@@ -23,15 +39,24 @@ nav a {
 }
 nav a:visited,
 a:link {
-  color: #607d8b;
+  color:#f37a20;
 }
 nav a:hover {
-  color: #039be5;
-  background-color: #cfd8dc;
 }
 nav a.active {
   color: #039be5;
 }
 mat-button-toggle-group {
   margin-left: 12px;
+  :hover,:link{
+    background-color: #f37a20;
+  color: #fff;}
+
 }
+mat-card{
+ background-color:#eee;}
+
+.container{width: 500px; margin: 40px auto;}
+
+
+a svg:hover{color: #fff;}

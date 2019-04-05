@@ -10,6 +10,7 @@ import {
   MatStepperModule,
   MatButtonModule,
 } from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SignupRoutingModule } from './signup-routing.module';
@@ -34,7 +35,7 @@ import { SignupFindJusoComponent } from './signup-find/signup-find-juso.componen
     MatButtonToggleModule,
     MatStepperModule,
     MatButtonModule,
-
+    MatCardModule
   ],
   declarations: [
     SignupComponent,

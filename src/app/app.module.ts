@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { StoreProcuctRoutingModule } from './layout/store-management/store-product-management/store-procuct-routing.module';
-import { NoAuthGuard } from './shared/guard/no-auth.guard';
+import { NoAuthGuard } from './shared/guard/no-auth.guard'; './layout/components/header/header.component';
 
 
 // AoT requires an exported function for factories
@@ -35,6 +35,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
+
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
