@@ -48,7 +48,7 @@ nav a.active {
 }
 mat-button-toggle-group {
   
-  :hover,:link{
+  :hover,:link,:active{
     background-color: #f37a20;
   color: #fff;
 fill:#fff;
