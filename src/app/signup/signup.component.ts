@@ -169,7 +169,7 @@ export class SignupComponent implements OnInit {
                         console.log(error);
                     }
                 );
-                this.router.navigate(['/signup/welcome']);
+                this.router.navigate(['/signup/apply']);
             },
             error => {
                 console.log('error \n' );
