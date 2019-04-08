@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../router.animations';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../services/user.service';
-import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm, AbstractControl } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
-import { RepeatPasswordEStateMatcher, PasswordValidation, RepeatPasswordValidator } from './signup.validators';
 import { Router } from '@angular/router';
 import { PhoneVerificationService } from '../services/phone-verification.service';
+import {
+    RepeatPasswordEStateMatcher,
+    PasswordValidation,
+    RepeatPasswordValidator,
+    VNumEStateMatcher,
+    VNumValidation,
+    VNumValidator,
+} from './signup.validators';
 
 @Component({
     selector: 'app-signup',
@@ -30,19 +37,11 @@ export class SignupComponent implements OnInit {
         this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de|zh-CHS/) ? browserLang : 'en');
 
         this.newUser = this.createFormGroup();
-        /*{
-            id: -1,
-            username: '',
-            email: '',
-            password: '',
-            cPassword: '',
-            phonenumber: '',
-        };*/
     }
 
     newUser: FormGroup;
     passwordMatcher = new RepeatPasswordEStateMatcher;
-    verificationNum = -1;
+    vNumMatcher = new VNumEStateMatcher;
 
 
     ngOnInit() {}
@@ -52,12 +51,15 @@ export class SignupComponent implements OnInit {
             // id: new FormControl(-1),
             username: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.required, Validators.email]),
-            password: new FormControl('', PasswordValidation),
-            cpassword: new FormControl(''),
-            phone: new FormControl(''),
-            vNum: new FormControl('', [Validators.required]),
+            password: new FormControl('', [Validators.required]),
+            cpassword: new FormControl('', PasswordValidation),
+            phone: new FormControl('', [Validators.required]),
+            vNum: new FormControl('111111'),
+            cVNum: new FormControl('', VNumValidation),
 
-        }, { validators: RepeatPasswordValidator });
+        }, {
+            validators: [RepeatPasswordValidator, VNumValidator]
+        });
     }
     revert() {
         this.newUser.reset();
@@ -88,6 +90,9 @@ export class SignupComponent implements OnInit {
     get vNum() {
         return this.newUser.get('vNum');
     }
+    get cVNum() {
+        return this.newUser.get('cVNum');
+    }
 
     // getErrorMessage() {
     //   return this.newUser.get.hasError('required') ? 'You must enter a value' :
@@ -114,18 +119,25 @@ export class SignupComponent implements OnInit {
     //         return '';
     //     }
     // }
+    getPhoneErrorMessage() {
+        return this.phone.hasError('required') ? 'You must enter a phone number' : '';
+    }
+    // getVNumErrorMessage() {
+    //     return this.vNum.hasError('required') ? 'You must enter a verication number' :
+    //         this.vNum.hasError('incorrect') ? 'The number you entered is incorrect' : '';
+    // }
+
+
+
+
 
     // TODO Check if working
     sendVerification() {
-        this.verificationNum = Math.floor((Math.random() * 500000) + 499999);
+        this.newUser.get('vNum').setValue(String(Math.floor((Math.random() * 500000) + 499999)));
         const phon = this.newUser.get('phone').value;
         const dest = phon + '|' + this.newUser.get('username').value;
-        console.log('############################');
-        console.log(this.verificationNum);
-        console.log(phon);
-        console.log(dest);
-        console.log('############################');
-        this.phoneV.sendMessage( phon, dest, this.verificationNum ).subscribe(
+        console.log(this.newUser.get('vNum').value);
+        this.phoneV.sendMessage( phon, dest, this.newUser.get('vNum').value ).subscribe(
             data => {
                 console.log(data);
             },
@@ -134,14 +146,6 @@ export class SignupComponent implements OnInit {
             }
         );
 
-    }
-
-    checkVerification() {
-        if ( this.vNum.value === this.verificationNum ) {
-            // make valid
-        } else {
-            return this.vNum.hasError('required') ? 'Could not verify' : '';
-        }
     }
 
     createUser = () => {
@@ -172,7 +176,6 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/signup/apply']);
             },
             error => {
-                console.log('error \n' );
                 console.log(error);
             }
         );
@@ -181,3 +184,29 @@ export class SignupComponent implements OnInit {
 
 }
 
+// export function MatchPasswords( c: AbstractControl ): {[key: string]: any}  {
+//     return (group: FormGroup) => {
+//         const control = c.get('password');
+//         const test = c.get('cpassword');
+//         if ( test.errors && !test.errors.match ) {
+//             return;
+//         }
+//         if ( control.value !== test.value ) {
+//             test.setErrors({ match: true });
+//         } else {
+//             test.setErrors(null);
+//         }
+//     };
+// }
+
+// function RepeatPasswordValidator(group: FormGroup) {
+//     const password = group.get('password').value;
+//     const cpassword = group.get('cpassword').value;
+//     return password === cpassword ? null : { passwordsNotEqual: true };
+// }
+
+// function VerificationValidator(group: FormGroup) {
+//     const verification = group.get('vNum').value;
+//     const cverification = group.get('cVNum').value;
+//     return verification === cverification ? null : { numsNotEqual: true };
+// }

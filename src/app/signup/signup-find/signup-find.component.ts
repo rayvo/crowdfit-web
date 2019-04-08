@@ -26,12 +26,6 @@ export interface Dept {
 export class SignupFindComponent implements OnInit {
   selectedJuso;
   parsedJuso;
-  aptDetailsDong;
-  aptDetailsHo;
-  department;
-  position;
-  aptPhone;
-  aptDescription;
 
   percentDone: number;
   uploadSuccess: boolean;
@@ -50,12 +44,6 @@ export class SignupFindComponent implements OnInit {
   ) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
     this.parsedJuso = '';
-    this.aptDetailsDong = '';
-    this.aptDetailsHo = '';
-    this.department = '';
-    this.position = '';
-    this.aptPhone = '';
-    this.aptDescription = '';
   }
 
   ngOnInit() {
@@ -172,43 +160,73 @@ export class SignupFindComponent implements OnInit {
     );
   }
 
-  // TODO For CEO, let them add desc to apt
 
-  // UserRole, UserStatus, Country (Always id=1), City, Address, Apt, Household
+  // TODO
+  // Double check service calls
   applyClicked = () => {
-    /*
-    this.user.createUserRole(Number(localStorage.getItem('id')), Number(localStorage.getItem('role'))).subscribe(
-      data => {},
-      error => {
-        console.log(error);
-      }
-    );
 
-    // TODO
-    // For now just assume one user is staff.
-    // We will have to initialize these things when we deploy the system later
-    // FOr now a random user was createde as staff
-    // Use setUserStatusWait
-    this.user.createUserStatusWait(Number(localStorage.getItem('id'))).subscribe(
-      data => {},
-      error => {
-        console.log(error);
-      }
-    );
 
-    /*
-    this.user.createUserHousehold(
-      localStorage.getItem('id'),
-      localStorage.getItem('hhId'),
-      localStorage.getItem('isOwner')
-    ).subscribe(
-      data => {
+    // Get userId from localStorage
+    // Get aptId from apt lookup for nonceo. For ceo you will be making it before ceoRegister
 
-      },
-      error => {
-        console.log(error);
+
+    switch (localStorage.getItem('role')) {
+      case '1': {
+        // TODO ask ray
+        // To create apt you need a ceo's UserRoleStatus id
+        // but to create a CEO you need apt_id
+        // Which one comes first?
+
+        // TODO request Ray
+        // I think having the user_role_status returned in ceoRegister will be very helpful
+        this.user.ceoRegister(1, 2, 3).subscribe(
+          data => {
+
+          },
+          error => {
+            console.log(error);
+          }
+        );
+        this.user.createApt(
+          this.parsedJuso,
+          this.thirdFormGroup.controls['thirdCtrl1'].value,
+          this.thirdFormGroup.controls['thirdCtrl2'].value,
+          1 // TODO user_role_status_id
+          ).subscribe(
+          data => {
+
+          },
+          error => {
+            console.log(error);
+          }
+        );
+        break;
       }
-    );
-    */
+      case '2': {
+        this.user.staffRegister(1, 2, 3).subscribe(
+          data => {
+
+          },
+          error => {
+            console.log(error);
+          }
+        );
+        break;
+      }
+      case '3': {
+        this.user.userRegister(1, 2, 3).subscribe(
+          data => {
+
+          },
+          error => {
+            console.log(error);
+          }
+        );
+        break;
+      }
+      default: {
+
+      }
+    }
   }
 }

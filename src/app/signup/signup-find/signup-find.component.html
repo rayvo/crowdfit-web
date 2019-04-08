@@ -64,19 +64,19 @@
 
           <!-- Predetermined Numbers -->
           <mat-form-field *ngIf="getLS('role') == '3'">
-            <input matInput formControlName="thirdCtrl1" [(ngModel)]="aptDetailsDong" placeholder="상세주소입력" />
+            <input matInput formControlName="thirdCtrl1" placeholder="상세주소입력" />
           </mat-form-field>
           <label *ngIf="getLS('role') == '3'">동</label>
           <br *ngIf="getLS('role') == '3' " />
           <mat-form-field *ngIf="getLS('role') == '3'">
-            <input matInput formControlName="thirdCtrl2" [(ngModel)]="aptDetailsHo" placeholder="상세주소입력" />
+            <input matInput formControlName="thirdCtrl2" placeholder="상세주소입력" />
           </mat-form-field>
           <label *ngIf="getLS('role') == '3'">호</label>
 
           <!-- Predetermined Numbers -->
           <mat-form-field *ngIf="getLS('role') == '2'">
             <mat-label>부서 직책</mat-label>
-            <mat-select matSelect *ngIf="getLS('role') == '2'" formControlName="deptControl">
+            <mat-select matSelect *ngIf="getLS('role') == '2'" [formControl]="deptControl">
               <mat-optgroup *ngFor="let group of deptGroups" [label]="group.name">
                 <mat-option *ngFor="let pos of group.pos" [value]="pos.value">
                   {{ pos.viewValue }}
@@ -88,12 +88,12 @@
           <!-- Predetermined Numbers -->
           <label *ngIf="getLS('role') == '1'">Phone</label>
           <mat-form-field *ngIf="getLS('role') == '1'">
-            <input matInput formControlName="thirdCtrl1" [(ngModel)]="aptPhone" placeholder="032XXXXXXX" />
+            <input matInput formControlName="thirdCtrl1"  placeholder="032XXXXXXX" />
           </mat-form-field>
           <br *ngIf="getLS('role') == '1'" />
           <label *ngIf="getLS('role') == '1'">Description</label>
           <mat-form-field *ngIf="getLS('role') == '1'">
-            <input matInput formControlName="thirdCtrl2" [(ngModel)]="aptDescription" placeholder="Some sort of description about apt" />
+            <input matInput formControlName="thirdCtrl2" placeholder="Some sort of description about apt" />
           </mat-form-field>
 
           <br /><br /><br />
@@ -108,7 +108,7 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        Some sort of closing statement i guess??
+        Some sort of closing statement i guess??<br>
         <a (click)="applyClicked()" routerLink="/signup/applied">
           승인요청
         </a>
@@ -119,7 +119,5 @@
       </mat-step>
     </mat-vertical-stepper>
 
-    <br /><br /><br />
-    <br /><br /><br />
   </div>
 </div>
