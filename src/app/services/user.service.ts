@@ -31,7 +31,7 @@ export class UserService {
       username: userData.value.username,
       email: userData.value.email,
       password: userData.value.password,
-      phone: userData.phone
+      phone: userData.value.phone
     };
     console.log('#################');
     console.log(body);
