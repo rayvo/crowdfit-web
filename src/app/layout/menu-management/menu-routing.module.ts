@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'bulletinboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'danji', pathMatch: 'full' },
   { path: 'danji', component: DanjiManagementComponent},
   { path: 'community', component: CommunityComponent},
   { path: 'culturecourse', component: CultureCourseComponent},

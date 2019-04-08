@@ -31,6 +31,7 @@
         </mat-form-field>
 
         <!-- PASSWORD CONFIRMATION -->
+        <!--[errorStateMatcher]="passwordMatcher"-->
         <mat-form-field>
           <mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>
           <input
@@ -38,11 +39,12 @@
             formControlName="cpassword"
             placeholder="비밀번호 확인"
             type="password"
+            class="form-control" 
             [errorStateMatcher]="passwordMatcher"
-            class="form-control"
           />
           <!--<mat-hint>Passwords must match</mat-hint>-->
           <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords do not match</mat-error>
+        
         </mat-form-field>
 
         <!--PHONE NUMBER -->
@@ -56,7 +58,11 @@
             class="form-control"
             style="max-width: 60%; border-radius: 3px;"
           />
-          <a (click)="sendVerification()" class="btn btn-primary btn-block" style="max-width: 38%; margin-left: 10px;">인증번호받기</a>
+          <mat-error *ngIf="(phone.dirty || phone.touched) && phone.invalid">{{ getPhoneErrorMessage() }}</mat-error>
+        
+          <a (click)="sendVerification()" 
+          class="btn btn-primary btn-block" 
+          style="max-width: 38%; margin-left: 10px; margin-bottom: 10px;">인증번호받기</a>
         </mat-form-field>
 
         <!--PHONE NUMBER VERIFICATION -->
@@ -65,13 +71,14 @@
           <input
             matInput
             name="인증번호입력"
-            formControlName="vNum"
+            formControlName="cVNum"
             placeholder="인증번호입력"
             type="text"
             class="form-control"
-            style="max-width: 60%; border-radius: 3px;"
+            [errorStateMatcher]="vNumMatcher"
           />
-          <a class="btn btn-primary btn-block" style="width: 38%; margin-left: 10px;" (click)="sendVerification()">확인</a>
+          <mat-error *ngIf="newUser.hasError('vNumsNotEqual')">Verificaiton Number is incorrect</mat-error>
+        
         </mat-form-field>
 
         <br /><br />
