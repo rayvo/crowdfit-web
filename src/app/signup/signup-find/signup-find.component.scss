@@ -37,44 +37,50 @@ nav a {
   background-color: #eee;
   border-radius: 4px;
 }
-nav a:visited,
-a:link {
 
-}
-nav a:hover {
-}
+a:active{color:orange;}
+
 nav a.active {
-  color:  #f37a20;
+  color:  orange;
 }
-mat-button-toggle-group {
+.mat-button-toggle-group-appearance-standard, .mat-button-toggle-standalone.mat-button-toggle-appearance-standard{
   
-  :hover,:link,:active{
-    background-color: #f37a20;
+  :hover,:link,:active, :visited, :focus, :checked {
+    background-color: orange !important;
   color: #fff;
-fill:#fff;
-border:1fx solid  #f37a20;}
 
 }
-mat-card{margin-bottom: 10px;
+
 }
 
-.container{width: 500px; height: auto; margin: 40px auto;}
+.material-icons{font-size: 40px;}
+
+.container{width: 600px; height: auto; margin: 40px auto;}
 .next{
   width:400px;
   background: #eee;}
 
 
-.icon{width: 40px;}
 
 
+
+mat-card{
+  top: 2px;}
 
 .juso-serch{
-  width: 140px;
-   height: 50px;
-   background: #eee;
-   line-height: -10px;
+  width: 100%;
+ 
+  
+  
+   font-size: 20px;
    
+  
+   
+    
 }
+.room{margin-top: 10px;}
 
-.mat-step-icon-selected
-{background-color:  #f37a20; }
+
+
+
+
