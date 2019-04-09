@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { SignupFindJusoComponent } from './signup-find-juso.component';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import proj4 from 'proj4';
 
 export interface Pos {
   value: string;
@@ -85,6 +86,44 @@ export class SignupFindComponent implements OnInit {
         if ( result != null ) {
           this.parsedJuso = JSON.parse(result);
           // TODO
+          // CALCULATE LON AND LAT and replace entX and entY
+
+
+
+          // 제공해 드리는 죄표
+          proj4.defs['EPSG:5179'] =
+          '+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m +no_defs';
+
+          // 구글 좌표계
+          // Google Mercator is now EPSG:3857, while 900913 has been dropped from the list of EPSG codes.
+          // ??
+          proj4.defs['EPSG:900913'] =
+          '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs';
+
+          const grs80 = proj4.Proj(proj4.defs['EPSG:5179']);
+          // const google = proj4.Proj(proj4.defs['EPSG:900913']);
+          const wgs84 = proj4.Proj(proj4.defs['EPSG:4326']); // 경위도
+
+          // 한국지역정보개발원 좌표
+          // let p = proj4.Point( 945959.038134181414141414 , 1953051.7348996028 );
+          let p = proj4.Point(  Number(this.parsedJuso.entX) , Number(this.parsedJuso.entY) );
+          // p = proj4.transform( grs80, google, p);
+          p = proj4.transform( grs80, wgs84, p);
+
+          // x = longitude roughly 127
+          // y = latitude roughly 37
+          // console.log(p.x + ' ' + p.y);
+          this.parsedJuso['longitude'] = p.x;
+          this.parsedJuso['latitude'] = p.y;
+          // console.log(this.parsedJuso);
+
+
+
+
+
+
+
+          // TODO
           // DOUBLE CHECK the function isAvailableApt
           const isAvailable = this.user.isAvailableApt(/*SomeData*/this.parsedJuso);
           if (/* Not Availble */false) {
@@ -142,7 +181,7 @@ export class SignupFindComponent implements OnInit {
   }
 
 
-
+  // TODO Store file id in localStorage
   uploadFile(file) {
     const selectedFiles = file.target.files;
 
@@ -179,27 +218,34 @@ export class SignupFindComponent implements OnInit {
 
         // TODO request Ray
         // I think having the user_role_status returned in ceoRegister will be very helpful
-        this.user.ceoRegister(1, 2, 3).subscribe(
-          data => {
-
-          },
-          error => {
-            console.log(error);
-          }
-        );
-        this.user.createApt(
+        this.user.ceoRegister(
+          localStorage.getItem('id'),
+          /*DocumentFile Id*/null,
           this.parsedJuso,
           this.thirdFormGroup.controls['thirdCtrl1'].value,
           this.thirdFormGroup.controls['thirdCtrl2'].value,
-          1 // TODO user_role_status_id
           ).subscribe(
           data => {
-
+            console.log('CEO REGISTER SUCCESS!');
+            console.log(data);
           },
           error => {
             console.log(error);
           }
         );
+        // this.user.createApt(
+        //   this.parsedJuso,
+        //   this.thirdFormGroup.controls['thirdCtrl1'].value,
+        //   this.thirdFormGroup.controls['thirdCtrl2'].value,
+        //   1 // TODO user_role_status_id
+        //   ).subscribe(
+        //   data => {
+
+        //   },
+        //   error => {
+        //     console.log(error);
+        //   }
+        // );
         break;
       }
       case '2': {

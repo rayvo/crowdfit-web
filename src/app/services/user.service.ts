@@ -28,13 +28,11 @@ export class UserService {
   createUser(userData): Observable<any> {
     // TODO check 'fullname' or 'username'
     const body = {
-      username: userData.value.username,
+      fullname: userData.value.username,
       email: userData.value.email,
       password: userData.value.password,
       phone: userData.value.phone
     };
-    console.log('#################');
-    console.log(body);
     return this.http.post(this.serverUrl + '/api/v2/create_user/', body, httpOptions);
   }
 
@@ -47,6 +45,120 @@ export class UserService {
     // When i logout send last feature
     // when routing update localStorage's last feature
   }
+
+
+  // TODO on xls file it says document_id instead of document_file_id
+  // POST TODO CHECK LINK!!!!
+  // user_id: INT,
+  // document_id: INT/NULL
+  // apt_name: TEXT
+  // city_id: INT
+  // address_gu: TEXT
+  // address_dong: TEXT
+  // address_road: TEXT
+  // address_detail: TEXT
+  // postcode: TEXT
+  // phone:TEXT
+  // latitude:decimal
+  // longitude:decimal
+  // description:TEXT
+  ceoRegister( userId, fileId, aptInfo, myPhone, myDesc ): Observable<any> {
+    const body = {
+      user_id: userId,
+      document_file_id: fileId,
+      apt_name: aptInfo.bdNm,
+      // TODO Ask about city id
+      city_id: 1,
+      address_gu: aptInfo.sggNm,
+      address_dong: aptInfo.emdNm + ' ' + aptInfo.lnbrMnnm + ' ' + aptInfo.lnbrSlno,
+      address_road: aptInfo.roadAddrPart1,
+      // TODO DO CEO have to add their apt name dong and ho?
+      address_detail: aptInfo.bdNm,
+      postcode: aptInfo.zipNo,
+      phone: myPhone,
+      latitude: aptInfo.latitude,
+      longitude: aptInfo.longitude,
+      description: myDesc
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/request_user_role_status/', body, httpOptions);
+  }
+
+
+
+
+
+
+/* ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ * ###############################################
+ */
+
+
+
+
+
+
+
+
+
+
+
+  // POST	/api/v2/upload_doc_file/
+  // user_id: INT
+  // doc_file: file,
+  uploadFile(userId, file ): Observable < any > {
+    const formData = new FormData();
+    formData.append('user_id', userId);
+    formData.append('doc_file', file);
+    return this.http.post(this.serverUrl + '/api/v2/upload_doc_file/', formData, { reportProgress: true, observe: 'events' });
+  }
+
+
+  // Can't add body to delete, thus passing ????
+  // DELETE	/api/v2/delete_doc_file/
+  // document_file_id: INT
+  // user_id: INT
+  deleteFile( fileId, userId  ): Observable < any > {
+    // const formData = new FormData();
+    // formData.append('document_file_id', fileId);
+    // formData.append('user_id', userId);
+    // const options = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //   }),
+    //   body: {
+    //     id: 1,
+    //     name: 'test',
+    //   },
+    // };
+    return this.http.delete(this.serverUrl + '/api/v2/delete_doc_file/'  + fileId, httpOptions);
+  }
+
+  // PUT /api/v2/upload_doc_file/
+  // document_file_id: INT
+  // doc_file: file
+  // user_id: INT
+  updateFile( fileId, file, userId ): Observable < any > {
+    const formData = new FormData();
+    formData.append('document_file_id', fileId);
+    formData.append('doc_file', file);
+    formData.append('user_id', userId);
+    return this.http.put(this.serverUrl + '/api/v2/update_doc_file/', formData, httpOptions);
+  }
+
+
 
 
   // POST	/api/address/
@@ -197,49 +309,6 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/departmentrole/', body, httpOptions);
   }
 
-  // POST	/api/v2/upload_doc_file/
-  // user_id: INT
-  // doc_file: file,
-  uploadFile(userId, file ): Observable < any > {
-    const formData = new FormData();
-    formData.append('user_id', userId);
-    formData.append('doc_file', file);
-    return this.http.post(this.serverUrl + '/api/v2/upload_doc_file/', formData, { reportProgress: true, observe: 'events' });
-  }
-
-
-  // Can't add body to delete, thus passing ????
-  // DELETE	/api/v2/upload_doc_file/
-  // document_file_id: INT
-  // user_id: INT
-  deleteFile( fileId, userId  ): Observable < any > {
-    // const formData = new FormData();
-    // formData.append('document_file_id', fileId);
-    // formData.append('user_id', userId);
-    // const options = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //   }),
-    //   body: {
-    //     id: 1,
-    //     name: 'test',
-    //   },
-    // };
-    return this.http.delete(this.serverUrl + '/api/v2/upload_doc_file/'  + fileId, httpOptions);
-  }
-
-  // PUT /api/v2/upload_doc_file/
-  // document_file_id: INT
-  // doc_file: file
-  // user_id: INT
-  updateFile( fileId, file, userId ): Observable < any > {
-    const formData = new FormData();
-    formData.append('document_file_id', fileId);
-    formData.append('doc_file', file);
-    formData.append('user_id', userId);
-    return this.http.put(this.serverUrl + '/api/v2/upload_doc_file/', formData, httpOptions);
-  }
-
   // POST /api/v2/request_user_role_status
   // user_id: INT
   // department_role_id: INT
@@ -262,19 +331,6 @@ export class UserService {
     return  this.http.post(this.serverUrl + '/api/v2/request_user_role_status', body, httpOptions);
   }
 
-  // TODO on xls file it says document_id instead of document_file_id
-  // POST TODO CHECK LINK!!!!
-  // user_id: INT
-  // apt_id: INT
-  // document_file_id: INT/NULL
-  ceoRegister( userId, aptId, fileId ): Observable<any> {
-    const body = {
-      user_id: userId,
-      apt_id: aptId,
-      document_file_id: fileId,
-    };
-    return  this.http.post(this.serverUrl + '/api/v2/request_user_role_status', body, httpOptions);
-  }
 
 
   //   POST	/api/userrolestatus/

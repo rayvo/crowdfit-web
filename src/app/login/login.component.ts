@@ -13,8 +13,13 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
   existingUser;
+  errorExists;
 
-  constructor(private translate: TranslateService, public router: Router, private user: UserService) {
+  constructor(
+    private translate: TranslateService,
+    public router: Router,
+    private user: UserService
+    ) {
     this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
     this.translate.setDefaultLang('en');
     const browserLang = this.translate.getBrowserLang();
@@ -24,6 +29,8 @@ export class LoginComponent implements OnInit {
       email: '',
       password: ''
     };
+
+    this.errorExists = false;
   }
 
   ngOnInit() {}
@@ -32,22 +39,24 @@ export class LoginComponent implements OnInit {
   //     localStorage.setItem('isLoggedin', 'true');
   // }
 
-  // WARNING: I (Haseung) copy pasted this code into signup.component.ts
-  // If you make changes here make sure to put changes into signup.component.ts - createUser method as well
-  // I know it's bad coding but it works for now.
   loginUser = () => {
     this.user.loginUser(this.existingUser).subscribe(
       data => {
         localStorage.setItem('isLoggedin', 'true');
         localStorage.setItem('token', data.token);
-        localStorage.setItem('id', String(data.id));
-        // double check names for below
+        localStorage.setItem('id', String(data.user_id));
+        localStorage.setItem('fullname', data.fullname );
         localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
         localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
-        localStorage.setItem('listapts', JSON.stringify(data.associatedApt));
+        localStorage.setItem('apt_id', String(data.apartment_id));
+        localStorage.setItem('apt_name', String(data.apartment_name));
+        // TODO
+        // Set proper navigations depending on type of user
+        this.router.navigate(['/menu/danji']);
       },
       error => {
-        console.log(error);
+        // console.log(error);
+        this.errorExists = true;
       }
     );
   }

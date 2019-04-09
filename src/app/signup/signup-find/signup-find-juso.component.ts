@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JusoService } from 'src/app/services/juso.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material';
+import { variable } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-signup-find-juso',
@@ -47,7 +48,19 @@ export class SignupFindJusoComponent {
 
   jusoClicked = juso => {
     this.selectedJuso = juso;
-    this.selectedJusoStringed = JSON.stringify(this.fullDetailJusos[juso.id]);
+    let jusoCoorInfo;
+    this.juso.getJusosCoor( this.fullDetailJusos[juso.id] ).subscribe(
+      data => {
+        jusoCoorInfo = data.results.juso[0];
+        this.fullDetailJusos[juso.id]['entX'] = jusoCoorInfo.entX;
+        this.fullDetailJusos[juso.id]['entY'] = jusoCoorInfo.entY;
+        this.selectedJusoStringed = JSON.stringify( this.fullDetailJusos[juso.id] );
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
   }
 
 }

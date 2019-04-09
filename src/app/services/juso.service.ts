@@ -19,14 +19,23 @@ export class JusoService {
   constructor( private http: HttpClient, ) { }
 
   serverUrl = 'http://192.168.1.6:8000';
+
+  // For Haseung's local workspace ip 0.5
   // Non-popup version
   jusoApiUrl1 = 'http://www.juso.go.kr/addrlink/addrLinkApi.do';
   myConfmKey1 = 'U01TX0FVVEgyMDE5MDMyNTE2NDExNTEwODYwMTQ=';
   myResultType1 = 'json';
+  // For Haseung's local workspace ip 0.5
   // Popup version
   jusoApiUrl2 = 'http://www.juso.go.kr/addrlink/addrLinkUrl.do';
   myConfmKey2 = 'U01TX0FVVEgyMDE5MDMyNzE0NTYxMDEwODYwODY=';
   myResultType2 = 4;
+
+  // For Haseung's local workspace ip 0.154
+  // With Coordinates Version
+  jusoCoorUrl = 'http://www.juso.go.kr/addrlink/addrCoordApi.do';
+  myConfmKey3 = 'U01TX0FVVEgyMDE5MDQwOTE0MzgyNzEwODYzNzI=';
+  myResultType3 = 'json';
 
 
   getJusos(jusoKeyword): Observable <any> {
@@ -44,18 +53,16 @@ export class JusoService {
     );
   }
 
-  // getCountries
-  getCountriesAndCities(): Observable <any> {
-    return this.http.get(this.serverUrl + '/api/country/', httpOptions );
+  getJusosCoor( addrInfo ): Observable <any> {
+    return this.http.get(this.jusoCoorUrl + '?' +
+    'confmKey=' + this.myConfmKey3 + '&' +
+    'admCd=' + addrInfo.admCd + '&' +
+    'rnMgtSn=' + addrInfo.rnMgtSn + '&' +
+    'udrtYn=' + addrInfo.udrtYn + '&' +
+    'buldMnnm=' + addrInfo.buldMnnm + '&' +
+    'buldSlno=' + addrInfo.buldSlno + '&' +
+    'resultType=' + this.myResultType3
+    );
   }
-
-  createCity(cityName): Observable <any> {
-    const body = {
-      country: 1, // S.Korea is 1
-      city: cityName
-    };
-    return this.http.post(this.serverUrl + '/api/city/', body, httpOptions );
-  }
-
 
 }
