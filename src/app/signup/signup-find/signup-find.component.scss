@@ -58,26 +58,48 @@ nav a.active {
 .container{width: 600px; height: auto; margin: 40px auto;}
 .next{
   width:400px;
-  background: #eee;}
-
+ }
 
 
 
 
 mat-card{
-  top: 2px;}
+  top: 2px;
+  vertical-align: middle;
+  .material-icons{
+    font-size: 20px;
+    
+  }
+  a{margin-bottom:-10px;}
+}
 
 .juso-serch{
-  width: 100%;
+
+ 
+  width:200px;
+  text-decoration: none;
  
   
   
    font-size: 20px;
    
-  
-   
+   .material-icons{
+     font-size: 24px;
+    bottom: 0;}
+ 
+
+    }
     
+
+
+
+
+.mat-step-header .mat-step-icon 
+{
+  background-color:#eee;
 }
+
+
 .room{margin-top: 10px;}
 
 

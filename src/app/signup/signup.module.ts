@@ -11,6 +11,7 @@ import {
   MatButtonModule,
   MatSelectModule,
   MatOptionModule,
+  MatDividerModule,
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +41,7 @@ import { SignupFindJusoComponent } from './signup-find/signup-find-juso.componen
     MatCardModule,
     MatSelectModule,
     MatOptionModule,
+    MatDividerModule,
   ],
   declarations: [
     SignupComponent,
