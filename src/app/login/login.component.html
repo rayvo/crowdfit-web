@@ -6,6 +6,9 @@
       <h1>Crowd Fit</h1>
       <form role="form">
         <div class="form-content">
+
+          <h5 *ngIf="errorExists">ERROR: Please check email and password again</h5>
+
           <!-- Email -->
           <div class="form-group input-group">
             <div class="input-group-prepend">
@@ -35,7 +38,8 @@
             />
           </div>
 
-          <a [routerLink]="['/menu']" class="btn btn-primary" (click)="loginUser()">{{ '로그인' | translate }}</a>
+          <!--[routerLink]="['/menu']"-->
+          <a  class="btn btn-primary" (click)="loginUser()">{{ '로그인' | translate }}</a>
           &nbsp;
           <div class="form-group input-group" style="margin-top: -10px;">
             <a [routerLink]="['/signup']">{{ '회원가입' | translate }}</a>

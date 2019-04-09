@@ -94,11 +94,7 @@ export class SignupComponent implements OnInit {
         return this.newUser.get('cVNum');
     }
 
-    // getErrorMessage() {
-    //   return this.newUser.get.hasError('required') ? 'You must enter a value' :
-    //       this.email.hasError('email') ? 'Not a valid email' :
-    //           '';
-    // }
+
     getUsernameErrorMessage() {
         return this.username.hasError('required') ? 'You must enter a username' : '';
     }
@@ -136,7 +132,12 @@ export class SignupComponent implements OnInit {
         this.newUser.get('vNum').setValue(String(Math.floor((Math.random() * 500000) + 499999)));
         const phon = this.newUser.get('phone').value;
         const dest = phon + '|' + this.newUser.get('username').value;
+
+        // TODO
+        // GET RID OF console.log WHEN DEPLOYING!
         console.log(this.newUser.get('vNum').value);
+        // BELOW WORKS! Commented out to save money
+        /*
         this.phoneV.sendMessage( phon, dest, this.newUser.get('vNum').value ).subscribe(
             data => {
                 console.log(data);
@@ -145,6 +146,7 @@ export class SignupComponent implements OnInit {
                 console.log(error);
             }
         );
+        */
 
     }
 
@@ -152,30 +154,20 @@ export class SignupComponent implements OnInit {
         this.user.createUser(this.newUser).subscribe(
             // TODO create: createUserStatusNone
             data => {
-                const toLoginUser = {
-                    email: this.newUser.value.email,
-                    password: this.newUser.value.password
-                };
-                // WARNING: I (Haseung) copy pasted this code from login.component.ts
-                // If you make changes here make sure to put changes into login.component.ts - loginUser method as well
-                // I know it's bad coding but it works for now.
-                this.user.loginUser(toLoginUser).subscribe(
-                    data2 => {
-                        localStorage.setItem('isLoggedin', 'true');
-                        localStorage.setItem('token', data2.token);
-                        localStorage.setItem('id', String(data2.id));
-                        // double check names for below
-                        localStorage.setItem('listlastFeature', JSON.stringify(data2.last_app_features));
-                        localStorage.setItem('listurs', JSON.stringify(data2.userrolestatus));
-                        localStorage.setItem('listapts', JSON.stringify(data2.associatedApt));
-                    },
-                    error => {
-                        console.log(error);
-                    }
-                );
+
+                localStorage.setItem('isLoggedin', 'true');
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('id', String(data.user_id));
+                localStorage.setItem('fullname', data.fullname );
+                localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
+                localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
+                localStorage.setItem('apt_id', String(data.apartment_id));
+                localStorage.setItem('apt_name', String(data.apartment_name));
+
                 this.router.navigate(['/signup/apply']);
             },
             error => {
+                console.log('error1');
                 console.log(error);
             }
         );
