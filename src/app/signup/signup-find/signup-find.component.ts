@@ -6,6 +6,7 @@ import { SignupFindJusoComponent } from './signup-find-juso.component';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import proj4 from 'proj4';
+import { Router } from '@angular/router';
 
 export interface Pos {
   value: string;
@@ -41,7 +42,8 @@ export class SignupFindComponent implements OnInit {
   constructor(
     private user: UserService,
     private dialog: MatDialog,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router,
   ) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
     this.parsedJuso = '';
@@ -113,8 +115,8 @@ export class SignupFindComponent implements OnInit {
           // x = longitude roughly 127
           // y = latitude roughly 37
           // console.log(p.x + ' ' + p.y);
-          this.parsedJuso['longitude'] = p.x;
-          this.parsedJuso['latitude'] = p.y;
+          this.parsedJuso['longitude'] = p.x.toFixed(8);
+          this.parsedJuso['latitude'] = p.y.toFixed(8);
           // console.log(this.parsedJuso);
 
 
@@ -125,8 +127,10 @@ export class SignupFindComponent implements OnInit {
 
           // TODO
           // DOUBLE CHECK the function isAvailableApt
-          const isAvailable = this.user.isAvailableApt(/*SomeData*/this.parsedJuso);
-          if (/* Not Availble */false) {
+
+          const isAvailable = this.checkAptAvailability();
+
+          if ( isAvailable === false ) {
             this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
           } else {
             this.secondFormGroup.controls['secondCtrl'].setErrors(null);
@@ -141,6 +145,29 @@ export class SignupFindComponent implements OnInit {
       }
     );
   }
+
+  checkAptAvailability() {
+    let toReturn = false;
+    console.log('HERE');
+    this.user.isAptAvailable(this.parsedJuso).subscribe(
+      data => {
+        console.log('Data is: ' + data);
+        if ( data.res_code ) {
+          toReturn = true;
+          console.log('Changed to true');
+        } else {
+          toReturn = false;
+          console.log('Changed to false');
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    console.log('Gonna return');
+    return toReturn;
+  }
+
 
   // TODO When applying as 직원 be able to put 부서 and 직책 in somewhere
   getLS(key) {
@@ -205,9 +232,12 @@ export class SignupFindComponent implements OnInit {
   applyClicked = () => {
 
 
+
+    let errorExists = false;
+
+
     // Get userId from localStorage
     // Get aptId from apt lookup for nonceo. For ceo you will be making it before ceoRegister
-
 
     switch (localStorage.getItem('role')) {
       case '1': {
@@ -230,6 +260,7 @@ export class SignupFindComponent implements OnInit {
             console.log(data);
           },
           error => {
+            errorExists = true;
             console.log(error);
           }
         );
@@ -254,6 +285,7 @@ export class SignupFindComponent implements OnInit {
 
           },
           error => {
+            errorExists = true;
             console.log(error);
           }
         );
@@ -265,6 +297,7 @@ export class SignupFindComponent implements OnInit {
 
           },
           error => {
+            errorExists = true;
             console.log(error);
           }
         );
@@ -274,5 +307,13 @@ export class SignupFindComponent implements OnInit {
 
       }
     }
+
+
+    if ( errorExists === false ) {
+      this.router.navigate(['/signup/applied']);
+    } else {
+      // TODO What to do when error is caught
+    }
+
   }
 }

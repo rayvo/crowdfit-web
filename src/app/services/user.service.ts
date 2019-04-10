@@ -20,7 +20,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  // POST	/api/v2/create_user/
+  // POST	/api/v2/register/
   // fullname: TEXT,
   // email: TEXT,
   // password: TEXT,
@@ -33,7 +33,7 @@ export class UserService {
       password: userData.value.password,
       phone: userData.value.phone
     };
-    return this.http.post(this.serverUrl + '/api/v2/create_user/', body, httpOptions);
+    return this.http.post(this.serverUrl + '/api/v2/register/', body, httpOptions);
   }
 
   // POST	/api/v2/auth/
@@ -47,8 +47,8 @@ export class UserService {
   }
 
 
-  // TODO on xls file it says document_id instead of document_file_id
-  // POST TODO CHECK LINK!!!!
+
+  // POST /api/v2/register_ceo/
   // user_id: INT,
   // document_id: INT/NULL
   // apt_name: TEXT
@@ -80,11 +80,21 @@ export class UserService {
       longitude: aptInfo.longitude,
       description: myDesc
     };
-    return  this.http.post(this.serverUrl + '/api/v2/request_user_role_status/', body, httpOptions);
+    return  this.http.post(this.serverUrl + '/api/v2/register_ceo/', body, httpOptions);
   }
 
 
-
+  // POST	/api/v2/apartment_existed/
+  // name: TEXT,
+  // postcode: TEXT
+  isAptAvailable( aptInfo ): Observable<any> {
+    const body = {
+      name: aptInfo.apt_name,
+      postcode: aptInfo.zipNo
+    };
+    console.log('huh?');
+    return this.http.post(this.serverUrl + '/api/v2/apartment_existed/', body, httpOptions);
+  }
 
 
 
@@ -226,17 +236,7 @@ export class UserService {
     return this.http.put(this.serverUrl + 	'/api/v2/apartment/' + apt.id, body, httpOptions);
   }
 
-  // POST	/api/address/
-  // "a_detail: No Change
-  // address_id: No Change"
 
-  isAvailableApt( data ): Observable<any> {
-    const body = {
-      address_detail: data.detail,
-      address_id: data.id
-    };
-    return this.http.post(this.serverUrl + '/api/v2/apartment/', body, httpOptions);
-  }
 
 
 
