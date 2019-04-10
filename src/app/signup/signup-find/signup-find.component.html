@@ -4,7 +4,7 @@
         album
         </i> <a>역할등록</a></mat-card>
     <mat-vertical-stepper [linear]="true" #stepper>
-      <mat-step [stepControl]="firstFormGroup">
+      <mat-step [stepControl]="firstFormGroup" [editable]="false"> 
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>무엇으로 가입하고 싶으세요?</ng-template>
 
@@ -33,7 +33,7 @@
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="secondFormGroup">
+      <mat-step [stepControl]="secondFormGroup" [editable]="false"> 
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>주소를 검색하세요. </ng-template>
 
@@ -44,17 +44,28 @@
               </i>주소검색</a>
           <br />
 
+          <label *ngIf="parsedJuso == '' && jusoSearchClicked == true">You Are Required to select an address</label><br />
           <label *ngIf="parsedJuso != ''">검색된 주소</label><br />
           <label>{{ parsedJuso.jibunAddr }}</label>
           <br />
+          <label *ngIf="parsedJuso != '' && jusoSearchClicked == true && jusoAvail == true">
+            This APT already exists. You cannot choose this apt.
+          </label><br />
+          <label *ngIf="parsedJuso != '' && jusoSearchClicked == true && jusoAvail == false">
+              A CEO has not made this apartment available on Crowdfit yet. 
+            </label><br />
        
           <div>
+            <!--
             <button mat-button matStepperPrevious>뒤로</button>
+            -->
             <button mat-button matStepperNext>다음</button>
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="thirdFormGroup">
+      
+      
+      <mat-step [stepControl]="thirdFormGroup" [editable]="false">
         <form [formGroup]="thirdFormGroup">
           <ng-template matStepLabel>상세주소를 입력하세요.</ng-template>
 
@@ -97,11 +108,15 @@
           <input type="file" (change)="uploadFile($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg,.png" />
 
           <div>
+            <!--
             <button mat-button matStepperPrevious>Back</button>
+            -->
             <button mat-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
+
+
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <!-- routerLink="/signup/applied"-->
@@ -109,7 +124,9 @@
           승인요청
         </a>
         <div>
+          <!--
           <button mat-button matStepperPrevious>이전단계로</button>
+          -->
           <button mat-button (click)="stepper.reset()">초기화</button>
         </div>
       </mat-step>

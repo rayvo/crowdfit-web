@@ -48,6 +48,23 @@ export class UserService {
 
 
 
+
+
+  // POST	/api/v2/apartment_existed/
+  // name: TEXT,
+  // postcode: TEXT
+  isAptAvailable( aptInfo ): Observable<any> {
+    const body = {
+      name: aptInfo.apt_name,
+      postcode: aptInfo.zipNo
+    };
+    console.log('huh?');
+    return this.http.post(this.serverUrl + '/api/v2/apartment_existed/', body, httpOptions);
+  }
+
+
+
+
   // POST /api/v2/register_ceo/
   // user_id: INT,
   // document_id: INT/NULL
@@ -84,17 +101,42 @@ export class UserService {
   }
 
 
-  // POST	/api/v2/apartment_existed/
-  // name: TEXT,
-  // postcode: TEXT
-  isAptAvailable( aptInfo ): Observable<any> {
+  // POST /api/v2/register_staff/
+  // user_id: INT
+  // apt_id: INT
+  // department_id: INT
+  // role_id: INT
+  // document_file_id: INT/NULL
+  staffRegister( userId, aptId, deptId, roleId, fileId ): Observable<any> {
     const body = {
-      name: aptInfo.apt_name,
-      postcode: aptInfo.zipNo
+      user_id: userId,
+      apt_id: aptId,
+      department_id: deptId,
+      role_id: roleId,
+      document_file_id: fileId,
     };
-    console.log('huh?');
-    return this.http.post(this.serverUrl + '/api/v2/apartment_existed/', body, httpOptions);
+    return  this.http.post(this.serverUrl + '/api/v2/register_staff/', body, httpOptions);
   }
+
+  // POST /api/v2/register_user/
+  // user_id: INT
+  // apt_id: INT
+  // address_dong: TEXT
+  // house_number: TEXT
+  // document_file_id: INT/NULL
+  userRegister( userId, aptId, myDong, myHouseNum, fileId ): Observable<any> {
+    const body = {
+      user_id: userId,
+      apt_id: aptId,
+      address_dong: myDong,
+      house_number: myHouseNum,
+      document_file_id: fileId,
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, httpOptions);
+  }
+
+
+
 
 
 
@@ -309,27 +351,6 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/departmentrole/', body, httpOptions);
   }
 
-  // POST /api/v2/request_user_role_status
-  // user_id: INT
-  // department_role_id: INT
-  // document_file_id: INT/NULL
-  userRegister( userId, aptId, fileId ): Observable<any> {
-    const body = {
-      user_id: userId,
-      apt_id: aptId,
-      document_file_id: fileId,
-    };
-    return  this.http.post(this.serverUrl + '/api/v2/request_user_role_status', body, httpOptions);
-  }
-
-  staffRegister( userId, aptId, fileId ): Observable<any> {
-    const body = {
-      user_id: userId,
-      apt_id: aptId,
-      document_file_id: fileId,
-    };
-    return  this.http.post(this.serverUrl + '/api/v2/request_user_role_status', body, httpOptions);
-  }
 
 
 

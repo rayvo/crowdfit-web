@@ -28,6 +28,8 @@ export interface Dept {
 export class SignupFindComponent implements OnInit {
   selectedJuso;
   parsedJuso;
+  jusoSearchClicked;
+  jusoAvail;
 
   percentDone: number;
   uploadSuccess: boolean;
@@ -47,6 +49,8 @@ export class SignupFindComponent implements OnInit {
   ) {
     this.selectedJuso = { id: -1, jibunAddr: '' };
     this.parsedJuso = '';
+    this.jusoSearchClicked = false;
+    this.jusoAvail = null;
   }
 
   ngOnInit() {
@@ -73,7 +77,7 @@ export class SignupFindComponent implements OnInit {
     } else {
       this.thirdFormGroup.controls['thirdCtrl1'].setErrors({'incorrect': true});
       this.thirdFormGroup.controls['thirdCtrl2'].setErrors({'incorrect': true});
-      this.deptControl.setErrors({'incorrect': null});
+      this.deptControl.setErrors(null);
     }
 
     this.firstFormGroup.controls['firstCtrl'].setErrors(null);
@@ -82,23 +86,17 @@ export class SignupFindComponent implements OnInit {
 
   openJusoDialog() {
     const dialogRef = this.dialog.open(SignupFindJusoComponent);
-
     dialogRef.afterClosed().subscribe(
       result => {
+        this.jusoSearchClicked = true;
         if ( result != null ) {
           this.parsedJuso = JSON.parse(result);
-          // TODO
-          // CALCULATE LON AND LAT and replace entX and entY
-
-
 
           // 제공해 드리는 죄표
           proj4.defs['EPSG:5179'] =
           '+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m +no_defs';
 
           // 구글 좌표계
-          // Google Mercator is now EPSG:3857, while 900913 has been dropped from the list of EPSG codes.
-          // ??
           proj4.defs['EPSG:900913'] =
           '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs';
 
@@ -119,22 +117,28 @@ export class SignupFindComponent implements OnInit {
           this.parsedJuso['latitude'] = p.y.toFixed(8);
           // console.log(this.parsedJuso);
 
-
-
-
-
-
-
           // TODO
           // DOUBLE CHECK the function isAvailableApt
 
           const isAvailable = this.checkAptAvailability();
+          const myRole = localStorage.getItem('role');
+          const tempCtrl = this.secondFormGroup.controls['secondCtrl'];
 
-          if ( isAvailable === false ) {
-            this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
-          } else {
-            this.secondFormGroup.controls['secondCtrl'].setErrors(null);
+          if ( isAvailable === false && myRole === '1' ) {
+            tempCtrl.setErrors(null);
+            this.jusoAvail = null;
+          } else if ( isAvailable === true && myRole === '1' ) {
+            tempCtrl.setErrors({'incorrect': true});
+            this.jusoAvail = true;
+          } else if ( isAvailable === false ) {
+            tempCtrl.setErrors({'incorrect': true});
+            this.jusoAvail = false;
+          } else { // isAvailable === true
+            tempCtrl.setErrors(null);
+            this.jusoAvail = null;
           }
+
+
         } else {
           this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
         }
@@ -154,9 +158,11 @@ export class SignupFindComponent implements OnInit {
         console.log('Data is: ' + data);
         if ( data.res_code ) {
           toReturn = true;
+          localStorage.setItem('aptId', data.apt_id);
           console.log('Changed to true');
         } else {
           toReturn = false;
+          localStorage.setItem('aptId', data.apt_id);
           console.log('Changed to false');
         }
       },
@@ -231,30 +237,18 @@ export class SignupFindComponent implements OnInit {
   // Double check service calls
   applyClicked = () => {
 
-
-
     let errorExists = false;
-
-
-    // Get userId from localStorage
-    // Get aptId from apt lookup for nonceo. For ceo you will be making it before ceoRegister
 
     switch (localStorage.getItem('role')) {
       case '1': {
-        // TODO ask ray
-        // To create apt you need a ceo's UserRoleStatus id
-        // but to create a CEO you need apt_id
-        // Which one comes first?
 
-        // TODO request Ray
-        // I think having the user_role_status returned in ceoRegister will be very helpful
         this.user.ceoRegister(
           localStorage.getItem('id'),
-          /*DocumentFile Id*/null,
+          localStorage.getItem('fileId'),
           this.parsedJuso,
           this.thirdFormGroup.controls['thirdCtrl1'].value,
           this.thirdFormGroup.controls['thirdCtrl2'].value,
-          ).subscribe(
+        ).subscribe(
           data => {
             console.log('CEO REGISTER SUCCESS!');
             console.log(data);
@@ -264,25 +258,19 @@ export class SignupFindComponent implements OnInit {
             console.log(error);
           }
         );
-        // this.user.createApt(
-        //   this.parsedJuso,
-        //   this.thirdFormGroup.controls['thirdCtrl1'].value,
-        //   this.thirdFormGroup.controls['thirdCtrl2'].value,
-        //   1 // TODO user_role_status_id
-        //   ).subscribe(
-        //   data => {
-
-        //   },
-        //   error => {
-        //     console.log(error);
-        //   }
-        // );
         break;
       }
       case '2': {
-        this.user.staffRegister(1, 2, 3).subscribe(
+        this.user.staffRegister(
+          localStorage.getItem('id'),
+          localStorage.getItem('aptId'),
+          localStorage.getItem('deptId'),
+          localStorage.getItem('roleId'),
+          localStorage.getItem('fileId'),
+        ).subscribe(
           data => {
-
+            console.log('STAFF REGISTER SUCCESS!');
+            console.log(data);
           },
           error => {
             errorExists = true;
@@ -292,9 +280,16 @@ export class SignupFindComponent implements OnInit {
         break;
       }
       case '3': {
-        this.user.userRegister(1, 2, 3).subscribe(
+        this.user.userRegister(
+          localStorage.getItem('id'),
+          localStorage.getItem('aptId'),
+          this.thirdFormGroup.controls['thirdCtrl1'].value,
+          this.thirdFormGroup.controls['thirdCtrl2'].value,
+          localStorage.getItem('fileId'),
+        ).subscribe(
           data => {
-
+            console.log('USER REGISTER SUCCESS!');
+            console.log(data);
           },
           error => {
             errorExists = true;
