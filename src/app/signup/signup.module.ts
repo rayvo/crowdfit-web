@@ -12,6 +12,7 @@ import {
   MatSelectModule,
   MatOptionModule,
   MatDividerModule,
+  MatListModule,
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {
@@ -24,6 +25,8 @@ import { SignupComponent } from './signup.component';
 import { SignupAppliedComponent } from './signup-applied/signup-applied.component';
 import { SignupFindComponent } from './signup-find/signup-find.component';
 import { SignupFindJusoComponent } from './signup-find/signup-find-juso.component';
+import { SignupCeoComponent } from './signup-ceo/signup-ceo.component';
+import { UserService } from '../services/user.service';
 
 
 
@@ -46,15 +49,18 @@ import { SignupFindJusoComponent } from './signup-find/signup-find-juso.componen
     MatOptionModule,
     MatDividerModule,
     MatExpansionModule,
+    MatListModule,
   ],
   declarations: [
     SignupComponent,
     SignupAppliedComponent,
     SignupFindComponent,
     SignupFindJusoComponent,
+    SignupCeoComponent,
   ],
   entryComponents: [
     SignupFindJusoComponent
-  ]
+  ],
+  providers: [UserService]
 })
 export class SignupModule { }

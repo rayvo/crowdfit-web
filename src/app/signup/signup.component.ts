@@ -175,30 +175,3 @@ export class SignupComponent implements OnInit {
 
 
 }
-
-// export function MatchPasswords( c: AbstractControl ): {[key: string]: any}  {
-//     return (group: FormGroup) => {
-//         const control = c.get('password');
-//         const test = c.get('cpassword');
-//         if ( test.errors && !test.errors.match ) {
-//             return;
-//         }
-//         if ( control.value !== test.value ) {
-//             test.setErrors({ match: true });
-//         } else {
-//             test.setErrors(null);
-//         }
-//     };
-// }
-
-// function RepeatPasswordValidator(group: FormGroup) {
-//     const password = group.get('password').value;
-//     const cpassword = group.get('cpassword').value;
-//     return password === cpassword ? null : { passwordsNotEqual: true };
-// }
-
-// function VerificationValidator(group: FormGroup) {
-//     const verification = group.get('vNum').value;
-//     const cverification = group.get('cVNum').value;
-//     return verification === cverification ? null : { numsNotEqual: true };
-// }
