@@ -208,9 +208,7 @@ export class SignupFindComponent implements OnInit {
           {value: '8', viewValue: 'Rule Enforcement'},
         ]
       },
-
     ];
-
   }
 
 

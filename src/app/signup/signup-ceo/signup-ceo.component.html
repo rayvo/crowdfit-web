@@ -1,0 +1,36 @@
+<p>
+  Some sort of information about ceo here<br />
+  name<br />
+  apt name<br />
+  <br /><br />
+  an explanation about dept and roles in apt<br />
+  an explanation about what to do<br />
+</p>
+
+<br><br><br>
+<!-- Dynamically get the items in the list-->
+<label>부서 List</label><br>
+<button mat-mini-fab (click)="createDept()" >+</button>
+<button mat-mini-fab (click)="deleteDept()" >x</button>
+<mat-list>
+  <mat-list-item *ngFor="let dept of depts" >
+    <a (click)="deptClicked(dept)">
+      {{dept.name}}
+    </a>
+    <button mat-stroked-button>수정</button>
+</mat-list-item>
+</mat-list>
+<br><br><br>
+<label>{{selectedDept.name}} 직책 List</label><br>
+<button mat-mini-fab (click)="createRole()" >+</button>
+<button mat-mini-fab (click)="deleteRole()" >x</button>
+<mat-list>
+  <mat-list-item *ngFor="let role of roles" >
+    <a (click)="roleClicked(role)">
+      {{role.name}}
+    </a>
+    <button mat-stroked-button>수정</button>
+  </mat-list-item>
+</mat-list>
+<br><br><br>
+<button mat-raised-button (click)="saveClicked()" >SAVE</button>

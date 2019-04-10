@@ -53,6 +53,8 @@ const EVICTED_DATA: EvictedList[] = [
   { id: 6, name: 'Grace', department: 'Fdept', position: 'Sixth', phone: '0106666FFFF', evictedDate: 'March 23', reason: 'Slept At Work' }
 ];
 
+
+
 @Component({
   selector: 'app-staff-management',
   templateUrl: './staff-management.component.html',
@@ -77,6 +79,7 @@ export class StaffManagementComponent implements OnInit {
   dataSource3 = new MatTableDataSource(EVICTED_DATA);
 
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
+
 
   // Filtering by only name and phone
   ngOnInit() {
