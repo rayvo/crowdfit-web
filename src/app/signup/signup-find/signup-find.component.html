@@ -38,12 +38,12 @@
 
           <!-- TODO This button only shows up when a person has clicked a role -->
           
-          <a button mat-stroked-button color="primary" class="juso-serch" (click)="openJusoDialog()"><mat-icon class="icon">
+          <a mat-stroked-button color="primary" class="juso-serch" (click)="openJusoDialog()"><mat-icon class="icon">
               room
-              </mat-icon>주소검색</a>
+              </mat-icon> 주소검색</a>
           <br />
 
-          <label *ngIf="parsedJuso != ''">검색된 주소</label><br />
+          <label *ngIf="parsedJuso != ''"><h4>검색된 주소</h4></label><br />
           <label>{{ parsedJuso.jibunAddr }}</label>
           <br />
        
@@ -81,20 +81,21 @@
           </mat-form-field>
 
           <!-- Predetermined Numbers -->
-          <label *ngIf="getLS('role') == '1'">휴대폰 번호</label>
+          <label *ngIf="getLS('role') == '1'"> <mat-panel-title><mat-icon>stay_primary_portrait</mat-icon>휴대폰 번호</mat-panel-title></label>
           <mat-form-field *ngIf="getLS('role') == '1'">
-            <input matInput formControlName="thirdCtrl1"  placeholder="032XXXXXXX" />
+            <input matInput formControlName="thirdCtrl1"  placeholder="ex)01012345678" />
           </mat-form-field>
           <br *ngIf="getLS('role') == '1'" />
-          <label *ngIf="getLS('role') == '1'">상세주소</label>
+          <label *ngIf="getLS('role') == '1'"><mat-panel-title><mat-icon>domain</mat-icon>상세주소</mat-panel-title></label>
           <mat-form-field *ngIf="getLS('role') == '1'">
             <input matInput formControlName="thirdCtrl2" placeholder="상세주소를 입력하세요" />
           </mat-form-field>
 
           <br /><br /><br />
 
-          <input type="file" (change)="uploadFile($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg,.png" />
-
+        <mat-icon>add_to_photos</mat-icon>
+          <input type="file"  (change)="uploadFile($event)" placeholder="add_to_photos" accept=".pdf,.doc,.docx,.jpg,.png">
+        
           <div>
             <button mat-button style="color: gray" matStepperPrevious>이전단계로</button>
             <button mat-button style="color: orange" matStepperNext>다음단계로</button>
@@ -103,7 +104,7 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>완료</ng-template>
-        <a mat-button (click)="applyClicked()" routerLink="/signup/applied">
+        <a mat-stroked-button class="approve"  color="primary" (click)="applyClicked()" routerLink="/signup/applied">
           승인요청
         </a>
         <div>

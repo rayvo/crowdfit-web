@@ -14,6 +14,9 @@ import {
   MatDividerModule,
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
+import {
+  MatExpansionModule,
+} from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SignupRoutingModule } from './signup-routing.module';
@@ -42,6 +45,7 @@ import { SignupFindJusoComponent } from './signup-find/signup-find-juso.componen
     MatSelectModule,
     MatOptionModule,
     MatDividerModule,
+    MatExpansionModule,
   ],
   declarations: [
     SignupComponent,
