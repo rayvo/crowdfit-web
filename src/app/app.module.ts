@@ -19,8 +19,6 @@ import { StoreProcuctRoutingModule } from './layout/store-management/store-produ
 import { NoAuthGuard } from './shared/guard/no-auth.guard';
 
 
-import { HeaderComponent} from './layout/components/header/header.component';
-
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
