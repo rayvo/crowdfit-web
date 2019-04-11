@@ -1,31 +1,27 @@
 
 <mat-dialog-content class="mat-typography">
 
-  <mat-form-field>
+  <mat-form-field> 
     <input matInput [(ngModel)]="jusoKeyword" placeholder="ex)동이름,아파트이름, 초성 등" />
   </mat-form-field>
 
   <button mat-button>
     
-    <a (click)="searchJusos()">주소검색</a>
+    <a mat-stroked-button  color="primary"(click)="searchJusos()">검색</a>
   </button>
-  <br /><br />
+  <br />
+  <br />
   <ul>
     <li *ngFor="let juso of lessDetailJusos">
-      <label (click)="jusoClicked(juso)">{{ juso.jibunAddr }}</label>
+      <label style="font-size: 0.9em;" (click)="jusoClicked(juso)">{{ juso.jibunAddr }}</label>
     </li>
   </ul>
 </mat-dialog-content>
 <br /><br />
-<label matLabel *ngIf="selectedJuso.jibunAddr != '' " >선택된 주소</label><br>
-<label>{{ selectedJuso.jibunAddr }}</label>
+<label style="color: gray;"  matLabel *ngIf="selectedJuso.jibunAddr != '' " ><h4>선택된 주소</h4></label><br>
+<label style="font-size: 0.9em;">{{ selectedJuso.jibunAddr }}</label>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>취소</button>
-  <button mat-button [mat-dialog-close]="selectedJusoStringed" cdkFocusInitial>선택</button>
+  <button mat-button style="color:gray;" mat-dialog-close>취소</button>
+  <button mat-button style="color: orange;" [mat-dialog-close]="selectedJusoStringed" >선택</button>
 </mat-dialog-actions>
 
-
-<style>
-ul{text-decoration: none;}
-
-</style>

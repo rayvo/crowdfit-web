@@ -14,21 +14,13 @@
 
 
 
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
+
+h4{
+  font-size: 0.7em;
+color: gray;
 }
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
-}
-h3 {
-  font-size: 0.8em;
-  margin-top: 0;
-  padding-top: 0;
-}
+
+h5{ font-size:0.9em;}
 nav a {
   padding: 5px 10px;
   text-decoration: none;
@@ -53,34 +45,79 @@ nav a.active {
 
 }
 
+
+
+
+
+
+
+
 .material-icons{font-size: 40px;}
+
+
+
+
+
 
 .container{width: 600px; height: auto; margin: 40px auto;}
 .next{
   width:400px;
-  background: #eee;}
-
+ }
 
 
 
 
 mat-card{
-  top: 2px;}
-
-.juso-serch{
-  width: 100%;
- 
-  
-  
-   font-size: 20px;
-   
-  
-   
+  top: 2px;
+  vertical-align: middle;
+  .material-icons{
+    font-size: 20px;
     
+  }
+  a{margin-bottom:-10px;}
 }
+
+.juso-serch,.approve{
+
+ 
+  width:200px;
+ height: 38px;
+  
+  
+   font-size: 1em;
+   
+   .material-icons{
+     font-size: 1.5em;
+   }
+ 
+
+    }
+    
+
+
+
+
+.mat-step-header .mat-step-icon 
+{
+  background-color:#eee;
+}
+
+
 .room{margin-top: 10px;}
 
 
 
 
 
+mat-panel-title{
+  mat-icon{
+   font-size: 20px;}
+  }
+
+
+
+  li{list-style:none;
+  }
+ 
+ 
+  ul{ padding-inline-start:0px;}

@@ -21,7 +21,7 @@ import {
   MatDialogModule,
   MatPaginatorModule
 } from '@angular/material';
-
+import {MatIconModule} from '@angular/material/icon';
 import { SMPopupComponent } from './staff-management/sm-popup.component';
 import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
 
@@ -38,7 +38,7 @@ import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
     MatCheckboxModule,
     MatDialogModule,
     MatPaginatorModule,
-
+    MatIconModule,
   ],
   declarations: [
     LayoutComponent,

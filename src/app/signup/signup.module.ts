@@ -11,9 +11,13 @@ import {
   MatButtonModule,
   MatSelectModule,
   MatOptionModule,
+  MatDividerModule,
   MatListModule,
 } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
+import {
+  MatExpansionModule,
+} from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SignupRoutingModule } from './signup-routing.module';
@@ -46,6 +50,8 @@ import { SignupCeoDelPopupComponent } from './signup-ceo/signup-ceo-del-popup.co
     MatCardModule,
     MatSelectModule,
     MatOptionModule,
+    MatDividerModule,
+    MatExpansionModule,
     MatListModule,
   ],
   declarations: [
