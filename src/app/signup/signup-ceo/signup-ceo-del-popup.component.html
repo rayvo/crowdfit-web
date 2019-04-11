@@ -1,0 +1,13 @@
+
+<h2 mat-dialog-title>부서/직책 이름 삭제 페이지??</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-label *ngIf="data.type==1"> 부서 삭제 하면 괄련된 직책도 삭제 된다는 warning</mat-label>
+  <mat-label *ngIf="data.type==2"> 직책 삭제 대애서 warning</mat-label>
+  <br><br>
+  <mat-label> {{data.name}} 삭제 하는거야???? </mat-label><br /><br><br><br>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close [mat-dialog-close]="true">삭제</button>
+  <button mat-button mat-dialog-close [mat-dialog-close]="false">취소</button>
+</mat-dialog-actions>

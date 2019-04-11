@@ -23,6 +23,9 @@ import { SignupFindComponent } from './signup-find/signup-find.component';
 import { SignupFindJusoComponent } from './signup-find/signup-find-juso.component';
 import { SignupCeoComponent } from './signup-ceo/signup-ceo.component';
 import { UserService } from '../services/user.service';
+import { SignupCeoEditPopupComponent } from './signup-ceo/signup-ceo-edit-popup.component';
+import { SignupCeoAddPopupComponent } from './signup-ceo/signup-ceo-add-popup.component';
+import { SignupCeoDelPopupComponent } from './signup-ceo/signup-ceo-del-popup.component';
 
 
 
@@ -51,9 +54,15 @@ import { UserService } from '../services/user.service';
     SignupFindComponent,
     SignupFindJusoComponent,
     SignupCeoComponent,
+    SignupCeoEditPopupComponent,
+    SignupCeoAddPopupComponent,
+    SignupCeoDelPopupComponent,
   ],
   entryComponents: [
-    SignupFindJusoComponent
+    SignupFindJusoComponent,
+    SignupCeoEditPopupComponent,
+    SignupCeoAddPopupComponent,
+    SignupCeoDelPopupComponent,
   ],
   providers: [UserService]
 })

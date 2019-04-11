@@ -1,0 +1,14 @@
+
+<h2 mat-dialog-title>부서/직책 이름 수정 페이지??</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-label> 수정하기</mat-label>
+  <br><br>
+  <mat-label> 부서/직책 이름:
+    <input [(ngModel)]="newName" placeholder={{data.name}}/>
+  </mat-label><br /><br><br><br>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close [disabled]="newName == '' || newName == data.name" (click)="save()">저장</button>
+  <button mat-button mat-dialog-close (click)="cancel()">취소</button>
+</mat-dialog-actions>

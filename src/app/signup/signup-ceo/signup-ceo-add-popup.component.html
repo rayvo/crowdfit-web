@@ -1,0 +1,17 @@
+
+<h2 mat-dialog-title>부서/직책 추가 페이지??</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-label *ngIf="data.type==1"> 부서 추가 하면 there will be a default 직책 added. <br>
+        Reminder to edit the associated 직책 for this 부서  </mat-label>
+    <mat-label *ngIf="data.type==2"> 직책 추가 한다고 매세지...</mat-label>
+    <br><br>
+    <mat-label> 부서/직책 추가할 이름:
+        <input [(ngModel)]="newName" placeholder="??????"/>
+    </mat-label><br /><br><br><br>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close [disabled]="newName == ''" (click)="save()">저장</button>
+    <button mat-button mat-dialog-close (click)="delete()">삭제</button>
+    <button mat-button mat-dialog-close (click)="cancel()">취소</button>
+</mat-dialog-actions>
