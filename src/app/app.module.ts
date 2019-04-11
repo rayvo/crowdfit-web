@@ -11,8 +11,15 @@ import { AuthGuard } from './shared';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
+
 import { StoreProcuctRoutingModule } from './layout/store-management/store-product-management/store-procuct-routing.module';
-import { NoAuthGuard } from './shared/guard/no-auth.guard'; './layout/components/header/header.component';
+import { NoAuthGuard } from './shared/guard/no-auth.guard';
+
+
+import { HeaderComponent} from './layout/components/header/header.component';
 
 
 // AoT requires an exported function for factories
@@ -30,6 +37,8 @@ export const createTranslateLoader = (http: HttpClient) => {
     imports: [
         BrowserAnimationsModule,
         MatButtonModule, MatCheckboxModule,
+        MatCardModule, MatDividerModule,
+        MatDialogModule,
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -45,6 +54,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         }),
         AppRoutingModule,
         StoreProcuctRoutingModule,
+
     ],
     declarations: [AppComponent],
     providers: [AuthGuard, NoAuthGuard],

@@ -5,6 +5,8 @@ import { StaffManagementComponent } from './staff-management/staff-management.co
 import { LockerManagementComponent } from './locker-management/locker-management.component';
 import { AttendenceManagementComponent } from './attendence-management/attendence-management.component';
 import { ServiceCenterComponent } from './service-center/service-center.component';
+
+
 import { AuthGuard } from '../shared';
 
 const routes: Routes = [
@@ -23,6 +25,7 @@ const routes: Routes = [
             { path: 'attendence', component: AttendenceManagementComponent },
             { path: 'service-center', component: ServiceCenterComponent },
             { path: 'settings', loadChildren: './permission-settings/permission-settings.module#PermissionSettingsModule' },
+
             /*
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
