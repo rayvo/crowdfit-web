@@ -137,24 +137,113 @@ export class UserService {
 
 
 
+  /*
+   * Wait for db on the following
+   *
+   * getDefaultDepts
+   * getDefaultRolesByDept
+   * createDept
+   * updateDept
+   * deleteDept
+   * createRole
+   * updateRole
+   * deleteRole
+   *
+   */
+
+
+  // GET /api/v2/list_user_by_status
+  // apt_id: INT
+  // status_id: INT (Applying/Waiting for Aproval/Approved....)
+  getUsersByStatus( aptId, statusId ) {
+    const params = new HttpParams();
+    params.append('apt_id', aptId );
+    params.append('status_id', statusId );
+    return this.http.get( this.serverUrl + '/api/v2/list_user_by_status/', { headers: httpOptions.headers, params: params} );
+  }
+
+
+  // GET /api/v2/list_staff_by_status
+  // apt_id: INT
+  // status_id: INT (Applying/Waiting for Aproval/Approved....)
+  getStaffsByStatus( aptId, statusId ) {
+    const params = new HttpParams();
+    params.append('apt_id', aptId );
+    params.append('status_id', statusId );
+    return this.http.get( this.serverUrl + '/api/v2/list_staff_by_status/', { headers: httpOptions.headers, params: params} );
+  }
+
+
+  // POST TODO GET LINK
+  // user_id: INT
+  // staff_id: INT
+  approveUser( userId ) {
+    const body = {
+      user_id: userId,
+      staff_id: Number(localStorage.getItem('id'))
+    };
+    return this.http.post( this.serverUrl + '/api/v2/approve_user/', body, httpOptions );
+  }
+
+  // POST TODO GET LINK
+  // user_id: INT
+  // staff_id: INT
+  approveStaff( userId ) {
+    const body = {
+      user_id: userId,
+      staff_id: Number(localStorage.getItem('id'))
+    };
+    return this.http.post( this.serverUrl + '/api/v2/approve_staff/', body, httpOptions );
+  }
+
+  // POST TODO GET LINK
+  // user_id: INT
+  // staff_id: INT
+  approveCEO( userId ) {
+    const body = {
+      user_id: userId,
+      staff_id: Number(localStorage.getItem('id'))
+    };
+    return this.http.post( this.serverUrl + '/api/v2/approve_ceo/', body, httpOptions );
+  }
 
 
 
-/* ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
- * ###############################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
+ * ##############################################################################################
  */
 
 
@@ -430,7 +519,7 @@ export class UserService {
   // 	"status_id: ***,
   // apt_id: localStorage, "
   getURSByAptAndStatus( myStatusId ): Observable < any > {
-    const params = new HttpParams().set('is_active', myStatusId).set('apt_id', localStorage.getItem('AptId'));
+    const params = new HttpParams().set('is_active', myStatusId).set('apt_id', localStorage.getItem('aptId'));
     return this.http.get(this.serverUrl + '/api/???/', {headers: httpOptions.headers, params: params});
   }
 
@@ -462,7 +551,7 @@ export class UserService {
   // "status_id: ***,
   // apt_id: localStorage, "
   getHHByAptAndStatus( myStatusId, myAptId ): Observable < any > {
-    const params = new HttpParams().set('status_id', myStatusId).set('apt_id', localStorage.getItem('AptId'));
+    const params = new HttpParams().set('status_id', myStatusId).set('apt_id', localStorage.getItem('aptId'));
     return this.http.get(this.serverUrl + '/api/???/', {headers: httpOptions.headers, params: params});
   }
 
