@@ -76,27 +76,25 @@ export class StaffManagementComponent implements OnInit {
 
 
   displayedColumns1: string[] = ['name', 'department', 'position', 'phone', 'file', 'approve', 'delete' ];
-  staffWaitList: WaitList[];
-  dataSource1;
-  // dataSource1 = new MatTableDataSource();
-
   displayedColumns2: string[] = ['name', 'department', 'position', 'phone', 'approvedBy', 'approvedDate', 'file', 'out'];
-  staffApprovedList: ApprovedList[];
-  dataSource2;
-  // dataSource2 = new MatTableDataSource(APPROVED_DATA);
-
   displayedColumns3: string[] = ['name', 'department', 'position', 'phone', 'evictedDate', 'reason'];
+  staffWaitList: WaitList[];
+  staffApprovedList: ApprovedList[];
   staffEvictedList: EvictedList[];
+  dataSource1;
+  dataSource2;
   dataSource3;
-  // dataSource3 = new MatTableDataSource(EVICTED_DATA);
 
   constructor(
     private dialog: MatDialog,
     private user: UserService,
   ) {
-    this.dataSource1 = this.getStaffData(2);
-    this.dataSource2 = this.getStaffData(3);
-    this.dataSource3 = this.getStaffData(5);
+    this.changeDataToWaitList(this.getStaffData(2));
+    this.changeDataToApprovedList(this.getStaffData(3));
+    this.changeDataToEvictedList(this.getStaffData(5));
+    this.dataSource1 = new MatTableDataSource<WaitList>(this.staffWaitList);
+    this.dataSource2 = new MatTableDataSource<ApprovedList>(this.staffApprovedList);
+    this.dataSource3 = new MatTableDataSource<EvictedList>(this.staffEvictedList);
   }
 
 
@@ -145,6 +143,29 @@ export class StaffManagementComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  // Once Data is returned, alter data to fit the lists
+  changeDataToWaitList( data ) {
+    data.forEach( element => {
+        this.staffWaitList.push({
+          id: data.id,
+          name: data.name,
+          department: data.department,
+          position: data.position,
+          phone: data.phone,
+        });
+    });
+  }
+
+  changeDataToApprovedList( data ) {
+    data.forEach( element => {
+    });
+  }
+
+  changeDataToEvictedList( data ) {
+    data.forEach( element => {
+    });
   }
 
   openDialog( personInfo: any, btnType: any, newStatus: any, ) {

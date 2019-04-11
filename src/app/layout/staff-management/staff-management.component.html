@@ -17,6 +17,8 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
   </mat-form-field>
 
+  <br>
+  <mat-label> 승인대기 직원  </mat-label>
   <div class="mat-elevation-z8">
     <!-- WAIT LIST TABLE -->
     <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
@@ -73,6 +75,10 @@
 
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
   </div>
+
+  
+  <br><br>
+  <mat-label> 승인된 직원  </mat-label>
   <div class="mat-elevation-z8">
     <br />
     <!-- APPROVED LIST TABLE -->
@@ -136,6 +142,10 @@
 
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
   </div>
+
+  
+  <br><br>
+  <mat-label> 퇴사된 직원  </mat-label>
   <div class="mat-elevation-z8">
     <br />
     <!-- EVICTED LIST TABLE -->
