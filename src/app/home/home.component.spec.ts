@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home.component';
 import { HomeModule } from './home.module';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,6 +16,7 @@ describe('HomeComponent', () => {
         HomeModule,
         RouterTestingModule,
         BrowserAnimationsModule,
+        MatMenuModule,
       ],
     })
     .compileComponents();

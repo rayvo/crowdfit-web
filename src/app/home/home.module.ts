@@ -6,7 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { FormsModule } from '@angular/forms';
 
-
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     TranslateModule,
    HomeRoutingModule,
     FormsModule,
+    MatMenuModule,
 ],
 declarations: [HomeComponent]
 })
