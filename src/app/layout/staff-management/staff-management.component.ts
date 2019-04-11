@@ -93,11 +93,11 @@ export class StaffManagementComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private user: UserService,
-    ) {
-      this.dataSource1 = this.getStaffData(2);
-      this.dataSource2 = this.getStaffData(3);
-      this.dataSource3 = this.getStaffData(5);
-    }
+  ) {
+    this.dataSource1 = this.getStaffData(2);
+    this.dataSource2 = this.getStaffData(3);
+    this.dataSource3 = this.getStaffData(5);
+  }
 
 
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
@@ -147,7 +147,7 @@ export class StaffManagementComponent implements OnInit {
     );
   }
 
-  openDialog( personInfo: any, btnType: any ) {
+  openDialog( personInfo: any, btnType: any, newStatus: any, ) {
     const dialogRef = this.dialog.open(SMPopupComponent, {
       width: '250px',
       data: {
@@ -162,25 +162,9 @@ export class StaffManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       result => {
         if ( result !== '') {
-          // TODO Change to the new methods
-          switch ( btnType ) {
-            case 'APPROVE': {
-              this.updateStaffStatus(personInfo.id, 3);
-              break;
-            }
-            case 'DELETE': {
-              // this.user.setUserStatusNone(personInfo.id);
-              break;
-            }
-            case 'MOVE OUT': {
-              // this.user.setUserStatusEvicted(personInfo.id);
-              break;
-            }
-            default: {
-              console.log('Invalid Choice');
-              break;
-            }
-          }
+          this.updateStaffStatus(personInfo.id, newStatus);
+          this.getStaffData(newStatus);
+
 
         }
       },
