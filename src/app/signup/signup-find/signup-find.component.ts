@@ -216,7 +216,7 @@ export class SignupFindComponent implements OnInit {
     ];
   }
 
-
+  // TODO This portion will be changing soon
   // TODO Store file id in localStorage
   uploadFile(file) {
     const selectedFiles = file.target.files;

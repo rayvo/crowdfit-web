@@ -90,11 +90,10 @@ export class SignupCeoComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       data => {
         if ( data != null ) {
-          // create dept or role
           if ( myType === 1 ) {
-
+            // TODO create Dept
           } else {
-
+            // TODO create Role
           }
         } else {
           // do nothing
@@ -106,7 +105,6 @@ export class SignupCeoComponent implements OnInit {
     );
 
   }
-  // myType : 1 for Dept Update , 2 for Role Update
   updateDeptRole( myDeptOrRole, myType ) {
 
     const dialogConfig = new MatDialogConfig();
@@ -122,22 +120,14 @@ export class SignupCeoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       data => {
-        if ( data === '' ) {
-          // Delete dept or role
+        if ( data != null ) {
           if ( myType === 1 ) {
-
+            // TODO Update dept
           } else {
-
-          }
-        } else if ( data != null ) {
-          // Update dept or role
-          if ( myType === 1 ) {
-
-          } else {
-
+            // TODO Update role
           }
         } else {
-          // do nothing with dept or role
+          // canceled
         }
       },
       error => {
@@ -162,11 +152,10 @@ export class SignupCeoComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       data => {
         if ( data === true ) {
-          // Delete dept or role
           if ( myType === 1 ) {
-
+            // TODO Delete Dept
           } else {
-
+            // TODO Delete Role
           }
         } else {
           // do nothing with dept or role

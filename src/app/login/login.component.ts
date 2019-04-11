@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('fullname', data.fullname );
         localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
         localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
-        localStorage.setItem('apt_id', String(data.apartment_id));
-        localStorage.setItem('apt_name', String(data.apartment_name));
+        localStorage.setItem('aptId', String(data.apartment_id));
+        localStorage.setItem('aptName', String(data.apartment_name));
         // TODO
         // Set proper navigations depending on type of user
         this.router.navigate(['/menu/danji']);
