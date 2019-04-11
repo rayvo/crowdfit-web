@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JusoService } from 'src/app/services/juso.service';
 import { UserService } from 'src/app/services/user.service';
-<<<<<<< HEAD
 import { MatDialog, MatDialogConfig } from '@angular/material';
-=======
-import { MatDialog } from '@angular/material';
-
->>>>>>> 6ade6cc0c1113d6eff923dcee0d751fd540c8333
 import { SignupFindJusoComponent } from './signup-find-juso.component';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
