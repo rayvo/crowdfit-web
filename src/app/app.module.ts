@@ -11,10 +11,7 @@ import { AuthGuard } from './shared';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-import {MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatMenuModule} from '@angular/material/menu';
+
 import { StoreProcuctRoutingModule } from './layout/store-management/store-product-management/store-procuct-routing.module';
 import { NoAuthGuard } from './shared/guard/no-auth.guard';
 
@@ -35,8 +32,6 @@ export const createTranslateLoader = (http: HttpClient) => {
     imports: [
         BrowserAnimationsModule,
         MatButtonModule, MatCheckboxModule,
-        MatCardModule, MatDividerModule,
-        MatDialogModule, MatMenuModule,
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,

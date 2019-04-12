@@ -10,6 +10,8 @@ const routes: Routes = [
         path: '',
         component: LayoutMemberComponent,
         children: [
+
+            { path: 'home', loadChildren: './home/home.module#HomeModule' },
             // { path: '', redirectTo: 'menu', pathMatch: 'prefix' },
             // { path: 'menu', loadChildren: './menu-management/menu.module#MenuModule' },
             // { path: 'resident', loadChildren: './resident-management/resident.module#ResidentModule' },
