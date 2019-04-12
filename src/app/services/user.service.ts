@@ -81,6 +81,7 @@ export class UserService {
   // description:TEXT
   ceoRegister( userId, fileId, aptInfo, myPhone, myDesc ): Observable<any> {
     const body = {
+
       user_id: userId,
       document_file_id: fileId,
       apt_name: aptInfo.bdNm,

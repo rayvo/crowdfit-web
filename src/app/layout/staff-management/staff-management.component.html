@@ -75,13 +75,51 @@
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
   </div>
 
+<!--
+      <br /><br />
+      <mat-label> 초대된 직워ㅕㄴ </mat-label>
+      <div class="mat-elevation-z8">
+        <br />
+        
+        Invited List Table
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>성명</th>
+            <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+          </ng-container>
+          <ng-container matColumnDef="department">
+            <th mat-header-cell *matHeaderCellDef>부서</th>
+            <td mat-cell *matCellDef="let person">{{ person.department }}</td>
+          </ng-container>
+          <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef>직책</th>
+            <td mat-cell *matCellDef="let person">{{ person.role }}</td>
+          </ng-container>
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef>연락처</th>
+            <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+          </ng-container>
+          
+          Add 'Cancel Invite' Button
+          Add 'Resend Invite' Button
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+-->
+
+
   
   <br><br>
   <mat-label> 승인된 직원  </mat-label>
   <div class="mat-elevation-z8">
     <br />
     <!-- APPROVED LIST TABLE -->
-    <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>성명</th>
@@ -134,9 +172,8 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-      <!--(click)="openDialogApproved(row)"-->
-      <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
@@ -148,7 +185,7 @@
   <div class="mat-elevation-z8">
     <br />
     <!-- EVICTED LIST TABLE -->
-    <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>성명</th>
@@ -185,9 +222,8 @@
         <td mat-cell *matCellDef="let person">{{ person.reason }}</td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-      <!--(click)="openDialogOut(row)"-->
-      <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns4"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>

@@ -8,22 +8,17 @@
       <li class="breadcrumb-item active" aria-current="page">일반 입주자관리</li>
     </ol>
   </nav>
-  <div class=btn-container>
-    <a routerLink=#><button type="button" class="btn btn-orange" style=" margin-right:10px;">초대하기</button></a>
+  <div class="btn-container">
+    <a routerLink="#"><button type="button" class="btn btn-orange" style=" margin-right:10px;">초대하기</button></a>
 
-    <a routerLink=#></a> <button type="button" class="btn btn-secondary">EPR가져오기</button>
-    <a routerLink=#></a> <button type="button" class="btn btn-secondary manager">매니저초대</button>
-
+    <a routerLink="#"></a> <button type="button" class="btn btn-secondary">EPR가져오기</button> <a routerLink="#"></a>
+    <button type="button" class="btn btn-secondary manager">매니저초대</button>
   </div>
-
-
-
 
   <!-- Filter Search Bar -->
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
   </mat-form-field>
-
 
   <div class="row">
     <div class="col-sm rounded mx-auto;">
@@ -31,8 +26,6 @@
       <div class="mat-elevation-z8">
         <!-- WAIT LIST TABLE -->
         <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
-
-          <!--  Columns -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>성명</th>
             <td mat-cell *matCellDef="let person">{{ person.name }}</td>
@@ -67,15 +60,16 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
         </table>
+
         <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
       </div>
-
-
-      <br><br>
-      <mat-label> 승인된 입주민  </mat-label>
+<!--
+      <br /><br />
+      <mat-label> 초대된 입주민 </mat-label>
       <div class="mat-elevation-z8">
         <br />
-        <!-- APPROVED LIST TABLE -->
+        
+        Invited List Table
         <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>성명</th>
@@ -89,40 +83,29 @@
             <th mat-header-cell *matHeaderCellDef>연락처</th>
             <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
           </ng-container>
-          <ng-container matColumnDef="file">
-          <ng-container matColumnDef="approvedBy">
-            <th mat-header-cell *matHeaderCellDef>승인자</th>
-            <td mat-cell *matCellDef="let person">{{ person.approvedBy }}</td>
-          </ng-container>
-          <ng-container matColumnDef="approvedDate">
-            <th mat-header-cell *matHeaderCellDef>승인일자</th>
-            <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
-          </ng-container>
-            <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
-            <td mat-cell *matCellDef="let person">
-              <button mat-raised-button (click)="showFile(person)">File</button>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="out">
-            <th mat-header-cell *matHeaderCellDef>퇴거</th>
-            <td mat-cell *matCellDef="let person">
-              <button mat-raised-button (click)="openDialog(person, 'MOVE OUT', 5)">퇴거</button>
-            </td>
-          </ng-container>
+          
+          Add 'Cancel Invite' Button
+          Add 'Resend Invite' Button
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
         </table>
+
         <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
+-->
 
 
-    <br><br>
-      <mat-label> 퇴거된 입주민  </mat-label>
+
+
+
+
+      <br /><br />
+      <mat-label> 승인된 입주민 </mat-label>
       <div class="mat-elevation-z8">
         <br />
-        <!-- EVICTED LIST TABLE -->
+        <!-- APPROVED LIST TABLE -->
         <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>성명</th>
@@ -137,6 +120,53 @@
             <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
           </ng-container>
           <ng-container matColumnDef="file">
+            <ng-container matColumnDef="approvedBy">
+              <th mat-header-cell *matHeaderCellDef>승인자</th>
+              <td mat-cell *matCellDef="let person">{{ person.approvedBy }}</td>
+            </ng-container>
+            <ng-container matColumnDef="approvedDate">
+              <th mat-header-cell *matHeaderCellDef>승인일자</th>
+              <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
+            </ng-container>
+            <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
+            <td mat-cell *matCellDef="let person">
+              <button mat-raised-button (click)="showFile(person)">File</button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="out">
+            <th mat-header-cell *matHeaderCellDef>퇴거</th>
+            <td mat-cell *matCellDef="let person">
+              <button mat-raised-button (click)="openDialog(person, 'MOVE OUT', 5)">퇴거</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+
+    <br /><br />
+    <mat-label> 퇴거된 입주민 </mat-label>
+    <div class="mat-elevation-z8">
+      <br />
+      <!-- EVICTED LIST TABLE -->
+      <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>성명</th>
+          <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="donghosu">
+          <th mat-header-cell *matHeaderCellDef>동호수</th>
+          <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>연락처</th>
+          <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+        </ng-container>
+        <ng-container matColumnDef="file">
           <ng-container matColumnDef="approvedBy">
             <th mat-header-cell *matHeaderCellDef>퇴거자</th>
             <td mat-cell *matCellDef="let person">{{ person.staff }}</td>
@@ -145,26 +175,19 @@
             <th mat-header-cell *matHeaderCellDef>퇴거일자</th>
             <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
           </ng-container>
-            <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
-            <td mat-cell *matCellDef="let person">
-              <button mat-raised-button (click)="showFile(person)">File</button>
-            </td>
-          </ng-container>
+          <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
+          <td mat-cell *matCellDef="let person">
+            <button mat-raised-button (click)="showFile(person)">File</button>
+          </td>
+        </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
-      </div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns4"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
     </div>
-
-
-  </div>
-
-
-
-
-<!--
+  <!--
   <div class="row">
     <div class="col-sm rounded mx-auto;">
       <p>승인대기 입주민(<span class="orange">n</span>)</p>
@@ -464,4 +487,6 @@
 
 
 
+
+  </div>
 </div>
