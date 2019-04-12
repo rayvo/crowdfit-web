@@ -1,3 +1,11 @@
+
+.header-wrap{
+    width: 940px!important;
+height: auto;
+margin: 0 auto;
+vertical-align: middle;
+display: inline-flex;
+}
 $topnav-background-color:orange;
 :host {
     .navbar {
@@ -16,9 +24,15 @@ $topnav-background-color:orange;
 
     .mat-flat-button{
         border-radius: 0 !important;
-      margin-left: 420px;}
-    .navbar-brand{margin-left:45%;}
+    height: 40px;}
+    .navbar-brand{ margin-left: 10px;}
     
+    ul{
+float: right;} 
+li, a{color: darkslategray;}
+
+.dropdown-item:hover{background-color:transparent;}
+
     .messages {
         width: 300px;
         .media {
@@ -43,3 +57,4 @@ $topnav-background-color:orange;
         }
     }
 }
+
