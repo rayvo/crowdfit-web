@@ -40,9 +40,8 @@ export class GeneralResidentManagementComponent implements OnInit {
     private user: UserService,
   ) {
     this.changeDatatoWaitList(this.getUserData(2));
-
-    // this.changeDatatoWaitList(this.getUserData(2));
-    // this.changeDatatoWaitList(this.getUserData(2));
+    this.changeDatatoApprovedList(this.getUserData(3));
+    this.changeDatatoEvictedList(this.getUserData(5));
     // this.changeDatatoWaitList(this.getUserData(2));
     // this.changeDatatoWaitList(this.getUserData(2));
   }
@@ -50,8 +49,38 @@ export class GeneralResidentManagementComponent implements OnInit {
 
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
 
+  // Filtering by only name and phone
   ngOnInit() {
+    this.dataSource1.filterPredicate = ( data: WaitList, filter: string ) => {
+      return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
+      data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
+    };
+
+    this.dataSource2.filterPredicate = ( data: ApprovedList, filter: string ) => {
+      return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
+      data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
+    };
+
+    this.dataSource3.filterPredicate = ( data: EvictedList, filter: string ) => {
+      return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
+      data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
+    };
   }
+
+  ngAfterViewInit(): void {
+    // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    // Add 'implements AfterViewInit' to the class.
+    this.dataSource1.paginator = this.paginator.toArray()[0];
+    this.dataSource2.paginator = this.paginator.toArray()[1];
+    this.dataSource3.paginator = this.paginator.toArray()[2];
+  }
+  // Only search names and numbers
+  applyFilter(filterValue: string) {
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
+    this.dataSource2.filter = filterValue.trim().toLowerCase();
+    this.dataSource3.filter = filterValue.trim().toLowerCase();
+  }
+
 
   getUserData( statusNum ) {
     this.user.getUsersByStatus( localStorage.getItem('aptId'), statusNum ).subscribe(
