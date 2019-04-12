@@ -19,17 +19,12 @@ $topnav-background-color: white;
     overflow-x: hidden;
     padding-bottom: 40px;
     font-size: 0.9em;
-    white-space: nowrap;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+
     // border-top: 1px solid rgba(255,255,255,0.3);
     .sidebar-wrap{
         margin-top: 20px;
         margin-bottom: 20px;
-        border-radius: 4px;
+       
         background: $topnav-background-color;
         width: 200px;
         padding: 10px;
@@ -43,7 +38,7 @@ $topnav-background-color: white;
         a.list-group-item {
             background: $topnav-background-color;
             border: 0;
-            color:#888;
+            color:darkslategray;
             text-decoration: none;
              
             
@@ -53,11 +48,11 @@ $topnav-background-color: white;
             }
         }
         a:hover, a:focus {
-            background:  #f37a20;
+            background: orange;
             color: #fff;
         }
         a.router-link-active {
-            background: #f37a20;
+            background: orange;
             color: #fff;
         }
         .header-fields {

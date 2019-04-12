@@ -7,7 +7,7 @@ import { LayoutMemberComponent } from './layout-member.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
+import { HomeComponent } from './home/home.component';
 import { AuthGuard } from '../shared';
 import {
   MatTableModule,
@@ -39,6 +39,7 @@ import {MatIconModule} from '@angular/material/icon';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
+    HomeComponent,
 
   ],
   providers: [AuthGuard],
