@@ -10,24 +10,24 @@
   <div class="list-group">
     <!--메뉴관리-->
     <div class="nested-menu">
-      <a class="list-group-item" routerLink="/menu/danji" (click)="addExpandClass('menu-pages')">
+      <a class="list-group-item" routerLink="/s/menu/danji" (click)="addExpandClass('menu-pages')">
         <i class="fas fa-list-ul"></i>&nbsp;
         <span>메뉴관리 </span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'menu-pages'">
         <ul class="submenu">
           <li>
-            <a routerLink="/menu/danji">
+            <a routerLink="/s/menu/danji">
               <span>단지안내</span>
             </a>
           </li>
           <li>
-            <a routerLink="/menu/community">
+            <a routerLink="/s/menu/community">
               <span>커뮤니티</span>
             </a>
           </li>
           <li>
-            <a routerLink="/menu/culturecourse">
+            <a routerLink="/s/menu/culturecourse">
               <span>문화 강좌</span>
             </a>
           </li>
@@ -37,19 +37,19 @@
 
     <!--입주민관리-->
     <div class="nested-menu">
-      <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
+      <a class="list-group-item" routerLink="/s/resident/generalresident" (click)="addExpandClass('resident-pages')">
         <i class="far fa-address-card"></i>&nbsp;
         <span>입주민관리 </span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'resident-pages'">
         <ul class="submenu">
           <li>
-            <a routerLink="/resident/generalresident">
+            <a routerLink="/s/resident/generalresident">
               <span>일반 입주자 관리</span>
             </a>
           </li>
           <li>
-            <a routerLink="/resident/communitymember">
+            <a routerLink="/s/resident/communitymember">
               <span>커뮤니티 멤버관리</span>
             </a>
           </li>
@@ -58,7 +58,7 @@
     </div>
 
     <!--직원관리-->
-    <a class="list-group-item" routerLink="/staff">
+    <a class="list-group-item" routerLink="/s/staff">
       <i class="fas fa-user-friends"></i>&nbsp;
       <span>직원관리</span>
     </a>
@@ -71,17 +71,17 @@
       <li class="nested" [class.expand]="showMenu === 'accounting-pages'">
         <ul class="submenu">
           <li>
-            <a routerLink="/accounting/wage">
+            <a routerLink="/s/accounting/wage">
               <span>급여관리 </span>
             </a>
           </li>
           <li>
-            <a routerLink="/accounting/sales">
+            <a routerLink="/s/accounting/sales">
               <span>매출관리</span>
             </a>
           </li>
           <li>
-            <a routerLink="/accounting/costnotice">
+            <a routerLink="/s/accounting/costnotice">
               <span>관리비 알림</span>
             </a>
           </li>
@@ -91,35 +91,35 @@
 
     <!--스토어관리-->
     <div class="nested-menu">
-      <a class="list-group-item" routerLink="/store/product" (click)="addExpandClass('store-pages')">
+      <a class="list-group-item" routerLink="/s/store/product" (click)="addExpandClass('store-pages')">
         <i class="fas fa-shopping-cart"></i>&nbsp;
         <span>스토어관리 </span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'store-pages'">
         <ul class="submenu">
           <li>
-            <a routerLink="/store/product/enrollment" >
+            <a routerLink="/s/store/product/enrollment" >
               <span>상품관리 </span>
             </a>
             <ul class="submenu" >
                 <li>
-                    <a routerLink="/store/product/enrollment">상품등록</a>
+                    <a routerLink="/s/store/product/enrollment">상품등록</a>
                 </li>
                 <li>
-                    <a routerLink="/store/product/modified">상품조회/수정</a>
+                    <a routerLink="/s/store/product/modified">상품조회/수정</a>
                 </li>
                 <li>
-                    <a routerLink="/store/product/picstorage">사진보관함</a>
+                    <a routerLink="/s/store/product/picstorage">사진보관함</a>
                 </li>
             </ul>
           </li>
           <li>
-            <a routerLink="/store/vendor">
+            <a routerLink="/s/store/vendor">
               <span>판매자관리 </span>
             </a>
           </li>
           <li>
-            <a routerLink="/store/notice">
+            <a routerLink="/s/store/notice">
               <span>공지사항 </span>
             </a>
           </li>
@@ -128,26 +128,26 @@
     </div>
 
     <!--락커좌석관리-->  
-    <a class="list-group-item" routerLink="/locker">
+    <a class="list-group-item" routerLink="/s/locker">
       <i class="fas fa-lock"></i>&nbsp;
       <span>락커좌석관리</span>
     </a>
 
     <!--수업관리-->
     <div class="nested-menu">
-      <a class="list-group-item" routerLink="/class/gx">
+      <a class="list-group-item" routerLink="/s/class/gx">
         <i class="fas fa-chalkboard-teacher"></i>&nbsp;
         <span>수업관리 </span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'class-pages'">
         <ul class="submenu">
           <li>
-            <a routerLink="/class/gx">
+            <a routerLink="/s/class/gx">
               <span>GX관리</span>
             </a>
           </li>
           <li>
-            <a routerLink="/class/lesson">
+            <a routerLink="/s/class/lesson">
               <span>레슨관리</span>
             </a>
           </li>
@@ -156,19 +156,19 @@
     </div>
 
     <!--출석관리-->
-    <a class="list-group-item" routerLink="/attendence">
+    <a class="list-group-item" routerLink="/s/attendence">
       <i class="far fa-check-circle"></i>&nbsp;
       <span>출석관리</span>
     </a>
 
     <!--생활관리지원-->
-    <a class="list-group-item" routerLink="/service-center">
+    <a class="list-group-item" routerLink="/s/service-center">
       <i class="fas fa-coffee"></i>&nbsp;
       <span>생활관리지원</span>
     </a>
 
     <!--권한설정-->
-    <a class="list-group-item" routerLink="/settings">
+    <a class="list-group-item" routerLink="/s/settings">
       <i class="fas fa-shield-alt"></i>&nbsp;
       <span>권한설정</span>
     </a>
