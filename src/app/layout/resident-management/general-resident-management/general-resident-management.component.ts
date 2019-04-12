@@ -1,6 +1,7 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
+import { GRMPopupComponent } from './grm-popup.component';
 
 @Component({
   selector: 'app-general-resident-management',
@@ -112,6 +113,12 @@ export class GeneralResidentManagementComponent implements OnInit {
     });
   }
 
+  changeDatatoInvitedList( data ) {
+    data.____.forEach(element => {
+
+    });
+  }
+
   changeDatatoApprovedList( data ) {
     data.____.forEach(element => {
 
@@ -124,20 +131,60 @@ export class GeneralResidentManagementComponent implements OnInit {
     });
   }
 
-  changeDatatoInvitedList( data ) {
-    data.____.forEach(element => {
-
-    });
-  }
 
 
 
   openDialog( personInfo: any, btnType: any, newStatus: any, ) {
-    // const dialogRef = this.dialog.open()
+    // const dialogRef = this.dialog.open(GRMPopupComponent, {
+
+    // }
   }
+
+  updateUserStatus( personInfo, newStatus ) {
+    if ( newStatus === 1 ) {
+       // TODO The applicant was not approved
+    } else if ( newStatus === 3 ) {
+      this.user.approveUser(personInfo.id).subscribe(
+        data => {
+          this.userWaitList = this.removeFromList(this.userWaitList, personInfo);
+          // TODO add stuff to personInfo that we need for userApprovedList
+          // personInfo.approvedBy = ___
+          this.userApprovedList.push( personInfo );
+          this.reloadAllData();
+        },
+        error => {
+
+        }
+      );
+    } else if ( newStatus === 5 ) {
+      // TODO an approved user that left or was evicted
+    } else {
+      console.log('There is an error');
+    }
+  }
+
+
+
+  reloadAllData() {
+    this.dataSource1 = new MatTableDataSource<WaitList>(this.userWaitList);
+    this.dataSource2 = new MatTableDataSource<InvitedList>(this.userInvitedList);
+    this.dataSource3 = new MatTableDataSource<ApprovedList>(this.userApprovedList);
+    this.dataSource4 = new MatTableDataSource<EvictedList>(this.userEvictedList);
+    this.dataSource1.paginator = this.paginator.toArray()[0];
+    this.dataSource2.paginator = this.paginator.toArray()[1];
+    this.dataSource3.paginator = this.paginator.toArray()[2];
+    this.dataSource4.paginator = this.paginator.toArray()[3];
+  }
+
 
   showFile() {
 
+  }
+
+  removeFromList( myArray, myPerson ) {
+    return myArray.filter(function(person) {
+      return myPerson !== person;
+    });
   }
 
 
