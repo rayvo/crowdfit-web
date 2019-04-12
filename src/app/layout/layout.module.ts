@@ -55,7 +55,6 @@ import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
 
 
 
-
   ],
   providers: [AuthGuard],
   entryComponents: [

@@ -127,6 +127,14 @@ export class StaffManagementComponent implements OnInit {
     this.dataSource3.paginator = this.paginator.toArray()[2];
   }
 
+  // Only search names and numbers
+  applyFilter(filterValue: string) {
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
+    this.dataSource2.filter = filterValue.trim().toLowerCase();
+    this.dataSource3.filter = filterValue.trim().toLowerCase();
+  }
+
+
 
   getStaffData( statusNum ) {
     this.user.getStaffsByStatus( localStorage.getItem('aptId'), statusNum ).subscribe(
@@ -141,7 +149,7 @@ export class StaffManagementComponent implements OnInit {
 
   // Once Data is returned, alter data to fit the lists
   changeDataToWaitList( data ) {
-    data.forEach( element => {
+    data._____.forEach( element => {
         this.staffWaitList.push({
           id: data.id,
           name: data.name,
@@ -153,12 +161,12 @@ export class StaffManagementComponent implements OnInit {
   }
 
   changeDataToApprovedList( data ) {
-    data.forEach( element => {
+    data._____.forEach( element => {
     });
   }
 
   changeDataToEvictedList( data ) {
-    data.forEach( element => {
+    data._____.forEach( element => {
     });
   }
 

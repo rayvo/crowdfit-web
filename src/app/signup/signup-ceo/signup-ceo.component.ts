@@ -12,22 +12,24 @@ import { Router } from '@angular/router';
 export interface DeptList {
   id: number;
   name: string;
+  desc: string;
 }
-const DEPT_DATA: DeptList[] = [
-  { id: 1, name: 'Finance' },
-  { id: 2, name: 'Management' },
-  { id: 3, name: 'Front' },
-];
+// const DEPT_DATA: DeptList[] = [
+//   { id: 1, name: 'Finance' },
+//   { id: 2, name: 'Management' },
+//   { id: 3, name: 'Front' },
+// ];
 
 export interface RoleList {
   id: number;
   name: string;
+  desc: string;
 }
-const ROLE_DATA: RoleList[] = [
-  { id: 1, name: 'Accountant' },
-  { id: 2, name: 'Secretary' },
-  { id: 3, name: 'Front Desk' },
-];
+// const ROLE_DATA: RoleList[] = [
+//   { id: 1, name: 'Accountant' },
+//   { id: 2, name: 'Secretary' },
+//   { id: 3, name: 'Front Desk' },
+// ];
 
 
 @Component({
@@ -37,8 +39,8 @@ const ROLE_DATA: RoleList[] = [
 })
 export class SignupCeoComponent implements OnInit {
 
-  depts = DEPT_DATA;
-  roles = ROLE_DATA;
+  depts: DeptList[];
+  roles: RoleList[];
   selectedDept;
   selectedRole;
 
@@ -59,16 +61,39 @@ export class SignupCeoComponent implements OnInit {
 
 
   getDeptData() {
-
+    this.depts.length = 0; // Clear the array without creating a new reference
+    this.user.listAllDepartment( localStorage.getItem('aptId') ).subscribe(
+      data => {
+        // TODO Replace ______
+        data.____.forEach(element => {
+          this.depts.push({id: element.id, name: element.name, desc: element.description});
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   deptClicked( aDept ) {
     console.log(aDept);
     this.selectedDept = aDept;
+    this.getRoleData(aDept.id);
   }
 
-  getRoleData() {
-
+  getRoleData( deptId ) {
+    this.roles.length = 0; // Clear the array without creating a new reference
+    this.user.listAllRoleOfDepartment( deptId ).subscribe(
+      data => {
+        // TODO Replace ____
+        data._____.forEach(element => {
+          this.roles.push({id: element.id, name: element.name, desc: element.description});
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   roleClicked( aRole ) {
