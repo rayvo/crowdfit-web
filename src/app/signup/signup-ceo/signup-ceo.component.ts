@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { SignupCeoEditPopupComponent } from './signup-ceo-edit-popup.component';
 import { SignupCeoAddPopupComponent } from './signup-ceo-add-popup.component';
 import { SignupCeoDelPopupComponent } from './signup-ceo-del-popup.component';
+import { Router } from '@angular/router';
 
 
 
@@ -44,6 +45,7 @@ export class SignupCeoComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private user: UserService,
+    private router: Router,
   ) {
     this.getDeptData();
     this.selectedDept = '';
@@ -171,7 +173,7 @@ export class SignupCeoComponent implements OnInit {
 
 
   saveClicked() {
-
+    this.router.navigate(['/menu/danji/']);
   }
 
 
