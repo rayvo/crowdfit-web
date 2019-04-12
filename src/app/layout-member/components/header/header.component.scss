@@ -5,12 +5,14 @@ height: auto;
 margin: 0 auto;
 vertical-align: middle;
 display: inline-flex;
+
 }
 $topnav-background-color:orange;
 :host {
     .navbar {
-    
+     
         background-color: $topnav-background-color;
+        border-bottom: 1px solid #ddd;
         .navbar-brand {
             color: #fff;
         }
@@ -24,13 +26,14 @@ $topnav-background-color:orange;
 
     .mat-flat-button{
         border-radius: 0 !important;
-    height: 40px;}
+    height: 40px;
+}
     .navbar-brand{ margin-left: 10px;}
     
     ul{
 float: right;} 
-li, a{color: darkslategray;}
-
+li, a{color: darkslategray; }
+.nav-link{  display: inline-flex;}
 .dropdown-item:hover{background-color:transparent;}
 
     .messages {

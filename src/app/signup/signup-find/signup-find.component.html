@@ -1,49 +1,52 @@
 <div class="login-page">
   <div class="container">
-    <mat-card> 
+    <mat-card>
       <span>역할등록</span></mat-card>
     <mat-vertical-stepper [linear]="true" #stepper>
-      <mat-step [stepControl]="firstFormGroup" [editable]="false"> 
+      <mat-step [stepControl]="firstFormGroup" [editable]="false">
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>무엇으로 가입하고 싶으세요?</ng-template>
 
           <!-- Roles are predetermined -->
           <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
             <mat-button-toggle (click)="roleClicked(3)" class="btn1">
-                <i class="material-icons">
-                    face
-                    </i>
-              <br />커뮤니티 입주인</mat-button-toggle >
-            <mat-button-toggle  (click)="roleClicked(2)">
-                <i class="material-icons">
-                    supervisor_account
-                    </i>
+              <i class="material-icons">
+                face
+              </i>
+              <br />커뮤니티 입주인</mat-button-toggle>
+            <mat-button-toggle (click)="roleClicked(2)">
+              <i class="material-icons">
+                supervisor_account
+              </i>
               <br />커뮤니티 직원</mat-button-toggle>
             <mat-button-toggle (click)="roleClicked(1)">
               <i class="material-icons">
-                  grade
-                  </i>
+                grade
+              </i>
               <br />커뮤니티 대표</mat-button-toggle>
           </mat-button-toggle-group>
 
           <div>
-            <button mat-button style="color: orange"  matStepperNext class="next border-top-0">다음단계로</button>
+            <button mat-button style="color: orange" matStepperNext class="next border-top-0">다음단계로</button>
           </div>
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="secondFormGroup" [editable]="false"> 
+      <mat-step [stepControl]="secondFormGroup" [editable]="false">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>주소를 검색하세요. </ng-template>
 
           <!-- TODO This button only shows up when a person has clicked a role -->
-          
-          <a mat-stroked-button color="primary" class="juso-serch" (click)="openJusoDialog()"><mat-icon class="icon">
+
+          <a mat-stroked-button color="primary" class="juso-serch" (click)="openJusoDialog()">
+            <mat-icon class="icon">
               room
-              </mat-icon> 주소검색</a>
+            </mat-icon> 주소검색
+          </a>
           <br />
 
-          <label *ngIf="parsedJuso == '' && jusoSearchClicked == true">You Are Required to select an address</label><br />
+          <label *ngIf="parsedJuso == '' && jusoSearchClicked == true">You Are Required to select an
+            address</label><br />
           <label *ngIf="parsedJuso != ''">검색된 주소</label><br />
           <label>{{ parsedJuso.jibunAddr }}</label>
           <br />
@@ -51,16 +54,16 @@
             This APT already exists. You cannot choose this apt.
           </label><br />
           <label *ngIf="parsedJuso != '' && jusoSearchClicked == true && jusoAvail == false">
-              A CEO has not made this apartment available on Crowdfit yet. 
-            </label><br />
-       
+            A CEO has not made this apartment available on Crowdfit yet.
+          </label><br />
+
           <div>
-            <button mat-button style="color: orange"  matStepperNext>다음단계로</button>
+            <button mat-button style="color: orange" matStepperNext>다음단계로</button>
           </div>
         </form>
       </mat-step>
-      
-      
+
+
       <mat-step [stepControl]="thirdFormGroup" [editable]="false">
         <form [formGroup]="thirdFormGroup">
           <ng-template matStepLabel>상세주소를 입력하세요.</ng-template>
@@ -89,21 +92,30 @@
           </mat-form-field>
 
           <!-- Predetermined Numbers -->
-          <label *ngIf="getLS('role') == '1'"> <mat-panel-title><mat-icon>stay_primary_portrait</mat-icon>휴대폰 번호</mat-panel-title></label>
+          <label *ngIf="getLS('role') == '1'">
+            <mat-panel-title>
+              <mat-icon>phone_android</mat-icon>휴대폰 번호
+            </mat-panel-title>
+          </label>
           <mat-form-field *ngIf="getLS('role') == '1'">
-            <input matInput formControlName="thirdCtrl1"  placeholder="ex)01012345678" />
+            <input matInput formControlName="thirdCtrl1" placeholder="ex)01012345678" />
           </mat-form-field>
           <br *ngIf="getLS('role') == '1'" />
-          <label *ngIf="getLS('role') == '1'"><mat-panel-title><mat-icon>domain</mat-icon>상세주소</mat-panel-title></label>
+          <label *ngIf="getLS('role') == '1'">
+            <mat-panel-title>
+              <mat-icon>home</mat-icon>주거형태
+            </mat-panel-title>
+          </label>
           <mat-form-field *ngIf="getLS('role') == '1'">
-            <input matInput formControlName="thirdCtrl2" placeholder="상세주소를 입력하세요" />
+            <input matInput formControlName="thirdCtrl2" placeholder="ex)아파트, 빌라 등" />
           </mat-form-field>
 
           <br /><br /><br />
 
-        <mat-icon>add_to_photos</mat-icon>
-          <input type="file"  (change)="uploadFile($event)" placeholder="add_to_photos" accept=".pdf,.doc,.docx,.jpg,.png">
-        
+
+          <input type="file" (change)="uploadFile($event)" placeholder="add_to_photos"
+            accept=".pdf,.doc,.docx,.jpg,.png">
+
           <div>
             <button mat-button style="color: orange" matStepperNext>다음단계로</button>
           </div>
@@ -113,16 +125,13 @@
 
       <mat-step>
         <ng-template matStepLabel>완료</ng-template>
-        <a mat-stroked-button class="approve"  color="primary" (click)="applyClicked()" routerLink="/signup/applied">
-          승인요청
-        </a>
+
         <div>
-          <button mat-button style="color: orange" (click)="stepper.reset()">초기화</button>
-        <ng-template matStepLabel>Done</ng-template>
-        <!-- routerLink="/signup/applied"-->
-        <a (click)="applyClicked()">
-          승인요청
-        </a>
+          <button mat-button style="color: gray; font-size: 1rem;" (click)="stepper.reset()">초기화</button>
+          <ng-template matStepLabel>Done</ng-template>
+          <!-- routerLink="/signup/applied"-->
+          <button mat-button style="color:orange; font-size: 1rem;"  (click)="applyClicked()" routerLink="/signup/applied">승인요청</button>
+
         </div>
       </mat-step>
     </mat-vertical-stepper>
