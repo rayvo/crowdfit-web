@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutMemberComponent } from './layout-member.component';
-
+import {HomeComponent} from './home/home.component';
 
 import { AuthGuard } from '../shared';
+import { from } from 'rxjs';
 
 const routes: Routes = [
     {
         path: '',
         component: LayoutMemberComponent,
         children: [
+
+            { path: 'home', component: HomeComponent },
             // { path: '', redirectTo: 'menu', pathMatch: 'prefix' },
             // { path: 'menu', loadChildren: './menu-management/menu.module#MenuModule' },
             // { path: 'resident', loadChildren: './resident-management/resident.module#ResidentModule' },

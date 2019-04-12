@@ -1,35 +1,44 @@
-$topnav-background-color: #404041;
+
+
+
+$topnav-background-color: white;
 .sidebar {
-    border-radius: 0;
+    width: 200px;
+    height:auto;
     position: fixed;
     z-index: 1000;
     top: 71px;
     left: 215px;
-    width: 200px;
-    margin-left: -215px;
-    margin-bottom: 0;
+ 
+
     border: none;
-    border-radius: 0;
+    border-radius: 1;
     overflow-y: auto;
-    background-color: $topnav-background-color;
+
     bottom: 0;
     overflow-x: hidden;
     padding-bottom: 40px;
     font-size: 0.9em;
-    white-space: nowrap;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+
     // border-top: 1px solid rgba(255,255,255,0.3);
+    .sidebar-wrap{
+        margin-top: 20px;
+        margin-bottom: 20px;
+       
+        background: $topnav-background-color;
+        width: 200px;
+        padding: 10px;
+        height: auto;
+        border: 0.5px solid #cccddd;
+
+    }
     .list-group {
         margin-top: 40px;
+     
         a.list-group-item {
             background: $topnav-background-color;
             border: 0;
-            border-radius: 0;
-            color:#d0d1d1;
+            color:darkslategray;
             text-decoration: none;
              
             
@@ -39,11 +48,11 @@ $topnav-background-color: #404041;
             }
         }
         a:hover, a:focus {
-            background:  #f37a20;
+            background: orange;
             color: #fff;
         }
         a.router-link-active {
-            background: #f37a20;
+            background: orange;
             color: #fff;
         }
         .header-fields {
@@ -54,61 +63,7 @@ $topnav-background-color: #404041;
             }
         }
     }
-    .sidebar-dropdown {
-        *:focus {
-            border-radius: none;
-            border: none;
-            
-        }
-        .panel-title {
-            font-size: 1rem;
-            height: 50px;
-            margin-bottom: 0;
-            a {
-                color: #999;
-                text-decoration: none;
-                font-weight: 400;
-                background: $topnav-background-color;
-                span {
-                    position: relative;
-                    display: block;
-                    padding: 0.75rem 1.5rem;
-                    padding-top: 1rem;
-                }
-            }
-            a:hover,
-            a:focus {
-                color:#d0d1d1;
-                outline: none;
-                outline-offset: -2px;
-                
-            }
-        }
-        .panel-title:hover {
-            background:  #f37a20;
-        }
-        .panel-collapse {
-            border-radius: 0;
-            border: none;
-            .panel-body {
-                .list-group-item {
-                    border-radius: 0;
-                    background-color: $topnav-background-color;
-                    border: 0 solid transparent;
-                    a {
-                        color: #999;
-                    }
-                    a:hover, a:focus {
-                        color: #fff;
-                        
-                    }
-                }
-                .list-group-item:hover{
-                    background: #f37a20;
-                }
-            }
-        }
-    }
+ 
 }
 
 .nested-menu {
