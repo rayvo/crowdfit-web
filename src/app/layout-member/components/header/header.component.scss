@@ -1,4 +1,4 @@
-$topnav-background-color:#f9aa33;
+$topnav-background-color:orange;
 :host {
     .navbar {
     
@@ -14,7 +14,9 @@ $topnav-background-color:#f9aa33;
         }
     }
 
-
+    .mat-flat-button{
+        border-radius: 0 !important;
+      margin-left: 420px;}
     .navbar-brand{margin-left:45%;}
     
     .messages {

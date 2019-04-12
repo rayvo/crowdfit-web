@@ -9,8 +9,11 @@
 
 body{background-color: #edf0f2;}
 .main-container {
-    margin-top: 56px;
-    margin-left: 200px;
+
+    width: 940px!important;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 80px;
     padding: 15px;
     -ms-overflow-x: hidden;
     overflow-x: hidden;
@@ -32,3 +35,7 @@ body{background-color: #edf0f2;}
         margin-left: 0px !important;
     }
 }
+
+
+mat-icon{
+    font-size: 20px;}

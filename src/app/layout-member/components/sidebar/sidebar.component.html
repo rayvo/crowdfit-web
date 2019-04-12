@@ -1,19 +1,34 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
   integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
 
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script> 
 
 
 
 <nav class="sidebar" [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }">
 <div class="sidebar-wrap">
+<div class="profile_th">
+<mat-icon>account_circle</mat-icon>  
+<p>name</p> 
+<button mat-flat-button color="primary" [matMenuTriggerFor]="menu">address1</button>
 
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>새로운 거주지 정보추가하기</button>
+      <button mat-menu-item>address1</button>
+    </mat-menu>
+
+
+</div>
+
+
+<mat-divider></mat-divider>
+   
   <div class="list-group">
 
     <!--공지사항-->
     <div class="nested-menu">
       <a class="list-group-item" routerLink="/menu/danji" (click)="addExpandClass('menu-pages')">
-        <i class="fas fa-list-ul"></i>&nbsp;
+<mat-icon>event_note</mat-icon>
         <span>공지사항 </span>
       </a>
     </div>
@@ -21,59 +36,79 @@
     <!--단지안내-->
     <div class="nested-menu">
       <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-        <i class="far fa-address-card"></i>&nbsp;
+        <mat-icon>location_city</mat-icon>
         <span>단지안내</span>
       </a>
     </div>
 <!--스마트관리비-->
 <div class="nested-menu">
     <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-      <i class="far fa-address-card"></i>&nbsp;
+     <mat-icon>local_atm</mat-icon>
       <span>스마트관리비</span>
     </a>
   </div>
   <!--커뮤니티-->
   <div class="nested-menu">
     <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-      <i class="far fa-address-card"></i>&nbsp;
+      <mat-icon>public</mat-icon>
       <span>커뮤니티</span>
     </a>
   </div>
   <!--문화강좌-->
   <div class="nested-menu">
     <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-      <i class="far fa-address-card"></i>&nbsp;
+      <mat-icon>school</mat-icon>
       <span>문화강좌</span>
     </a>
   </div>
   <!--독서실-->
   <div class="nested-menu">
     <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-      <i class="far fa-address-card"></i>&nbsp;
+      <mat-icon>edit</mat-icon>
       <span>독서실</span>
     </a>
   </div>
   <!--주민투표-->
   <div class="nested-menu">
     <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-      <i class="far fa-address-card"></i>&nbsp;
+     <mat-icon>thumb_up</mat-icon>
       <span>주민투표</span>
     </a>
   </div>
    <!--생활지원-->
    <div class="nested-menu">
       <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-        <i class="far fa-address-card"></i>&nbsp;
+        <mat-icon>restaurant</mat-icon>
         <span>생활지원</span>
       </a>
     </div>
      <!--의무공개-->
   <div class="nested-menu">
       <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
-        <i class="far fa-address-card"></i>&nbsp;
+        <mat-icon>drafts</mat-icon>
         <span>의무공개</span>
       </a>
     </div>
+    <mat-divider></mat-divider>
+    <div class="nested-menu">
+        <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
+          <mat-icon>brightness_7</mat-icon>
+          <span>권한설정</span>
+        </a>
+      </div>
+      <div class="nested-menu">
+          <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
+            <mat-icon>play_circle_outline</mat-icon>
+            <span>FIT동영상</span>
+          </a>
+        </div>
+        <div class="nested-menu">
+            <a class="list-group-item" routerLink="/resident/generalresident" (click)="addExpandClass('resident-pages')">
+              <mat-icon>
+                  queue_music</mat-icon>
+              <span>FIT뮤직</span>
+            </a>
+          </div>
   </div>
 </div>
 </nav>
