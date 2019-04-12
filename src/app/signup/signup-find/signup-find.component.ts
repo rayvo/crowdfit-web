@@ -87,7 +87,6 @@ export class SignupFindComponent implements OnInit {
   openJusoDialog() {
 
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(SignupFindJusoComponent, dialogConfig);

@@ -5,6 +5,7 @@ import { SignupCeoEditPopupComponent } from './signup-ceo-edit-popup.component';
 import { SignupCeoAddPopupComponent } from './signup-ceo-add-popup.component';
 import { SignupCeoDelPopupComponent } from './signup-ceo-del-popup.component';
 import { Router } from '@angular/router';
+import { deepStrictEqual } from 'assert';
 
 
 
@@ -39,8 +40,8 @@ export interface RoleList {
 })
 export class SignupCeoComponent implements OnInit {
 
-  depts: DeptList[];
-  roles: RoleList[];
+  depts: DeptList[] = [];
+  roles: RoleList[] = [];
   selectedDept;
   selectedRole;
 
@@ -116,15 +117,14 @@ export class SignupCeoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       data => {
+        // data is the name of the dept or role
         if ( data != null ) {
           if ( myType === 1 ) {
             // TODO create Dept
           } else {
             // TODO create Role
           }
-        } else {
-          // do nothing
-        }
+        } // else canceled so do nothing
       },
       error => {
         console.log(error);
@@ -153,9 +153,7 @@ export class SignupCeoComponent implements OnInit {
           } else {
             // TODO Update role
           }
-        } else {
-          // canceled
-        }
+        } // else canceled so do nothing
       },
       error => {
         console.log(error);
@@ -184,9 +182,7 @@ export class SignupCeoComponent implements OnInit {
           } else {
             // TODO Delete Role
           }
-        } else {
-          // do nothing with dept or role
-        }
+        } // else canceled so do nothing
       },
       error => {
         console.log(error);
