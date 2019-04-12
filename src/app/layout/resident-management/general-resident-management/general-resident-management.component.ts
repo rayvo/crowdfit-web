@@ -23,7 +23,7 @@ export class GeneralResidentManagementComponent implements OnInit {
 
   displayedColumns1: string[] = ['name', 'donghosu', 'phone' ];
   displayedColumns2: string[] = ['name', 'donghosu', 'phone' ];
-  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedDate' ];
+  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedBy', 'approvedDate' ];
   displayedColumns4: string[] = ['name', 'donghosu', 'phone', 'staff', 'outDate' ];
   userWaitList: WaitList[];
   userInvitedList: InvitedList[];
@@ -147,8 +147,8 @@ export class GeneralResidentManagementComponent implements OnInit {
       this.user.approveUser(personInfo.id).subscribe(
         data => {
           this.userWaitList = this.removeFromList(this.userWaitList, personInfo);
-          // TODO add stuff to personInfo that we need for userApprovedList
-          // personInfo.approvedBy = ___
+          personInfo.staff = 'Haseung'; // TODO
+          personInfo.approvedDate = 'today'; // TODO
           this.userApprovedList.push( personInfo );
           this.reloadAllData();
         },
