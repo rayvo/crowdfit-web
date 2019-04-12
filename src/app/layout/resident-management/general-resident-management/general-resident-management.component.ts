@@ -5,7 +5,8 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-general-resident-management',
   templateUrl: './general-resident-management.component.html',
-  styleUrls: ['./general-resident-management.component.css']
+  styleUrls: ['./general-resident-management.component.css'],
+  providers: [UserService]
 })
 export class GeneralResidentManagementComponent implements OnInit {
 
@@ -20,8 +21,8 @@ export class GeneralResidentManagementComponent implements OnInit {
    */
 
   displayedColumns1: string[] = ['name', 'donghosu', 'phone'];
-  displayedColumns2: string[] = ['name', 'donghosu', 'phone', 'staff'];
-  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff'];
+  displayedColumns2: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedDate'];
+  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'outDate'];
   displayedColumns4: string[] = ['name', 'donghosu', 'phone', 'inviteStatus', 'reinviteStatus', 'inviteType'];
   displayedColumns5: string[] = ['name', 'donghosu', 'phone', 'approvedStatus'];
   userWaitList: WaitList[];
@@ -42,8 +43,8 @@ export class GeneralResidentManagementComponent implements OnInit {
     this.changeDatatoWaitList(this.getUserData(2));
     this.changeDatatoApprovedList(this.getUserData(3));
     this.changeDatatoEvictedList(this.getUserData(5));
-    // this.changeDatatoWaitList(this.getUserData(2));
-    // this.changeDatatoWaitList(this.getUserData(2));
+    // this.changeDatatoInvitedList(this.getUserData(2));
+    // this.changeDatatoPersonallyApprovedList(this.getUserData(2));
   }
 
 
@@ -65,6 +66,16 @@ export class GeneralResidentManagementComponent implements OnInit {
       return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
       data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
     };
+
+    this.dataSource4.filterPredicate = ( data: InvitedList, filter: string ) => {
+      return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
+      data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
+    };
+
+    this.dataSource4.filterPredicate = ( data: PersonallyApprovedList, filter: string ) => {
+      return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
+      data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
+    };
   }
 
   ngAfterViewInit(): void {
@@ -73,12 +84,17 @@ export class GeneralResidentManagementComponent implements OnInit {
     this.dataSource1.paginator = this.paginator.toArray()[0];
     this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource3.paginator = this.paginator.toArray()[2];
+    this.dataSource4.paginator = this.paginator.toArray()[3];
+    this.dataSource5.paginator = this.paginator.toArray()[4];
   }
+
   // Only search names and numbers
   applyFilter(filterValue: string) {
     this.dataSource1.filter = filterValue.trim().toLowerCase();
     this.dataSource2.filter = filterValue.trim().toLowerCase();
     this.dataSource3.filter = filterValue.trim().toLowerCase();
+    this.dataSource4.filter = filterValue.trim().toLowerCase();
+    this.dataSource5.filter = filterValue.trim().toLowerCase();
   }
 
 
@@ -95,34 +111,44 @@ export class GeneralResidentManagementComponent implements OnInit {
 
 
   changeDatatoWaitList( data ) {
-    data.forEach(element => {
+    data.____.forEach(element => {
 
     });
   }
 
   changeDatatoApprovedList( data ) {
-    data.forEach(element => {
+    data.____.forEach(element => {
 
     });
   }
 
   changeDatatoEvictedList( data ) {
-    data.forEach(element => {
+    data.____.forEach(element => {
 
     });
   }
 
   changeDatatoInvitedList( data ) {
-    data.forEach(element => {
+    data.____.forEach(element => {
 
     });
   }
 
   changeDatatoPersonallyApprovedList( data ) {
-    data.forEach(element => {
+    data.____.forEach(element => {
 
     });
   }
+
+  openDialog( personInfo: any, btnType: any, newStatus: any, ) {
+    // const dialogRef = this.dialog.open()
+  }
+
+  showFile() {
+
+  }
+
+
 
 }
 
@@ -139,6 +165,7 @@ export interface ApprovedList {
   name: string;
   donghosu: string;
   phone: string;
+  approvedDate: string;
   staff: string;
 }
 

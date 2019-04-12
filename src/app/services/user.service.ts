@@ -136,12 +136,26 @@ export class UserService {
   }
 
 
+  // GET /api/v2/list_all_department/
+  // apt_id: INT/NULL
+  listAllDepartment( aptId ): Observable<any> {
+    const params = new HttpParams();
+    params.append('apt_id', aptId);
+    return this.http.get( this.serverUrl + 'api/v2/list_all_department/', { headers: httpOptions.headers, params: params });
+  }
+
+  // GET /api/v2/list_all_role_of_department/
+  // department_id: INT
+  listAllRoleOfDepartment( deptId ): Observable<any> {
+    const params = new HttpParams();
+    params.append('department_id', deptId);
+    return this.http.get( this.serverUrl + 'api/v2/list_all_role_of_department/', { headers: httpOptions.headers, params: params });
+  }
+
 
   /*
    * Wait for db on the following
    *
-   * getDefaultDepts
-   * getDefaultRolesByDept
    * createDept
    * updateDept
    * deleteDept
@@ -159,7 +173,7 @@ export class UserService {
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
-    return this.http.get( this.serverUrl + '/api/v2/list_user_by_status/', { headers: httpOptions.headers, params: params} );
+    return this.http.get( this.serverUrl + '/api/v2/list_user_by_status/', { headers: httpOptions.headers, params: params });
   }
 
 
