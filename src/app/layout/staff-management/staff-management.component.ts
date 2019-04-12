@@ -8,53 +8,6 @@ import { SMPopFileComponent } from './sm-pop-file.component';
 import { DataSource } from '@angular/cdk/table';
 
 
-export interface WaitList {
-  id: number;
-  name: string;
-  department: string;
-  position: string;
-  phone: string;
-}
-// const WAIT_DATA: WaitList[] = [
-//   { id: 1, name: 'John', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-//   { id: 2, name: 'Sarah', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-//   { id: 1, name: 'Asdf', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-//   { id: 2, name: 'Sdfg', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-//   { id: 1, name: 'Dfgh', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-//   { id: 2, name: 'Fghj', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-//   { id: 1, name: 'Ghjk', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-//   { id: 2, name: 'Hjkl', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-// ];
-
-export interface ApprovedList {
-  id: number;
-  name: string;
-  department: string;
-  position: string;
-  phone: string;
-  approvedBy: string;
-  approvedDate: string;
-}
-// const APPROVED_DATA: ApprovedList[] = [
-//   { id: 3, name: 'Elijah', department: 'Cdept', position: 'Third', phone: '0103333CCCC', approvedBy: 'Habced', approvedDate: 'Jan 1' },
-//   { id: 4, name: 'Alyssa', department: 'Ddept', position: 'Fourth', phone: '0104444DDDD', approvedBy: 'Habced', approvedDate: 'March20' }
-// ];
-
-export interface EvictedList {
-  id: number;
-  name: string;
-  department: string;
-  position: string;
-  phone: string;
-  evictedDate: string;
-  reason: string;
-}
-// const EVICTED_DATA: EvictedList[] = [
-//   { id: 5, name: 'Mike', department: 'Edept', position: 'Fifth', phone: '0105555EEEE', evictedDate: 'Jan 4', reason: 'Did Not Work' },
-//   { id: 6, name: 'Grace', department: 'Fdept', position: 'Sixth', phone: '0106666FFFF', evictedDate: 'March 23', reason: 'Slept At Work' }
-// ];
-
-
 
 @Component({
   selector: 'app-staff-management',
@@ -76,25 +29,30 @@ export class StaffManagementComponent implements OnInit {
 
 
   displayedColumns1: string[] = ['name', 'department', 'position', 'phone', 'file', 'approve', 'delete' ];
-  displayedColumns2: string[] = ['name', 'department', 'position', 'phone', 'approvedBy', 'approvedDate', 'file', 'out'];
-  displayedColumns3: string[] = ['name', 'department', 'position', 'phone', 'evictedDate', 'reason'];
+  displayedColumns2: string[] = ['name', 'department', 'position', 'phone' ];
+  displayedColumns3: string[] = ['name', 'department', 'position', 'phone', 'approvedBy', 'approvedDate', 'file', 'out'];
+  displayedColumns4: string[] = ['name', 'department', 'position', 'phone', 'evictedDate', 'reason'];
   staffWaitList: WaitList[];
+  staffInvitedList: InvitedList[];
   staffApprovedList: ApprovedList[];
   staffEvictedList: EvictedList[];
   dataSource1;
   dataSource2;
   dataSource3;
+  dataSource4;
 
   constructor(
     private dialog: MatDialog,
     private user: UserService,
   ) {
     this.changeDataToWaitList(this.getStaffData(2));
+    // this.changeDataToInvitedList(this.getStaffData(__));
     this.changeDataToApprovedList(this.getStaffData(3));
     this.changeDataToEvictedList(this.getStaffData(5));
     this.dataSource1 = new MatTableDataSource<WaitList>(this.staffWaitList);
-    this.dataSource2 = new MatTableDataSource<ApprovedList>(this.staffApprovedList);
-    this.dataSource3 = new MatTableDataSource<EvictedList>(this.staffEvictedList);
+    this.dataSource2 = new MatTableDataSource<InvitedList>(this.staffInvitedList);
+    this.dataSource3 = new MatTableDataSource<ApprovedList>(this.staffApprovedList);
+    this.dataSource4 = new MatTableDataSource<EvictedList>(this.staffEvictedList);
   }
 
 
@@ -108,12 +66,17 @@ export class StaffManagementComponent implements OnInit {
       data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
     };
 
-    this.dataSource2.filterPredicate = ( data: ApprovedList, filter: string ) => {
+    this.dataSource2.filterPredicate = ( data: InvitedList, filter: string ) => {
       return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
       data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
     };
 
-    this.dataSource3.filterPredicate = ( data: EvictedList, filter: string ) => {
+    this.dataSource3.filterPredicate = ( data: ApprovedList, filter: string ) => {
+      return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
+      data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
+    };
+
+    this.dataSource4.filterPredicate = ( data: EvictedList, filter: string ) => {
       return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
       data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
     };
@@ -226,3 +189,61 @@ export class StaffManagementComponent implements OnInit {
 
 
 }
+
+
+
+export interface WaitList {
+  id: number;
+  name: string;
+  department: string;
+  position: string;
+  phone: string;
+}
+// const WAIT_DATA: WaitList[] = [
+//   { id: 1, name: 'John', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Sarah', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+//   { id: 1, name: 'Asdf', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Sdfg', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+//   { id: 1, name: 'Dfgh', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Fghj', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+//   { id: 1, name: 'Ghjk', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Hjkl', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+// ];
+
+
+export interface InvitedList {
+  id: number;
+  name: string;
+  department: string;
+  position: string;
+  phone: string;
+}
+
+
+export interface ApprovedList {
+  id: number;
+  name: string;
+  department: string;
+  position: string;
+  phone: string;
+  approvedBy: string;
+  approvedDate: string;
+}
+// const APPROVED_DATA: ApprovedList[] = [
+//   { id: 3, name: 'Elijah', department: 'Cdept', position: 'Third', phone: '0103333CCCC', approvedBy: 'Habced', approvedDate: 'Jan 1' },
+//   { id: 4, name: 'Alyssa', department: 'Ddept', position: 'Fourth', phone: '0104444DDDD', approvedBy: 'Habced', approvedDate: 'March20' }
+// ];
+
+export interface EvictedList {
+  id: number;
+  name: string;
+  department: string;
+  position: string;
+  phone: string;
+  evictedDate: string;
+  reason: string;
+}
+// const EVICTED_DATA: EvictedList[] = [
+//   { id: 5, name: 'Mike', department: 'Edept', position: 'Fifth', phone: '0105555EEEE', evictedDate: 'Jan 4', reason: 'Did Not Work' },
+//   { id: 6, name: 'Grace', department: 'Fdept', position: 'Sixth', phone: '0106666FFFF', evictedDate: 'March 23', reason: 'Slept At Work' }
+// ];
