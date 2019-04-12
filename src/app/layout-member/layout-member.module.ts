@@ -15,11 +15,13 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatCardModule
 } from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
-
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,6 +35,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     MatPaginatorModule,
     MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatCardModule,
   ],
   declarations: [
     LayoutMemberComponent,

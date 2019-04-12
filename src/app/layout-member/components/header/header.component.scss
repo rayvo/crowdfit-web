@@ -1,4 +1,12 @@
-$topnav-background-color:#f9aa33;
+
+.header-wrap{
+    width: 940px!important;
+height: auto;
+margin: 0 auto;
+vertical-align: middle;
+display: inline-flex;
+}
+$topnav-background-color:orange;
 :host {
     .navbar {
     
@@ -14,9 +22,17 @@ $topnav-background-color:#f9aa33;
         }
     }
 
-
-    .navbar-brand{margin-left:45%;}
+    .mat-flat-button{
+        border-radius: 0 !important;
+    height: 40px;}
+    .navbar-brand{ margin-left: 10px;}
     
+    ul{
+float: right;} 
+li, a{color: darkslategray;}
+
+.dropdown-item:hover{background-color:transparent;}
+
     .messages {
         width: 300px;
         .media {
@@ -41,3 +57,4 @@ $topnav-background-color:#f9aa33;
         }
     }
 }
+
