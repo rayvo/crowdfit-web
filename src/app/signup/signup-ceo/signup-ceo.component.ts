@@ -6,6 +6,8 @@ import { SignupCeoAddPopupComponent } from './signup-ceo-add-popup.component';
 import { SignupCeoDelPopupComponent } from './signup-ceo-del-popup.component';
 import { Router } from '@angular/router';
 import { deepStrictEqual } from 'assert';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { routerTransition } from 'src/app/router.animations';
 
 
 
@@ -43,7 +45,8 @@ const ROLE_DATA_FRONT: RoleList[] = [
 @Component({
   selector: 'app-signup-ceo',
   templateUrl: './signup-ceo.component.html',
-  styleUrls: ['./signup-ceo.component.scss']
+  styleUrls: ['./signup-ceo.component.scss'],
+  animations: [ routerTransition ],
 })
 export class SignupCeoComponent implements OnInit {
 
