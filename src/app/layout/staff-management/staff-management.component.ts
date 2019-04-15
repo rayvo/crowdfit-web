@@ -1,15 +1,8 @@
 import { Component, OnInit, ViewChild, QueryList, ViewChildren, AfterContentInit, AfterViewInit } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatDialogConfig } from '@angular/material';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatPaginator, MatDialogConfig } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
-
 import { SMPopupComponent } from './sm-popup.component';
 import { SMPopFileComponent } from './sm-pop-file.component';
-import { DataSource } from '@angular/cdk/table';
-
-
-
-
 
 @Component({
   selector: 'app-staff-management',

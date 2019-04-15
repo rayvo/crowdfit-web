@@ -104,7 +104,6 @@ export class SignupComponent implements OnInit {
     }
     getPasswordErrorMessage() {
         return this.password.hasError('required') ? 'You must enter a password' : '';
-            // this.email.hasError('invalidEmail') ? 'You must enter a valid email address' : '';
     }
     // getCpasswordErrorMessage() {
     //     if ( this.cpassword.hasError('required') ) {
