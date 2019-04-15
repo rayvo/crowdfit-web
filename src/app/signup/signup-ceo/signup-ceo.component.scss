@@ -1,0 +1,124 @@
+
+
+
+.mx-0{
+
+    text-align: center;}
+
+    mat-icon{
+        cursor: pointer;
+    width: 40px;}
+
+
+
+    
+.login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+  
+    background: url(/assets/images/mypage/bg2.jpg) no-repeat scroll center center / cover;
+    text-align: center;
+
+    padding: 3em;
+    .col-md-4 {
+        padding:20px;
+        background-color: white;
+        border-radius: 2px;
+        text-align: left;
+    }
+
+
+
+    
+    .form-control { 
+        background-color:  rgba(255, 255, 255, 0.4);
+        }
+    
+   
+
+
+    .input-lg {
+        height: 40px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 0;
+    }
+    .input-underline {
+        background: 0 0;
+        background-color:  rgba(255, 255, 255, 0.4);
+        border: none;
+        box-shadow: none;
+        border: 1px solid  #fff;
+        color: #fff;
+        border-radius: 8px;
+    }
+    .input-underline:focus {
+        border: 2px solid  #ff7101;
+        box-shadow: none;
+    }
+    .btn {
+        width: 100%;
+            
+        background-color:  #ff7101;
+        border: 0;
+      
+    }
+    .rounded-btn:hover,
+    .rounded-btn:focus,
+    .rounded-btn:active,
+    .rounded-btn:visited {
+        color: rgba(255, 255, 255, 1);
+        border: 2px solid rgba(255, 255, 255, 1);
+        outline: none;
+    }
+
+    h1 {
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 36px;
+        small {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    h5{margin-top: 20px;}
+
+    .form-group {
+        padding: 0 0;
+        input::-webkit-input-placeholder {
+            color: rgba(255, 255, 255, 1) !important;
+        }
+
+        input:-moz-placeholder {
+            /* Firefox 18- */
+            color: rgba(255, 255, 255, 1) !important;
+        }
+
+        input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: rgba(255, 255, 255, 1) !important;
+        }
+
+        input:-ms-input-placeholder {
+            color: rgba(255, 255, 255, 1) !important;
+        }
+    }
+    .form-content {
+        padding:60px 0 20px 0;
+    }
+    .user-avatar {
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+}
+
+label{
+    vertical-align: top;
+display: inline-flex;}
