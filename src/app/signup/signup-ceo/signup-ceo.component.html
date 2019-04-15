@@ -6,8 +6,9 @@
     <div class="col-md-4">
         <div class="back">    </div>
         <div class=container>
- <mat-icon>account_circle</mat-icon>
-
+          <div class="round">
+ <mat-icon style="font-size:56px; color: orange;">location_city</mat-icon>
+</div>
       <p>커뮤니티 대표이름</p>
 
 
@@ -21,16 +22,18 @@
 
 
       <br>
+      
       <!-- Dynamically get the items in the list-->
       <label>부서 List</label>
       <mat-icon (click)="createDeptRole(1)">add_circle</mat-icon>
+      
       <mat-list>
         <mat-list-item *ngFor="let dept of depts">
-          <a (click)="deptClicked(dept)">
-            {{dept.name}}
-          </a>
-          <button mat-stroked-button (click)='updateDeptRole(dept, 1)'>수정</button>
-          <button mat-stroked-button (click)='deleteDeptRole(dept, 1)'>삭제</button>
+          <button mat-button class="dept-btn"  (click)="deptClicked(dept)">
+          {{dept.name}}
+          </button>
+          <button mat-button class="dept-btn2"(click)='updateDeptRole(dept, 1)'>수정</button>
+          <button mat-button class="dept-btn2"(click)='deleteDeptRole(dept, 1)'>삭제</button>
         </mat-list-item>
       </mat-list>
       <br>
@@ -38,18 +41,17 @@
       <mat-icon (click)="createDeptRole(2)">add_circle</mat-icon>
       <mat-list>
         <mat-list-item *ngFor="let role of roles">
-          <a (click)="roleClicked(role)">
+          <button mat-button class="dept-btn" (click)="roleClicked(role)">
             {{role.name}}
-          </a>
-          <button mat-stroked-button (click)='updateDeptRole(role, 2)'>수정</button>
-          <button mat-stroked-button (click)='deleteDeptRole(role, 2)'>삭제</button>
+          </button>
+          <button mat-button class="dept-btn2" (click)='updateDeptRole(role, 2)'>수정</button>
+          <button mat-button class="dept-btn2" (click)='deleteDeptRole(role, 2)'>삭제</button>
         </mat-list-item>
       </mat-list>
       </div>
       <br><br><br>
       <div class="mx-0">
-        <button mat-button style="color:gray; font-size: 1rem;">취소</button>
-        <button mat-button style="color:orange; font-size: 1rem;">저장</button>
+        <button mat-button style="background-color: orange; font-size: 1rem;">저장</button>
         <br>
         <br>
       </div>
