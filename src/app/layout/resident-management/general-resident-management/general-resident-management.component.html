@@ -126,7 +126,7 @@
             </ng-container>
             <ng-container matColumnDef="approvedDate">
               <th mat-header-cell *matHeaderCellDef>승인일자</th>
-              <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
+              <td mat-cell *matCellDef="let person">{{ person.approvedDate | date: 'yyyy-mm-dd' }}</td>
             </ng-container>
             <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
             <td mat-cell *matCellDef="let person">
@@ -173,7 +173,7 @@
           </ng-container>
           <ng-container matColumnDef="approvedDate">
             <th mat-header-cell *matHeaderCellDef>퇴거일자</th>
-            <td mat-cell *matCellDef="let person">{{ person.approvedDate }}</td>
+            <td mat-cell *matCellDef="let person">{{ person.approvedDate | date: 'yyyy-mm-dd' }}</td>
           </ng-container>
           <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
           <td mat-cell *matCellDef="let person">

@@ -10,6 +10,7 @@ import { MatYearView } from '@angular/material';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    'Authorization': 'Token ' + localStorage.getItem('token'),
     'Content-Type': 'application/json'
   })
 };
@@ -170,29 +171,36 @@ export class UserService {
   // GET /api/v2/list_user_by_status
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
-  getUsersByStatus( aptId, statusId ) {
+  getUsersByStatus( aptId, statusId ): Observable<any> {
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
-    return this.http.get( this.serverUrl + '/api/v2/list_user_by_status/', { headers: httpOptions.headers, params: params });
+    return this.http.get(
+      this.serverUrl + '/api/v2/list_user_by_status/'  + localStorage.getItem('id'),
+      { headers: httpOptions.headers, params: params }
+      );
   }
 
 
   // GET /api/v2/list_staff_by_status
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
-  getStaffsByStatus( aptId, statusId ) {
+  getStaffsByStatus( aptId, statusId ): Observable<any> {
+    console.log('REACHED getStaffsByStatus with status: ' + statusId);
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
-    return this.http.get( this.serverUrl + '/api/v2/list_staff_by_status/', { headers: httpOptions.headers, params: params} );
+    return this.http.get(
+      this.serverUrl + '/api/v2/list_staff_by_status/' + localStorage.getItem('id') ,
+      { headers: httpOptions.headers, params: params}
+      );
   }
 
 
   // POST TODO GET LINK
   // user_id: INT
   // staff_id: INT
-  approveUser( userId ) {
+  approveUser( userId ): Observable<any> {
     const body = {
       user_id: userId,
       staff_id: Number(localStorage.getItem('id'))
@@ -203,7 +211,7 @@ export class UserService {
   // POST TODO GET LINK
   // user_id: INT
   // staff_id: INT
-  approveStaff( userId ) {
+  approveStaff( userId ): Observable<any> {
     const body = {
       user_id: userId,
       staff_id: Number(localStorage.getItem('id'))
@@ -214,7 +222,7 @@ export class UserService {
   // POST TODO GET LINK
   // user_id: INT
   // staff_id: INT
-  approveCEO( userId ) {
+  approveCEO( userId ): Observable<any> {
     const body = {
       user_id: userId,
       staff_id: Number(localStorage.getItem('id'))
