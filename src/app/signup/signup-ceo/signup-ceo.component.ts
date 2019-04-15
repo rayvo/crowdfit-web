@@ -13,25 +13,32 @@ import { deepStrictEqual } from 'assert';
 export interface DeptList {
   id: number;
   name: string;
-  desc: string;
+  desc?: string;
 }
-// const DEPT_DATA: DeptList[] = [
-//   { id: 1, name: 'Finance' },
-//   { id: 2, name: 'Management' },
-//   { id: 3, name: 'Front' },
-// ];
+const DEPT_DATA: DeptList[] = [
+  { id: 1, name: 'Finance', desc: 'Money $$$$' },
+  { id: 2, name: 'Management' },
+  { id: 3, name: 'Front', desc: 'Front desk type of people' },
+];
 
 export interface RoleList {
   id: number;
   name: string;
-  desc: string;
+  desc?: string;
 }
-// const ROLE_DATA: RoleList[] = [
-//   { id: 1, name: 'Accountant' },
-//   { id: 2, name: 'Secretary' },
-//   { id: 3, name: 'Front Desk' },
-// ];
-
+const ROLE_DATA_FINANCE: RoleList[] = [
+  { id: 1, name: 'Paycheck' },
+  { id: 2, name: 'Timekeeper' },
+  { id: 3, name: 'Stamper' },
+];
+const ROLE_DATA_MANAGEMENT: RoleList[] = [
+  { id: 1, name: 'Accountant' },
+  { id: 2, name: 'Secretary' },
+];
+const ROLE_DATA_FRONT: RoleList[] = [
+  { id: 1, name: 'Guide' },
+  { id: 2, name: 'Front Desk' },
+];
 
 @Component({
   selector: 'app-signup-ceo',
@@ -63,6 +70,10 @@ export class SignupCeoComponent implements OnInit {
 
   getDeptData() {
     this.depts.length = 0; // Clear the array without creating a new reference
+    this.depts = DEPT_DATA;
+    this.roles = ROLE_DATA_FINANCE;
+    // TODO Undo comment when not using fake data
+    /*
     this.user.listAllDepartment( localStorage.getItem('aptId') ).subscribe(
       data => {
         // TODO Replace ______
@@ -73,16 +84,28 @@ export class SignupCeoComponent implements OnInit {
       error => {
         console.log(error);
       }
-    );
+    );*/
   }
 
   deptClicked( aDept ) {
     console.log(aDept);
     this.selectedDept = aDept;
-    this.getRoleData(aDept.id);
+    // TODO undo below comment when not using fake data
+    // this.getRoleData(aDept.id);
+
+    // TODO Remove below when not using fake data
+    if ( this.selectedDept.name === 'Finance' ) {
+      this.roles = ROLE_DATA_FINANCE;
+    } else if ( this.selectedDept.name === 'Management' ) {
+      this.roles = ROLE_DATA_MANAGEMENT;
+    } else if ( this.selectedDept.name === 'Front' ) {
+      this.roles = ROLE_DATA_FRONT;
+
+    }
   }
 
-  getRoleData( deptId ) {
+  // TODO Undo comment when not using fake data
+  getRoleData( deptId ) {/*
     this.roles.length = 0; // Clear the array without creating a new reference
     this.user.listAllRoleOfDepartment( deptId ).subscribe(
       data => {
@@ -94,7 +117,7 @@ export class SignupCeoComponent implements OnInit {
       error => {
         console.log(error);
       }
-    );
+    );*/
   }
 
   roleClicked( aRole ) {
