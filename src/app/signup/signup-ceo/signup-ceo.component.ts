@@ -46,7 +46,7 @@ const ROLE_DATA_FRONT: RoleList[] = [
   selector: 'app-signup-ceo',
   templateUrl: './signup-ceo.component.html',
   styleUrls: ['./signup-ceo.component.scss'],
-  animations: [ routerTransition ],
+  // animations: [ routerTransition ],
 })
 export class SignupCeoComponent implements OnInit {
 
