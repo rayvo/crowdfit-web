@@ -1,5 +1,5 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
+import { Component, OnInit, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
+import { MatDialog, MatPaginator, MatTableDataSource, MatDialogConfig } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { GRMPopupComponent } from './grm-popup.component';
 
@@ -9,7 +9,7 @@ import { GRMPopupComponent } from './grm-popup.component';
   styleUrls: ['./general-resident-management.component.css'],
   providers: [UserService]
 })
-export class GeneralResidentManagementComponent implements OnInit {
+export class GeneralResidentManagementComponent implements OnInit, AfterViewInit {
 
   /*
    * /api/status/
@@ -23,12 +23,12 @@ export class GeneralResidentManagementComponent implements OnInit {
 
   displayedColumns1: string[] = ['name', 'donghosu', 'phone' ];
   displayedColumns2: string[] = ['name', 'donghosu', 'phone' ];
-  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedBy', 'approvedDate' ];
+  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedDate' ];
   displayedColumns4: string[] = ['name', 'donghosu', 'phone', 'staff', 'outDate' ];
-  userWaitList: WaitList[];
-  userInvitedList: InvitedList[];
-  userApprovedList: ApprovedList[];
-  userEvictedList: EvictedList[];
+  userWaitList: WaitList[] = [];
+  userInvitedList: InvitedList[] = [];
+  userApprovedList: ApprovedList[] = [];
+  userEvictedList: EvictedList[] = [];
   dataSource1;
   dataSource2;
   dataSource3;
@@ -39,10 +39,10 @@ export class GeneralResidentManagementComponent implements OnInit {
     private dialog: MatDialog,
     private user: UserService,
   ) {
-    this.changeDatatoWaitList(this.getUserData(2));
+    this.setUserData(2);
     // this.changeDatatoInvitedList(this.getUserData(__));
-    this.changeDatatoApprovedList(this.getUserData(3));
-    this.changeDatatoEvictedList(this.getUserData(5));
+    this.setUserData(3);
+    this.setUserData(5);
     this.dataSource1 = new MatTableDataSource<WaitList>(this.userWaitList);
     this.dataSource2 = new MatTableDataSource<InvitedList>(this.userInvitedList);
     this.dataSource3 = new MatTableDataSource<ApprovedList>(this.userApprovedList);
@@ -95,49 +95,72 @@ export class GeneralResidentManagementComponent implements OnInit {
   }
 
 
-  getUserData( statusNum ) {
+  setUserData( statusNum ) {
     this.user.getUsersByStatus( localStorage.getItem('aptId'), statusNum ).subscribe(
       data => {
-        return data;
-      },
-      error => {
-        console.log(error);
+
+        if ( statusNum === 2 ) {
+          data.results.forEach(element => {
+            this.userWaitList.push({
+              id: element.user_id,
+              name: element.fullname,
+              donghosu: element.address_dong + '동 ' + element.household_number + '호',
+              phone: element.phone,
+            });
+          });
+        } else if ( statusNum === 3 ) {
+          data.results.forEach(element => {
+            this.userApprovedList.push({
+              id: element.user_id,
+              name: element.fullname,
+              donghosu: element.address_dong + '동 ' + element.household_number + '호',
+              phone: element.phone,
+              staff: element.staff,
+              approvedDate: new Date(Date.parse(element.last_update)),
+            });
+          });
+        } else if ( statusNum === 5 ) {
+          data.results.forEach(element => {
+            this.userEvictedList.push({
+              id: element.user_id,
+              name: element.fullname,
+              donghosu: element.address_dong + '동 ' + element.household_number + '호',
+              phone: element.phone,
+              staff: element.staff,
+            });
+          });
+
+        }
       }
     );
   }
 
 
-  changeDatatoWaitList( data ) {
-    data.____.forEach(element => {
-
-    });
-  }
-
-  changeDatatoInvitedList( data ) {
-    data.____.forEach(element => {
-
-    });
-  }
-
-  changeDatatoApprovedList( data ) {
-    data.____.forEach(element => {
-
-    });
-  }
-
-  changeDatatoEvictedList( data ) {
-    data.____.forEach(element => {
-
-    });
-  }
-
-
-
 
   openDialog( personInfo: any, btnType: any, newStatus: any, ) {
-    // const dialogRef = this.dialog.open(GRMPopupComponent, {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = {
+      name: personInfo.name,
+      donghosu: personInfo.donghosu,
+      phone: personInfo.phone,
+      type: btnType,
+    };
 
-    // }
+    const dialogRef = this.dialog.open(GRMPopupComponent, dialogConfig );
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if ( result !== '' ) {
+          this.updateUserStatus(personInfo, newStatus);
+          this.reloadAllData();
+        } // else canceled so do nothing
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
   }
 
   updateUserStatus( personInfo, newStatus ) {
@@ -148,7 +171,7 @@ export class GeneralResidentManagementComponent implements OnInit {
         data => {
           this.userWaitList = this.removeFromList(this.userWaitList, personInfo);
           personInfo.staff = 'Haseung'; // TODO
-          personInfo.approvedDate = 'today'; // TODO
+          personInfo.approvedDate = null; // 'today'; // TODO
           this.userApprovedList.push( personInfo );
           this.reloadAllData();
         },
@@ -212,8 +235,8 @@ export interface ApprovedList {
   name: string;
   donghosu: string;
   phone: string;
-  approvedDate: string;
   staff: string;
+  approvedDate: Date;
 }
 
 export interface EvictedList {
