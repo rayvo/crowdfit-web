@@ -32,7 +32,26 @@
         padding: 0;
 
 
-        .container{  padding:30px;}
+        .container{  
+            width: 600px;
+            height: auto;
+            padding:30px;
+            margin: 0 auto;
+        
+            
+        
+        .round{width: 56px;
+            height: 70px;
+        border-radius: 50px;
+
+margin-top:-64px;
+
+z-index: 1;
+background-color: white;
+mat-icon{text-align: center;}
+}
+
+        }
     }
 
 
@@ -41,9 +60,23 @@
     
 }
 
-label{
+label,mat-list-item a{
     vertical-align: top;
 display: inline-flex;}
+
+.dept-btn{
+    border-bottom: 0.5px solid #ddd;
+    border-top: 0.5px solid #ddd; 
+    width: 100%;
+    border-radius: 0;
+text-align: left;
+}
+
+.dept-btn2
+{ 
+    border-radius: 0;
+    border-bottom: 0.5px solid #ddd;
+    border-top: 0.5px solid #ddd; }
 
 
 .back{
