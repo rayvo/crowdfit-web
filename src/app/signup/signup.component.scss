@@ -3,36 +3,15 @@
 
 
 h6{margin-left: 20px;}
-h4{font-weight: 200;}
+h4{font-weight: 200; color: white;}
 .form-control { 
-    background-color:  rgba(255, 255, 255, 0.4);
-    height: 36px;
+    background-color: white;
+    height: 35px;
   
     }
-.mat-icon{line-height: 0.5; width:1.5em;width: 36px;}
-btn{}
 
-.divider-text {
-    position: relative;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-.divider-text span {
-    padding: 7px;
-    font-size: 12px;
-    position: relative;   
-    z-index: 2;
-}
-.divider-text:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    top: 55%;
-    left: 0;
-    z-index: 1;
-}
+
+
 
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -65,27 +44,28 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-content {
     padding:60px 0 20px 0;
 }
-mat-form-field{display:inline; }
+mat-form-field{display:inline;
+
+ }
 
 
     
 
 
-.mat-input-element{
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;}
 
-.input-group-text{padding:0.525rem 0.275rem;
+
+.input-group-text{padding:0.755rem 0.233rem ;
    
 
  
    
 }
+
 .btn{position: absolute;right: 0; bottom: 0;} 
-.mat-icon{width: 40px; height:36px ;}
+mat-icon{width:40px; height:36px; top:2px; }
+.mat-icon{line-height: 0.5px; width:1.5em;width: 36px;}
+
+
 mat-hint{margin-left: 36px;}
 
-.smallbg{width: 40px; height:36px; position:absolute;
-left: 3px; top:194px;
-background-color: #fff;} 
+.mat-form-field{background-color: white;}

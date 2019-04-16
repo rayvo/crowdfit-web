@@ -14,6 +14,12 @@ const httpOptions = {
     'Content-Type': 'application/json'
   })
 };
+const httpOptions2 = {
+  headers: new HttpHeaders({
+    // 'Authorization': 'Token ' + localStorage.getItem('token'),
+    'Content-Type': 'application/json'
+  })
+};
 
 @Injectable()
 export class UserService {
@@ -41,7 +47,7 @@ export class UserService {
   // email: INPUT,
   // password: INPUT
   loginUser(userData): Observable<any> {
-    return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions);
+    return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions2);
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
     // When i logout send last feature
     // when routing update localStorage's last feature
