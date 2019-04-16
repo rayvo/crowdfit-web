@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpEventType, HttpParams } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { MatYearView } from '@angular/material';
+import { RepeatPasswordValidator } from '../signup/signup.validators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -140,17 +141,13 @@ export class UserService {
   // GET /api/v2/list_all_department/
   // apt_id: INT/NULL
   listAllDepartment( aptId ): Observable<any> {
-    const params = new HttpParams();
-    params.append('apt_id', aptId);
-    return this.http.get( this.serverUrl + 'api/v2/list_all_department/', { headers: httpOptions.headers, params: params });
+    return this.http.get( this.serverUrl + 'api/v2/list_all_department/' + aptId, httpOptions );
   }
 
   // GET /api/v2/list_all_role_of_department/
   // department_id: INT
   listAllRoleOfDepartment( deptId ): Observable<any> {
-    const params = new HttpParams();
-    params.append('department_id', deptId);
-    return this.http.get( this.serverUrl + 'api/v2/list_all_role_of_department/', { headers: httpOptions.headers, params: params });
+    return this.http.get( this.serverUrl + 'api/v2/list_all_role_of_department/' + deptId, httpOptions);
   }
 
 
@@ -165,6 +162,34 @@ export class UserService {
    * deleteRole
    *
    */
+
+
+  // POST /api/v2/create_dep_role/
+  // department_id: INT
+  // role_id: INT
+  createDeptRole( deptId, roleId ) {
+    const body = {
+      department_id: deptId,
+      role_id: roleId
+    };
+    return this.http.post( this.serverUrl + '/api/v2/create_dep_role/', body, httpOptions);
+  }
+
+  // PUT /api/v2/update_dep_role/<int:dep_role_id>
+  // role_id: INT/NULL
+  // is_active: BOOL/NULL
+  updateDeptRole( deptRoleId, roleId, isActive ) {
+    const body = {
+      role_id: roleId, // can be null
+      is_active: isActive // can be null
+    };
+    return this.http.put( this.serverUrl + '/api/v2/update_dep_role/' + deptRoleId, body, httpOptions);
+  }
+
+  // DELETE /api/v2/delete_dep_role/<int:dep_role_id>
+  deleteDeptRole( deptRoleId ) {
+    return this.http.delete( this.serverUrl + '/api/v2/delete_dep_role/' + deptRoleId, httpOptions );
+  }
 
 
   // GET /api/v2/list_user_by_status
@@ -234,7 +259,16 @@ export class UserService {
 
 
 
-
+  // TODO , Ray hasn't uploaded the api for this yet. So below is just my guess
+  // RFP = Role Feature Permission
+  setRFP( roleId, featureId, permissionId ) {
+    const body = {
+      rold_id: roleId,
+      feature_id: featureId,
+      permission_id: permissionId
+    };
+    return this.http.post( this.serverUrl + '/api/v2/update_role_feature_permission', body, httpOptions);
+  }
 
 
 
@@ -434,29 +468,7 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/role/', body, httpOptions);
   }
 
-  //   POST	/api/departmentrole/
-  // department_id: INT,
-  // role_id: INT
-  // user_role_status_id: INT
-  createDeptRole( myId, myRoleId, ursId): Observable < any > {
-    const body = {
-      id: myId,
-      role_id: myRoleId,
-      user_role_status_id: ursId
-    };
-    return this.http.post(this.serverUrl + '/api/departmentrole/', body, httpOptions);
-  }
 
-  //   PUT	/api/departmentrole/
-  // id: id
-  // is_active: true
-  updateDeptRole(myId, myActive): Observable < any > {
-    const body = {
-      id: myId,
-      is_active: myActive
-    };
-    return this.http.put(this.serverUrl + '/api/departmentrole/', body, httpOptions);
-  }
 
 
 
