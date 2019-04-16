@@ -59,7 +59,6 @@ export class UserService {
       name: aptInfo.apt_name,
       postcode: aptInfo.zipNo
     };
-    console.log('huh?');
     return this.http.post(this.serverUrl + '/api/v2/apartment_existed/', body, httpOptions);
   }
 
@@ -186,7 +185,6 @@ export class UserService {
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
   getStaffsByStatus( aptId, statusId ): Observable<any> {
-    console.log('REACHED getStaffsByStatus with status: ' + statusId);
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );

@@ -215,6 +215,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
     // dialogConfig.data = {
     //   name: personInfo.name,
     //   donghosu: personInfo.donghosu,

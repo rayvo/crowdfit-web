@@ -1,35 +1,35 @@
 <h4 class="card-title mt-3 text-center">직접 입주민을 등록하기</h4>
 <br /><br />
 
-<form role="form" [formGroup]="newUser" (ngSubmit)="approveNewUser()">
+<form role="form" [formGroup]="newUser" (ngSubmit)="approveNewUser()" >
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-user  input-group-text"></mat-icon>-->
-    <input matInput formControlName="username" placeholder="이름" type="text" class="form-control " />
+    <input matInput formControlName="username" placeholder="입주민 이름" type="text" class="form-control "/>
     <mat-error *ngIf="(username.dirty || username.touched) && username.invalid">{{ getUsernameErrorMessage() }}</mat-error> </mat-form-field
   ><br />
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-envelope input-group-text"></mat-icon>-->
-    <input matInput formControlName="email" placeholder="이메일 주소" type="text" class="form-control" />
+    <input matInput formControlName="email" placeholder="입주민 이메일 주소" type="text" class="form-control" />
     <mat-error *ngIf="(email.dirty || email.touched) && email.invalid">{{ getEmailErrorMessage() }}</mat-error> </mat-form-field
   ><br />
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>-->
-    <input matInput formControlName="password" placeholder="비밀번호" type="password" class="form-control" />
+    <input matInput formControlName="password" placeholder="입주민 비밀번호" type="password" class="form-control" />
     <mat-error *ngIf="(password.dirty || password.touched) && password.invalid">{{ getPasswordErrorMessage() }}</mat-error> </mat-form-field
   ><br />
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>-->
-    <input matInput formControlName="phone" placeholder="휴대폰 번호" type="text" class="form-control" />
+    <input matInput formControlName="phone" placeholder="입주민 휴대폰 번호" type="text" class="form-control" />
     <mat-error *ngIf="(phone.dirty || phone.touched) && phone.invalid">{{ getPhoneErrorMessage() }}</mat-error> </mat-form-field
   ><br />
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>-->
-    <input matInput formControlName="dong" placeholder="동" type="text" class="form-control" />
+    <input matInput formControlName="dong" placeholder="입주민 동" type="text" class="form-control" />
     <mat-error *ngIf="(dong.dirty || dong.touched) && dong.invalid">{{ getDongErrorMessage() }}</mat-error> </mat-form-field
   ><br />
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>-->
-    <input matInput formControlName="ho" placeholder="호" type="text" class="form-control" />
+    <input matInput formControlName="ho" placeholder="입주민 호" type="text" class="form-control" />
     <mat-error *ngIf="(ho.dirty || ho.touched) && ho.invalid">{{ getHoErrorMessage() }}</mat-error> </mat-form-field
   ><br />
 
