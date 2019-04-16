@@ -245,7 +245,6 @@ export class SignupFindComponent implements OnInit {
       case '1': {
 
         this.user.ceoRegister(
-          localStorage.getItem('id'),
           localStorage.getItem('fileId'),
           this.parsedJuso,
           this.thirdFormGroup.controls['thirdCtrl1'].value,
@@ -264,7 +263,6 @@ export class SignupFindComponent implements OnInit {
       }
       case '2': {
         this.user.staffRegister(
-          localStorage.getItem('id'),
           localStorage.getItem('aptId'),
           localStorage.getItem('deptId'),
           localStorage.getItem('roleId'),
@@ -283,7 +281,6 @@ export class SignupFindComponent implements OnInit {
       }
       case '3': {
         this.user.userRegister(
-          localStorage.getItem('id'),
           localStorage.getItem('aptId'),
           this.thirdFormGroup.controls['thirdCtrl1'].value,
           this.thirdFormGroup.controls['thirdCtrl2'].value,

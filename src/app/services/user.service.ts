@@ -15,6 +15,12 @@ const httpOptions = {
     'Content-Type': 'application/json'
   })
 };
+const httpOptions2 = {
+  headers: new HttpHeaders({
+    // 'Authorization': 'Token ' + localStorage.getItem('token'),
+    'Content-Type': 'application/json'
+  })
+};
 
 @Injectable()
 export class UserService {
@@ -35,6 +41,22 @@ export class UserService {
       password: userData.value.password,
       phone: userData.value.phone
     };
+    return this.http.post(this.serverUrl + '/api/v2/register/', body, httpOptions2);
+  }
+
+  // POST	/api/v2/register/
+  // fullname: TEXT,
+  // email: TEXT,
+  // password: TEXT,
+  // phone: TEXT
+  createUserWithToken(userData): Observable<any> {
+    // TODO check 'fullname' or 'username'
+    const body = {
+      fullname: userData.value.username,
+      email: userData.value.email,
+      password: userData.value.password,
+      phone: userData.value.phone
+    };
     return this.http.post(this.serverUrl + '/api/v2/register/', body, httpOptions);
   }
 
@@ -42,14 +64,12 @@ export class UserService {
   // email: INPUT,
   // password: INPUT
   loginUser(userData): Observable<any> {
-    return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions);
+    console.log(localStorage.getItem('token'));
+    return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions2);
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
     // When i logout send last feature
     // when routing update localStorage's last feature
   }
-
-
-
 
 
   // POST	/api/v2/apartment_existed/
@@ -64,10 +84,38 @@ export class UserService {
   }
 
 
+  // POST /api/v2/register_user/
+  // apt_id: INT
+  // address_dong: TEXT
+  // house_number: TEXT
+  // document_file_id: INT/NULL
+  userRegister( aptId, myDong, myHouseNum, fileId ): Observable<any> {
+    const body = {
+      apt_id: aptId,
+      address_dong: myDong,
+      house_number: myHouseNum,
+      document_file_id: fileId,
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, httpOptions);
+  }
+
+  // POST /api/v2/register_staff/
+  // apt_id: INT
+  // department_id: INT
+  // role_id: INT
+  // document_file_id: INT/NULL
+  staffRegister( aptId, deptId, roleId, fileId ): Observable<any> {
+    const body = {
+      apt_id: aptId,
+      department_id: deptId,
+      role_id: roleId,
+      document_file_id: fileId,
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/register_staff/', body, httpOptions);
+  }
 
 
   // POST /api/v2/register_ceo/
-  // user_id: INT,
   // document_id: INT/NULL
   // apt_name: TEXT
   // city_id: INT
@@ -80,10 +128,8 @@ export class UserService {
   // latitude:decimal
   // longitude:decimal
   // description:TEXT
-  ceoRegister( userId, fileId, aptInfo, myPhone, myDesc ): Observable<any> {
+  ceoRegister( fileId, aptInfo, myPhone, myDesc ): Observable<any> {
     const body = {
-
-      user_id: userId,
       document_file_id: fileId,
       apt_name: aptInfo.bdNm,
       // TODO Ask about city id
@@ -91,7 +137,7 @@ export class UserService {
       address_gu: aptInfo.sggNm,
       address_dong: aptInfo.emdNm + ' ' + aptInfo.lnbrMnnm + ' ' + aptInfo.lnbrSlno,
       address_road: aptInfo.roadAddrPart1,
-      // TODO DO CEO have to add their apt name dong and ho?
+      // TODO Do CEO have to add their apt name dong and ho?
       address_detail: aptInfo.bdNm,
       postcode: aptInfo.zipNo,
       phone: myPhone,
@@ -102,40 +148,6 @@ export class UserService {
     return  this.http.post(this.serverUrl + '/api/v2/register_ceo/', body, httpOptions);
   }
 
-
-  // POST /api/v2/register_staff/
-  // user_id: INT
-  // apt_id: INT
-  // department_id: INT
-  // role_id: INT
-  // document_file_id: INT/NULL
-  staffRegister( userId, aptId, deptId, roleId, fileId ): Observable<any> {
-    const body = {
-      user_id: userId,
-      apt_id: aptId,
-      department_id: deptId,
-      role_id: roleId,
-      document_file_id: fileId,
-    };
-    return  this.http.post(this.serverUrl + '/api/v2/register_staff/', body, httpOptions);
-  }
-
-  // POST /api/v2/register_user/
-  // user_id: INT
-  // apt_id: INT
-  // address_dong: TEXT
-  // house_number: TEXT
-  // document_file_id: INT/NULL
-  userRegister( userId, aptId, myDong, myHouseNum, fileId ): Observable<any> {
-    const body = {
-      user_id: userId,
-      apt_id: aptId,
-      address_dong: myDong,
-      house_number: myHouseNum,
-      document_file_id: fileId,
-    };
-    return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, httpOptions);
-  }
 
 
   // GET /api/v2/list_all_department/
@@ -220,7 +232,7 @@ export class UserService {
   }
 
 
-  // POST TODO GET LINK
+  // POST /api/v2/approve_user/
   // user_id: INT
   // staff_id: INT
   approveUser( userId ): Observable<any> {
@@ -231,7 +243,7 @@ export class UserService {
     return this.http.post( this.serverUrl + '/api/v2/approve_user/', body, httpOptions );
   }
 
-  // POST TODO GET LINK
+  // POST /api/v2/approve_staff/
   // user_id: INT
   // staff_id: INT
   approveStaff( userId ): Observable<any> {
@@ -242,7 +254,7 @@ export class UserService {
     return this.http.post( this.serverUrl + '/api/v2/approve_staff/', body, httpOptions );
   }
 
-  // POST TODO GET LINK
+  // POST /api/v2/approve_ceo/
   // user_id: INT
   // staff_id: INT
   approveCEO( userId ): Observable<any> {

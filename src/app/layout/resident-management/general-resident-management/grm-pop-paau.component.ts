@@ -43,11 +43,10 @@ export class GRMPopPaauComponent {
     }
 
     approveNewUser() {
-        this.user.createUser( this.newUser ).subscribe(
+        this.user.createUserWithToken( this.newUser ).subscribe(
             data => {
                 const myUserId = data.user_id;
                 this.user.userRegister(
-                    data.user_id,
                     Number(localStorage.getItem('aptId')),
                     this.newUser.value.dong,
                     this.newUser.value.ho,

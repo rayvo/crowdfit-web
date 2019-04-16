@@ -33,6 +33,14 @@
       ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">생활지원관리</button></a
     >
   </div>
+
+  <form [formGroup]="form" (ngSubmit)="saveBoard()">       
+    <a href="#"><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button></a>
+    <a href="#"><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
+
+  </form>
+
+  <!--
   <div class="row">
     <div class="col-sm rounded mx-auto;">
       <h3 class="border-bottom ">공지사항</h3>
@@ -40,109 +48,46 @@
       <table class="table ">
         <tbody>
           <tr>
-            <th scope="row">목록보기</th>
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <th scope="row">목록보기</th> 
+            <td><mat-checkbox (click)='clickedBox(1,1,1)'>비회원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(2,1,1)'>입주민</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(3,1,1)'>직원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(4,1,1)'>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">읽기권한</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox (click)='clickedBox(1,1,2)'>비회원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(2,1,2)'>입주민</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(3,1,2)'>직원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(4,1,2)'>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">쓰기권한</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox (click)='clickedBox(1,1,3)'>비회원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(2,1,3)'>입주민</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(3,1,3)'>직원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(4,1,3)'>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">댓글쓰기</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox (click)='clickedBox(1,1,4)'>비회원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(2,1,4)'>입주민</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(3,1,4)'>직원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(4,1,4)'>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">강제 삭제</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox (click)='clickedBox(1,1,5)'>비회원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(2,1,5)'>입주민</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(3,1,5)'>직원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(4,1,5)'>관리자</mat-checkbox></td>
           </tr>
-
           <tr>
             <th scope="row">작성글 숨기기</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox (click)='clickedBox(1,1,6)'>비회원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(2,1,6)'>입주민</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(3,1,6)'>직원</mat-checkbox></td>
+            <td><mat-checkbox (click)='clickedBox(4,1,6)'>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">공지게시판 설정</th>
@@ -170,110 +115,48 @@
       <table class="table ">
         <tbody>
           <tr>
-            <th scope="row">목록보기</th>
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">읽기권한</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">쓰기권한</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">댓글쓰기</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">강제 삭제</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
-          </tr>
-
-          <tr>
-            <th scope="row">작성글 숨기기</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
-          </tr>
+            <tr>
+              <th scope="row">목록보기</th>
+              <td><mat-checkbox>비회원</mat-checkbox></td>
+              <td><mat-checkbox>입주민</mat-checkbox></td>
+              <td><mat-checkbox>직원</mat-checkbox></td>
+              <td><mat-checkbox>관리자</mat-checkbox></td>
+            </tr>
+            <tr>
+              <th scope="row">읽기권한</th>
+              <td><mat-checkbox>비회원</mat-checkbox></td>
+              <td><mat-checkbox>입주민</mat-checkbox></td>
+              <td><mat-checkbox>직원</mat-checkbox></td>
+              <td><mat-checkbox>관리자</mat-checkbox></td>
+            </tr>
+            <tr>
+              <th scope="row">쓰기권한</th>
+              <td><mat-checkbox>비회원</mat-checkbox></td>
+              <td><mat-checkbox>입주민</mat-checkbox></td>
+              <td><mat-checkbox>직원</mat-checkbox></td>
+              <td><mat-checkbox>관리자</mat-checkbox></td>
+            </tr>
+            <tr>
+              <th scope="row">댓글쓰기</th>
+              <td><mat-checkbox>비회원</mat-checkbox></td>
+              <td><mat-checkbox>입주민</mat-checkbox></td>
+              <td><mat-checkbox>직원</mat-checkbox></td>
+              <td><mat-checkbox>관리자</mat-checkbox></td>
+            </tr>
+            <tr>
+              <th scope="row">강제 삭제</th>
+              <td><mat-checkbox>비회원</mat-checkbox></td>
+              <td><mat-checkbox>입주민</mat-checkbox></td>
+              <td><mat-checkbox>직원</mat-checkbox></td>
+              <td><mat-checkbox>관리자</mat-checkbox></td>
+            </tr>
+            <tr>
+              <th scope="row">작성글 숨기기</th>
+              <td><mat-checkbox>비회원</mat-checkbox></td>
+              <td><mat-checkbox>입주민</mat-checkbox></td>
+              <td><mat-checkbox>직원</mat-checkbox></td>
+              <td><mat-checkbox>관리자</mat-checkbox></td>
+            </tr>
           <tr>
             <th scope="row">토크박스 설정</th>
 
@@ -301,108 +184,45 @@
         <tbody>
           <tr>
             <th scope="row">목록보기</th>
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox>비회원</mat-checkbox></td>
+            <td><mat-checkbox>입주민</mat-checkbox></td>
+            <td><mat-checkbox>직원</mat-checkbox></td>
+            <td><mat-checkbox>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">읽기권한</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox>비회원</mat-checkbox></td>
+            <td><mat-checkbox>입주민</mat-checkbox></td>
+            <td><mat-checkbox>직원</mat-checkbox></td>
+            <td><mat-checkbox>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">쓰기권한</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox>비회원</mat-checkbox></td>
+            <td><mat-checkbox>입주민</mat-checkbox></td>
+            <td><mat-checkbox>직원</mat-checkbox></td>
+            <td><mat-checkbox>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">댓글쓰기</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox>비회원</mat-checkbox></td>
+            <td><mat-checkbox>입주민</mat-checkbox></td>
+            <td><mat-checkbox>직원</mat-checkbox></td>
+            <td><mat-checkbox>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">강제 삭제</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox>비회원</mat-checkbox></td>
+            <td><mat-checkbox>입주민</mat-checkbox></td>
+            <td><mat-checkbox>직원</mat-checkbox></td>
+            <td><mat-checkbox>관리자</mat-checkbox></td>
           </tr>
-
           <tr>
             <th scope="row">작성글 숨기기</th>
-
-            <td>
-              <mat-checkbox>비회원</mat-checkbox>
-            </td>
-
-            <td>
-              <mat-checkbox>입주민</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>직원</mat-checkbox>
-            </td>
-            <td>
-              <mat-checkbox>관리자</mat-checkbox>
-            </td>
+            <td><mat-checkbox>비회원</mat-checkbox></td>
+            <td><mat-checkbox>입주민</mat-checkbox></td>
+            <td><mat-checkbox>직원</mat-checkbox></td>
+            <td><mat-checkbox>관리자</mat-checkbox></td>
           </tr>
           <tr>
             <th scope="row">아나바다 설정</th>
@@ -425,4 +245,5 @@
       </table>
     </div>
   </div>
+-->
 </div>
