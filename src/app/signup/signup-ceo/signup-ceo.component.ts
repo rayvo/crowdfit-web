@@ -10,8 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { routerTransition } from 'src/app/router.animations';
 
 
-
-
 export interface DeptList {
   id: number;
   name: string;
@@ -41,6 +39,9 @@ const ROLE_DATA_FRONT: RoleList[] = [
   { id: 1, name: 'Guide' },
   { id: 2, name: 'Front Desk' },
 ];
+
+
+
 
 @Component({
   selector: 'app-signup-ceo',
@@ -73,14 +74,11 @@ export class SignupCeoComponent implements OnInit {
 
   getDeptData() {
     this.depts.length = 0; // Clear the array without creating a new reference
-    this.depts = DEPT_DATA;
-    this.roles = ROLE_DATA_FINANCE;
     // TODO Undo comment when not using fake data
     /*
     this.user.listAllDepartment( localStorage.getItem('aptId') ).subscribe(
       data => {
-        // TODO Replace ______
-        data.____.forEach(element => {
+        data.results.forEach(element => {
           this.depts.push({id: element.id, name: element.name, desc: element.description});
         });
       },
@@ -88,6 +86,10 @@ export class SignupCeoComponent implements OnInit {
         console.log(error);
       }
     );*/
+
+    // TODO below is fake data. Remove when using real data
+    this.depts = DEPT_DATA;
+    this.roles = ROLE_DATA_FINANCE;
   }
 
   deptClicked( aDept ) {
@@ -107,8 +109,9 @@ export class SignupCeoComponent implements OnInit {
     }
   }
 
-  // TODO Undo comment when not using fake data
-  getRoleData( deptId ) {/*
+  getRoleData( deptId ) {
+    // TODO Undo comment when not using fake data
+    /*
     this.roles.length = 0; // Clear the array without creating a new reference
     this.user.listAllRoleOfDepartment( deptId ).subscribe(
       data => {

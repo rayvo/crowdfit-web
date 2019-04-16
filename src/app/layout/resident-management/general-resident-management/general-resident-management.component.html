@@ -20,50 +20,50 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
   </mat-form-field>
 
-  <div class="row">
-    <div class="col-sm rounded mx-auto;">
-      <mat-label>승인대기 입주민</mat-label>
-      <div class="mat-elevation-z8">
-        <!-- WAIT LIST TABLE -->
-        <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>성명</th>
-            <td mat-cell *matCellDef="let person">{{ person.name }}</td>
-          </ng-container>
-          <ng-container matColumnDef="donghosu">
-            <th mat-header-cell *matHeaderCellDef>동호수</th>
-            <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
-          </ng-container>
-          <ng-container matColumnDef="phone">
-            <th mat-header-cell *matHeaderCellDef>연락처</th>
-            <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
-          </ng-container>
-          <ng-container matColumnDef="file">
-            <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
-            <td mat-cell *matCellDef="let person">
-              <button mat-raised-button (click)="showFile(person)">File</button>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="approve">
-            <th mat-header-cell *matHeaderCellDef>승인</th>
-            <td mat-cell *matCellDef="let person">
-              <button mat-raised-button (click)="openDialog(person, 'APPROVE', 3)">승인</button>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef>삭제</th>
-            <td mat-cell *matCellDef="let person">
-              <mat-icon style="cursor:pointer" (click)="openDialog(person, 'DELETE', 1)">delete</mat-icon>
-            </td>
-          </ng-container>
+  <br />
+  <mat-label>승인대기 입주민</mat-label>
+  <button mat-button (click)="personallyApproveAUser()">입주민 직접 승인 해주기</button>
+  <div class="mat-elevation-z8">
+    <!-- WAIT LIST TABLE -->
+    <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>성명</th>
+        <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="donghosu">
+        <th mat-header-cell *matHeaderCellDef>동호수</th>
+        <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>연락처</th>
+        <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+      </ng-container>
+      <ng-container matColumnDef="file">
+        <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
+        <td mat-cell *matCellDef="let person">
+          <button mat-raised-button (click)="showFile(person)">File</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="approve">
+        <th mat-header-cell *matHeaderCellDef>승인</th>
+        <td mat-cell *matCellDef="let person">
+          <button mat-raised-button (click)="openDialog(person, 'APPROVE', 3)">승인</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>삭제</th>
+        <td mat-cell *matCellDef="let person">
+          <mat-icon style="cursor:pointer" (click)="openDialog(person, 'DELETE', 1)">delete</mat-icon>
+        </td>
+      </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
-        </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+    </table>
 
-        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
-      </div>
-<!--
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+  </div>
+  <!--
       <br /><br />
       <mat-label> 초대된 입주민 </mat-label>
       <div class="mat-elevation-z8">
@@ -96,98 +96,96 @@
     </div>
 -->
 
+  <br /><br />
+  <mat-label> 승인된 입주민 </mat-label>
+  <div class="mat-elevation-z8">
+    <br />
+    <!-- APPROVED LIST TABLE -->
+    <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>성명</th>
+        <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="donghosu">
+        <th mat-header-cell *matHeaderCellDef>동호수</th>
+        <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>연락처</th>
+        <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="staff">
+        <th mat-header-cell *matHeaderCellDef>승인자</th>
+        <td mat-cell *matCellDef="let person">{{ person.staff }}</td>
+      </ng-container>
+      <ng-container matColumnDef="approvedDate">
+        <th mat-header-cell *matHeaderCellDef>승인일자</th>
+        <td mat-cell *matCellDef="let person">{{ person.approvedDate | date: 'yyyy-mm-dd' }}</td>
+      </ng-container>
+      <ng-container matColumnDef="file">
+        <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
+        <td mat-cell *matCellDef="let person">
+          <button mat-raised-button (click)="showFile(person)">File</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="out">
+        <th mat-header-cell *matHeaderCellDef>퇴거</th>
+        <td mat-cell *matCellDef="let person">
+          <button mat-raised-button (click)="openDialog(person, 'MOVE OUT', 5)">퇴거</button>
+        </td>
+      </ng-container>
 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+    </table>
 
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+  </div>
 
+  <br /><br />
+  <mat-label> 퇴거된 입주민 </mat-label>
+  <div class="mat-elevation-z8">
+    <br />
+    <!-- EVICTED LIST TABLE -->
+    <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>성명</th>
+        <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="donghosu">
+        <th mat-header-cell *matHeaderCellDef>동호수</th>
+        <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>연락처</th>
+        <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+      </ng-container>
+      <ng-container matColumnDef="staff">
+        <th mat-header-cell *matHeaderCellDef>퇴거자</th>
+        <td mat-cell *matCellDef="let person">{{ person.staff }}</td>
+      </ng-container>
+      <!--
+      <ng-container matColumnDef="outDate">
+        <th mat-header-cell *matHeaderCellDef>퇴거일자</th>
+        <td mat-cell *matCellDef="let person">{{ person.outDate | date: 'yyyy-mm-dd' }}</td>
+      </ng-container>
+    -->
+      <ng-container matColumnDef="file">
+        <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
+        <td mat-cell *matCellDef="let person">
+          <button mat-raised-button (click)="showFile(person)">File</button>
+        </td>
+      </ng-container>
 
-      <br /><br />
-      <mat-label> 승인된 입주민 </mat-label>
-      <div class="mat-elevation-z8">
-        <br />
-        <!-- APPROVED LIST TABLE -->
-        <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>성명</th>
-            <td mat-cell *matCellDef="let person">{{ person.name }}</td>
-          </ng-container>
-          <ng-container matColumnDef="donghosu">
-            <th mat-header-cell *matHeaderCellDef>동호수</th>
-            <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
-          </ng-container>
-          <ng-container matColumnDef="phone">
-            <th mat-header-cell *matHeaderCellDef>연락처</th>
-            <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
-          </ng-container>
-          <ng-container matColumnDef="file">
-            <ng-container matColumnDef="approvedBy">
-              <th mat-header-cell *matHeaderCellDef>승인자</th>
-              <td mat-cell *matCellDef="let person">{{ person.approvedBy }}</td>
-            </ng-container>
-            <ng-container matColumnDef="approvedDate">
-              <th mat-header-cell *matHeaderCellDef>승인일자</th>
-              <td mat-cell *matCellDef="let person">{{ person.approvedDate | date: 'yyyy-mm-dd' }}</td>
-            </ng-container>
-            <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
-            <td mat-cell *matCellDef="let person">
-              <button mat-raised-button (click)="showFile(person)">File</button>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="out">
-            <th mat-header-cell *matHeaderCellDef>퇴거</th>
-            <td mat-cell *matCellDef="let person">
-              <button mat-raised-button (click)="openDialog(person, 'MOVE OUT', 5)">퇴거</button>
-            </td>
-          </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns4"></tr>
+    </table>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
-        </table>
-
-        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
-      </div>
-    </div>
-
-    <br /><br />
-    <mat-label> 퇴거된 입주민 </mat-label>
-    <div class="mat-elevation-z8">
-      <br />
-      <!-- EVICTED LIST TABLE -->
-      <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>성명</th>
-          <td mat-cell *matCellDef="let person">{{ person.name }}</td>
-        </ng-container>
-        <ng-container matColumnDef="donghosu">
-          <th mat-header-cell *matHeaderCellDef>동호수</th>
-          <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
-        </ng-container>
-        <ng-container matColumnDef="phone">
-          <th mat-header-cell *matHeaderCellDef>연락처</th>
-          <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
-        </ng-container>
-        <ng-container matColumnDef="file">
-          <ng-container matColumnDef="approvedBy">
-            <th mat-header-cell *matHeaderCellDef>퇴거자</th>
-            <td mat-cell *matCellDef="let person">{{ person.staff }}</td>
-          </ng-container>
-          <ng-container matColumnDef="approvedDate">
-            <th mat-header-cell *matHeaderCellDef>퇴거일자</th>
-            <td mat-cell *matCellDef="let person">{{ person.approvedDate | date: 'yyyy-mm-dd' }}</td>
-          </ng-container>
-          <th mat-header-cell *matHeaderCellDef>첨부 파일</th>
-          <td mat-cell *matCellDef="let person">
-            <button mat-raised-button (click)="showFile(person)">File</button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns4"></tr>
-      </table>
-
-      <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
-    </div>
-  <!--
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+<!--
   <div class="row">
     <div class="col-sm rounded mx-auto;">
       <p>승인대기 입주민(<span class="orange">n</span>)</p>
@@ -484,9 +482,3 @@
     </div>
   </div>
     -->
-
-
-
-
-  </div>
-</div>

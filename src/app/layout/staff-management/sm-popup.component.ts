@@ -8,7 +8,7 @@ export interface DialogData {
   dept: string;
   pos: string;
   phone: string;
-  type: number;
+  type: string;
 }
 
 

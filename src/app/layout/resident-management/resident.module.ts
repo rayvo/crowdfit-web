@@ -11,12 +11,14 @@ import { ResidentRoutingModule } from './resident-routing.module';
 import { ResidentManagementComponent } from './resident-management.component';
 import { GRMPopFileComponent } from './general-resident-management/grm-pop-file.component';
 import { GRMPopupComponent } from './general-resident-management/grm-popup.component';
+import { GRMPopPaauComponent } from './general-resident-management/grm-pop-paau.component';
 import {
   MatDialogModule,
   MatTableModule,
   MatFormFieldModule,
   MatIconModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatInputModule
 } from '@angular/material';
 
 
@@ -33,7 +35,8 @@ import {
     MatTableModule,
     MatFormFieldModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatInputModule,
   ],
   declarations: [
       CommunityMemberManagementComponent,
@@ -41,6 +44,8 @@ import {
       ResidentManagementComponent,
       GRMPopupComponent,
       GRMPopFileComponent,
+      GRMPopPaauComponent,
+
 
   ],
   providers: [],
@@ -48,6 +53,7 @@ import {
   entryComponents: [
     GRMPopupComponent,
     GRMPopFileComponent,
+    GRMPopPaauComponent,
   ]
 })
 export class ResidentModule { }

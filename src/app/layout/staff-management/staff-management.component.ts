@@ -1,15 +1,8 @@
 import { Component, OnInit, ViewChild, QueryList, ViewChildren, AfterContentInit, AfterViewInit } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatDialogConfig } from '@angular/material';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatPaginator, MatDialogConfig } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
-
 import { SMPopupComponent } from './sm-popup.component';
 import { SMPopFileComponent } from './sm-pop-file.component';
-import { DataSource } from '@angular/cdk/table';
-
-
-
-
 
 @Component({
   selector: 'app-staff-management',
@@ -132,8 +125,7 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
               name: element.fullname,
               department: element.list_dept_role_status[0].department_id,
               position: element.list_dept_role_status[0].role_id,
-              // TODO when added to the api
-              phone: null, // element.phone
+              phone: element.phone
             });
           });
 
@@ -145,9 +137,8 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
               name: element.fullname,
               department: element.list_dept_role_status[0].department_id,
               position: element.list_dept_role_status[0].role_id,
-              // TODO when added to the api
-              phone: null, // element.phone
-              approvedBy: null, //
+              phone: element.phone,
+              approvedBy: element.staff,
               approvedDate: new Date(Date.parse(element.last_update)),
             });
           });
@@ -160,10 +151,9 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
               name: element.fullname,
               department: element.list_dept_role_status[0].department_id,
               position: element.list_dept_role_status[0].role_id,
-              // TODO when added to the api
-              phone: null, // element.phone
-              evictedDate: new Date(Date.parse(element.last_update)), //
-              reason: null, //
+              phone: element.phone,
+              evictedDate: new Date(Date.parse(element.last_update)),
+              reason: element.reason
             });
           });
         }
@@ -222,8 +212,8 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
       this.user.approveStaff(personInfo.id).subscribe(
         data => {
           this.staffWaitList = this.removeFromList(this.staffWaitList, personInfo);
-          personInfo.approvedBy = 'Haseung'; // TODO
-          personInfo.approvedDate = 'Today';  // TODO
+          personInfo.approvedBy = localStorage.getItem('name');
+          personInfo.approvedDate = new Date();
           this.staffApprovedList.push( personInfo );
         },
         error => {

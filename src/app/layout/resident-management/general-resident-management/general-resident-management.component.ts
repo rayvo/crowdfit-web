@@ -2,6 +2,7 @@ import { Component, OnInit, QueryList, ViewChildren, AfterViewInit } from '@angu
 import { MatDialog, MatPaginator, MatTableDataSource, MatDialogConfig } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { GRMPopupComponent } from './grm-popup.component';
+import { GRMPopPaauComponent } from './grm-pop-paau.component';
 
 @Component({
   selector: 'app-general-resident-management',
@@ -24,7 +25,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
   displayedColumns1: string[] = ['name', 'donghosu', 'phone' ];
   displayedColumns2: string[] = ['name', 'donghosu', 'phone' ];
   displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedDate' ];
-  displayedColumns4: string[] = ['name', 'donghosu', 'phone', 'staff', 'outDate' ];
+  displayedColumns4: string[] = ['name', 'donghosu', 'phone', 'staff' ]; // , 'outDate' ];
   userWaitList: WaitList[] = [];
   userInvitedList: InvitedList[] = [];
   userApprovedList: ApprovedList[] = [];
@@ -210,6 +211,32 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     });
   }
 
+  personallyApproveAUser() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+    // dialogConfig.data = {
+    //   name: personInfo.name,
+    //   donghosu: personInfo.donghosu,
+    //   phone: personInfo.phone,
+    //   type: btnType,
+    // };
+
+    const dialogRef = this.dialog.open(GRMPopPaauComponent, dialogConfig );
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if ( result !== '' ) {
+          this.updateUserStatus(result, 3);
+          this.reloadAllData();
+        } // else canceled so do nothing
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
 
 }

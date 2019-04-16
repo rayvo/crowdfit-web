@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpEventType, HttpParams } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { MatYearView } from '@angular/material';
+import { RepeatPasswordValidator } from '../signup/signup.validators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -40,6 +41,22 @@ export class UserService {
       password: userData.value.password,
       phone: userData.value.phone
     };
+    return this.http.post(this.serverUrl + '/api/v2/register/', body, httpOptions2);
+  }
+
+  // POST	/api/v2/register/
+  // fullname: TEXT,
+  // email: TEXT,
+  // password: TEXT,
+  // phone: TEXT
+  createUserWithToken(userData): Observable<any> {
+    // TODO check 'fullname' or 'username'
+    const body = {
+      fullname: userData.value.username,
+      email: userData.value.email,
+      password: userData.value.password,
+      phone: userData.value.phone
+    };
     return this.http.post(this.serverUrl + '/api/v2/register/', body, httpOptions);
   }
 
@@ -47,14 +64,15 @@ export class UserService {
   // email: INPUT,
   // password: INPUT
   loginUser(userData): Observable<any> {
+<<<<<<< HEAD
+=======
+    console.log(localStorage.getItem('token'));
+>>>>>>> cc1e083308f61b2d8fc2fa8d5cff2f687c3548af
     return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions2);
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
     // When i logout send last feature
     // when routing update localStorage's last feature
   }
-
-
-
 
 
   // POST	/api/v2/apartment_existed/
@@ -65,15 +83,42 @@ export class UserService {
       name: aptInfo.apt_name,
       postcode: aptInfo.zipNo
     };
-    console.log('huh?');
     return this.http.post(this.serverUrl + '/api/v2/apartment_existed/', body, httpOptions);
   }
 
 
+  // POST /api/v2/register_user/
+  // apt_id: INT
+  // address_dong: TEXT
+  // house_number: TEXT
+  // document_file_id: INT/NULL
+  userRegister( aptId, myDong, myHouseNum, fileId ): Observable<any> {
+    const body = {
+      apt_id: aptId,
+      address_dong: myDong,
+      house_number: myHouseNum,
+      document_file_id: fileId,
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, httpOptions);
+  }
+
+  // POST /api/v2/register_staff/
+  // apt_id: INT
+  // department_id: INT
+  // role_id: INT
+  // document_file_id: INT/NULL
+  staffRegister( aptId, deptId, roleId, fileId ): Observable<any> {
+    const body = {
+      apt_id: aptId,
+      department_id: deptId,
+      role_id: roleId,
+      document_file_id: fileId,
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/register_staff/', body, httpOptions);
+  }
 
 
   // POST /api/v2/register_ceo/
-  // user_id: INT,
   // document_id: INT/NULL
   // apt_name: TEXT
   // city_id: INT
@@ -86,10 +131,8 @@ export class UserService {
   // latitude:decimal
   // longitude:decimal
   // description:TEXT
-  ceoRegister( userId, fileId, aptInfo, myPhone, myDesc ): Observable<any> {
+  ceoRegister( fileId, aptInfo, myPhone, myDesc ): Observable<any> {
     const body = {
-
-      user_id: userId,
       document_file_id: fileId,
       apt_name: aptInfo.bdNm,
       // TODO Ask about city id
@@ -97,7 +140,7 @@ export class UserService {
       address_gu: aptInfo.sggNm,
       address_dong: aptInfo.emdNm + ' ' + aptInfo.lnbrMnnm + ' ' + aptInfo.lnbrSlno,
       address_road: aptInfo.roadAddrPart1,
-      // TODO DO CEO have to add their apt name dong and ho?
+      // TODO Do CEO have to add their apt name dong and ho?
       address_detail: aptInfo.bdNm,
       postcode: aptInfo.zipNo,
       phone: myPhone,
@@ -109,55 +152,17 @@ export class UserService {
   }
 
 
-  // POST /api/v2/register_staff/
-  // user_id: INT
-  // apt_id: INT
-  // department_id: INT
-  // role_id: INT
-  // document_file_id: INT/NULL
-  staffRegister( userId, aptId, deptId, roleId, fileId ): Observable<any> {
-    const body = {
-      user_id: userId,
-      apt_id: aptId,
-      department_id: deptId,
-      role_id: roleId,
-      document_file_id: fileId,
-    };
-    return  this.http.post(this.serverUrl + '/api/v2/register_staff/', body, httpOptions);
-  }
-
-  // POST /api/v2/register_user/
-  // user_id: INT
-  // apt_id: INT
-  // address_dong: TEXT
-  // house_number: TEXT
-  // document_file_id: INT/NULL
-  userRegister( userId, aptId, myDong, myHouseNum, fileId ): Observable<any> {
-    const body = {
-      user_id: userId,
-      apt_id: aptId,
-      address_dong: myDong,
-      house_number: myHouseNum,
-      document_file_id: fileId,
-    };
-    return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, httpOptions);
-  }
-
 
   // GET /api/v2/list_all_department/
   // apt_id: INT/NULL
   listAllDepartment( aptId ): Observable<any> {
-    const params = new HttpParams();
-    params.append('apt_id', aptId);
-    return this.http.get( this.serverUrl + 'api/v2/list_all_department/', { headers: httpOptions.headers, params: params });
+    return this.http.get( this.serverUrl + 'api/v2/list_all_department/' + aptId, httpOptions );
   }
 
   // GET /api/v2/list_all_role_of_department/
   // department_id: INT
   listAllRoleOfDepartment( deptId ): Observable<any> {
-    const params = new HttpParams();
-    params.append('department_id', deptId);
-    return this.http.get( this.serverUrl + 'api/v2/list_all_role_of_department/', { headers: httpOptions.headers, params: params });
+    return this.http.get( this.serverUrl + 'api/v2/list_all_role_of_department/' + deptId, httpOptions);
   }
 
 
@@ -172,6 +177,34 @@ export class UserService {
    * deleteRole
    *
    */
+
+
+  // POST /api/v2/create_dep_role/
+  // department_id: INT
+  // role_id: INT
+  createDeptRole( deptId, roleId ) {
+    const body = {
+      department_id: deptId,
+      role_id: roleId
+    };
+    return this.http.post( this.serverUrl + '/api/v2/create_dep_role/', body, httpOptions);
+  }
+
+  // PUT /api/v2/update_dep_role/<int:dep_role_id>
+  // role_id: INT/NULL
+  // is_active: BOOL/NULL
+  updateDeptRole( deptRoleId, roleId, isActive ) {
+    const body = {
+      role_id: roleId, // can be null
+      is_active: isActive // can be null
+    };
+    return this.http.put( this.serverUrl + '/api/v2/update_dep_role/' + deptRoleId, body, httpOptions);
+  }
+
+  // DELETE /api/v2/delete_dep_role/<int:dep_role_id>
+  deleteDeptRole( deptRoleId ) {
+    return this.http.delete( this.serverUrl + '/api/v2/delete_dep_role/' + deptRoleId, httpOptions );
+  }
 
 
   // GET /api/v2/list_user_by_status
@@ -192,7 +225,6 @@ export class UserService {
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
   getStaffsByStatus( aptId, statusId ): Observable<any> {
-    console.log('REACHED getStaffsByStatus with status: ' + statusId);
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
@@ -203,7 +235,7 @@ export class UserService {
   }
 
 
-  // POST TODO GET LINK
+  // POST /api/v2/approve_user/
   // user_id: INT
   // staff_id: INT
   approveUser( userId ): Observable<any> {
@@ -214,7 +246,7 @@ export class UserService {
     return this.http.post( this.serverUrl + '/api/v2/approve_user/', body, httpOptions );
   }
 
-  // POST TODO GET LINK
+  // POST /api/v2/approve_staff/
   // user_id: INT
   // staff_id: INT
   approveStaff( userId ): Observable<any> {
@@ -225,7 +257,7 @@ export class UserService {
     return this.http.post( this.serverUrl + '/api/v2/approve_staff/', body, httpOptions );
   }
 
-  // POST TODO GET LINK
+  // POST /api/v2/approve_ceo/
   // user_id: INT
   // staff_id: INT
   approveCEO( userId ): Observable<any> {
@@ -242,10 +274,16 @@ export class UserService {
 
 
 
-
-
-
-
+  // TODO , Ray hasn't uploaded the api for this yet. So below is just my guess
+  // RFP = Role Feature Permission
+  setRFP( roleId, featureId, permissionId ) {
+    const body = {
+      rold_id: roleId,
+      feature_id: featureId,
+      permission_id: permissionId
+    };
+    return this.http.post( this.serverUrl + '/api/v2/update_role_feature_permission', body, httpOptions);
+  }
 
 
 
@@ -445,29 +483,7 @@ export class UserService {
     return this.http.put(this.serverUrl + '/api/role/', body, httpOptions);
   }
 
-  //   POST	/api/departmentrole/
-  // department_id: INT,
-  // role_id: INT
-  // user_role_status_id: INT
-  createDeptRole( myId, myRoleId, ursId): Observable < any > {
-    const body = {
-      id: myId,
-      role_id: myRoleId,
-      user_role_status_id: ursId
-    };
-    return this.http.post(this.serverUrl + '/api/departmentrole/', body, httpOptions);
-  }
 
-  //   PUT	/api/departmentrole/
-  // id: id
-  // is_active: true
-  updateDeptRole(myId, myActive): Observable < any > {
-    const body = {
-      id: myId,
-      is_active: myActive
-    };
-    return this.http.put(this.serverUrl + '/api/departmentrole/', body, httpOptions);
-  }
 
 
 

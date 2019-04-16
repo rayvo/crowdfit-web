@@ -96,7 +96,7 @@ export class SignupComponent implements OnInit {
 
 
     getUsernameErrorMessage() {
-        return this.username.hasError('required') ? 'You must enter a username' : '';
+        return this.username.hasError('required') ? 'You must enter a name' : '';
     }
     getEmailErrorMessage() {
         return this.email.hasError('required') ? 'You must enter an email' :
@@ -104,7 +104,6 @@ export class SignupComponent implements OnInit {
     }
     getPasswordErrorMessage() {
         return this.password.hasError('required') ? 'You must enter a password' : '';
-            // this.email.hasError('invalidEmail') ? 'You must enter a valid email address' : '';
     }
     // getCpasswordErrorMessage() {
     //     if ( this.cpassword.hasError('required') ) {
