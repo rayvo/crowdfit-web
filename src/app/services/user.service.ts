@@ -64,10 +64,6 @@ export class UserService {
   // email: INPUT,
   // password: INPUT
   loginUser(userData): Observable<any> {
-<<<<<<< HEAD
-=======
-    console.log(localStorage.getItem('token'));
->>>>>>> cc1e083308f61b2d8fc2fa8d5cff2f687c3548af
     return this.http.post(this.serverUrl + '/api/v2/auth/', userData, httpOptions2);
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
     // When i logout send last feature
