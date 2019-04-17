@@ -7,7 +7,7 @@ import { LayoutMemberComponent } from './layout-member.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { HomeComponent } from './home/home.component';
+
 import { AuthGuard } from '../shared';
 import {
   MatTableModule,
@@ -15,13 +15,29 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatPaginatorModule,
-  MatCardModule
+  MatCardModule,
+  MatHeaderRow,
+  MatHeaderRowDef,
+
 } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+import { HomeComponent } from './home/home.component';
+import { DanziComponent } from './danzi/danzi.component';
+import { CommunityComponent } from './community/community.component';
+import { VoteComponent } from './vote/vote.component';
+import { CultureComponent } from './culture/culture.component';
+import { LifeSupportComponent } from './life-support/life-support.component';
+import { FitMusicComponent } from './fit-music/fit-music.component';
+import { FitVideoComponent } from './fit-video/fit-video.component';
+import { SmartAdministrativeExpensesComponent } from './smart-administrative-expenses/smart-administrative-expenses.component';
+import { MandatoryDisclosureComponent } from './mandatory-disclosure/mandatory-disclosure.component';
+import { LibraryComponent } from './library/library.component';
+import { SetPermissionsComponent } from './set-permissions/set-permissions.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -46,7 +62,17 @@ import {MatDividerModule} from '@angular/material/divider';
     FooterComponent,
     SidebarComponent,
     HomeComponent,
-
+    DanziComponent,
+    CommunityComponent,
+    VoteComponent,
+    CultureComponent,
+    SmartAdministrativeExpensesComponent,
+    MandatoryDisclosureComponent,
+    LibraryComponent,
+    LifeSupportComponent,
+    FitMusicComponent,
+    FitVideoComponent,
+    SetPermissionsComponent,
   ],
   providers: [AuthGuard],
   entryComponents: [

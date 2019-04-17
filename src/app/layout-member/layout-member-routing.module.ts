@@ -2,7 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutMemberComponent } from './layout-member.component';
 import {HomeComponent} from './home/home.component';
-
+import { DanziComponent } from './danzi/danzi.component';
+import { CommunityComponent } from './community/community.component';
+import { VoteComponent } from './vote/vote.component';
+import { CultureComponent } from './culture/culture.component';
+import { SmartAdministrativeExpensesComponent } from './smart-administrative-expenses/smart-administrative-expenses.component';
+import { MandatoryDisclosureComponent } from './mandatory-disclosure/mandatory-disclosure.component';
+import { LibraryComponent } from './library/library.component';
+import { SetPermissionsComponent } from './set-permissions/set-permissions.component';
+import { LifeSupportComponent } from './life-support/life-support.component';
+import { FitMusicComponent } from './fit-music/fit-music.component';
+import { FitVideoComponent } from './fit-video/fit-video.component';
 import { AuthGuard } from '../shared';
 import { from } from 'rxjs';
 
@@ -13,6 +23,17 @@ const routes: Routes = [
         children: [
 
             { path: 'home', component: HomeComponent },
+            { path: 'danzi', component: DanziComponent },
+            { path: 'community', component: CommunityComponent},
+            { path: 'vote', component: VoteComponent },
+            { path: 'culture', component: CultureComponent},
+            { path: 'life', component:  LifeSupportComponent },
+            { path: 'music', component:  FitMusicComponent },
+            { path: 'video', component:  FitVideoComponent },
+            { path: 'expense', component:   SmartAdministrativeExpensesComponent},
+            { path: 'disclosure', component:  MandatoryDisclosureComponent },
+            { path: 'library', component:   LibraryComponent },
+            { path: 'permission', component:   SetPermissionsComponent },
             // { path: '', redirectTo: 'menu', pathMatch: 'prefix' },
             // { path: 'menu', loadChildren: './menu-management/menu.module#MenuModule' },
             // { path: 'resident', loadChildren: './resident-management/resident.module#ResidentModule' },
