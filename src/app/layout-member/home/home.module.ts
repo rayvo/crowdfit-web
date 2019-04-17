@@ -4,16 +4,25 @@ import { TranslateModule } from '@ngx-translate/core';
 
 
 import { HomeComponent } from './home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatMenuModule} from '@angular/material/menu';
+import { MatHeaderRow, MatHeaderRowDef, MatDividerModule, MatTableModule, MatIconModule, MatPaginatorModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     TranslateModule,
     FormsModule,
     MatMenuModule,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatDividerModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule
+
 ],
 declarations: [HomeComponent]
 })
