@@ -8,14 +8,14 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import proj4 from 'proj4';
 import { Router } from '@angular/router';
 
-export interface Pos {
+export interface Role {
   value: string;
   viewValue: string;
 }
 
 export interface Dept {
   name: string;
-  pos: Pos[];
+  role: Role[];
 }
 
 
@@ -70,7 +70,7 @@ export class SignupFindComponent implements OnInit {
   roleClicked = (role) => {
     localStorage.setItem('role', role); // something predetermined
     if (role === 2) {
-      this.setDeptPosList();
+      this.setDeptRoleList();
       this.thirdFormGroup.controls['thirdCtrl1'].setErrors(null);
       this.thirdFormGroup.controls['thirdCtrl2'].setErrors(null);
       this.deptControl.setErrors({'incorrect': true});
@@ -184,14 +184,14 @@ export class SignupFindComponent implements OnInit {
     return localStorage.getItem(key);
   }
 
-  setDeptPosList() {
+  setDeptRoleList() {
     // TODO
-    // Call getDPByApt in the db
+    // Call getDeptRoleByApt in the db
     // For now temp and fake data
     this.deptGroups = [
       {
         name: 'Management',
-        pos: [
+        role: [
           {value: '1', viewValue: 'General'},
           {value: '2', viewValue: 'English Affairs'},
           {value: '3', viewValue: 'Quality Assurance'}
@@ -199,14 +199,14 @@ export class SignupFindComponent implements OnInit {
       },
       {
         name: 'Finance',
-        pos: [
+        role: [
           {value: '4', viewValue: 'Wages' },
           {value: '5', viewValue: 'Budget'},
         ]
       },
       {
         name: 'Human Resource',
-        pos: [
+        role: [
           {value: '6', viewValue: 'Head' },
           {value: '7', viewValue: 'Emergency Affairs'},
           {value: '8', viewValue: 'Rule Enforcement'},

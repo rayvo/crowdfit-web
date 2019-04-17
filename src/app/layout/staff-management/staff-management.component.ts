@@ -3,6 +3,7 @@ import { MatDialog, MatTableDataSource, MatPaginator, MatDialogConfig } from '@a
 import { UserService } from 'src/app/services/user.service';
 import { SMPopupComponent } from './sm-popup.component';
 import { SMPopFileComponent } from './sm-pop-file.component';
+import { SMPopPaasComponent } from './sm-pop-paas.component';
 
 @Component({
   selector: 'app-staff-management',
@@ -236,6 +237,35 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
       console.log('There is a new error');
     }
   }
+
+  personallyApproveAStaff() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+    // dialogConfig.data = {
+    //   name: personInfo.name,
+    //   donghosu: personInfo.donghosu,
+    //   phone: personInfo.phone,
+    //   type: btnType,
+    // };
+
+    const dialogRef = this.dialog.open(SMPopPaasComponent, dialogConfig );
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if ( result !== '' ) {
+          this.updateStaffStatus(result, 3);
+          this.reloadAllData();
+        } // else canceled so do nothing
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+
 
   reloadAllData() {
     this.dataSource1 = new MatTableDataSource<WaitList>(this.staffWaitList);

@@ -19,16 +19,21 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSelectModule,
+  MatOptionModule
 } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { SMPopupComponent } from './staff-management/sm-popup.component';
 import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
+import { SMPopPaasComponent } from './staff-management/sm-pop-paas.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     LayoutRoutingModule,
     TranslateModule,
     NgbDropdownModule,
@@ -39,6 +44,8 @@ import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
     MatDialogModule,
     MatPaginatorModule,
     MatIconModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   declarations: [
     LayoutComponent,
@@ -52,6 +59,7 @@ import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
     StaffManagementComponent,
     SMPopupComponent,
     SMPopFileComponent,
+    SMPopPaasComponent,
 
 
 
@@ -60,6 +68,7 @@ import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
   entryComponents: [
     SMPopupComponent,
     SMPopFileComponent,
+    SMPopPaasComponent,
   ]
 })
 export class LayoutModule { }
