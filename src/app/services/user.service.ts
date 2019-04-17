@@ -266,7 +266,14 @@ export class UserService {
   }
 
 
-
+  // TODO api link and doublecheck params
+  getRFPsByFeature( featureId ): Observable<any> {
+    const params = new HttpParams();
+    params.append('app_feature_id', featureId);
+    params.append('apt_id', localStorage.getItem('aptId'));
+    // params.append('token', localStorage.getItem('token'));
+    return this.http.get( this.serverUrl + '/api/v2/get_rfp_by_feature/', { headers: httpOptions.headers, params: params});
+  }
 
 
 
@@ -279,7 +286,7 @@ export class UserService {
       feature_id: featureId,
       permission_id: permissionId
     };
-    return this.http.post( this.serverUrl + '/api/v2/update_role_feature_permission', body, httpOptions);
+    return this.http.post( this.serverUrl + '/api/v2/update_role_feature_permission/', body, httpOptions);
   }
 
 
@@ -379,7 +386,7 @@ export class UserService {
   // longitude:decimal
   // description:TEXT
   // user_role_status_id: INT
-  createApt( jusoInfo, inputPhone, inputDesc, ursId ): Observable<any> {
+  createApt( jusoInfo, inputPhone, inputDesc, ursId ): Observable<any > {
     const body = {
       name: jusoInfo.bdNm,
       cityId: jusoInfo.siNm,
@@ -412,7 +419,7 @@ export class UserService {
   // description:TEXT
   // is_active: BOOLEAN
   // user_role_status_id: INT
-  updateApt( apt, myActive, ursId ): Observable<any> {
+  updateApt( apt, myActive, ursId ): Observable < any > {
     const body = {
       apartment_id: apt.id,
       name: apt.name,
@@ -440,7 +447,7 @@ export class UserService {
   // apartment_id: FUNCTION,
   // description: INPUT,
   // user_role_status_id: INT
-  createDept( myName, myId, myDesc, ursId ): Observable <any> {
+  createDept( myName, myId, myDesc, ursId ): Observable < any > {
     const body = {
       name: myName,
       apartment_id: myId,
@@ -454,7 +461,7 @@ export class UserService {
   // role INPUT,
   // description: INPUT,
   // user_role_status_id: INT
-  createRole(myRole, myDesc, myActive): Observable<any> {
+  createRole(myRole, myDesc, myActive): Observable < any > {
     const body = {
       role: myRole,
       description: myDesc,

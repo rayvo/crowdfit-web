@@ -11,34 +11,43 @@
   <div class="btn-container">
     <a routerLink="/settings/menu-setting"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">메뉴관리</button></a>
     <a routerLink="/settings/residence-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">입주민관리</button></a
-    >
+      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">입주민관리</button></a>
     <a routerLink="/settings/staff-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">직원관리</button></a
-    >
+      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">직원관리</button></a>
     <a routerLink="/settings/account-setting"><button type="button" class="btn btn-orange" style=" margin-right:10px;">회계관리</button></a>
     <a routerLink="/settings/store-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">스토어관리</button></a
-    >
+      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">스토어관리</button></a>
     <a routerLink="/settings/locker-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">락커좌석관리</button></a
-    >
+      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">락커좌석관리</button></a>
     <a routerLink="/settings/class-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">수업관리</button></a
-    >
+      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">수업관리</button></a>
     <a routerLink="/settings/attendence-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">출석관리</button></a
-    >
+      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">출석관리</button></a>
     <a routerLink="/settings/service-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">생활지원관리</button></a
-    >
+      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">생활지원관리</button></a>
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="saveBoard()">       
-    <a href="#"><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button></a>
-    <a href="#"><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
-
+  <!-- TODO Change the values below a bit when API comes out -->
+  <form (ngSubmit)="save()">
+      <!-- TODO double check index number -->
+    <label *ngFor="let f of myRFP">
+      <h3 class="border-bottom ">{{f.name}}</h3>
+      <label *ngFor="let p of f.results">
+        {{p.name}}
+        <label *ngFor="let r of p.roles">
+          <!-- TODO change feature id once it's permanent -->
+          <input type="checkbox" [checked]="r.checked" (click)="clickedBox( r.id , f.id , p.id, !(r.checked) )" />
+          {{r.name}}
+        </label>
+      </label>
+      <div colspan="5" style="text-align: center;">
+        <a href="#"><button type="submit" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button></a>
+        <a href="#"><button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
+      </div>
+    </label>
   </form>
+
+
 
   <!--
   <div class="row">
@@ -244,6 +253,6 @@
         </tbody>
       </table>
     </div>
-  </div>
--->
+  </div>-->
+
 </div>
