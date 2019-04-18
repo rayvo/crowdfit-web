@@ -12,7 +12,7 @@ import { PermissionStoreManagementComponent } from './permission-store-managemen
 import { PermissionMenuManagementComponent } from './permission-menu-management/permission-menu-management.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'account-setting', pathMatch: 'full' },
+  { path: '', redirectTo: 'menu-setting', pathMatch: 'full' },
   { path: 'account-setting', component:  PermissionAccountingManagementComponent},
   { path: 'attendence-setting', component:   PermissionAttendenceManagementComponent},
   { path: 'class-setting', component:  PermissionClassManagementComponent},
