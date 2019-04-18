@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../router.animations';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../services/user.service';
-import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm, AbstractControl } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm, AbstractControl, FormBuilder } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { Router } from '@angular/router';
 import { PhoneVerificationService } from '../services/phone-verification.service';
@@ -30,13 +30,26 @@ export class SignupComponent implements OnInit {
         private user: UserService,
         private phoneV: PhoneVerificationService,
         private router: Router,
+        private fb: FormBuilder
         ) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
         this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de|zh-CHS/) ? browserLang : 'en');
 
-        this.newUser = this.createFormGroup();
+        this.newUser = this.fb.group( {
+            // id: new FormControl(-1),
+            username: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', [Validators.required]),
+            cpassword: new FormControl('', PasswordValidation),
+            phone: new FormControl('', [Validators.required]),
+            vNum: new FormControl('111111', []),
+            cVNum: new FormControl('', VNumValidation),
+        }, {
+            validators: [RepeatPasswordValidator, VNumValidator]
+        } );
+
     }
 
     newUser: FormGroup;
@@ -54,9 +67,8 @@ export class SignupComponent implements OnInit {
             password: new FormControl('', [Validators.required]),
             cpassword: new FormControl('', PasswordValidation),
             phone: new FormControl('', [Validators.required]),
-            vNum: new FormControl('111111'),
+            vNum: new FormControl('111111', []),
             cVNum: new FormControl('', VNumValidation),
-
         }, {
             validators: [RepeatPasswordValidator, VNumValidator]
         });
@@ -69,9 +81,9 @@ export class SignupComponent implements OnInit {
     // ...
     }
 
-    get id() {
-        return this.newUser.get('id');
-    }
+    // get id() {
+    //     return this.newUser.get('id');
+    // }
     get username() {
         return this.newUser.get('username');
     }
@@ -128,6 +140,7 @@ export class SignupComponent implements OnInit {
 
     // TODO Check if working
     sendVerification() {
+        console.log(this.newUser);
         this.newUser.get('vNum').setValue(String(Math.floor((Math.random() * 500000) + 499999)));
         const phon = this.newUser.get('phone').value;
         const dest = phon + '|' + this.newUser.get('username').value;
@@ -150,26 +163,28 @@ export class SignupComponent implements OnInit {
     }
 
     createUser = () => {
-        this.user.createUser(this.newUser).subscribe(
-            // TODO create: createUserStatusNone
-            data => {
+        if ( this.newUser.valid ) {
 
-                localStorage.setItem('isLoggedin', 'true');
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('id', String(data.user_id));
-                localStorage.setItem('fullname', data.fullname );
-                localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
-                localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
-                localStorage.setItem('aptId', String(data.apartment_id));
-                localStorage.setItem('aptName', String(data.apartment_name));
+            this.user.createUser(this.newUser).subscribe(
+                // TODO create: createUserStatusNone
+                data => {
 
-                this.router.navigate(['/signup/apply']);
-            },
-            error => {
-                console.log('error1');
-                console.log(error);
-            }
-        );
+                    localStorage.setItem('isLoggedin', 'true');
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('id', String(data.user_id));
+                    localStorage.setItem('fullname', data.fullname );
+                    localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
+                    localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
+                    localStorage.setItem('aptId', String(data.apartment_id));
+                    localStorage.setItem('aptName', String(data.apartment_name));
+
+                    this.router.navigate(['/signup/apply']);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+        }
     }
 
 
