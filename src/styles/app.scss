@@ -91,13 +91,19 @@ h3{
           font-size: 0.8em;}
 }
 button.manager {
-   float:  right;
+  right:0;
 }
 .borderless{border: none;}
 
 .right{position: absolute; right: 0;}
 
-
+//!----------material css----------------------------!//
 .mat-elevation-z8
 {box-shadow: 0 0 0 0;
 border: 1px solid #ccc;  }
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick
+{color: rgba($color:gray, $alpha: 0.6);}
+
+.mat-form-field-appearance-outline .mat-form-field-outline
+{margin-top:19px; height: 34px;}

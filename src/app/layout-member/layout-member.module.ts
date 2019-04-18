@@ -18,7 +18,7 @@ import {
   MatCardModule,
   MatHeaderRow,
   MatHeaderRowDef,
-
+  MatTabsModule,
 } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
@@ -55,6 +55,7 @@ import { SetPermissionsComponent } from './set-permissions/set-permissions.compo
     MatMenuModule,
     MatDividerModule,
     MatCardModule,
+    MatTabsModule,
   ],
   declarations: [
     LayoutMemberComponent,

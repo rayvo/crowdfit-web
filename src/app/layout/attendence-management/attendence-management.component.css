@@ -1,0 +1,21 @@
+table{width: 100%;margin-bottom: -1px;}
+.btn-container{margin-bottom: -20px;}
+.mat-elevation-z8{background-color:orange; }
+
+
+.borderbottomless{border-bottom:0;}
+.bordertopless{border-top:0;}
+.border-top{border-top:1px solid #ccc;}
+th, td {
+    border-right:1px solid #ccc;
+     text-align: center; 
+     background-color: white;}
+th.mat-header-cell{text-align: center;}
+
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type,
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type
+{padding: 0;}
+h2{color: white;
+     padding-left:20px;
+    padding-top: 20px;}
+    
