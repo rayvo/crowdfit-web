@@ -32,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatTabsModule,
   MatDividerModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatButtonModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
@@ -55,7 +56,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDividerModule,
     MatDatepickerModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule
   ],
   declarations: [
     LayoutComponent,

@@ -21,55 +21,58 @@
   </div>
 
   <div class="mat-elevation-z8">
-    <mat-card style="height:100px;">
+    <mat-card style="width:100%; height:70px;">
       <a>4월</a>
-      <mat-form-field style="float:right; margin-right: 20px;">
-        <mat-label>회원분석</mat-label>
-        <mat-select>
-          <mat-option
-            *ngFor="let attendence of attendences"
-            [value]="attendence.value"
-            (click)="filterAndReloadTable(attendence.value, selectedC)"
-          >
-            {{ attendence.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+
     </mat-card>
 
     <div class="row">
       <mat-card style="width:20%; ">실시간 출석</mat-card>
-      <mat-card style="width:40%; ">강좌별 출석</mat-card>
+      <mat-card style="width:14%; ">회원별 출석</mat-card>
+      <mat-card style="width:14%; ">강좌별 출석</mat-card>
+      <mat-card style="width:12%; ">날짜별 출석</mat-card>
       <mat-card style="width:10%; ">센터내 직원</mat-card>
       <mat-card style="width:10%;">센터내 회원</mat-card>
       <mat-card style="width:10%; ">게스트</mat-card>
-      <mat-card style="width:10%;">금일 누적</mat-card>
+      <mat-card style="width:10%; ">금일 누적</mat-card>
 
       <mat-card style="width:20%;">2019년 n월 n일 nn:nn</mat-card>
-      <mat-card style="width:13%; ">
-        <mat-form-field>
-          <mat-label>수업분석</mat-label>
+      <mat-card style="width:14%;">
+        <mat-form-field >
+          <mat-label>전체</mat-label>
           <mat-select>
-            <mat-option *ngFor="let class of classes" [value]="class.value" (click)="filterAndReloadTable(selectedA, class.value)">
+            <mat-option *ngFor="let attendence of attendences" [value]="attendence.value"
+              (click)="filterAndReloadTable(attendence.value, selectedC)">
+              {{ attendence.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+      <mat-card style="width:14%; ">
+        <mat-form-field>
+          <mat-label>전체</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let class of classes" [value]="class.value"
+              (click)="filterAndReloadTable(selectedA, class.value)">
               {{ class.viewValue }}
             </mat-option>
           </mat-select>
-        </mat-form-field></mat-card
-      >
-      <mat-card style="width:14%; "> <input type="date"/></mat-card>
-      <mat-card style="width:13%;"
-        ><button mat-strok-button><mat-icon>notifications_active</mat-icon>입장회원</button></mat-card
-      >
+        </mat-form-field>
+      </mat-card>
+      <mat-card style="width:12%; ">
+      
+      </mat-card>
+     
       <mat-card style="width:10%;">n</mat-card>
       <mat-card style="width:10%; ">n</mat-card>
       <mat-card style="width:10%; ">n</mat-card>
       <mat-card style="width:10%;">n</mat-card>
     </div>
 
-    <div *ngFor="let row of rows">
-      <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="space-between" fxFlex="20">
+    <div *ngFor="let row of rows" style="background:white">
+      <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="center" fxFlex="20">
         <div *ngIf="filteredAList.length > col + row">
-          <mat-card style="width: 400px;  " [ngClass]="filteredAList[col + row].status">
+          <mat-card style="width: 338px;   " [ngClass]="filteredAList[col + row].status">
             <mat-card-header>
               <mat-card-title>{{ filteredAList[col + row].name }}</mat-card-title>
               <mat-card-subtitle>{{ filteredAList[col + row].at }}</mat-card-subtitle>
