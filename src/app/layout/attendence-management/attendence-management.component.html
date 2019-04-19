@@ -47,7 +47,15 @@
       <mat-card style="width:10%;">금일 누적</mat-card>
 
       <mat-card style="width:20%;">2019년 n월 n일 nn:nn</mat-card>
-      <mat-card style="width:13%; "> <input placeholder="전체" /></mat-card>
+      <mat-card style="width:13%; ">
+        <mat-form-field>
+        <mat-label>수업분석</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let class of classes" [value]="class.value" (click)="filterAndReloadTable(selectedA , class.value)" >
+            {{ class.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field></mat-card>
       <mat-card style="width:14%; "> <input type="date" /></mat-card>
       <mat-card style="width:13%;"><button mat-strok-button><mat-icon>notifications_active</mat-icon>입장회원</button></mat-card>
       <mat-card style="width:10%;">n</mat-card>

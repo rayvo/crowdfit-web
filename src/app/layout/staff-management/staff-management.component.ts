@@ -199,9 +199,14 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
       // TODO this is fake data. Remove when done
       // WAIT_DATA = this.removeFromList(WAIT_DATA, personInfo);
 
-
-      // TODO The applicant was not approved
-
+      this.user.refulesRequestRoleStatus(personInfo.id , 'FAKE REASON').subscribe(
+        data => {
+          this.staffWaitList = this.removeFromList(this.staffWaitList, personInfo);
+        },
+        error => {
+          console.log(error);
+        }
+      );
 
     } else if ( newStatus === 3 ) {
       // TODO this is fake data. Remove when done
