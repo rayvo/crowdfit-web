@@ -8,9 +8,42 @@ export interface Attendance {
 }
 
 export interface AData {
+  name: string;
   img: string;
   at: string;
+  status: string;
 }
+
+const FAKE_DATA: AData[] = [
+  { name: 'aaa', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'  },
+  { name: 'bbb', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color2'  },
+  { name: 'ccc', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color3'  },
+  { name: 'ddd', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color4'   },
+  { name: 'eee', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color5'   },
+  { name: 'fff', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color6'   },
+  { name: 'ggg', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color6'   },
+  { name: 'hhh', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'iii', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'jjj', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'kkk', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'lll', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'mmm', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'nnn', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'ooo', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'ppp', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'qqq', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'rrr', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'sss', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'ttt', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'uuu', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'vvv', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'www', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'xxx', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'yyy', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+  { name: 'zzz', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' , at: 'QR', status: 'color1'   },
+];
+
+
 @Component({
   selector: 'app-attendence-management',
   templateUrl: './attendence-management.component.html',
@@ -24,7 +57,8 @@ export class AttendenceManagementComponent implements OnInit {
 
   // displayedColumns: string[] = ['realtime', 'class', 'staff', 'member', 'guest', 'today'];
 
-  attendenceList: AData[] = [];
+  // TODO change from fake data to real data
+  attendenceList: AData[] = FAKE_DATA;
   filterNumber;
   filteredAList: AData[] = [];
 

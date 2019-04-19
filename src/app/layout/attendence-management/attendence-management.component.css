@@ -18,4 +18,29 @@ td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:la
 h2{color: white;
      padding-left:20px;
     padding-top: 20px;}
-    
+
+
+
+.color1{
+background:#fbeafc
+}
+
+.color2{
+background:#11FF11
+}
+
+.color3{
+background:#FF1111
+}
+
+.color4{
+background:#1111FF
+}
+
+.color5{
+background:#11FFFF
+}
+
+.color6{
+background:#FF11FF
+}
