@@ -26,8 +26,16 @@
     <mat-form-field style="float:left; margin-left: 20px;">
       <mat-label>회원분석</mat-label>
       <mat-select>
-        <mat-option *ngFor="let attendence of attendences" [value]="attendence.value" (click)="filterAndReloadTable(attendence.value)">
+        <mat-option *ngFor="let attendence of attendences" [value]="attendence.value" (click)="filterAndReloadTable(attendence.value , selectedC)">
           {{ attendence.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="float:left; margin-left: 20px;">
+      <mat-label>수업분석</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let class of classes" [value]="class.value" (click)="filterAndReloadTable(selectedA , class.value)" >
+          {{ class.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
