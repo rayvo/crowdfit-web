@@ -55,7 +55,7 @@ export class AttendenceManagementComponent implements OnInit {
   cols = [0, 1, 2, 3, 4, ];
   rows = [0, 5, 10, 15, 20, ];
 
-  // displayedColumns: string[] = ['realtime', 'class', 'staff', 'member', 'guest', 'today'];
+
 
   // TODO change from fake data to real data
   attendenceList: AData[] = FAKE_DATA;
@@ -83,10 +83,7 @@ export class AttendenceManagementComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    // this.dataSource1.filterPredicate = ( data: AList, filter: string ) => {
-    //   return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
-    //   data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
-    // };
+
   }
 
   getAttendanceData() {
