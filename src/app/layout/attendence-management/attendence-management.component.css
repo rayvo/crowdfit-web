@@ -1,6 +1,6 @@
 table{width: 100%;margin-bottom: -1px;}
 .btn-container{margin-bottom: -20px;}
-.mat-elevation-z8{background-color:orange; }
+.mat-elevation-z8{background-color:orange; margin-top: 30px; }
 
 
 .borderbottomless{border-bottom:0;}
@@ -19,3 +19,6 @@ h2{color: white;
      padding-left:20px;
     padding-top: 20px;}
     
+
+mat-card{border-radius:0; box-shadow: none;
+ }

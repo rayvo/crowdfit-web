@@ -35,13 +35,13 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="borderbottomless" scope="col">실시간 출석</th>
-          <th scope="col" colspan="3">강좌별 출석</th>
-          <th scope="col">센터내 직원</th>
-          <th scope="col">센터내 회원</th>
-          <th scope="col">게스트</th>
+          <th class="borderbottomless" scope="col" style="width:20%;">실시간 출석</th>
+          <th scope="col" style="width:40%;" colspan="3">강좌별 출석</th>
+          <th scope="col" style="width:10%;" >센터내 직원</th>
+          <th scope="col" style="width:10%;">센터내 회원</th>
+          <th scope="col" style="width:10%;">게스트</th>
 
-          <th scope="col">금일누적</th>
+          <th scope="col" style="width:10%;">금일누적</th>
         </tr>
       </thead>
       <tbody>
@@ -64,7 +64,7 @@
 
     <div *ngFor="let row of rows" >
       <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="space-between" fxFlex="20" >
-        <mat-card style="width: 300px; margin: 15px; ">
+        <mat-card style="width: 338px; ">
           <mat-card-header>
             <mat-card-title>NAME</mat-card-title>
             <mat-card-subtitle>TYPE</mat-card-subtitle>
@@ -78,6 +78,12 @@
           <mat-card-content style="margin-left: 15px">
             <p>THIS IS INFO</p>
           </mat-card-content>
+          <mat-card-content style="margin-left: 15px">
+                <p>밴드</p>
+                <p>QR코드</p>
+                <p>얼굴</p>
+                <p>데스크</p>
+              </mat-card-content>
           <mat-card-actions> </mat-card-actions>
         </mat-card>
     </div>
