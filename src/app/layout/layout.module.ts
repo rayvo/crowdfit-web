@@ -22,15 +22,19 @@ import {
   MatPaginatorModule,
   MatSelectModule,
   MatOptionModule,
+  MatCardModule,
 } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { SMPopupComponent } from './staff-management/sm-popup.component';
 import { SMPopFileComponent } from './staff-management/sm-pop-file.component';
 import { SMPopPaasComponent } from './staff-management/sm-pop-paas.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import {
+  MatTabsModule,
+  MatDividerModule,
+  MatDatepickerModule
+} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +53,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatOptionModule,
     MatTabsModule,
     MatDividerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCardModule,
+    FlexLayoutModule
   ],
   declarations: [
     LayoutComponent,

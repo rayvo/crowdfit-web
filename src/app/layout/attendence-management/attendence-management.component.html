@@ -1,126 +1,86 @@
 <div class="container">
-    <div class="border-bottom">
-        <h4>출석관리</h4>
-    </div>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">출석관리</li>
-        </ol>
-    </nav>
-    <div class="btn-container">
-        <!-- Filter Search Bar -->
-        <!---------------------
+  <div class="border-bottom">
+    <h4>출석관리</h4>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">출석관리</li>
+    </ol>
+  </nav>
+  <div class="btn-container">
+    <!-- Filter Search Bar -->
+    <!---------------------
         <mat-form-field style="margin-right:10px;" appearance="outline">
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
     
         </mat-form-field>
     -->
-        <a routerLink="#"><button type="button" class="btn btn-secondary" style="margin-right:10px;">사진등록</button></a>
-        <button type="button" class="btn btn-secondary manager" style=" margin-right:10px;">매니저초대</button>
-        <button type="button" class="btn btn-secondary read">직원초대</button>
+    <a routerLink="#"><button type="button" class="btn btn-secondary" style="margin-right:10px;">사진등록</button></a>
+    <button type="button" class="btn btn-secondary manager" style=" margin-right:10px;">매니저초대</button>
+    <button type="button" class="btn btn-secondary read">직원초대</button>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <h2>4월</h2>
+
+    <mat-form-field style="float:right; margin-right: 20px;">
+      <mat-label>회원분석</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let attendence of attendences" [value]="attendence.value">
+          {{ attendence.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="borderbottomless" scope="col">실시간 출석</th>
+          <th scope="col" colspan="3">강좌별 출석</th>
+          <th scope="col">센터내 직원</th>
+          <th scope="col">센터내 회원</th>
+          <th scope="col">게스트</th>
+
+          <th scope="col">금일누적</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bordertopless">2019년 n월 n일 nn:nn</td>
+          <td>
+            <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="전체" />-->
+          </td>
+          <td>
+            <input type="date" />
+          </td>
+          <td><button mat-button>입장회원</button></td>
+          <td>n</td>
+          <td>n</td>
+          <td>n</td>
+          <td>n</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngFor="let row of rows" >
+      <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="space-between" fxFlex="20" >
+        <mat-card style="width: 300px; margin: 15px; ">
+          <mat-card-header>
+            <mat-card-title>NAME</mat-card-title>
+            <mat-card-subtitle>TYPE</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-sm-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="Photo of a Shiba Inu"
+            style="margin-left: 15px"
+          />
+          <mat-card-content style="margin-left: 15px">
+            <p>THIS IS INFO</p>
+          </mat-card-content>
+          <mat-card-actions> </mat-card-actions>
+        </mat-card>
     </div>
-
-
-  
-
-    <div class="mat-elevation-z8">
-
-  
-        <h2>4월</h2>
-
-        <mat-form-field style="float:right; margin-right: 20px;">
-            <mat-label>회원분석</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let attendence of attendences" [value]="attendence.value">
-                    {{attendence.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-       
-        <table class="table">
-                <thead>
-                  <tr>
-                    <th class="borderbottomless" scope="col" >실시간 출석</th>
-                    <th scope="col" colspan="3">강좌별 출석</th>
-                    <th scope="col">센터내 직원</th>
-                    <th scope="col">센터내 회원</th>
-                    <th scope="col">게스트</th>
-                   
-                    <th scope="col">금일누적</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <tr>
-                        
-                        <td class="bordertopless">2019년 n월 n일 nn:nn</td>
-                        <td><!--
-                                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="전체" />
-                            --></td>
-                        <td> 
-                                <input type="date">
-                          </td>
-                        <td><button mat-button> 입장회원</button></td>
-                        <td>n</td>
-                        <td>n</td>
-                        <td>n</td>
-                        <td>n</td>
-                       
-                      </tr>
-                    </tbody>
-        </table>
-   
-        <table mat-table [dataSource]="dataSource">
-
-
-
-            <!-- Position Column -->
-            <ng-container matColumnDef="realtime">
-                <th mat-header-cell *matHeaderCellDef>실시간 출석</th>
-                <td mat-cell *matCellDef="let element"> {{element.realtime}} </td>
-
-            </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="class">
-                <th mat-header-cell *matHeaderCellDef colspan="1"> 강좌별 출석 </th>
-                <button mat-button>dsss</button>
-                <td mat-cell *matCellDef="let element"> {{element.class}} </td>
-
-            </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="staff">
-                <th mat-header-cell *matHeaderCellDef> 센터내 직원 </th>
-               
-                <td mat-cell *matCellDef="let element"> {{element.staff}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="member">
-                <th mat-header-cell *matHeaderCellDef> 센터내 회원 </th>
-                <td mat-cell *matCellDef="let element"> {{element.member}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="guest">
-                <th mat-header-cell *matHeaderCellDef> 게스트 회원 </th>
-                <td mat-cell *matCellDef="let element"> {{element.guest}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="today">
-                <th mat-header-cell *matHeaderCellDef> 금일 누적</th>
-                <td mat-cell *matCellDef="let element"> {{element.today}} </td>
-            </ng-container>
-
-
-           
-  
-            <tr class="border-top" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-        </table>
-
-        <mat-paginator class="border-top" [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
-    
-
-</div>
+    </div>
+  </div>
 </div>

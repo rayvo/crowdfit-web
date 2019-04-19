@@ -265,30 +265,15 @@ export class UserService {
   }
 
 
-  // TODO api link and doublecheck params
-  getRFPsByFeature( featureId ): Observable<any> {
-    const params = new HttpParams();
-    params.append('app_feature_id', featureId);
-    params.append('apt_id', localStorage.getItem('aptId'));
-    // params.append('token', localStorage.getItem('token'));
-    return this.http.get( this.serverUrl + '/api/v2/get_rfp_by_feature/', { headers: httpOptions.headers, params: params});
-  }
 
 
 
-
-  // TODO , Ray hasn't uploaded the api for this yet. So below is just my guess
-  // RFP = Role Feature Permission
-  setRFP( roleId, featureId, permissionId ) {
-    const body = {
-      rold_id: roleId,
-      feature_id: featureId,
-      permission_id: permissionId
-    };
-    return this.http.post( this.serverUrl + '/api/v2/update_role_feature_permission/', body, httpOptions);
-  }
-
-
+    // TODO
+    getAttendanceData(): Observable<any> {
+      const params = new HttpParams();
+      params.append('TODO', 'TODO' );
+      return this.http.get( this.serverUrl + '/api/v2/TODO/', {headers: httpOptions.headers, params: params} );
+    }
 
 
 
@@ -318,6 +303,28 @@ export class UserService {
 
 
 
+  // TODO api link and doublecheck params
+  getRFPsByFeature( featureId ): Observable<any> {
+    const params = new HttpParams();
+    params.append('app_feature_id', featureId);
+    params.append('apt_id', localStorage.getItem('aptId'));
+    // params.append('token', localStorage.getItem('token'));
+    return this.http.get( this.serverUrl + '/api/v2/get_rfp_by_feature/', { headers: httpOptions.headers, params: params});
+  }
+
+
+
+
+  // TODO , Ray hasn't uploaded the api for this yet. So below is just my guess
+  // RFP = Role Feature Permission
+  setRFP( roleId, featureId, permissionId ) {
+    const body = {
+      rold_id: roleId,
+      feature_id: featureId,
+      permission_id: permissionId
+    };
+    return this.http.post( this.serverUrl + '/api/v2/update_role_feature_permission/', body, httpOptions);
+  }
 
 
 
