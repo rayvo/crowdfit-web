@@ -112,8 +112,6 @@ export class AttendenceManagementComponent implements OnInit {
         }
       }
     }
-    console.log(this.attendenceList);
-    console.log(this.filteredAList);
   }
 }
 
