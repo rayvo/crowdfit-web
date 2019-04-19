@@ -76,7 +76,8 @@ export class AttendenceManagementComponent implements OnInit {
     private dialog: MatDialog,
     private user: UserService
   ) {
-    this.getAttendanceData();
+    // this.getAttendanceData();
+    this.filterAndReloadTable('0');
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -100,10 +101,19 @@ export class AttendenceManagementComponent implements OnInit {
   }
 
   // TODO take an int (predetermined) and filter -> remake data -> reload data
-  filterAndReloadTable() {
-    for ( const p of this.attendenceList ) {
-
+  filterAndReloadTable( f ) {
+    this.filteredAList = [];
+    if ( f === '0' ) {
+      this.filteredAList = this.attendenceList;
+    } else {
+      for ( const p of this.attendenceList ) {
+        if ( p.status === 'color' + f ) {
+          this.filteredAList.push(p);
+        }
+      }
     }
+    console.log(this.attendenceList);
+    console.log(this.filteredAList);
   }
 }
 

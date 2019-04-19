@@ -26,7 +26,7 @@
     <mat-form-field style="float:right; margin-right: 20px;">
       <mat-label>회원분석</mat-label>
       <mat-select>
-        <mat-option *ngFor="let attendence of attendences" [value]="attendence.value">
+        <mat-option *ngFor="let attendence of attendences" [value]="attendence.value" (click)="filterAndReloadTable(attendence.value)">
           {{ attendence.viewValue }}
         </mat-option>
       </mat-select>
@@ -62,24 +62,22 @@
       </tbody>
     </table>
 
-    <div *ngFor="let row of rows" >
-      <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="space-between" fxFlex="20" >
-        <mat-card style="width: 300px; margin: 15px; " [ngClass]='attendenceList[col+row].status'>
-          <mat-card-header>
-            <mat-card-title>{{attendenceList[col+row].name}}</mat-card-title>
-            <mat-card-subtitle>{{attendenceList[col+row].at}}</mat-card-subtitle>
-          </mat-card-header>
-          <img
-            mat-card-sm-image
-            src="{{attendenceList[col+row].img}}"
-            style="margin-left: 15px"
-          />
-          <mat-card-content style="margin-left: 15px">
-            <p>THIS IS INFO</p>
-          </mat-card-content>
-          <mat-card-actions> </mat-card-actions>
-        </mat-card>
-    </div>
+    <div *ngFor="let row of rows">
+      <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="space-between" fxFlex="20">
+        <div *ngIf="filteredAList.length > col + row">
+          <mat-card style="width: 250px; margin: 15px; " [ngClass]="filteredAList[col + row].status">
+            <mat-card-header>
+              <mat-card-title>{{ filteredAList[col + row].name }}</mat-card-title>
+              <mat-card-subtitle>{{ filteredAList[col + row].at }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-sm-image src="{{ filteredAList[col + row].img }}" style="margin-left: 15px" />
+            <mat-card-content style="margin-left: 15px">
+              <p>THIS IS INFO</p>
+            </mat-card-content>
+            <mat-card-actions> </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
     </div>
   </div>
 </div>
