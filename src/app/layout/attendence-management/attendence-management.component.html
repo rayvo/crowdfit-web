@@ -23,7 +23,7 @@
   <div class="mat-elevation-z8">
     <h2>4월</h2>
 
-    <mat-form-field style="float:right; margin-right: 20px;">
+    <mat-form-field style="float:left; margin-left: 20px;">
       <mat-label>회원분석</mat-label>
       <mat-select>
         <mat-option *ngFor="let attendence of attendences" [value]="attendence.value" (click)="filterAndReloadTable(attendence.value)">
