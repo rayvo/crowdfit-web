@@ -264,7 +264,14 @@ export class UserService {
     return this.http.post( this.serverUrl + '/api/v2/approve_ceo/', body, httpOptions );
   }
 
-
+  // PUT /api/v2/refuse_request_role_status/<int:id>/
+  // reason: VARCHAR(1024)/NULL
+  refulesRequestRoleStatus( personId, reason ): Observable<any> {
+    const body = {
+      reason: reason
+    };
+    return this.http.post( this.serverUrl + 'api/v2/refuse_request_role_status/' + personId + '/', body, httpOptions );
+  }
 
 
 

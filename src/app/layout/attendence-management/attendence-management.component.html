@@ -21,72 +21,59 @@
   </div>
 
   <div class="mat-elevation-z8">
-    <h2>4월</h2>
+    <mat-card style="height:100px;">
+      <a>4월</a>
+      <mat-form-field style="float:right; margin-right: 20px;">
+        <mat-label>회원분석</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let attendence of attendences" [value]="attendence.value">
+            {{ attendence.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card>
 
-    <mat-form-field style="float:right; margin-right: 20px;">
-      <mat-label>회원분석</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let attendence of attendences" [value]="attendence.value">
-          {{ attendence.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="borderbottomless" scope="col" style="width:20%;">실시간 출석</th>
-          <th scope="col" style="width:40%;" colspan="3">강좌별 출석</th>
-          <th scope="col" style="width:10%;" >센터내 직원</th>
-          <th scope="col" style="width:10%;">센터내 회원</th>
-          <th scope="col" style="width:10%;">게스트</th>
 
-          <th scope="col" style="width:10%;">금일누적</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="bordertopless">2019년 n월 n일 nn:nn</td>
-          <td>
-            <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="전체" />-->
-          </td>
-          <td>
-            <input type="date" />
-          </td>
-          <td><button mat-button>입장회원</button></td>
-          <td>n</td>
-          <td>n</td>
-          <td>n</td>
-          <td>n</td>
-        </tr>
-      </tbody>
-    </table>
 
-    <div *ngFor="let row of rows" >
-      <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="space-between" fxFlex="20" >
-        <mat-card style="width: 338px; ">
+
+    <div class="row">
+
+      <mat-card style="width:20%; ">실시간 출석</mat-card>
+      <mat-card style="width:40%; ">강좌별 출석</mat-card>
+      <mat-card style="width:10%; ">센터내 직원</mat-card>
+      <mat-card style="width:10%;">센터내 회원</mat-card>
+      <mat-card style="width:10%; ">게스트</mat-card>
+      <mat-card style="width:10%;">금일 누적</mat-card>
+
+      <mat-card style="width:20%;">2019년 n월 n일 nn:nn</mat-card>
+      <mat-card style="width:13%; "> <input placeholder="전체" /></mat-card>
+      <mat-card style="width:14%; "> <input type="date" /></mat-card>
+      <mat-card style="width:13%;"><button mat-strok-button><mat-icon>notifications_active</mat-icon>입장회원</button></mat-card>
+      <mat-card style="width:10%;">n</mat-card>
+      <mat-card style="width:10%; ">n</mat-card>
+      <mat-card style="width:10%; ">n</mat-card>
+      <mat-card style="width:10%;">n</mat-card>
+    </div>
+
+
+
+
+    <div *ngFor="let row of rows">
+      <div *ngFor="let col of cols" fxLayout="row" fxLayoutAlign="space-between" fxFlex="20">
+        <mat-card style="width: 400px;  " [ngClass]='attendenceList[col+row].status'>
           <mat-card-header>
-            <mat-card-title>NAME</mat-card-title>
-            <mat-card-subtitle>TYPE</mat-card-subtitle>
+            <mat-card-title>{{attendenceList[col+row].name}}</mat-card-title>
+            <mat-card-subtitle>{{attendenceList[col+row].at}}</mat-card-subtitle>
           </mat-card-header>
-          <img
-            mat-card-sm-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            alt="Photo of a Shiba Inu"
-            style="margin-left: 15px"
-          />
+          <img mat-card-sm-image src="{{attendenceList[col+row].img}}" style="margin-left: 15px" />
           <mat-card-content style="margin-left: 15px">
             <p>THIS IS INFO</p>
           </mat-card-content>
-          <mat-card-content style="margin-left: 15px">
-                <p>밴드</p>
-                <p>QR코드</p>
-                <p>얼굴</p>
-                <p>데스크</p>
-              </mat-card-content>
+
           <mat-card-actions> </mat-card-actions>
         </mat-card>
-    </div>
+      </div>
     </div>
   </div>
 </div>
