@@ -124,20 +124,24 @@ export class AttendenceManagementComponent implements OnInit {
     this.selectedC = c;
     this.filteredAList = [];
     if ( a === 0  && c === 0 ) {
+      console.log('1');
       this.filteredAList = this.attendenceList;
     } else if ( c === 0 ) {
+      console.log('2');
       for ( const p of this.attendenceList ) {
         if ( p.status === 'color' + a ) {
           this.filteredAList.push(p);
         }
       }
     } else if ( a === 0 ) {
+      console.log('3');
       for ( const p of this.attendenceList ) {
         if ( p.class === this.classes[c].viewValue ) {
           this.filteredAList.push(p);
         }
       }
     } else {
+      console.log('4');
       for ( const p of this.attendenceList ) {
         if ( p.status === 'color' + a && p.class === this.classes[c].viewValue) {
           this.filteredAList.push(p);
