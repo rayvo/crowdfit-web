@@ -35,6 +35,7 @@ import {
   MatDatepickerModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SMPopInviteComponent } from './staff-management/sm-pop-invite.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -70,6 +71,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SMPopupComponent,
     SMPopFileComponent,
     SMPopPaasComponent,
+    SMPopInviteComponent,
 
 
 
@@ -79,6 +81,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SMPopupComponent,
     SMPopFileComponent,
     SMPopPaasComponent,
+    SMPopInviteComponent,
   ]
 })
 export class LayoutModule { }

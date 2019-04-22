@@ -9,6 +9,13 @@ import { ClassManagementComponent } from './class-management.component';
 import { ClassRoutingModule } from './class-routing.module';
 import { CommonModule } from '@angular/common';
 import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatTableModule,
+  MatIconModule,
+  MatPaginatorModule
+} from '@angular/material';
 
 
 @NgModule({
@@ -19,6 +26,11 @@ import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     NgbCarouselModule,
     NgbAlertModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule
   ],
   declarations: [
       ClassManagementComponent,
