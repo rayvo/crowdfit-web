@@ -70,7 +70,6 @@ export class SignupFindComponent implements OnInit {
   roleClicked = (role) => {
     localStorage.setItem('role', role); // something predetermined
     if (role === 2) {
-      this.setDeptRoleList();
       this.thirdFormGroup.controls['thirdCtrl1'].setErrors(null);
       this.thirdFormGroup.controls['thirdCtrl2'].setErrors(null);
       this.deptControl.setErrors({'incorrect': true});
@@ -128,6 +127,8 @@ export class SignupFindComponent implements OnInit {
           const myRole = localStorage.getItem('role');
           const tempCtrl = this.secondFormGroup.controls['secondCtrl'];
 
+          this.setDeptRoleList(localStorage.getItem('aptId'));
+
           if ( isAvailable === false && myRole === '1' ) {
             tempCtrl.setErrors(null);
             this.jusoAvail = null;
@@ -159,23 +160,21 @@ export class SignupFindComponent implements OnInit {
     console.log(this.parsedJuso);
     this.user.isAptAvailable(this.parsedJuso).subscribe(
       data => {
-        console.log('Data is: ' + data);
         if ( data.res_code ) {
           toReturn = true;
           localStorage.setItem('aptId', data.apt_id);
-          console.log('Changed to true');
+          return toReturn;
         } else {
           toReturn = false;
           localStorage.setItem('aptId', data.apt_id);
-          console.log('Changed to false');
+          return toReturn;
         }
       },
       error => {
         console.log(error);
       }
     );
-    console.log('Gonna return');
-    return toReturn;
+    return null;
   }
 
 
@@ -184,35 +183,46 @@ export class SignupFindComponent implements OnInit {
     return localStorage.getItem(key);
   }
 
-  setDeptRoleList() {
+  setDeptRoleList(aptId) {
     // TODO
     // Call getDeptRoleByApt in the db
+    console.log(localStorage.getItem('aptId'));
+    this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+
     // For now temp and fake data
-    this.deptGroups = [
-      {
-        name: 'Management',
-        role: [
-          {value: '1', viewValue: 'General'},
-          {value: '2', viewValue: 'English Affairs'},
-          {value: '3', viewValue: 'Quality Assurance'}
-        ]
-      },
-      {
-        name: 'Finance',
-        role: [
-          {value: '4', viewValue: 'Wages' },
-          {value: '5', viewValue: 'Budget'},
-        ]
-      },
-      {
-        name: 'Human Resource',
-        role: [
-          {value: '6', viewValue: 'Head' },
-          {value: '7', viewValue: 'Emergency Affairs'},
-          {value: '8', viewValue: 'Rule Enforcement'},
-        ]
-      },
-    ];
+    // this.deptGroups = [
+    //   {
+    //     name: 'Management',
+    //     role: [
+    //       {value: '1', viewValue: 'General'},
+    //       {value: '2', viewValue: 'English Affairs'},
+    //       {value: '3', viewValue: 'Quality Assurance'}
+    //     ]
+    //   },
+    //   {
+    //     name: 'Finance',
+    //     role: [
+    //       {value: '4', viewValue: 'Wages' },
+    //       {value: '5', viewValue: 'Budget'},
+    //     ]
+    //   },
+    //   {
+    //     name: 'Human Resource',
+    //     role: [
+    //       {value: '6', viewValue: 'Head' },
+    //       {value: '7', viewValue: 'Emergency Affairs'},
+    //       {value: '8', viewValue: 'Rule Enforcement'},
+    //     ]
+    //   },
+    // ];
   }
 
   // TODO This portion will be changing soon
