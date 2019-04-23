@@ -21,6 +21,7 @@ import {
   MatInputModule
 } from '@angular/material';
 import { GRMPopInviteComponent } from './general-resident-management/grm-pop-invite.component';
+import { CMMPopPaamComponent } from './community-member-management/cmm-pop-paam.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { GRMPopInviteComponent } from './general-resident-management/grm-pop-inv
       GRMPopupComponent,
       GRMPopFileComponent,
       GRMPopPaauComponent,
-      GRMPopInviteComponent
+      GRMPopInviteComponent,
+      CMMPopPaamComponent
 
 
   ],
@@ -56,7 +58,8 @@ import { GRMPopInviteComponent } from './general-resident-management/grm-pop-inv
     GRMPopupComponent,
     GRMPopFileComponent,
     GRMPopPaauComponent,
-    GRMPopInviteComponent
+    GRMPopInviteComponent,
+    CMMPopPaamComponent
   ]
 })
 export class ResidentModule { }

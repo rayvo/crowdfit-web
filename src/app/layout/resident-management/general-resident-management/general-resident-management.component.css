@@ -1,16 +1,14 @@
 p {
-    color: #808080;
-  }
-  .boderless {
-    border: none;
-  }
-  
-  table {
-    width: 100%;
-  
-  }
-  
-  .mat-elevation-z8{
-    box-shadow: none;
-   
-  }
+  color: #808080;
+}
+.boderless {
+  border: none;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}

@@ -273,14 +273,49 @@ export class UserService {
     return this.http.post( this.serverUrl + 'api/v2/refuse_request_role_status/' + personId + '/', body, httpOptions );
   }
 
+  // POST /api/v2/invite_user
+  // fullname: VARCHAR(150)
+  // phone: VARCHAR(15)
+  // apartment_id: INT
+  // address_dong: VARCHAR(10)
+  // house_number: VARCHAR(10)
+  inviteUser( personInfo, aptId, myDong, myHouseNum, ): Observable<any> {
+    const body = {
+      fullname: personInfo.username,
+      phone: personInfo.phone,
+      apartment_id: aptId,
+      address_dong: myDong,
+      house_number: myHouseNum
+    };
+    return this.http.post( this.serverUrl + '/api/v2/invite_user/', body, httpOptions);
+  }
 
+  // PUT /api/v2/cancel_invited_user/<int:invite_id>
+  cancelInviteUser( inviteId ): Observable<any> {
+    return this.http.put( this.serverUrl + '/api/v2/cancel_invited_user/' + inviteId, httpOptions);
+  }
 
-    // TODO
-    getAttendanceData(): Observable<any> {
-      const params = new HttpParams();
-      params.append('TODO', 'TODO' );
-      return this.http.get( this.serverUrl + '/api/v2/TODO/', {headers: httpOptions.headers, params: params} );
-    }
+  // PUT /api/v2/cancel_invited_user/<int:invite_id>
+  reInviteUser( inviteId ): Observable<any> {
+    return this.http.put( this.serverUrl + '/api/v2/reinvite_user/' + inviteId, httpOptions);
+  }
+
+  // GET /api/v2/list_invited_user/
+  listInviteUser(): Observable<any> {
+    return this.http.get( this.serverUrl + '/api/v2/list_invited_user/', httpOptions);
+  }
+
+  // GET /api/v2/list_accepted_user/
+  listAcceptedUser(): Observable<any> {
+    return this.http.get( this.serverUrl + '/api/v2/list_accepted_user/', httpOptions);
+  }
+
+  // TODO
+  getAttendanceData(): Observable<any> {
+    const params = new HttpParams();
+    params.append('TODO', 'TODO' );
+    return this.http.get( this.serverUrl + '/api/v2/TODO/', {headers: httpOptions.headers, params: params} );
+  }
 
 
 
