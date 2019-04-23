@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
-        console.log( localStorage.getItem('fullname'));
         this.name = localStorage.getItem('fullname');
     }
 
