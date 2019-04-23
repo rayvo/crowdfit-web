@@ -78,7 +78,7 @@ export class CMMPopPaamComponent {
         return this.newUser.get('ho');
     }
 
-    getUsernameErrorMessage() {
+    getFullnameErrorMessage() {
         return this.fullname.hasError('required') ? 'You must enter a name' : '';
     }
     getPhoneErrorMessage() {
