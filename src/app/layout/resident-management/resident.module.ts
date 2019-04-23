@@ -20,6 +20,8 @@ import {
   MatPaginatorModule,
   MatInputModule
 } from '@angular/material';
+import { GRMPopInviteComponent } from './general-resident-management/grm-pop-invite.component';
+import { CMMPopPaamComponent } from './community-member-management/cmm-pop-paam.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import {
       GRMPopupComponent,
       GRMPopFileComponent,
       GRMPopPaauComponent,
+      GRMPopInviteComponent,
+      CMMPopPaamComponent
 
 
   ],
@@ -54,6 +58,8 @@ import {
     GRMPopupComponent,
     GRMPopFileComponent,
     GRMPopPaauComponent,
+    GRMPopInviteComponent,
+    CMMPopPaamComponent
   ]
 })
 export class ResidentModule { }

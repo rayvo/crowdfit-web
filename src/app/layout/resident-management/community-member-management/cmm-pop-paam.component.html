@@ -1,0 +1,41 @@
+<h4 class="card-title mt-3 text-center">직접 입주민을 등록하기</h4>
+<br /><br />
+
+<form role="form" [formGroup]="newUser" (ngSubmit)="approveNewMember()" >
+  <mat-form-field>
+    <!--<mat-icon matPrefix class="fa fa-user  input-group-text"></mat-icon>-->
+    <input matInput formControlName="fullname" placeholder="멤버 이름" type="text" class="form-control "/>
+    <mat-error *ngIf="(fullname.dirty || fullname.touched) && fullname.invalid">{{ getFullnameErrorMessage() }}</mat-error> </mat-form-field
+  ><br />
+  <mat-form-field>
+    <!--<mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>-->
+    <input matInput formControlName="phone" placeholder="멤버 휴대폰 번호" type="text" class="form-control" />
+    <mat-error *ngIf="(phone.dirty || phone.touched) && phone.invalid">{{ getPhoneErrorMessage() }}</mat-error> </mat-form-field
+  ><br />
+  <mat-form-field>
+    <!--<mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>-->
+    <input matInput formControlName="dong" placeholder="멤버 동" type="text" class="form-control" />
+    <mat-error *ngIf="(dong.dirty || dong.touched) && dong.invalid">{{ getDongErrorMessage() }}</mat-error> </mat-form-field
+  ><br />
+  <mat-form-field>
+    <!--<mat-icon matPrefix class="fa fa-phone input-group-text"></mat-icon>-->
+    <input matInput formControlName="ho" placeholder="멤버 호" type="text" class="form-control" />
+    <mat-error *ngIf="(ho.dirty || ho.touched) && ho.invalid">{{ getHoErrorMessage() }}</mat-error> </mat-form-field
+  ><br />
+
+  <br /><br />
+
+  <mat-dialog-actions align="end">
+    <div class="form-group input-group">
+      <button mat-dialog-close type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" style="max-width: 60%">
+        승인하기
+      </button>
+      <button mat-button mat-dialog-close class="btn btn-block" style="max-width: 40%">취소</button>
+    </div>
+  </mat-dialog-actions>
+
+  <!-- <div class="form-group input-group" style="margin-top: -10px;">
+    <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>
+  </div>-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
+</form>

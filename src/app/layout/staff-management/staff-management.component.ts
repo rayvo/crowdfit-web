@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { SMPopupComponent } from './sm-popup.component';
 import { SMPopFileComponent } from './sm-pop-file.component';
 import { SMPopPaasComponent } from './sm-pop-paas.component';
+import { SMPopInviteComponent } from './sm-pop-invite.component';
 
 @Component({
   selector: 'app-staff-management',
@@ -248,12 +249,6 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '400px';
-    // dialogConfig.data = {
-    //   name: personInfo.name,
-    //   donghosu: personInfo.donghosu,
-    //   phone: personInfo.phone,
-    //   type: btnType,
-    // };
 
     const dialogRef = this.dialog.open(SMPopPaasComponent, dialogConfig );
 
@@ -301,6 +296,24 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
     return myArray.filter(function(person) {
       return myPerson !== person;
     });
+  }
+
+  inviteDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+
+    const dialogRef = this.dialog.open(SMPopInviteComponent, dialogConfig );
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        // Invite the user
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 

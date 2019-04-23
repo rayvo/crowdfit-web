@@ -3,6 +3,7 @@ import { MatDialog, MatPaginator, MatTableDataSource, MatDialogConfig } from '@a
 import { UserService } from 'src/app/services/user.service';
 import { GRMPopupComponent } from './grm-popup.component';
 import { GRMPopPaauComponent } from './grm-pop-paau.component';
+import { GRMPopInviteComponent } from './grm-pop-invite.component';
 
 @Component({
   selector: 'app-general-resident-management',
@@ -216,12 +217,6 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '400px';
-    // dialogConfig.data = {
-    //   name: personInfo.name,
-    //   donghosu: personInfo.donghosu,
-    //   phone: personInfo.phone,
-    //   type: btnType,
-    // };
 
     const dialogRef = this.dialog.open(GRMPopPaauComponent, dialogConfig );
 
@@ -238,6 +233,23 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     );
   }
 
+  inviteDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+
+    const dialogRef = this.dialog.open(GRMPopInviteComponent, dialogConfig );
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        // Invite the resident
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
 }
 

@@ -9,16 +9,14 @@
     </ol>
   </nav>
   <div class="btn-container">
-    <a routerLink="#"><button type="button" class="btn btn-orange" style=" margin-right:10px;">초대하기</button></a>
-
-    <a routerLink="#"></a> <button type="button" class="btn btn-secondary">EPR가져오기</button> <a routerLink="#"></a>
-    <button type="button" class="btn btn-secondary manager">매니저초대</button>
+    <button type="button" class="btn btn-orange" style=" margin-right:10px;" (click)="inviteDialog()">초대하기</button>
+    <button type="button" class="btn btn-secondary" style=" margin-right:10px;">EPR가져오기</button> 
+    <button type="button" class="btn btn-secondary manager" style=" margin-right:10px;">매니저초대</button>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
+    </mat-form-field>
   </div>
 
-  <!-- Filter Search Bar -->
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
-  </mat-form-field>
 
   <br />
   <mat-label>승인대기 입주민</mat-label>
@@ -99,7 +97,6 @@
   <br /><br />
   <mat-label> 승인된 입주민 </mat-label>
   <div class="mat-elevation-z8">
-    <br />
     <!-- APPROVED LIST TABLE -->
     <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -146,7 +143,6 @@
   <br /><br />
   <mat-label> 퇴거된 입주민 </mat-label>
   <div class="mat-elevation-z8">
-    <br />
     <!-- EVICTED LIST TABLE -->
     <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
