@@ -13,7 +13,7 @@ export class NoAuthGuard implements CanActivate {
     }
 
     // TODO Reroute when other pages are made
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/s/menu']);
     return false;
   }
 }

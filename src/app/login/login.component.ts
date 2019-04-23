@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('aptName', String(data.apartment_name));
         // TODO
         // Set proper navigations depending on type of user
-        this.router.navigate(['/menu/danji']);
+        this.router.navigate(['/s/menu/danji']);
       },
       error => {
         // console.log(error);
