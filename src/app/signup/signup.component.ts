@@ -177,7 +177,7 @@ export class SignupComponent implements OnInit {
                     localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
                     localStorage.setItem('aptId', String(data.apartment_id));
                     localStorage.setItem('aptName', String(data.apartment_name));
-
+                    console.log(data);
                     this.router.navigate(['/signup/apply']);
                 },
                 error => {

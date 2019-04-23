@@ -45,14 +45,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('isLoggedin', 'true');
         localStorage.setItem('token', data.token);
         localStorage.setItem('id', String(data.user_id));
-        localStorage.setItem('name', data.fullname );
+        console.log(data);
+        localStorage.setItem('fullname', data.fullname );
         localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
         localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
         localStorage.setItem('aptId', String(data.apartment_id));
         localStorage.setItem('aptName', String(data.apartment_name));
         // TODO
         // Set proper navigations depending on type of user
-        this.router.navigate(['/menu/danji']);
+        this.router.navigate(['/s/menu/danji']);
       },
       error => {
         // console.log(error);

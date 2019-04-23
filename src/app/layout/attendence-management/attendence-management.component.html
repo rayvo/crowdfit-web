@@ -15,7 +15,7 @@
     
         </mat-form-field>
     -->
-    <a routerLink="#"><button type="button" class="btn btn-secondary" style="margin-right:10px;">사진등록</button></a>
+    <button type="button" class="btn btn-secondary" style="margin-right:10px;">사진등록</button>
     <button type="button" class="btn btn-secondary manager" style=" margin-right:10px;">매니저초대</button>
     <button type="button" class="btn btn-secondary read">직원초대</button>
   </div>
@@ -77,7 +77,7 @@
               <mat-card-title>{{ filteredAList[col + row].name }}</mat-card-title>
               <mat-card-subtitle>{{ filteredAList[col + row].at }}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-sm-image src="{{ filteredAList[col + row].img }}" style="margin-left: 15px" />
+            <img mat-card-sm-image src="{{ filteredAList[col + row].img }}" />
             <mat-card-content style="margin-left: 15px">
               <p>THIS IS INFO</p>
             </mat-card-content>
