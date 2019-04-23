@@ -17,7 +17,7 @@ import { PermissionServiceCenterComponent } from './permission-service-center/pe
 import { PermissionStaffManagementComponent } from './permission-staff-management/permission-staff-management.component';
 import { PermissionStoreManagementComponent } from './permission-store-management/permission-store-management.component';
 import { PermissionMenuManagementComponent } from './permission-menu-management/permission-menu-management.component';
-import { MatCheckboxModule, MatFormFieldModule, MatTableModule } from '@angular/material';
+import { MatCheckboxModule, MatFormFieldModule, MatTableModule, MatInputModule } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -33,8 +33,8 @@ import { UserService } from 'src/app/services/user.service';
     NgbAlertModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatTableModule
-
+    MatTableModule,
+    MatInputModule
   ],
   declarations: [
     PermissionSettingsComponent,
