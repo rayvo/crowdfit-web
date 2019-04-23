@@ -59,6 +59,7 @@ import { NoticeboardComponent } from './noticeboard/noticeboard.component';
     MatCardModule,
     MatTabsModule,
     MatExpansionModule,
+
   ],
   declarations: [
     LayoutMemberComponent,

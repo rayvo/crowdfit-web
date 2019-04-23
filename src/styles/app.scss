@@ -35,14 +35,13 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
     }
 }
 @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
-body{font-family: 'NanumSquareRound',sans-serif;}
+body{font-family: 'NanumSquareRound',sans-serif;    background-color: #e2e2e1;
+}
 
 nav .breadcrumb {
   padding-left: 0;
   font-size: 0.8em;
 }
-
-
 
 h4{
 font-size: 1.2em;
@@ -105,3 +104,4 @@ border: 0.5px solid #ccc;  }
 
 .mat-form-field-appearance-outline .mat-form-field-outline
 {margin-top:19px; height: 34px;}
+
