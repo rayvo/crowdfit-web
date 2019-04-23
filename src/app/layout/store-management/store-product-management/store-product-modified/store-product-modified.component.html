@@ -13,7 +13,6 @@
   <div class="row">
     <div class="col-sm rounded mx-auto;">
       <h3 class="border-bottom ">상품조회/수정</h3>
-
     </div>
   </div>
 
@@ -22,27 +21,10 @@
       <table class="table ">
         <tbody>
           <tr>
-            
-입금대기
+            입금대기
           </tr>
           <tr>
-          신규주문
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-sm rounded mx-auto;">
-      <table class="table ">
-        <tbody>
-          <tr>
-           
-           승인대기
-
-<tr>
-  
-    승인완료
-  
-
+            신규주문
           </tr>
         </tbody>
       </table>
@@ -51,9 +33,11 @@
       <table class="table ">
         <tbody>
           <tr>
-교환요청</tr>
-<tr>
-  반품요청
+            승인대기
+          </tr>
+
+          <tr>
+            승인완료
           </tr>
         </tbody>
       </table>
@@ -62,11 +46,22 @@
       <table class="table ">
         <tbody>
           <tr>
-오늘정산</tr>
-<tr>
-  정산예정
-
-
+            교환요청
+          </tr>
+          <tr>
+            반품요청
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm rounded mx-auto;">
+      <table class="table ">
+        <tbody>
+          <tr>
+            오늘정산
+          </tr>
+          <tr>
+            정산예정
           </tr>
         </tbody>
       </table>
@@ -75,168 +70,128 @@
 
   <div class="row">
     <div class="col-sm rounded mx-auto;">
-
       <table class="table ">
         <tbody>
           <tr>
+            <th scope="row">카테고리</th>
+            <td class="borderless">
+              <mat-form-field>
+                <mat-label>대분류</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{ food.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field>
+                <mat-label>중분류</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{ food.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">채널</th>
+            <td>
+              <mat-checkbox>전체</mat-checkbox>
+            </td>
+            <td>
+              <mat-checkbox>제휴단지</mat-checkbox>
+            </td>
+            <td>
+              <mat-checkbox>아파트 스토어</mat-checkbox>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">결제여부</th>
+            <td>
+              <mat-checkbox>전체</mat-checkbox>
+            </td>
+            <td>
+              <mat-checkbox>결제가능상품</mat-checkbox>
+            </td>
+            <td>
+              <mat-checkbox>결제불가능 상품</mat-checkbox>
+            </td>
+            <td>
+              <mat-checkbox>할인</mat-checkbox>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-
-              <th scope="row">카테고리</th>
-              <td class="borderless">
-                  <mat-form-field>
-                      <mat-label>대분류</mat-label>
-                      <mat-select>
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                          {{food.viewValue}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-              </td>
-              <td>
-                    <mat-form-field>
-                        <mat-label>중분류</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                  </td>
-            
-</tr>
-<tr>
-
-    <th scope="row">채널</th>
-    <td>
-        <mat-checkbox>전체</mat-checkbox>
-      
-    </td>
-    <td>
-        <mat-checkbox>제휴단지</mat-checkbox>
-      
-    </td>
-    <td>
-        <mat-checkbox>아파트 스토어</mat-checkbox>
-    
-     
-        </td>        
-    
-  </tr>
-  <tr>
-  <th scope="row">결제여부</th>
-  <td>
-      <mat-checkbox>전체</mat-checkbox>
-  </td>
-  <td>
-      <mat-checkbox>결제가능상품</mat-checkbox>
-  </td>
-  <td>
-      <mat-checkbox>결제불가능 상품</mat-checkbox>
-   
-   
-      </td>        
-      <td>
-          <mat-checkbox>할인</mat-checkbox>
-          
-         
-            </td>   
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-    
-    
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-     무료등록
-      </mat-panel-title>
-      <mat-panel-description>
-
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    
-      <table>
-    <tr>
-        <th scope="row">상품등록일</th>
-    
-   
-       <td><mat-checkbox>오늘</mat-checkbox></td>
-       <td><mat-checkbox>1주일</mat-checkbox></td>
-       <td><mat-checkbox>1개월</mat-checkbox></td>
-       <td><mat-checkbox>3개월</mat-checkbox></td>
-       <td><mat-checkbox>6개월</mat-checkbox></td>
-       <td><mat-checkbox>1년</mat-checkbox></td>
-  
-
-</tr>
-<tr>
-    <th scope="row">상품등록기간</th>
-
-
-   <td><mat-checkbox>오늘</mat-checkbox></td>
-   <td><mat-checkbox>1주일</mat-checkbox></td>
-   <td><mat-checkbox>1개월</mat-checkbox></td>
-   <td><mat-checkbox>3개월</mat-checkbox></td>
-   <td><mat-checkbox>6개월</mat-checkbox></td>
-   <td><mat-checkbox>1년</mat-checkbox></td>
-
-
-</tr>
-<tr>
-    <th scope="row">이용대상</th>
-
-
-   <td><mat-checkbox>입주민 전체무료</mat-checkbox></td>
-   <td><mat-checkbox>무료이용이후 사용료부과</mat-checkbox></td>
-   
-
-
-</tr>
-<th scope="row">판매조건</th>
-
-
-<td><mat-checkbox>연기가능</mat-checkbox></td>
-<td><mat-checkbox>양도가능</mat-checkbox></td>
-<td><mat-checkbox>환불가능</mat-checkbox></td>
-<tr>
-  
-</tr>
-</table>
-  </mat-expansion-panel>
-  <mat-expansion-panel >
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-      기간제등록
-      </mat-panel-title>
-      <mat-panel-description>
-  
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-  </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-accordion>
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-       회수제등록
+          무료등록
         </mat-panel-title>
-        <mat-panel-description>
-  
-        </mat-panel-description>
+        <mat-panel-description> </mat-panel-description>
       </mat-expansion-panel-header>
-  
-     
-    </mat-expansion-panel>
-    
-     <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">등록설정</button></a>
-     <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정미리보기</button></a>
-   
-</mat-accordion>
-  
 
-   <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">저장하기</button></a>
-   <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button></a>
+      <table>
+        <tr>
+          <th scope="row">상품등록일</th>
+
+          <td><mat-checkbox>오늘</mat-checkbox></td>
+          <td><mat-checkbox>1주일</mat-checkbox></td>
+          <td><mat-checkbox>1개월</mat-checkbox></td>
+          <td><mat-checkbox>3개월</mat-checkbox></td>
+          <td><mat-checkbox>6개월</mat-checkbox></td>
+          <td><mat-checkbox>1년</mat-checkbox></td>
+        </tr>
+        <tr>
+          <th scope="row">상품등록기간</th>
+
+          <td><mat-checkbox>오늘</mat-checkbox></td>
+          <td><mat-checkbox>1주일</mat-checkbox></td>
+          <td><mat-checkbox>1개월</mat-checkbox></td>
+          <td><mat-checkbox>3개월</mat-checkbox></td>
+          <td><mat-checkbox>6개월</mat-checkbox></td>
+          <td><mat-checkbox>1년</mat-checkbox></td>
+        </tr>
+        <tr>
+          <th scope="row">이용대상</th>
+
+          <td><mat-checkbox>입주민 전체무료</mat-checkbox></td>
+          <td><mat-checkbox>무료이용이후 사용료부과</mat-checkbox></td>
+        </tr>
+        <th scope="row">판매조건</th>
+
+        <td><mat-checkbox>연기가능</mat-checkbox></td>
+        <td><mat-checkbox>양도가능</mat-checkbox></td>
+        <td><mat-checkbox>환불가능</mat-checkbox></td>
+        <tr></tr>
+      </table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          기간제등록
+        </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          회수제등록
+        </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+
+    <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">등록설정</button>
+    <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정미리보기</button>
+  </mat-accordion>
+
+  <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">저장하기</button>
+  <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button>
 </div>

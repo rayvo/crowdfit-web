@@ -156,7 +156,7 @@ export class SignupFindComponent implements OnInit {
 
   checkAptAvailability() {
     let toReturn = false;
-    console.log('HERE');
+    console.log(this.parsedJuso);
     this.user.isAptAvailable(this.parsedJuso).subscribe(
       data => {
         console.log('Data is: ' + data);

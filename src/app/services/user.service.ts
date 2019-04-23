@@ -76,7 +76,7 @@ export class UserService {
   // postcode: TEXT
   isAptAvailable( aptInfo ): Observable<any> {
     const body = {
-      name: aptInfo.apt_name,
+      name: aptInfo.bdNm,
       postcode: aptInfo.zipNo
     };
     return this.http.post(this.serverUrl + '/api/v2/apartment_existed/', body, httpOptions);
