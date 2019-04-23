@@ -6,7 +6,6 @@
 />
 
 <nav class="sidebar" [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }">
- 
   <div class="list-group">
     <!--메뉴관리-->
     <div class="nested-menu">
@@ -98,19 +97,19 @@
       <li class="nested" [class.expand]="showMenu === 'store-pages'">
         <ul class="submenu">
           <li>
-            <a routerLink="/s/store/product/enrollment" >
+            <a routerLink="/s/store/product/enrollment">
               <span>상품관리 </span>
             </a>
-            <ul class="submenu" >
-                <li>
-                    <a routerLink="/s/store/product/enrollment">상품등록</a>
-                </li>
-                <li>
-                    <a routerLink="/s/store/product/modified">상품조회/수정</a>
-                </li>
-                <li>
-                    <a routerLink="/s/store/product/picstorage">사진보관함</a>
-                </li>
+            <ul class="submenu">
+              <li>
+                <a routerLink="/s/store/product/enrollment">상품등록</a>
+              </li>
+              <li>
+                <a routerLink="/s/store/product/modified">상품조회/수정</a>
+              </li>
+              <li>
+                <a routerLink="/s/store/product/picstorage">사진보관함</a>
+              </li>
             </ul>
           </li>
           <li>
@@ -127,7 +126,7 @@
       </li>
     </div>
 
-    <!--락커좌석관리-->  
+    <!--락커좌석관리-->
     <a class="list-group-item" routerLink="/s/locker">
       <i class="fas fa-lock"></i>&nbsp;
       <span>락커좌석관리</span>
@@ -135,20 +134,20 @@
 
     <!--수업관리-->
     <div class="nested-menu">
-      <a class="list-group-item" routerLink="/s/class/gx" (click)="addExpandClass('class-pages')">
+      <a class="list-group-item" routerLink="/s/class/lesson" (click)="addExpandClass('class-pages')">
         <i class="fas fa-chalkboard-teacher"></i>&nbsp;
         <span>수업관리 </span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'class-pages'">
         <ul class="submenu">
           <li>
-            <a routerLink="/s/class/gx">
-              <span>GX관리</span>
+            <a routerLink="/s/class/lesson">
+              <span>레슨관리</span>
             </a>
           </li>
           <li>
-            <a routerLink="/s/class/lesson">
-              <span>레슨관리</span>
+            <a routerLink="/s/class/gx">
+              <span>GX관리</span>
             </a>
           </li>
         </ul>
@@ -174,4 +173,3 @@
     </a>
   </div>
 </nav>
-

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'gx', pathMatch: 'full' },
+  { path: '', redirectTo: 'lesson', pathMatch: 'full' },
   { path: 'gx', component: GxManagementComponent},
   { path: 'lesson', component: LessonManagementComponent},
 
