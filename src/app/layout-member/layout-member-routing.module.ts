@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutMemberComponent } from './layout-member.component';
 import {HomeComponent} from './home/home.component';
+import { NoticeboardComponent } from './noticeboard/noticeboard.component';
 import { DanziComponent } from './danzi/danzi.component';
 import { CommunityComponent } from './community/community.component';
 import { VoteComponent } from './vote/vote.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
         children: [
 
             { path: 'home', component: HomeComponent },
+            { path: 'notice', component: NoticeboardComponent },
             { path: 'danzi', component: DanziComponent },
             { path: 'community', component: CommunityComponent},
             { path: 'vote', component: VoteComponent },

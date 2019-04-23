@@ -19,6 +19,7 @@ import {
   MatHeaderRow,
   MatHeaderRowDef,
   MatTabsModule,
+  MatExpansionModule,
 } from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
@@ -38,6 +39,7 @@ import { SmartAdministrativeExpensesComponent } from './smart-administrative-exp
 import { MandatoryDisclosureComponent } from './mandatory-disclosure/mandatory-disclosure.component';
 import { LibraryComponent } from './library/library.component';
 import { SetPermissionsComponent } from './set-permissions/set-permissions.component';
+import { NoticeboardComponent } from './noticeboard/noticeboard.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,6 +58,7 @@ import { SetPermissionsComponent } from './set-permissions/set-permissions.compo
     MatDividerModule,
     MatCardModule,
     MatTabsModule,
+    MatExpansionModule,
   ],
   declarations: [
     LayoutMemberComponent,
@@ -74,6 +77,7 @@ import { SetPermissionsComponent } from './set-permissions/set-permissions.compo
     FitMusicComponent,
     FitVideoComponent,
     SetPermissionsComponent,
+    NoticeboardComponent,
   ],
   providers: [AuthGuard],
   entryComponents: [
