@@ -1,4 +1,4 @@
-mat-card{border-radius:0;
+.small-head{border-radius:0;
     padding: 10px;
     background-color: #eee;
 }
@@ -9,3 +9,13 @@ vertical-align:middle;
 display: inline-flex;
 
 }
+
+.example-card{
+    background-color: white;
+margin: 1rem;}
+
+
+.example-card{border-radius:0;
+padding: 1rem; }
+
+.main-container{background-color: #eee;}
