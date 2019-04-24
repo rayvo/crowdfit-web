@@ -363,16 +363,16 @@ export interface EvictedList {
 
 
 
-const WAIT_DATA: WaitList[] = [
-  { id: 1, name: 'John', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-  { id: 2, name: 'Sarah', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-  { id: 1, name: 'Asdf', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-  { id: 2, name: 'Sdfg', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-  { id: 1, name: 'Dfgh', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-  { id: 2, name: 'Fghj', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-  { id: 1, name: 'Ghjk', department: 'Adept', position: 'First', phone: '0101111AAAA' },
-  { id: 2, name: 'Hjkl', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
-];
+// const WAIT_DATA: WaitList[] = [
+//   { id: 1, name: 'John', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Sarah', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+//   { id: 1, name: 'Asdf', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Sdfg', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+//   { id: 1, name: 'Dfgh', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Fghj', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+//   { id: 1, name: 'Ghjk', department: 'Adept', position: 'First', phone: '0101111AAAA' },
+//   { id: 2, name: 'Hjkl', department: 'Bdept', position: 'Second', phone: '0102222BBBB' },
+// ];
 // const APPROVED_DATA: ApprovedList[] = [
 //   { id: 3, name: 'Elijah', department: 'Cdept', position: 'Third', phone: '0103333CCCC', approvedBy: 'Habced', approvedDate: 'Jan 1' },
 //   { id: 4, name: 'Alyssa', department: 'Ddept', position: 'Fourth', phone: '0104444DDDD', approvedBy: 'Habced', approvedDate: 'March20' }
