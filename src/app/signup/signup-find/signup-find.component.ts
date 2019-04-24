@@ -14,6 +14,7 @@ export interface Role {
 }
 
 export interface Dept {
+  value: string;
   name: string;
   role: Role[];
 }
@@ -40,6 +41,9 @@ export class SignupFindComponent implements OnInit {
 
   deptGroups: Dept[];
   deptControl = new FormControl();
+
+  selectedDept;
+  selectedRole;
 
   constructor(
     private user: UserService,
@@ -127,7 +131,9 @@ export class SignupFindComponent implements OnInit {
           const myRole = localStorage.getItem('role');
           const tempCtrl = this.secondFormGroup.controls['secondCtrl'];
 
-          this.setDeptRoleList(localStorage.getItem('aptId'));
+          if ( myRole === '2' ) {
+            this.setDeptRoleList();
+          }
 
           if ( isAvailable === false && myRole === '1' ) {
             tempCtrl.setErrors(null);
@@ -183,7 +189,7 @@ export class SignupFindComponent implements OnInit {
     return localStorage.getItem(key);
   }
 
-  setDeptRoleList(aptId) {
+  setDeptRoleList() {
     // TODO
     // Call getDeptRoleByApt in the db
     console.log(localStorage.getItem('aptId'));
@@ -223,6 +229,11 @@ export class SignupFindComponent implements OnInit {
     //     ]
     //   },
     // ];
+  }
+
+  roleSelection( deptIdString, roleIdString ) {
+    this.selectedDept = Number(deptIdString);
+    this.selectedRole = Number(roleIdString);
   }
 
   // TODO This portion will be changing soon
@@ -274,8 +285,8 @@ export class SignupFindComponent implements OnInit {
       case '2': {
         this.user.staffRegister(
           localStorage.getItem('aptId'),
-          localStorage.getItem('deptId'),
-          localStorage.getItem('roleId'),
+          this.selectedDept,
+          this.selectedRole,
           localStorage.getItem('fileId'),
         ).subscribe(
           data => {
