@@ -1,5 +1,5 @@
 
-.main-container{background-color: white;}
+.main-container{background-color:#eee;}
 
 .collapsed {
     margin-left: 100px;
@@ -25,3 +25,8 @@ mat-icon{
 
 
 mat-card{border-radius:0; }
+
+button{
+    vertical-align: middle;
+    display: inline-flex;
+}
