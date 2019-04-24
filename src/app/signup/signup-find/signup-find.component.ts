@@ -86,7 +86,6 @@ export class SignupFindComponent implements OnInit {
     this.firstFormGroup.controls['firstCtrl'].setErrors(null);
   }
 
-
   openJusoDialog() {
 
     const dialogConfig = new MatDialogConfig();
@@ -96,140 +95,119 @@ export class SignupFindComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       result => {
         this.jusoSearchClicked = true;
-        if ( result != null ) {
+        if ( result == null ) {
+          this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
+        } else {
           this.parsedJuso = JSON.parse(result);
 
-          // 제공해 드리는 죄표
+          // Set latitude and longitude
           proj4.defs['EPSG:5179'] =
           '+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m +no_defs';
-
-          // 구글 좌표계
           proj4.defs['EPSG:900913'] =
           '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs';
-
           const grs80 = proj4.Proj(proj4.defs['EPSG:5179']);
           // const google = proj4.Proj(proj4.defs['EPSG:900913']);
-          const wgs84 = proj4.Proj(proj4.defs['EPSG:4326']); // 경위도
-
-          // 한국지역정보개발원 좌표
-          // let p = proj4.Point( 945959.038134181414141414 , 1953051.7348996028 );
+          const wgs84 = proj4.Proj(proj4.defs['EPSG:4326']);
           let p = proj4.Point(  Number(this.parsedJuso.entX) , Number(this.parsedJuso.entY) );
           // p = proj4.transform( grs80, google, p);
           p = proj4.transform( grs80, wgs84, p);
-
-          // x = longitude roughly 127
-          // y = latitude roughly 37
-          // console.log(p.x + ' ' + p.y);
           this.parsedJuso['longitude'] = p.x.toFixed(8);
           this.parsedJuso['latitude'] = p.y.toFixed(8);
-          // console.log(this.parsedJuso);
 
-          // TODO
-          // DOUBLE CHECK the function isAvailableApt
 
-          const isAvailable = this.checkAptAvailability();
+
+
+          // Check Apt Availability
+          let isAvailable = null;
           const myRole = localStorage.getItem('role');
-          const tempCtrl = this.secondFormGroup.controls['secondCtrl'];
 
-          if ( myRole === '2' ) {
-            this.setDeptRoleList();
-          }
-
-          if ( isAvailable === false && myRole === '1' ) {
-            tempCtrl.setErrors(null);
-            this.jusoAvail = null;
-          } else if ( isAvailable === true && myRole === '1' ) {
-            tempCtrl.setErrors({'incorrect': true});
-            this.jusoAvail = true;
-          } else if ( isAvailable === false ) {
-            tempCtrl.setErrors({'incorrect': true});
-            this.jusoAvail = false;
-          } else { // isAvailable === true
-            tempCtrl.setErrors(null);
-            this.jusoAvail = null;
-          }
-
-
-        } else {
-          this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
+          this.user.isAptAvailable(this.parsedJuso).subscribe(
+            data => {
+              if ( data.res_code ) { // res_code Success
+                isAvailable = true;
+                localStorage.setItem('aptId', data.apt_id);
+                if ( myRole === '1' ) { // res_code Success and CEO
+                  this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
+                  this.jusoAvail = true;
+                } else { // res_code Success and not CEO
+                  this.secondFormGroup.controls['secondCtrl'].setErrors(null);
+                  this.jusoAvail = null;
+                  if ( myRole === '2' ) { // res_code Success and STAFF
+                    console.log('aptId: ' + localStorage.getItem('aptId'));
+                    this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
+                      deptData => { // Set DeptRole list
+                        console.log(deptData);
+                        for ( const d of deptData.results ) {
+                          const newDept = {
+                            value: String(d.id),
+                            name: d.name,
+                            role: [],
+                          };
+                          this.user.listAllRoleOfDepartment(d.id).subscribe(
+                            roleData => {
+                              for ( const r of roleData.results ) {
+                                newDept.role.push({
+                                  value: String(r.id),
+                                  viewValue: r.name
+                                });
+                              }
+                              this.deptGroups.push(newDept);
+                            }, error => { console.log(error); }
+                          );
+                        }
+                      }, error => { console.log(error); }
+                    );
+                  }
+                }
+              } else {
+                isAvailable = false;
+                localStorage.setItem('aptId', data.apt_id);
+                if ( myRole === '1' ) { // res_code Fail and CEO
+                  this.secondFormGroup.controls['secondCtrl'].setErrors(null);
+                  this.jusoAvail = null;
+                } else {  // res_code Fail and not CEO
+                  this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
+                  this.jusoAvail = false;
+                  if ( myRole === '2' ) { // res_code Fail and STAFF
+                    console.log('aptId: ' + localStorage.getItem('aptId'));
+                    this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
+                      deptData => {
+                        console.log(deptData);
+                        for ( const d of deptData.results ) {
+                          const newDept = {
+                            value: String(d.id),
+                            name: d.name,
+                            role: [],
+                          };
+                          this.user.listAllRoleOfDepartment(d.id).subscribe(
+                            roleData => {
+                              for ( const r of roleData.results ) {
+                                newDept.role.push({
+                                  value: String(r.id),
+                                  viewValue: r.name
+                                });
+                              }
+                              this.deptGroups.push(newDept);
+                            }, error => { console.log(error); }
+                          );
+                        }
+                      }, error => { console.log(error); }
+                    );
+                  }
+                }
+              }
+            }, error => { console.log(error); }
+          );
         }
-
-      },
-      error => {
-        console.log(error);
-      }
+      }, error => { console.log(error); }
     );
   }
-
-  checkAptAvailability() {
-    let toReturn = false;
-    console.log(this.parsedJuso);
-    this.user.isAptAvailable(this.parsedJuso).subscribe(
-      data => {
-        if ( data.res_code ) {
-          toReturn = true;
-          localStorage.setItem('aptId', data.apt_id);
-          return toReturn;
-        } else {
-          toReturn = false;
-          localStorage.setItem('aptId', data.apt_id);
-          return toReturn;
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
-    return null;
-  }
-
 
   // TODO When applying as 직원 be able to put 부서 and 직책 in somewhere
   getLS(key) {
     return localStorage.getItem(key);
   }
 
-  setDeptRoleList() {
-    // TODO
-    // Call getDeptRoleByApt in the db
-    console.log(localStorage.getItem('aptId'));
-    this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-
-
-    // For now temp and fake data
-    // this.deptGroups = [
-    //   {
-    //     name: 'Management',
-    //     role: [
-    //       {value: '1', viewValue: 'General'},
-    //       {value: '2', viewValue: 'English Affairs'},
-    //       {value: '3', viewValue: 'Quality Assurance'}
-    //     ]
-    //   },
-    //   {
-    //     name: 'Finance',
-    //     role: [
-    //       {value: '4', viewValue: 'Wages' },
-    //       {value: '5', viewValue: 'Budget'},
-    //     ]
-    //   },
-    //   {
-    //     name: 'Human Resource',
-    //     role: [
-    //       {value: '6', viewValue: 'Head' },
-    //       {value: '7', viewValue: 'Emergency Affairs'},
-    //       {value: '8', viewValue: 'Rule Enforcement'},
-    //     ]
-    //   },
-    // ];
-  }
 
   roleSelection( deptIdString, roleIdString ) {
     this.selectedDept = Number(deptIdString);
