@@ -85,7 +85,7 @@
             <mat-label>부서 직책</mat-label>
             <mat-select matSelect *ngIf="getLS('role') == '2'" [formControl]="deptControl">
               <mat-optgroup *ngFor="let group of deptGroups" [label]="group.name">
-                <mat-option *ngFor="let role of group.role" [value]="role.id" (onSelectionChange)='roleSelection( group.value, role.value)'>
+                <mat-option *ngFor="let role of group.role" [value]="role" (onSelectionChange)='roleSelection( group.value, role.value)'>
                   {{ role.viewValue }}
                 </mat-option>
               </mat-optgroup>

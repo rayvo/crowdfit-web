@@ -23,9 +23,9 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
    *
    */
 
-  displayedColumns1: string[] = ['name', 'donghosu', 'phone' ];
+  displayedColumns1: string[] = ['name', 'donghosu', 'phone', 'approve', 'delete'];
   displayedColumns2: string[] = ['name', 'donghosu', 'phone' ];
-  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedDate' ];
+  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'staff', 'approvedDate', 'out' ];
   displayedColumns4: string[] = ['name', 'donghosu', 'phone', 'staff' ]; // , 'outDate' ];
   userWaitList: WaitList[] = [];
   userInvitedList: InvitedList[] = [];
@@ -102,6 +102,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
       data => {
 
         if ( statusNum === 2 ) {
+          console.log(data);
           data.results.forEach(element => {
             this.userWaitList.push({
               id: element.user_id,
@@ -110,7 +111,10 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
               phone: element.phone,
             });
           });
+          console.log(this.userWaitList);
+          this.reloadAllData();
         } else if ( statusNum === 3 ) {
+          console.log(data);
           data.results.forEach(element => {
             this.userApprovedList.push({
               id: element.user_id,
@@ -122,6 +126,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
             });
           });
         } else if ( statusNum === 5 ) {
+          console.log(data);
           data.results.forEach(element => {
             this.userEvictedList.push({
               id: element.user_id,
@@ -169,11 +174,13 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     if ( newStatus === 1 ) {
        // TODO The applicant was not approved
     } else if ( newStatus === 3 ) {
+      console.log('Approving a User_____');
       this.user.approveUser(personInfo.id).subscribe(
         data => {
           this.userWaitList = this.removeFromList(this.userWaitList, personInfo);
-          personInfo.staff = 'Haseung'; // TODO
-          personInfo.approvedDate = null; // 'today'; // TODO
+          console.log('the staff thats approving has id: ' + localStorage.getItem('id'));
+          personInfo.staff = localStorage.getItem('id');
+          personInfo.approvedDate = new Date();
           this.userApprovedList.push( personInfo );
           this.reloadAllData();
         },

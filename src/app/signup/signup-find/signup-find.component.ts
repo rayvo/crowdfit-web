@@ -39,7 +39,7 @@ export class SignupFindComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  deptGroups: Dept[];
+  deptGroups: Dept[] = [];
   deptControl = new FormControl();
 
   selectedDept;
@@ -136,19 +136,24 @@ export class SignupFindComponent implements OnInit {
                     console.log('aptId: ' + localStorage.getItem('aptId'));
                     this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
                       deptData => { // Set DeptRole list
+                        console.log('got to deptData');
                         console.log(deptData);
                         for ( const d of deptData.results ) {
+                          console.log(d);
                           const newDept = {
                             value: String(d.id),
-                            name: d.name,
+                            name: d.department_name,
                             role: [],
                           };
                           this.user.listAllRoleOfDepartment(d.id).subscribe(
                             roleData => {
+                              console.log('got to roleData');
+                              console.log(roleData);
                               for ( const r of roleData.results ) {
+                                console.log(r);
                                 newDept.role.push({
                                   value: String(r.id),
-                                  viewValue: r.name
+                                  viewValue: r.role
                                 });
                               }
                               this.deptGroups.push(newDept);
@@ -168,32 +173,6 @@ export class SignupFindComponent implements OnInit {
                 } else {  // res_code Fail and not CEO
                   this.secondFormGroup.controls['secondCtrl'].setErrors({'incorrect': true});
                   this.jusoAvail = false;
-                  if ( myRole === '2' ) { // res_code Fail and STAFF
-                    console.log('aptId: ' + localStorage.getItem('aptId'));
-                    this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
-                      deptData => {
-                        console.log(deptData);
-                        for ( const d of deptData.results ) {
-                          const newDept = {
-                            value: String(d.id),
-                            name: d.name,
-                            role: [],
-                          };
-                          this.user.listAllRoleOfDepartment(d.id).subscribe(
-                            roleData => {
-                              for ( const r of roleData.results ) {
-                                newDept.role.push({
-                                  value: String(r.id),
-                                  viewValue: r.name
-                                });
-                              }
-                              this.deptGroups.push(newDept);
-                            }, error => { console.log(error); }
-                          );
-                        }
-                      }, error => { console.log(error); }
-                    );
-                  }
                 }
               }
             }, error => { console.log(error); }
@@ -212,6 +191,7 @@ export class SignupFindComponent implements OnInit {
   roleSelection( deptIdString, roleIdString ) {
     this.selectedDept = Number(deptIdString);
     this.selectedRole = Number(roleIdString);
+    console.log( '' + this.selectedDept + ' ' + this.selectedRole);
   }
 
   // TODO This portion will be changing soon

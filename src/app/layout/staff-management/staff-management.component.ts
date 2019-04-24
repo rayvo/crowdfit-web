@@ -104,6 +104,10 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
     // this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource3.paginator = this.paginator.toArray()[1]; // TODO change 1 to 2
     this.dataSource4.paginator = this.paginator.toArray()[2]; // TODO chagne 2 to 3
+    this.dataSource1 = new MatTableDataSource<WaitList>(this.staffWaitList);
+    this.dataSource2 = new MatTableDataSource<InvitedList>(this.staffInvitedList);
+    this.dataSource3 = new MatTableDataSource<ApprovedList>(this.staffApprovedList);
+    this.dataSource4 = new MatTableDataSource<EvictedList>(this.staffEvictedList);
   }
 
   // Only search names and numbers
@@ -120,25 +124,27 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
     this.user.getStaffsByStatus( localStorage.getItem('aptId'), statusNum ).subscribe(
       data => {
         if ( statusNum === 2 ) {
+          console.log(data);
           data.results.forEach( element => {
             this.staffWaitList.push({
 
               id: element.user_id,
               name: element.fullname,
-              department: element.list_dept_role_status[0].department_id,
-              position: element.list_dept_role_status[0].role_id,
+              department: element.list_dep_role_status[0].department_id,
+              position: element.list_dep_role_status[0].role_id,
               phone: element.phone
             });
           });
 
         } else if ( statusNum === 3 ) {
+          console.log(data);
           data.results.forEach( element => {
             this.staffApprovedList.push({
 
               id: element.user_id,
               name: element.fullname,
-              department: element.list_dept_role_status[0].department_id,
-              position: element.list_dept_role_status[0].role_id,
+              department: element.list_dep_role_status[0].department_id,
+              position: element.list_dep_role_status[0].role_id,
               phone: element.phone,
               approvedBy: element.staff,
               approvedDate: new Date(Date.parse(element.last_update)),
@@ -146,13 +152,14 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
           });
 
         } else if ( statusNum === 5 ) {
+          console.log(data);
           data.results.forEach( element => {
             this.staffEvictedList.push({
 
               id: element.user_id,
               name: element.fullname,
-              department: element.list_dept_role_status[0].department_id,
-              position: element.list_dept_role_status[0].role_id,
+              department: element.list_dep_role_status[0].department_id,
+              position: element.list_dep_role_status[0].role_id,
               phone: element.phone,
               evictedDate: new Date(Date.parse(element.last_update)),
               reason: element.reason

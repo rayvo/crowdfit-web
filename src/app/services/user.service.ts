@@ -209,12 +209,12 @@ export class UserService {
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
   getUsersByStatus( aptId, statusId ): Observable<any> {
-    console.log('getUsersByStatus Reached');
+    console.log('getUsersByStatus Reached with aptId: ' + aptId + ' and status id: ' + statusId);
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
     return this.http.get(
-      this.serverUrl + '/api/v2/list_user_by_status/'  + localStorage.getItem('id'),
+      this.serverUrl + '/api/v2/list_user_by_status/'  + statusId,
       { headers: httpOptions.headers, params: params }
       );
   }
@@ -224,12 +224,12 @@ export class UserService {
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
   getStaffsByStatus( aptId, statusId ): Observable<any> {
-    console.log('getStaffsByStatus Reached');
+    console.log('getStaffsByStatus Reached with aptId: ' + aptId + ' and status id: ' + statusId);
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
     return this.http.get(
-      this.serverUrl + '/api/v2/list_staff_by_status/' + localStorage.getItem('id') ,
+      this.serverUrl + '/api/v2/list_staff_by_status/' + statusId ,
       { headers: httpOptions.headers, params: params}
       );
   }
@@ -239,11 +239,12 @@ export class UserService {
   // user_id: INT
   // staff_id: INT
   approveUser( userId ): Observable<any> {
+    console.log('ApproveUser Reached with userId: ' + userId);
     const body = {
       user_id: userId,
       staff_id: Number(localStorage.getItem('id'))
     };
-    return this.http.post( this.serverUrl + '/api/v2/approve_user/', body, httpOptions );
+    return this.http.put( this.serverUrl + '/api/v2/approve_user/', body, httpOptions );
   }
 
   // POST /api/v2/approve_staff/
@@ -254,7 +255,7 @@ export class UserService {
       user_id: userId,
       staff_id: Number(localStorage.getItem('id'))
     };
-    return this.http.post( this.serverUrl + '/api/v2/approve_staff/', body, httpOptions );
+    return this.http.put( this.serverUrl + '/api/v2/approve_staff/', body, httpOptions );
   }
 
   // POST /api/v2/approve_ceo/
@@ -265,7 +266,7 @@ export class UserService {
       user_id: userId,
       staff_id: Number(localStorage.getItem('id'))
     };
-    return this.http.post( this.serverUrl + '/api/v2/approve_ceo/', body, httpOptions );
+    return this.http.put( this.serverUrl + '/api/v2/approve_ceo/', body, httpOptions );
   }
 
   // PUT /api/v2/refuse_request_role_status/<int:id>/
