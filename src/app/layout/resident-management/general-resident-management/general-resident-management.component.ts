@@ -111,7 +111,6 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
               phone: element.phone,
             });
           });
-          console.log(this.userWaitList);
           this.reloadAllData();
         } else if ( statusNum === 3 ) {
           console.log(data);
@@ -125,6 +124,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
               approvedDate: new Date(Date.parse(element.last_update)),
             });
           });
+          this.reloadAllData();
         } else if ( statusNum === 5 ) {
           console.log(data);
           data.results.forEach(element => {
@@ -136,6 +136,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
               staff: element.staff,
             });
           });
+          this.reloadAllData();
 
         }
       }
