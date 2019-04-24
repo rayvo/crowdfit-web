@@ -152,13 +152,13 @@ export class UserService {
   // GET /api/v2/list_all_department/
   // apt_id: INT/NULL
   listAllDepartment( aptId ): Observable<any> {
-    return this.http.get( this.serverUrl + 'api/v2/list_all_department/' + aptId, httpOptions );
+    return this.http.get( this.serverUrl + '/api/v2/list_all_department/' + String(aptId) + '/', httpOptions );
   }
 
   // GET /api/v2/list_all_role_of_department/
   // department_id: INT
   listAllRoleOfDepartment( deptId ): Observable<any> {
-    return this.http.get( this.serverUrl + 'api/v2/list_all_role_of_department/' + deptId, httpOptions);
+    return this.http.get( this.serverUrl + '/api/v2/list_all_role_of_department/' + deptId, httpOptions);
   }
 
 
