@@ -203,7 +203,7 @@ export class SignupFindComponent implements OnInit {
     );
   }
 
-  // TODO When applying as 직원 be able to put 부서 and 직책 in somewhere
+
   getLS(key) {
     return localStorage.getItem(key);
   }
@@ -234,8 +234,7 @@ export class SignupFindComponent implements OnInit {
   }
 
 
-  // TODO
-  // Double check service calls
+
   applyClicked = () => {
 
     let errorExists = false;
