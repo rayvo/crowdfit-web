@@ -90,11 +90,13 @@ export class UserService {
   // document_file_id: INT/NULL
   userRegister( aptId, myDong, myHouseNum, fileId ): Observable<any> {
     const body = {
-      apt_id: aptId,
+      apt_id: Number(aptId),
       address_dong: myDong,
       house_number: myHouseNum,
       document_file_id: fileId,
     };
+    console.log(body);
+    console.log(localStorage.getItem('token'));
     return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, httpOptions);
   }
 
@@ -207,6 +209,7 @@ export class UserService {
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
   getUsersByStatus( aptId, statusId ): Observable<any> {
+    console.log('getUsersByStatus Reached');
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
@@ -221,6 +224,7 @@ export class UserService {
   // apt_id: INT
   // status_id: INT (Applying/Waiting for Aproval/Approved....)
   getStaffsByStatus( aptId, statusId ): Observable<any> {
+    console.log('getStaffsByStatus Reached');
     const params = new HttpParams();
     params.append('apt_id', aptId );
     params.append('status_id', statusId );
