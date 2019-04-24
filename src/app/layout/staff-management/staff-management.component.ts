@@ -127,7 +127,6 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
           console.log(data);
           data.results.forEach( element => {
             this.staffWaitList.push({
-
               id: element.user_id,
               name: element.fullname,
               department: element.list_dep_role_status[0].department_id,
@@ -135,12 +134,11 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
               phone: element.phone
             });
           });
-
+          this.reloadAllData();
         } else if ( statusNum === 3 ) {
           console.log(data);
           data.results.forEach( element => {
             this.staffApprovedList.push({
-
               id: element.user_id,
               name: element.fullname,
               department: element.list_dep_role_status[0].department_id,
@@ -150,7 +148,7 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
               approvedDate: new Date(Date.parse(element.last_update)),
             });
           });
-
+          this.reloadAllData();
         } else if ( statusNum === 5 ) {
           console.log(data);
           data.results.forEach( element => {
@@ -165,8 +163,8 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
               reason: element.reason
             });
           });
+          this.reloadAllData();
         }
-
       },
       error => {
         console.log(error);
