@@ -24,7 +24,7 @@ export interface Dept {
 export class SMPopPaasComponent {
 
     newUser: FormGroup;
-    deptroleGroups: Dept[] = [];
+    deptRoleGroups: Dept[] = [];
 
     constructor(
         private dialogRef: MatDialogRef<StaffManagementComponent>,
@@ -78,7 +78,7 @@ export class SMPopPaasComponent {
                         viewValue: r.role
                       });
                     }
-                    this.deptroleGroups.push(newDept);
+                    this.deptRoleGroups.push(newDept);
                   }, error => { console.log(error); }
                 );
               }
@@ -96,7 +96,7 @@ export class SMPopPaasComponent {
     }
 
     getDeptName( deptId ) {
-        for ( const d of this.deptroleGroups ) {
+        for ( const d of this.deptRoleGroups ) {
             if ( d.value === deptId ) {
                 return d.name;
             }
@@ -105,7 +105,7 @@ export class SMPopPaasComponent {
     }
 
     getRoleName( roleId ) {
-        for ( const d of this.deptroleGroups ) {
+        for ( const d of this.deptRoleGroups ) {
             for ( const r of d.role ) {
                 if ( r.value === roleId ) {
                     return r.viewValue;
