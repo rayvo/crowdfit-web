@@ -27,7 +27,7 @@
     <mat-label>부서 직책</mat-label>
     <mat-select matSelect >
       <mat-optgroup *ngFor="let group of deptRoleGroups" [label]="group.name" >
-        <mat-option *ngFor="let role of group.role" [value]="role.id" (onSelectionChange)="setDeptRoleData(group.id, role.id)">
+        <mat-option *ngFor="let role of group.role" [value]="role.value" (onSelectionChange)="setDeptRoleData(group.value, role.value)">
           {{ role.viewValue }}
         </mat-option>
       </mat-optgroup>

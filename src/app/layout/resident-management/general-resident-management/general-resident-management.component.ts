@@ -104,8 +104,10 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
         if ( statusNum === 2 ) {
           console.log(data);
           data.results.forEach(element => {
+            console.log(element);
             this.userWaitList.push({
               id: element.user_id,
+              urs_id: element.id,
               name: element.fullname,
               donghosu: element.address_dong + '동 ' + element.household_number + '호',
               phone: element.phone,
@@ -117,10 +119,11 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
           data.results.forEach(element => {
             this.userApprovedList.push({
               id: element.user_id,
+              urs_id: element.id,
               name: element.fullname,
               donghosu: element.address_dong + '동 ' + element.household_number + '호',
               phone: element.phone,
-              staff: element.staff,
+              staff: element.approved_staff_fullname,
               approvedDate: new Date(Date.parse(element.last_update)),
             });
           });
@@ -130,6 +133,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
           data.results.forEach(element => {
             this.userEvictedList.push({
               id: element.user_id,
+              urs_id: element.id,
               name: element.fullname,
               donghosu: element.address_dong + '동 ' + element.household_number + '호',
               phone: element.phone,
@@ -173,7 +177,16 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
 
   updateUserStatus( personInfo, newStatus ) {
     if ( newStatus === 1 ) {
-       // TODO The applicant was not approved
+      console.log('Refusing a User_____ status 1');
+      this.user.refulesRequestRoleStatus( personInfo.urs_id, '' ).subscribe(
+        data => {
+          this.userWaitList = this.removeFromList(this.userWaitList, personInfo);
+          this.reloadAllData();
+        },
+        error => {
+
+        }
+      );
     } else if ( newStatus === 3 ) {
       console.log('Approving a User_____');
       this.user.approveUser(personInfo.id).subscribe(
@@ -190,7 +203,20 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
         }
       );
     } else if ( newStatus === 5 ) {
-      // TODO an approved user that left or was evicted
+      console.log('Refusing a User_____ status 5');
+      this.user.refulesRequestRoleStatus( personInfo.urs_id, '' ).subscribe(
+        data => {
+          console.log('REFUSING');
+          console.log(data);
+          this.userApprovedList = this.removeFromList(this.userApprovedList, personInfo);
+          // personInfo.
+          this.userEvictedList.push( personInfo );
+          this.reloadAllData();
+        },
+        error => {
+          console.log(error);
+        }
+      );
     } else {
       console.log('There is an error');
     }
@@ -263,6 +289,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
 
 export interface WaitList {
   id: number;
+  urs_id: number;
   name: string;
   donghosu: string;
   phone: string;
@@ -270,6 +297,7 @@ export interface WaitList {
 
 export interface InvitedList {
   id: number;
+  urs_id: number;
   name: string;
   donghosu: string;
   phone: string;
@@ -278,6 +306,7 @@ export interface InvitedList {
 
 export interface ApprovedList {
   id: number;
+  urs_id: number;
   name: string;
   donghosu: string;
   phone: string;
@@ -287,6 +316,7 @@ export interface ApprovedList {
 
 export interface EvictedList {
   id: number;
+  urs_id: number;
   name: string;
   donghosu: string;
   phone: string;

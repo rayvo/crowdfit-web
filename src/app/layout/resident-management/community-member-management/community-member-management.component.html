@@ -14,10 +14,9 @@
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="검색하기" />
     </mat-form-field>
   </div>
-
+<!--
   <br />
   <mat-label style=" margin-right:10px;">등록요청 멤버</mat-label>
-  <button mat-button (click)="personallyApproveAMember()" class="btn btn-orange">맴버 직접 승인 해주기</button>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -50,10 +49,11 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
-  </div>
+  </div>-->
 
   <br />
-  <mat-label>유효 승인멤버</mat-label>
+  <mat-label style="margin-right: 10px">유효 승인멤버</mat-label>
+  <button mat-button (click)="personallyApproveAMember()" class="btn btn-orange">맴버 직접 승인 해주기</button>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
       <ng-container matColumnDef="name">

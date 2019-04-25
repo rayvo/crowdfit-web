@@ -128,6 +128,7 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
           data.results.forEach( element => {
             this.staffWaitList.push({
               id: element.user_id,
+              urs_id: element.list_dep_role_status[0].id,
               name: element.fullname,
               department: element.list_dep_role_status[0].department_id,
               position: element.list_dep_role_status[0].role_id,
@@ -140,6 +141,7 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
           data.results.forEach( element => {
             this.staffApprovedList.push({
               id: element.user_id,
+              urs_id: element.list_dep_role_status[0].id,
               name: element.fullname,
               department: element.list_dep_role_status[0].department_id,
               position: element.list_dep_role_status[0].role_id,
@@ -155,6 +157,7 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
             this.staffEvictedList.push({
 
               id: element.user_id,
+              urs_id: element.list_dep_role_status[0].id,
               name: element.fullname,
               department: element.list_dep_role_status[0].department_id,
               position: element.list_dep_role_status[0].role_id,
@@ -331,6 +334,7 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
 
 export interface WaitList {
   id: number;
+  urs_id: number;
   name: string;
   department: string;
   position: string;
@@ -339,6 +343,7 @@ export interface WaitList {
 
 export interface InvitedList {
   id: number;
+  urs_id: number;
   name: string;
   department: string;
   position: string;
@@ -348,6 +353,7 @@ export interface InvitedList {
 
 export interface ApprovedList {
   id: number;
+  urs_id: number;
   name: string;
   department: string;
   position: string;
@@ -358,6 +364,7 @@ export interface ApprovedList {
 
 export interface EvictedList {
   id: number;
+  urs_id: number;
   name: string;
   department: string;
   position: string;

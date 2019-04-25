@@ -145,11 +145,13 @@ export class SignupFindComponent implements OnInit {
                             name: d.department_name,
                             role: [],
                           };
+                          console.log(d.id);
                           this.user.listAllRoleOfDepartment(d.id).subscribe(
                             roleData => {
-                              console.log('got to roleData');
+                              // console.log('got to roleData');
                               console.log(roleData);
                               for ( const r of roleData.results ) {
+                                console.log(r.id);
                                 console.log(r);
                                 newDept.role.push({
                                   value: String(r.id),

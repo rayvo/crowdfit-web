@@ -305,9 +305,11 @@ export class UserService {
   // reason: VARCHAR(1024)/NULL
   refulesRequestRoleStatus( personId, reason ): Observable<any> {
     const body = {
-      reason: reason
+      reason: '...'
     };
-    return this.http.post( this.serverUrl + 'api/v2/refuse_request_role_status/' + personId + '/', body, httpOptions );
+    console.log('here');
+    console.log(personId);
+    return this.http.put( this.serverUrl + '/api/v2/refuse_request_role_status/' + personId + '/' , body, httpOptions );
   }
 
   // POST /api/v2/invite_user
