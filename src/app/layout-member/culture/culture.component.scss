@@ -1,14 +1,18 @@
-mat-card{border-radius:0;
-    padding: 10px;
-    background-color: #eee;
+mat-card {
+  border-radius: 0;
+  padding: 10px;
+  background-color: #eee;
 }
-mat-card-title{
-    font-size: 0.8em;
-color: #444;
-vertical-align:middle;
-display: inline-flex;
-
+mat-card-title {
+  font-size: 1.4em;
+  color: #444;
+  vertical-align: middle;
+  display: inline-flex;
 }
-.s{margin-bottom: 4rem;}
+.s {
+  margin-bottom: 4rem;
+}
 
-.card-body{background-color: white;}
+.card-body {
+  background-color: white;
+}

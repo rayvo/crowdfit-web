@@ -1,21 +1,25 @@
-.small-head{border-radius:0;
-    padding: 10px;
-    background-color: #eee;
+.small-head {
+  border-radius: 0;
+  padding: 10px;
+  background-color: #eee;
 }
-mat-card-title{
-    font-size: 0.8em;
-color: #444;
-vertical-align:middle;
-display: inline-flex;
-
+mat-card-title {
+  font-size: 1.4em;
+  color: #444;
+  vertical-align: middle;
+  display: inline-flex;
 }
 
-.example-card{
-    background-color: white;
-margin: 1rem;}
+.example-card {
+  background-color: white;
+  margin: 1rem;
+}
 
+.example-card {
+  border-radius: 0;
+  padding: 1rem;
+}
 
-.example-card{border-radius:0;
-padding: 1rem; }
-
-.main-container{background-color: #eee;}
+.main-container {
+  background-color: #eee;
+}

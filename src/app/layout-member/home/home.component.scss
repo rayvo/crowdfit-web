@@ -1,66 +1,62 @@
+nav {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background-color: white;
 
-nav{
-    max-width:100%; 
-    height: auto;
-margin: 0 auto;
-background-color: white;
-
-
-
-
-
-.list-group{
+  .list-group {
     width: 100%;
-    display:inline-block;
-padding: 0.4em;
-margin-top:-1em;
-    button{
-        border-radius: 0;
-   padding: 0;
-        width:25%;
-        height: 6rem;
-      
-        text-align: center;
-        line-height: 1;
-        vertical-align: top;
-        color: #333;
-        background-color: #eee;
-       border: 2px solid white;
-        
-       
-        
+    display: inline-block;
+    padding: 0.4em;
+    margin-top: -1em;
+    button {
+      border-radius: 0;
+      padding: 0;
+      width: 25%;
+      height: 6rem;
+
+      text-align: center;
+      line-height: 1;
+      vertical-align: top;
+      color: #333;
+      background-color: #eee;
+      border: 2px solid white;
     }
-    button:hover{background-color:orange;
-    color: white; }
-
-}
-}
-
-.img{
-    position: relative;
-    background-image: url(/assets/images/slider1.jpg);                                                               
-    height: 40vh;
-    background-size: cover;
+    button:hover {
+      background-color: orange;
+      color: white;
+    }
+  }
 }
 
-.img-cover{
-   position: absolute;
-   height: 100%;
-   width: 100%;
-   background-color: rgba(0, 0, 0, 0.4);                                                                 
-   
+.img {
+  position: relative;
+  background-image: url(/assets/images/slider1.jpg);
+  height: 40vh;
+  background-size: cover;
 }
 
-.img .content{
-     position: absolute;
-    bottom: 0;
-     left:0;
-             padding: 1rem;                                                       
-     font-size:5rem;
-     color: white;
-     z-index: 2;
-     text-align: left;
+.img-cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
-h5{font-size: 2rem;
-    font-family: 'Roboto', sans-serif; }
-h6{color: #ddd;}
+
+.img .content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  font-size: 5rem;
+  color: white;
+  z-index: 2;
+  text-align: left;
+}
+h5 {
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+h6 {
+  color: #ddd;
+}
