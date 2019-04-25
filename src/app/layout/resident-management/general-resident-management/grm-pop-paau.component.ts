@@ -45,27 +45,44 @@ export class GRMPopPaauComponent {
     approveNewUser() {
         this.user.createUserWithToken( this.newUser ).subscribe(
             data => {
+                console.log('data1');
+                console.log(data);
                 const myUserId = data.user_id;
-                this.user.userRegister(
+                this.user.userRegisterByCEO(
+                    data.token,
                     Number(localStorage.getItem('aptId')),
                     this.newUser.value.dong,
                     this.newUser.value.ho,
                     null // fileId
                 ).subscribe(
                     data2 => {
+                        console.log('data2');
+                        console.log(data2);
                         this.user.approveUser( myUserId ).subscribe(
                             data3 => {
+                                console.log('data3');
+                                console.log(data3);
                                 const toReturn = {
                                     id: myUserId,
                                     name: this.newUser.value.name,
                                     donghosu: this.newUser.value.dong + '동 ' + this.newUser.value.ho + '호',
                                     phone: this.newUser.value.phone
                                 };
-                                return toReturn;
+                                this.dialogRef.close( toReturn );
 
-                            }, error3 => {console.log(error3); });
-                    }, error2 => {console.log(error2); });
-            }, error => { console.log(error); });
+                            }, error3 => {
+                                console.log(error3);
+                                this.dialogRef.close();
+                            });
+                    }, error2 => {
+                        console.log(error2);
+                        this.dialogRef.close();
+                    });
+            }, error => {
+                console.log(error);
+                this.dialogRef.close();
+            }
+        );
     }
 
 

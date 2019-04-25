@@ -231,7 +231,6 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     dialogRef.afterClosed().subscribe(
       result => {
         if ( result !== '' ) {
-          this.updateUserStatus(result, 3);
           this.reloadAllData();
         } // else canceled so do nothing
       },

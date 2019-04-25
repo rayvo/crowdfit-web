@@ -5,12 +5,12 @@ import { StaffManagementComponent } from './staff-management.component';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 export interface Role {
-    id: number;
+    value: string;
     viewValue: string;
 }
 
 export interface Dept {
-    id: number;
+    value: string;
     name: string;
     role: Role[];
 }
@@ -24,7 +24,7 @@ export interface Dept {
 export class SMPopPaasComponent {
 
     newUser: FormGroup;
-    deptroleGroups: Dept[];
+    deptroleGroups: Dept[] = [];
 
     constructor(
         private dialogRef: MatDialogRef<StaffManagementComponent>,
@@ -55,35 +55,36 @@ export class SMPopPaasComponent {
     setDeptRoleList() {
         // TODO
         // Call getDeptRoleByApt in the db
-        // For now temp and fake data
-        this.deptroleGroups = [
-            {
-            id: 1,
-            name: 'Management',
-            role: [
-                {id: 1, viewValue: 'General'},
-                {id: 2, viewValue: 'English Affairs'},
-                {id: 3, viewValue: 'Quality Assurance'}
-            ]
-            },
-            {
-            id: 2,
-            name: 'Finance',
-            role: [
-                {id: 4, viewValue: 'Wages' },
-                {id: 5, viewValue: 'Budget'},
-            ]
-            },
-            {
-            id: 3,
-            name: 'Human Resource',
-            role: [
-                {id: 6, viewValue: 'Head' },
-                {id: 7, viewValue: 'Emergency Affairs'},
-                {id: 8, viewValue: 'Rule Enforcement'},
-            ]
-            },
-        ];
+        this.deptRoleGroups = [];
+        this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
+            deptData => { // Set DeptRole list
+              console.log('got to deptData');
+              console.log(deptData);
+              for ( const d of deptData.results ) {
+                console.log(d);
+                const newDept = {
+                  value: String(d.id),
+                  name: d.department_name,
+                  role: [],
+                };
+                this.user.listAllRoleOfDepartment(d.id).subscribe(
+                  roleData => {
+                    console.log('got to roleData');
+                    console.log(roleData);
+                    for ( const r of roleData.results ) {
+                      console.log(r);
+                      newDept.role.push({
+                        value: String(r.id),
+                        viewValue: r.role
+                      });
+                    }
+                    this.deptroleGroups.push(newDept);
+                  }, error => { console.log(error); }
+                );
+              }
+            }, error => { console.log(error); }
+          );
+
     }
 
     setDeptRoleData( deptId, roleId ) {
@@ -96,7 +97,7 @@ export class SMPopPaasComponent {
 
     getDeptName( deptId ) {
         for ( const d of this.deptroleGroups ) {
-            if ( d.id === deptId ) {
+            if ( d.value === deptId ) {
                 return d.name;
             }
         }
@@ -106,7 +107,7 @@ export class SMPopPaasComponent {
     getRoleName( roleId ) {
         for ( const d of this.deptroleGroups ) {
             for ( const r of d.role ) {
-                if ( r.id === roleId ) {
+                if ( r.value === roleId ) {
                     return r.viewValue;
                 }
             }
@@ -117,16 +118,23 @@ export class SMPopPaasComponent {
     approveNewStaff() {
         this.user.createUserWithToken( this.newUser ).subscribe(
             data => {
+                console.log('data1');
+                console.log(data);
                 const myUserId = data.user_id;
-                this.user.staffRegister(
+                this.user.staffRegisterByCEO(
+                    data.token,
                     Number(localStorage.getItem('aptId')),
                     this.newUser.value.deptId,
                     this.newUser.value.roleId,
                     null // TODO fileId
                 ).subscribe(
                     data2 => {
-                        this.user.approveUser( myUserId ).subscribe(
+                        console.log('data2');
+                        console.log(data2);
+                        this.user.approveStaff( myUserId ).subscribe(
                             data3 => {
+                                console.log('data3');
+                                console.log(data3);
                                 const toReturn = {
                                     id: myUserId,
                                     name: this.newUser.value.name,
@@ -134,10 +142,20 @@ export class SMPopPaasComponent {
                                     role: this.getRoleName(this.newUser.value.roleId),
                                     phone: this.newUser.value.phone
                                 };
-                                return toReturn;
-                            }, error3 => {console.log(error3); });
-                    }, error2 => {console.log(error2); });
-            }, error => { console.log(error); });
+                                this.dialogRef.close( toReturn );
+                            }, error3 => {
+                                console.log(error3);
+                                this.dialogRef.close();
+                            });
+                    }, error2 => {
+                        console.log(error2);
+                        this.dialogRef.close();
+                    });
+            }, error => {
+                console.log(error);
+                this.dialogRef.close();
+            }
+        );
     }
 
 

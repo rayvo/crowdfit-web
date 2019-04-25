@@ -99,6 +99,23 @@ export class UserService {
     console.log(localStorage.getItem('token'));
     return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, httpOptions);
   }
+  userRegisterByCEO( userToken, aptId, myDong, myHouseNum, fileId ): Observable<any> {
+    const body = {
+      apt_id: Number(aptId),
+      address_dong: myDong,
+      house_number: myHouseNum,
+      document_file_id: fileId,
+    };
+    console.log(body);
+    console.log(localStorage.getItem('token'));
+    const myHttpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Token ' + userToken,
+        'Content-Type': 'application/json'
+      })
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/register_user/', body, myHttpOptions);
+  }
 
   // POST /api/v2/register_staff/
   // apt_id: INT
@@ -114,7 +131,21 @@ export class UserService {
     };
     return  this.http.post(this.serverUrl + '/api/v2/register_staff/', body, httpOptions);
   }
-
+  staffRegisterByCEO( userToken, aptId, deptId, roleId, fileId ): Observable<any> {
+    const body = {
+      apt_id: aptId,
+      department_id: deptId,
+      role_id: roleId,
+      document_file_id: fileId,
+    };
+    const myHttpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Token ' + userToken,
+        'Content-Type': 'application/json'
+      })
+    };
+    return  this.http.post(this.serverUrl + '/api/v2/register_staff/', body, myHttpOptions);
+  }
 
   // POST /api/v2/register_ceo/
   // document_id: INT/NULL
@@ -251,6 +282,7 @@ export class UserService {
   // user_id: INT
   // staff_id: INT
   approveStaff( userId ): Observable<any> {
+    console.log('ApproveStaff Reached with userId: ' + userId);
     const body = {
       user_id: userId,
       staff_id: Number(localStorage.getItem('id'))

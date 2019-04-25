@@ -14,7 +14,7 @@
   ><br />
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-lock input-group-text"></mat-icon>-->
-    <input matInput formControlName="password" placeholder="입주민 비밀번호" type="password" class="form-control" />
+    <input matInput formControlName="password" placeholder="입주민 비밀번호" type="text" class="form-control" />
     <mat-error *ngIf="(password.dirty || password.touched) && password.invalid">{{ getPasswordErrorMessage() }}</mat-error> </mat-form-field
   ><br />
   <mat-form-field>
@@ -37,7 +37,7 @@
 
   <mat-dialog-actions align="end">
     <div class="form-group input-group">
-      <button mat-dialog-close type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" style="max-width: 60%">
+      <button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" style="max-width: 60%">
         가입하기
       </button>
       <button mat-button mat-dialog-close class="btn btn-block" style="max-width: 40%">취소</button>

@@ -260,7 +260,7 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
     dialogRef.afterClosed().subscribe(
       result => {
         if ( result !== '' ) {
-          this.updateStaffStatus(result, 3);
+          // this.updateStaffStatus(result, 3);
           this.reloadAllData();
         } // else canceled so do nothing
       },
