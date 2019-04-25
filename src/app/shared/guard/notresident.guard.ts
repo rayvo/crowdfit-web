@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
-
 import { CanActivate, Router } from '@angular/router/';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RoleGuard implements CanActivate {
-
+export class NotresidentGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate() {
 
-    if (1) {// user.Role === next.data.role) {
+    if ( localStorage.getItem('role') !== '16' ) {
       return true;
     }
-
-    // navigate to not found page
-    this.router.navigate(['/*']);
+    this.router.navigate(['/m/home']);
     return false;
   }
 }

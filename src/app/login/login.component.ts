@@ -46,9 +46,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', data.token);
         localStorage.setItem('id', String(data.user_id));
         console.log(data);
+        console.log(JSON.stringify(data.roles));
         localStorage.setItem('fullname', data.fullname );
         localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
-        localStorage.setItem('listurs', JSON.stringify(data.userrolestatus));
+        localStorage.setItem('roles', JSON.stringify(data.roles));
+        if ( data.roles !== undefined ) {
+          localStorage.setItem('role', data.roles[0].role_id);
+        }
         localStorage.setItem('aptId', String(data.apartment_id));
         localStorage.setItem('aptName', String(data.apartment_name));
         // TODO

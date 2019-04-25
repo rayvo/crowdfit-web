@@ -1,15 +1,15 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { RoleGuard } from './role.guard';
+import { ResidentGuard } from './resident.guard';
 
 describe('RoleGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [RoleGuard]
+      providers: [ResidentGuard]
     });
   });
 
-  it('should ...', inject([RoleGuard], (guard: RoleGuard) => {
+  it('should ...', inject([ResidentGuard], (guard: ResidentGuard) => {
     expect(guard).toBeTruthy();
   }));
 });

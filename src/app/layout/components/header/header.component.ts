@@ -51,6 +51,7 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         localStorage.clear();
+        this.router.navigate(['/login']);
     }
 
     changeLang(language: string) {
