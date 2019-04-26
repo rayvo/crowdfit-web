@@ -13,6 +13,7 @@ import { GRMPopInviteComponent } from './grm-pop-invite.component';
 })
 export class GeneralResidentManagementComponent implements OnInit, AfterViewInit {
 
+  interval: any;
   /*
    * /api/status/
    * if ( id == 1 ) { applying }
@@ -76,7 +77,19 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
       data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
     };
 
+    this.interval = setInterval(() => {
+      this.userWaitList = [];
+      this.userInvitedList = [];
+      this.userApprovedList = [];
+      this.userEvictedList = [];
+      this.setUserData(2);
+      this.setUserData(3);
+      this.setUserData(5);
+    }, 20000 );
 
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 
   ngAfterViewInit(): void {

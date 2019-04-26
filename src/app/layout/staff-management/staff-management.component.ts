@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, QueryList, ViewChildren, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, QueryList, ViewChildren, AfterContentInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatTableDataSource, MatPaginator, MatDialogConfig } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { SMPopupComponent } from './sm-popup.component';
 import { SMPopFileComponent } from './sm-pop-file.component';
 import { SMPopPaasComponent } from './sm-pop-paas.component';
 import { SMPopInviteComponent } from './sm-pop-invite.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-staff-management',
@@ -12,7 +13,10 @@ import { SMPopInviteComponent } from './sm-pop-invite.component';
   styleUrls: ['./staff-management.component.css'],
   providers: [ UserService ]
 })
-export class StaffManagementComponent implements OnInit, AfterContentInit, AfterViewInit {
+export class StaffManagementComponent implements OnInit,  AfterViewInit, OnDestroy {
+
+
+  interval: any;
 
   // TODO Below is fake data. remove when done
   // dataSource1 = new MatTableDataSource<WaitList>(WAIT_DATA);
@@ -90,12 +94,19 @@ export class StaffManagementComponent implements OnInit, AfterContentInit, After
       data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
     };
 
+    this.interval = setInterval(() => {
+      this.staffWaitList = [];
+      this.staffInvitedList = [];
+      this.staffApprovedList = [];
+      this.staffEvictedList = [];
+      this.setStaffData(2);
+      this.setStaffData(3);
+      this.setStaffData(5);
+    }, 20000 );
 
   }
-  ngAfterContentInit(): void {
-
-
-
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 
   ngAfterViewInit(): void {

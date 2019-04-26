@@ -11,8 +11,12 @@ export class NoAuthGuard implements CanActivate {
     if (localStorage.getItem('isLoggedin') == null) {
       return true;
     }
-
-    this.router.navigate(['/s/menu']);
-    return false;
+    if ( localStorage.getItem('role') === '16' ) {
+      this.router.navigate(['/m/home']);
+      return false;
+    } else {
+      this.router.navigate(['/s/menu']);
+      return false;
+    }
   }
 }
