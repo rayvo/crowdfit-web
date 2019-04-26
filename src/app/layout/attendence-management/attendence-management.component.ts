@@ -5,7 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 export interface Attendance {
   value: number;
   viewValue: string;
-}
+}  
 
 export interface Class {
   value: number;
