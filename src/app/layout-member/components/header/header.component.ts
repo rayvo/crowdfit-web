@@ -51,8 +51,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLoggedout() {
-      localStorage.removeItem('isLoggedin');
-      localStorage.removeItem('token');
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
   changeLang(language: string) {

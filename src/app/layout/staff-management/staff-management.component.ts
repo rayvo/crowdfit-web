@@ -141,8 +141,8 @@ export class StaffManagementComponent implements OnInit,  AfterViewInit, OnDestr
               id: element.user_id,
               urs_id: element.list_dep_role_status[0].id,
               name: element.fullname,
-              department: element.list_dep_role_status[0].department_id,
-              position: element.list_dep_role_status[0].role_id,
+              department: element.list_dep_role_status[0].department_name,
+              position: element.list_dep_role_status[0].role_name,
               phone: element.phone
             });
           });
@@ -154,8 +154,8 @@ export class StaffManagementComponent implements OnInit,  AfterViewInit, OnDestr
               id: element.user_id,
               urs_id: element.list_dep_role_status[0].id,
               name: element.fullname,
-              department: element.list_dep_role_status[0].department_id,
-              position: element.list_dep_role_status[0].role_id,
+              department: element.list_dep_role_status[0].department_name,
+              position: element.list_dep_role_status[0].role_name,
               phone: element.phone,
               approvedBy: element.staff,
               approvedDate: new Date(Date.parse(element.last_update)),
@@ -170,8 +170,8 @@ export class StaffManagementComponent implements OnInit,  AfterViewInit, OnDestr
               id: element.user_id,
               urs_id: element.list_dep_role_status[0].id,
               name: element.fullname,
-              department: element.list_dep_role_status[0].department_id,
-              position: element.list_dep_role_status[0].role_id,
+              department: element.list_dep_role_status[0].department_name,
+              position: element.list_dep_role_status[0].role_name,
               phone: element.phone,
               evictedDate: new Date(Date.parse(element.last_update)),
               reason: element.reason
