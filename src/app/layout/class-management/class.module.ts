@@ -14,7 +14,8 @@ import {
   MatInputModule,
   MatTableModule,
   MatIconModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatCardModule
 } from '@angular/material';
 
 
@@ -30,7 +31,8 @@ import {
     MatInputModule,
     MatTableModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
   ],
   declarations: [
       ClassManagementComponent,

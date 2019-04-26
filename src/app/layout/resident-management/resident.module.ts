@@ -18,7 +18,8 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatPaginatorModule,
-  MatInputModule
+  MatInputModule,
+  MatCardModule
 } from '@angular/material';
 import { GRMPopInviteComponent } from './general-resident-management/grm-pop-invite.component';
 import { CMMPopPaamComponent } from './community-member-management/cmm-pop-paam.component';
@@ -39,6 +40,7 @@ import { CMMPopPaamComponent } from './community-member-management/cmm-pop-paam.
     MatIconModule,
     MatPaginatorModule,
     MatInputModule,
+    MatCardModule
   ],
   declarations: [
       CommunityMemberManagementComponent,

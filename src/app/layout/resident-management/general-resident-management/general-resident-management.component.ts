@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatPaginator, MatTableDataSource, MatDialogConfig } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { GRMPopupComponent } from './grm-popup.component';
@@ -11,7 +11,7 @@ import { GRMPopInviteComponent } from './grm-pop-invite.component';
   styleUrls: ['./general-resident-management.component.css'],
   providers: [UserService]
 })
-export class GeneralResidentManagementComponent implements OnInit, AfterViewInit {
+export class GeneralResidentManagementComponent implements OnInit, AfterViewInit, OnDestroy {
 
   interval: any;
   /*

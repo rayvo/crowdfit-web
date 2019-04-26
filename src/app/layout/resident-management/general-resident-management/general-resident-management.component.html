@@ -19,8 +19,10 @@
 
 
   <br />
+  <mat-card class="table-title">
   <mat-label>승인대기 입주민</mat-label>
   <button mat-button (click)="personallyApproveAUser()">입주민 직접 승인 해주기</button>
+  </mat-card>
   <div class="mat-elevation-z8">
     <!-- WAIT LIST TABLE -->
     <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
@@ -95,7 +97,9 @@
 -->
 
   <br /><br />
+  <mat-card class="table-title">
   <mat-label> 승인된 입주민 </mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <!-- APPROVED LIST TABLE -->
     <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
@@ -129,7 +133,8 @@
       <ng-container matColumnDef="out">
         <th mat-header-cell *matHeaderCellDef>퇴거</th>
         <td mat-cell *matCellDef="let person">
-          <button mat-raised-button (click)="openDialog(person, 'MOVE OUT', 5)">퇴거</button>
+          <mat-icon style="cursor:pointer" (click)="openDialog(person, 'MOVE OUT', 5)">
+            clear</mat-icon>
         </td>
       </ng-container>
 

@@ -52,8 +52,10 @@
   </div>-->
 
   <br />
+  <mat-card class="table-title">
   <mat-label style="margin-right: 10px">유효 승인멤버</mat-label>
   <button mat-button (click)="personallyApproveAMember()" class="btn btn-orange">맴버 직접 승인 해주기</button>
+  </mat-card>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -87,7 +89,9 @@
   </div>
 
   <br />
+  <mat-card class="table-title">
   <mat-label>만료예정 멤버</mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -113,7 +117,9 @@
   </div>
   
   <br />
+  <mat-card class="table-title">
   <mat-label>만료회원</mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
       <ng-container matColumnDef="name">

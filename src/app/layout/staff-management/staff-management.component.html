@@ -18,8 +18,10 @@
 
 
   <br>
+  <mat-card class="table-title">
   <mat-label> 승인대기 직원  </mat-label>
   <button mat-flat-button color="gray" (click)="personallyApproveAStaff()">직원 직접 승인 해주기</button>
+  </mat-card>
   <div class="mat-elevation-z8">
     <!-- WAIT LIST TABLE -->
     <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
@@ -116,7 +118,9 @@
 
   
   <br><br>
+  <mat-card class="table-title">
   <mat-label> 승인된 직원  </mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <!-- APPROVED LIST TABLE -->
     <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
@@ -181,7 +185,9 @@
 
   
   <br><br>
+  <mat-card class="table-title">
   <mat-label> 퇴사된 직원  </mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <!-- EVICTED LIST TABLE -->
     <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
