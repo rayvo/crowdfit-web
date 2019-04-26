@@ -96,6 +96,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     // Add 'implements AfterViewInit' to the class.
     this.dataSource1.paginator = this.paginator.toArray()[0];
+    // this.paginator.toArray()[0].fi
     this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource3.paginator = this.paginator.toArray()[2];
     this.dataSource4.paginator = this.paginator.toArray()[3];
