@@ -7,7 +7,7 @@ export interface Attendance {
   viewValue: string;
 }  
 
-export interface Class {
+export interface Class { 
   value: number;
   viewValue: string;
 }

@@ -17,7 +17,10 @@
   </div>
 
   <br />
-  <mat-label>레슨신청/취소 멤버</mat-label>
+  <mat-card class="table-title">
+    <mat-label>레슨신청/취소 멤버</mat-label>
+  </mat-card>
+
   <!--
   <button mat-button (click)="personallyApproveAUser()">입주민 직접 승인 해주기</button>
   -->
@@ -76,9 +79,10 @@
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
   </div>
 
-
   <br />
-  <mat-label>레슨승인 유효 멤버</mat-label>
+  <mat-card class="table-title">
+    <mat-label>레슨승인 유효 멤버</mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
       <!-- APPROVED LIST TABLE -->
@@ -123,7 +127,9 @@
   </div>
 
   <br />
-  <mat-label>만료예정 멤버</mat-label>
+  <mat-card class="table-title">
+    <mat-label>만료예정 멤버</mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
       <!-- ALMOST END LIST TABLE -->
@@ -167,9 +173,10 @@
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
   </div>
 
-
   <br />
-  <mat-label>레슨만료회원 멤버</mat-label>
+  <mat-card class="table-title">
+    <mat-label>레슨만료회원 멤버</mat-label>
+  </mat-card>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
       <!-- WAIT LIST TABLE -->
@@ -212,10 +219,4 @@
 
     <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
   </div>
-
-
-
-
-
-
 </div>
