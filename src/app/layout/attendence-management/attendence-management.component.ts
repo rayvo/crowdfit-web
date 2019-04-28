@@ -5,9 +5,9 @@ import { UserService } from 'src/app/services/user.service';
 export interface Attendance {
   value: number;
   viewValue: string;
-}  
+}
 
-export interface Class { 
+export interface Class {
   value: number;
   viewValue: string;
 }
@@ -61,7 +61,7 @@ export class AttendenceManagementComponent implements OnInit {
   cols = [0, 1, 2, 3, 4, ];
   rows = [0, 5, 10, 15, 20, ];
 
-
+  interval: any;
 
 
   // TODO change from fake data to real data
@@ -118,7 +118,7 @@ export class AttendenceManagementComponent implements OnInit {
     );
   }
 
-  // TODO take an int (predetermined) and filter -> remake data -> reload data
+
   filterAndReloadTable( a, c ) {
     this.selectedA = a;
     this.selectedC = c;

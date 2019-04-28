@@ -34,7 +34,6 @@ export class UserService {
   // password: TEXT,
   // phone: TEXT
   createUser(userData): Observable<any> {
-    // TODO check 'fullname' or 'username'
     const body = {
       fullname: userData.value.username,
       email: userData.value.email,
@@ -50,7 +49,6 @@ export class UserService {
   // password: TEXT,
   // phone: TEXT
   createUserWithToken(userData): Observable<any> {
-    // TODO check 'fullname' or 'username'
     const body = {
       fullname: userData.value.username,
       email: userData.value.email,
