@@ -167,20 +167,46 @@ export class SignupComponent implements OnInit {
 
             this.user.createUser(this.newUser).subscribe(
                 data => {
-
+                    console.log('before');
+                    console.log(data);
                     localStorage.setItem('isLoggedin', 'true');
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('id', String(data.user_id));
                     localStorage.setItem('fullname', data.fullname );
                     localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
-                    localStorage.setItem('roles', JSON.stringify(data.roles));
-                    if ( data.roles !== undefined ) {
-                      localStorage.setItem('role', data.roles[0].role_id);
-                    }
+                    localStorage.setItem('roles', JSON.stringify(data.userrolestatus));
+                    localStorage.setItem('role', '0');
                     localStorage.setItem('aptId', String(data.apartment_id));
                     localStorage.setItem('aptName', String(data.apartment_name));
-                    console.log(data);
                     this.router.navigate(['/signup/apply']);
+                    //         this.router.navigate(['/signup/apply']);
+                    // const existingUser = {
+                    //     email: this.newUser.get('email'),
+                    //     password: this.newUser.get('password')
+                    // };
+                    // this.user.loginUser(existingUser).subscribe(
+                    //     data2 => {
+                    //         localStorage.setItem('isLoggedin', 'true');
+                    //         localStorage.setItem('token', data.token);
+                    //         localStorage.setItem('id', String(data.user_id));
+                    //         localStorage.setItem('fullname', data.fullname );
+                    //         localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
+                    //         localStorage.setItem('roles', JSON.stringify(data.roles));
+                    //         if ( data.roles.length !== 0 ) {
+                    //             localStorage.setItem('role', data.roles[0].role_id);
+                    //         } else {
+                    //             localStorage.setItem('role', '0');
+                    //         }
+                    //         localStorage.setItem('aptId', String(data.apartment_id));
+                    //         localStorage.setItem('aptName', String(data.apartment_name));
+                    //         this.router.navigate(['/signup/apply']);
+                    //     },
+                    //     error => {
+                    //         console.log(error);
+                    //     }
+                    // );
+                    // console.log('after');
+                    // console.log(data);
                 },
                 error => {
                     console.log(error);

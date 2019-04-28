@@ -85,7 +85,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
       this.setUserData(2);
       this.setUserData(3);
       this.setUserData(5);
-    }, 20000 );
+    }, (5 * 60 * 1000) );
 
   }
   ngOnDestroy(): void {
@@ -100,6 +100,7 @@ export class GeneralResidentManagementComponent implements OnInit, AfterViewInit
     this.dataSource2.paginator = this.paginator.toArray()[1];
     this.dataSource3.paginator = this.paginator.toArray()[2];
     this.dataSource4.paginator = this.paginator.toArray()[3];
+    // this.dataSource1.paginator.
   }
 
   // Only search names and numbers
