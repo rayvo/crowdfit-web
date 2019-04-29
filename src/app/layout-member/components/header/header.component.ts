@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
   public pushRightClass: string;
   name: string;
+  isStaff = localStorage.getItem('role') === '16';
 
   constructor(private translate: TranslateService, public router: Router) {
 
@@ -62,4 +63,9 @@ export class HeaderComponent implements OnInit {
   getLS(key) {
       return localStorage.getItem(key);
   }
+
+  toStaffHome() {
+    this.router.navigate(['/s/menu']);
+  }
+
 }
