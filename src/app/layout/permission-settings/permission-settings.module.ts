@@ -18,6 +18,7 @@ import { PermissionStaffManagementComponent } from './permission-staff-managemen
 import { PermissionStoreManagementComponent } from './permission-store-management/permission-store-management.component';
 import { PermissionMenuManagementComponent } from './permission-menu-management/permission-menu-management.component';
 import { MatCheckboxModule, MatFormFieldModule, MatTableModule, MatInputModule } from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -34,7 +35,8 @@ import { UserService } from 'src/app/services/user.service';
     MatCheckboxModule,
     MatFormFieldModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   declarations: [
     PermissionSettingsComponent,

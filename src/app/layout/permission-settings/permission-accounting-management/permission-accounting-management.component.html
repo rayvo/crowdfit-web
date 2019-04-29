@@ -38,7 +38,7 @@
     >
   </div>
   <div class="row">
-    <div class="col-sm rounded mx-auto;">
+ <mat-card>
       <h3 class="border-bottom ">공지사항</h3>
 
       <table class="table ">
@@ -167,8 +167,8 @@
           </td>
         </tbody>
       </table>
-    </div>
-    <div class="col-sm rounded mx-auto;">
+    </mat-card>
+    <mat-card>
       <h3 class="border-bottom ">토크박스</h3>
 
       <table class="table ">
@@ -297,8 +297,9 @@
           </td>
         </tbody>
       </table>
-    </div>
-    <div class="col-sm rounded mx-auto;">
+   </mat-card>
+   <mat-card>
+     
       <h3 class="border-bottom ">아나바다</h3>
 
       <table class="table ">
@@ -427,58 +428,6 @@
           </td>
         </tbody>
       </table>
-    </div>
+</mat-card>
   </div>
 </div>
-
-<!--
-<div class="container">
-  <div class="border-bottom">
-    <h4>권한설정</h4>
-  </div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">권한설정</li>
-      <li class="breadcrumb-item active" aria-current="page">회계관리</li>
-    </ol>
-  </nav>
-  <div class="btn-container">
-    <a routerLink="/s/settings/menu-setting"><button type="button" class="btn btn-secondary" style=" margin-right:10px;">메뉴관리</button></a>
-    <a routerLink="/s/settings/resident-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">입주민관리</button></a>
-    <a routerLink="/s/settings/staff-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">직원관리</button></a>
-    <a routerLink="/s/settings/account-setting"><button type="button" class="btn btn-orange" style=" margin-right:10px;">회계관리</button></a>
-    <a routerLink="/s/settings/store-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">스토어관리</button></a>
-    <a routerLink="/s/settings/locker-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">락커좌석관리</button></a>
-    <a routerLink="/s/settings/class-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">수업관리</button></a>
-    <a routerLink="/s/settings/attendence-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">출석관리</button></a>
-    <a routerLink="/s/settings/service-setting"
-      ><button type="button" class="btn btn-secondary" style=" margin-right:10px;">생활지원관리</button></a>
-  </div>
-  TODO Change the values below a bit when API comes out
-  <form (ngSubmit)="save()">
-      TODO double check index number
-    <label *ngFor="let f of myRFP">
-      <h3 class="border-bottom ">{{f.name}}</h3>
-      <label *ngFor="let p of f.results">
-        {{p.name}}
-        <label *ngFor="let r of p.roles">
-           TODO change feature id once it's permanent 
-          <input type="checkbox" [checked]="r.checked" (click)="clickedBox( r.id , f.id , p.id, !(r.checked) )" />
-          {{r.name}}
-        </label>
-      </label>
-      <div colspan="5" style="text-align: center;">
-        <button type="submit" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">설정적용</button>
-        <button type="button" class="btn btn-secondary" style="width: 100px; margin: 40px 5px;">취소</button>
-      </div>
-    </label>
-  </form>
-
-</div>
--->
