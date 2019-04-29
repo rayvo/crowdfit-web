@@ -63,5 +63,9 @@ export class HeaderComponent implements OnInit {
         return localStorage.getItem(key);
     }
 
+    toUserHome() {
+        this.router.navigate(['/m/home']);
+    }
+
 
 }

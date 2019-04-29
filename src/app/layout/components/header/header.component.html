@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-  <a class="navbar-brand" href="#"> <img src="assets/images/logo_l.png" width="140px"/></a>
+  <a class="navbar-brand" href="/s/menu"> <img src="assets/images/logo_l.png" width="140px"/></a>
   <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
     <!-- <span class="navbar-toggler-icon"></span> -->
     <i class="fa fa-bars text-muted" aria-hidden="true"></i>
@@ -70,6 +70,7 @@
           <a class="dropdown-item" href="javascript:void(0)"> <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }} </a>
           <a class="dropdown-item" href="javascript:void(0)"> <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }} </a>
           <a class="dropdown-item" href="javascript:void(0)"> <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }} </a>
+          <a class="dropdown-item" (click)="toUserHome()"> 사용자 페이지 보기 </a>
           <a class="dropdown-item" (click)="onLoggedout()">
             <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
           </a>
