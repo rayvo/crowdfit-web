@@ -1,8 +1,10 @@
 <div class="login-page">
   
   <div class="container">
-    <mat-card>
-      <span>역할등록</span></mat-card>
+    <mat-card style="text-align: left;">
+      <span>역할등록</span>
+      <button mat-button style="color: orange; border-color: orange; margin-left: 430px" (click)="logout()">로그아웃</button>
+    </mat-card>
     <mat-vertical-stepper [linear]="true" #stepper>
       <mat-step [stepControl]="firstFormGroup" [editable]="false">
         <form [formGroup]="firstFormGroup">
