@@ -27,7 +27,7 @@ export class UserService {
   // Crowdfit Server
   // serverUrl = 'http://192.168.1.6:8000';
 
-  // 덕문's Server
+  // 덕문's Serve'
   serverUrl = 'http://1.243.229.174:8000';
 
   constructor(private http: HttpClient) {}
