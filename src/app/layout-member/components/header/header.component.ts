@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
   public pushRightClass: string;
   name: string;
-  isStaff = localStorage.getItem('role') === '16';
+  isStaff = localStorage.getItem('role') !== '16';
 
   constructor(private translate: TranslateService, public router: Router) {
 
