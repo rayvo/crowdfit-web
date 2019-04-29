@@ -1,11 +1,21 @@
-mat-card {
-  border-radius: 0;
-  padding: 10px;
-  background-color: #eee;
+mat-card{border-radius:0;
+    padding: 10px;
+    background-color: #eee;
 }
-mat-card-title {
-  font-size: 1.4em;
-  color: #444;
-  vertical-align: middle;
-  display: inline-flex;
+mat-card-title{
+    font-size: 0.8em;
+color: #444;
+vertical-align:middle;
+display: inline-flex;
+
 }
+.row{vertical-align: middle;}
+.box{width: 20%;}
+h5{
+    margin-top: 10px;
+    font-size: 0.8rem; text-align: center;}
+audio{height:20px;
+padding: 0;}
+.audio{background-color:#eee;}
+
+.last{margin-bottom:4rem; }
