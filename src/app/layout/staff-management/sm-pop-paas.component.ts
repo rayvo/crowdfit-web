@@ -53,8 +53,6 @@ export class SMPopPaasComponent {
     }
 
     setDeptRoleList() {
-        // TODO
-        // Call getDeptRoleByApt in the db
         this.deptRoleGroups = [];
         this.user.listAllDepartment(localStorage.getItem('aptId')).subscribe(
             deptData => { // Set DeptRole list

@@ -1,8 +1,10 @@
 <div class="login-page">
   
   <div class="container">
-    <mat-card>
-      <span>역할등록</span></mat-card>
+    <mat-card style="text-align: left;">
+      <span>역할등록</span>
+      <button mat-button style="color: orange; border-color: orange; margin-left: 430px" (click)="logout()">로그아웃</button>
+    </mat-card>
     <mat-vertical-stepper [linear]="true" #stepper>
       <mat-step [stepControl]="firstFormGroup" [editable]="false">
         <form [formGroup]="firstFormGroup">
@@ -36,8 +38,6 @@
       <mat-step [stepControl]="secondFormGroup" [editable]="false">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>주소를 검색하세요. </ng-template>
-
-          <!-- TODO This button only shows up when a person has clicked a role -->
 
           <a mat-stroked-button color="primary" class="juso-serch" (click)="openJusoDialog()">
             <mat-icon class="icon">

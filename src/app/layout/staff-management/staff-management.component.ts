@@ -102,7 +102,7 @@ export class StaffManagementComponent implements OnInit,  AfterViewInit, OnDestr
       this.setStaffData(2);
       this.setStaffData(3);
       this.setStaffData(5);
-    }, 20000 );
+    }, (5 * 60 * 1000) );
 
   }
   ngOnDestroy(): void {

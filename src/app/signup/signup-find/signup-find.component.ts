@@ -288,6 +288,13 @@ export class SignupFindComponent implements OnInit {
     } else {
       // TODO What to do when error is caught
     }
-
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+    location.reload();
+  }
+
+
 }

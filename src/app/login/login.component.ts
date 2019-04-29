@@ -50,16 +50,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('fullname', data.fullname );
         localStorage.setItem('listlastFeature', JSON.stringify(data.last_app_features));
         localStorage.setItem('roles', JSON.stringify(data.roles));
-        if ( data.roles !== undefined || data.roles !== [] ) {
+        if ( data.roles.length !== 0 ) {
           localStorage.setItem('role', data.roles[0].role_id);
+        } else {
+          localStorage.setItem('role', '0');
         }
         localStorage.setItem('aptId', String(data.apartment_id));
         localStorage.setItem('aptName', String(data.apartment_name));
-        // TODO
-        // Set proper navigations depending on type of user
+
         if ( localStorage.getItem('role') === '16' ) {
           this.router.navigate(['/m/home']);
           // return false;
+        } else if ( localStorage.getItem('role') === '0' ) {
+          this.router.navigate(['/signup/apply']);
         } else {
           this.router.navigate(['/s/menu']);
           // return false;
