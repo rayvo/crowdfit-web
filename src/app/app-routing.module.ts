@@ -8,6 +8,7 @@ import { NotresidentGuard } from './shared/guard/notresident.guard';
 import { AppliedGuard } from './shared/guard/applied.guard';
 
 const routes: Routes = [
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 's', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] }, // , NotresidentGuard] },
     { path: 'm', loadChildren: './layout-member/layout-member.module#LayoutMemberModule', canActivate: [AuthGuard] }, // , AppliedGuard] },
     { path: 'login', loadChildren: './login/login.module#LoginModule', canActivate: [NoAuthGuard] },
