@@ -21,9 +21,9 @@ export interface AData {
 }
 
 const FAKE_DATA: AData[] = [
-  { name: '손동민', img: 'https://material.angular.io/assets/img/examples/shiba1.jpg' ,
+  { name: '손동민', img: '/assets/images/profile/손동민.jpg' ,
     at: 'QR', class: 'Cycling', status: 'color1'  },
-  { name: '구현식', img: 'https://material.angular.io/assets/img/examples/shiba2.jpg' ,
+  { name: '구현식', img: '/assets/images/profile/구현식.jpg' ,
     at: 'Smart Band', class: 'Pilates', status: 'color2'  },
   { name: '홍예은', img: '/assets/images/profile/홍예은.jpg' ,
     at: 'QR', class: 'Zumba', status: 'color3'  },
