@@ -4,11 +4,16 @@ mat-card {
   background-color: #eee;
 }
 mat-card-title {
-  font-size: 1.4em;
+  font-size: 0.8em;
   color: #444;
   vertical-align: middle;
   display: inline-flex;
-}
+  }
+  nav{text-align: center;
+     margin-left: 35%;}
+
+table{background-color: white;
+  font-size: 0.8rem;  }
 
 .mat-expansion-panel-header {
   background-color: #eee;
