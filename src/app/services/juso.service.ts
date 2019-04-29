@@ -18,7 +18,7 @@ export class JusoService {
 
   constructor( private http: HttpClient, ) { }
 
-  serverUrl = 'http://192.168.1.6:8000';
+  // serverUrl = 'http://192.168.1.6:8000';
 
   // For Haseung's local workspace ip 0.5
   // Non-popup version
