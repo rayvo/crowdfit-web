@@ -22,6 +22,7 @@ import {
   MatCardModule,
   MatPaginatorIntl
 } from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
 import { GRMPopInviteComponent } from './general-resident-management/grm-pop-invite.component';
 import { CMMPopPaamComponent } from './community-member-management/cmm-pop-paam.component';
 
@@ -42,6 +43,7 @@ import { CMMPopPaamComponent } from './community-member-management/cmm-pop-paam.
     MatPaginatorModule,
     MatInputModule,
     MatCardModule,
+    MatButtonModule,
     // MatPaginatorIntl
   ],
   declarations: [

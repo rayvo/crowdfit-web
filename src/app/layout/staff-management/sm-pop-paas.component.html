@@ -1,7 +1,7 @@
 <h4 class="card-title mt-3 text-center">직접 직원을 등록하기</h4>
 <br /><br />
 
-<form role="form" [formGroup]="newUser" (ngSubmit)="approveNewStaff()" >
+<form style="text-align: center;" role="form" [formGroup]="newUser" (ngSubmit)="approveNewStaff()" >
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-user  input-group-text"></mat-icon>-->
     <input matInput formControlName="username" placeholder="직원 이름" type="text" class="form-control "/>
@@ -49,11 +49,11 @@
   <br /><br />
 
   <mat-dialog-actions align="end">
-    <div class="form-group input-group">
-      <button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" style="max-width: 60%">
+    <div class="form-group input-group"style="text-align:center;">
+      <button mat-stroked-button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" style="color:white; width: 40%; height: 2rem; margin: 2.5%;" >
         가입하기
       </button>
-      <button mat-button mat-dialog-close class="btn btn-block" style="max-width: 40%">취소</button>
+      <button mat-stroked-button mat-dialog-close style="width: 40%; height: 2rem; margin:2.5%;">취소</button>
     </div>
   </mat-dialog-actions>
 

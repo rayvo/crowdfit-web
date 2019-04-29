@@ -96,8 +96,8 @@ button.manager {
 
 //!----------material css----------------------------!//
 .mat-elevation-z8
-{box-shadow: 0 0 0 0;
-border: 0.5px solid #ccc;  }
+{box-shadow: 0 0 1px 0 rgba($color:gray, $alpha: 0.4);
+}
 
 .mat-form-field-appearance-outline .mat-form-field-outline-thick
 {color: rgba($color:gray, $alpha: 0.6);}
