@@ -52,18 +52,23 @@
         </mat-form-field>
 
         <!--PHONE NUMBER -->
-        
-        <mat-form-field appearance="outline" class="c">
+        <div class="row" >
+        <div class="c">
+        <mat-form-field appearance="outline" >
           
           <mat-icon matPrefix >smartphone</mat-icon>
           <input matInput formControlName="phone" placeholder="휴대폰 번호" type="text" placeholder="인증번호"
-            style="max-width: 60%; border-radius: 3px;" />
+             />
           <mat-error *ngIf="(phone.dirty || phone.touched) && phone.invalid">{{ getPhoneErrorMessage() }}</mat-error>
 
-          <button (click)="sendVerification()" class="btn btn-primary btn-block"
-          style="max-width: 120px; height:42px; margin-right:-12px; margin-bottom: 5px; color: white;"  >인증번호받기</button>
-    
         </mat-form-field>
+        
+        </div>
+        
+        <button mat-flat-button color="primary" class="p-btn" (click)="sendVerification()" 
+            >인증번호받기</button>
+    </div>
+        
        
 
         <!--PHONE NUMBER VERIFICATION -->
