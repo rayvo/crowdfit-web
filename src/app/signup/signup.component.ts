@@ -149,7 +149,6 @@ export class SignupComponent implements OnInit {
         // GET RID OF console.log WHEN DEPLOYING!
         console.log(this.newUser.get('vNum').value);
         // BELOW WORKS! Commented out to save money
-        /*
         this.phoneV.sendMessage( phon, dest, this.newUser.get('vNum').value ).subscribe(
             data => {
                 console.log(data);
@@ -158,7 +157,6 @@ export class SignupComponent implements OnInit {
                 console.log(error);
             }
         );
-        */
 
     }
 
