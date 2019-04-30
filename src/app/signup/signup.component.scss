@@ -61,3 +61,9 @@ mat-hint{margin-left: 36px;}
 
 *{color:#555;}
 mat-error{color: #f44336; }
+.mat-form-field-appearance-outline .mat-form-field-outline
+{margin-top:12px; height: 44px; 
+    color: rgba($color:gray, $alpha: 1);
+    background-color:rgb(232, 240, 254);
+
+border-radius:6px; }
