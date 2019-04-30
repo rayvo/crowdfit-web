@@ -1,7 +1,7 @@
 <h4 class="card-title mt-3 text-center">직접 입주민을 등록하기</h4>
 <br /><br />
 
-<form role="form" [formGroup]="newUser" (ngSubmit)="approveNewMember()" >
+<form role="form " style="text-align: center;" [formGroup]="newUser" (ngSubmit)="approveNewMember()" >
   <mat-form-field>
     <!--<mat-icon matPrefix class="fa fa-user  input-group-text"></mat-icon>-->
     <input matInput formControlName="fullname" placeholder="멤버 이름" type="text" class="form-control "/>
