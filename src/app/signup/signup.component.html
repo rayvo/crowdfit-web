@@ -9,9 +9,10 @@
         <!-- USERNAME -->
 
 
-        <mat-form-field appearance="standard">
-          <mat-icon matPrefix class="input-group-text" >sentiment_very_satisfied</mat-icon>
-          <input matInput formControlName="username" placeholder="이름" type="text" class="form-control"  />
+        <mat-form-field appearance="outline">
+      
+          <mat-icon matPrefix >sentiment_very_satisfied</mat-icon>
+          <input matInput formControlName="username"type="text" placeholder="이름"     />
           <!--<mat-hint>Atleast 8 chars</mat-hint>-->
           <mat-error *ngIf="(username.dirty || username.touched) && username.invalid">{{ getUsernameErrorMessage() }}</mat-error>
         </mat-form-field>
@@ -19,17 +20,20 @@
 
 
         <!-- EMAIL -->
-        <mat-form-field appearance="standard">
-          <mat-icon matPrefix class="input-group-text">mail</mat-icon>
-          <input matInput formControlName="email" placeholder="이메일 주소" type="text" class="form-control" />
+        <mat-form-field appearance="outline">
+           
+          <mat-icon matPrefix>mail</mat-icon>
+          <input matInput formControlName="email" type="text" placeholder="이메일" />
           <!--<mat-hint>Enter a vaild email</mat-hint>-->
           <mat-error *ngIf="(email.dirty || email.touched) && email.invalid">{{ getEmailErrorMessage() }}</mat-error>
         </mat-form-field>
 
         <!-- PASSWORD -->
-        <mat-form-field appearance="standard">
-          <mat-icon matPrefix class="input-group-text">lock</mat-icon>
-          <input matInput formControlName="password" placeholder="비밀번호" type="password" class="form-control" />
+       
+        <mat-form-field appearance="outline">
+          
+          <mat-icon matPrefix >lock</mat-icon>
+          <input matInput formControlName="password" type="password" placeholder="비밀번호"/>
           <!--<mat-hint>Atleast 8 Chars long</mat-hint>-->
           <mat-error *ngIf="(password.dirty || password.touched) && password.invalid">{{ getPasswordErrorMessage() }}
           </mat-error>
@@ -37,9 +41,10 @@
 
         <!-- PASSWORD CONFIRMATION -->
         <!--[errorStateMatcher]="passwordMatcher"-->
-        <mat-form-field appearance="standard">
-          <mat-icon matPrefix class="input-group-text">lock</mat-icon>
-          <input matInput formControlName="cpassword" placeholder="비밀번호 확인" type="password" class="form-control"
+        <mat-form-field appearance="outline">
+          
+          <mat-icon matPrefix >lock</mat-icon>
+          <input matInput formControlName="cpassword"  type="password" placeholder="비밀번호확인"
             [errorStateMatcher]="passwordMatcher" />
           <!--<mat-hint>Passwords must match</mat-hint>-->
           <mat-error *ngIf="newUser.hasError('passwordsNotEqual')">Passwords do not match</mat-error>
@@ -47,20 +52,24 @@
         </mat-form-field>
 
         <!--PHONE NUMBER -->
-        <mat-form-field appearance="standard">
-          <mat-icon matPrefix class="input-group-text">smartphone</mat-icon>
-          <input matInput formControlName="phone" placeholder="휴대폰 번호" type="text" class="form-control"
+        
+        <mat-form-field appearance="outline" class="c">
+          
+          <mat-icon matPrefix >smartphone</mat-icon>
+          <input matInput formControlName="phone" placeholder="휴대폰 번호" type="text" placeholder="인증번호"
             style="max-width: 60%; border-radius: 3px;" />
           <mat-error *ngIf="(phone.dirty || phone.touched) && phone.invalid">{{ getPhoneErrorMessage() }}</mat-error>
 
-          <a (click)="sendVerification()" class="btn btn-primary btn-block"
-            style="max-width: 38%; margin-left: 10px; margin-bottom: 10px;">인증번호받기</a>
+          <button (click)="sendVerification()" class="btn btn-primary btn-block"
+          style="max-width: 120px; height:42px; margin-right:-12px; margin-bottom: 4px; color: white;"  >인증번호받기</button>
+    
         </mat-form-field>
+       
 
         <!--PHONE NUMBER VERIFICATION -->
-        <mat-form-field appearance="standard">
-          <mat-icon matPrefix class="input-group-text">touch_app</mat-icon>
-          <input matInput name="인증번호입력" formControlName="cVNum" placeholder="인증번호입력" type="text" class="form-control"
+        <mat-form-field appearance="outline" >
+          <mat-icon matPrefix >touch_app</mat-icon>
+          <input matInput name="인증번호입력" formControlName="cVNum" placeholder="인증번호입력" type="text" 
             [errorStateMatcher]="vNumMatcher" />
           <mat-error *ngIf="newUser.hasError('vNumsNotEqual')">Verificaiton Number is incorrect</mat-error>
 
@@ -68,15 +77,15 @@
 
         <br /><br />
         <!-- SUBMIT BUTTON -->
-        <div class="form-group input-group">
-          <button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block">
+        <div class="form-group input-group" style="margin-top: 10px;">
+          <button type="submit" [disabled]="!newUser.valid" class="btn btn-primary btn-block" style="height:40px;">
             가입하기
           </button>
         </div>
         <div class="form-group input-group" style="margin-top: -10px;">
           <a [routerLink]="['/login']">{{ '로그인 페이지로' | translate }}</a>
         </div>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
+       
       </form>
     </div>
   </div>

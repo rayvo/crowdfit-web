@@ -4,12 +4,6 @@
 
 h6{margin-left: 20px;}
 h4{font-weight: 200; color: white;}
-.form-control { 
-    background-color: white;
-    height: 35px;
-  
-    }
-
 
 
 
@@ -53,19 +47,17 @@ mat-form-field{display:inline;
 
 
 
-
-.input-group-text{padding:0.755rem 0.233rem ;
-   
-
  
-   
-}
+
 
 .btn{position: absolute;right: 0; bottom: 0;} 
-mat-icon{width:40px; height:36px; top:2px; }
+mat-icon{width:40px; height:36px; top:2px;
+color:#333; }
 .mat-icon{line-height: 0.5px; width:1.5em;width: 36px;}
 
 
 mat-hint{margin-left: 36px;}
 
-.mat-form-field{background-color: white;}
+
+*{color:#555;}
+mat-error{color: #f44336; }

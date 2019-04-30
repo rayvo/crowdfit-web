@@ -99,10 +99,11 @@ button.manager {
 {box-shadow: 0 0 1px 0 rgba($color:gray, $alpha: 0.4);
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline-thick
-{color: rgba($color:gray, $alpha: 0.6);}
 
 .mat-form-field-appearance-outline .mat-form-field-outline
-{margin-top:19px; height: 34px;}
+{margin-top:12px; height: 44px; 
+    color: rgba($color:gray, $alpha: 1);
+    background-color:rgb(232, 240, 254);
 
+border-radius:6px; }
 

@@ -5,6 +5,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     imports: [
@@ -12,6 +14,8 @@ import { FormsModule } from '@angular/forms';
         TranslateModule,
         LoginRoutingModule,
         FormsModule,
+        MatFormFieldModule,
+        MatIconModule,
     ],
     declarations: [LoginComponent]
 })
