@@ -111,12 +111,7 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
 
               // https://stackoverflow.com/questions/53538894/typescript-find-date-difference-in-dates-hours-minutes
               console.log('Calculating difference in date' );
-              const currentDate = new Date();
-              const transformedCurrentDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd');
-              // console.log('transformedCurrentDate is');
-              // console.log(transformedCurrentDate);
-              // console.log('transformedCurrentDate - item.start_date is' );
-              // console.log(transformedCurrentDate - item.start_date);
+
               const myStartMonth = new Date(item.start_date).getMonth();
               const myCurrentMonth = new Date().getMonth(); // '2019-07-17'
               let monthsSince = 0;

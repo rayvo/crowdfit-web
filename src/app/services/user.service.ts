@@ -356,13 +356,14 @@ export class UserService {
     return this.http.get( this.serverUrl + '/api/v2/list_accepted_user/', httpOptions);
   }
 
-  // TODO
+  // GET /api/v2/list_last_checkin/
   getAttendanceData(): Observable<any> {
-    const params = new HttpParams();
-    params.append('TODO', 'TODO' );
-    return this.http.get( this.serverUrl + '/api/v2/TODO/', {headers: httpOptions.headers, params: params} );
+    return this.http.get( this.serverUrl + '/api/v2/list_last_checkin/' + localStorage.getItem('aptId'), httpOptions );
   }
 
+  getTicketsByUser( userId ): Observable<any> {
+    return this.http.get( this.serverUrl + '/api/v2/list_tickets_by_user/' + userId, httpOptions);
+  }
 
   getTicketsByApt(): Observable<any> {
     return this.http.get(this.serverUrl + '/api/v2/list_tickets_by_apartment/' + localStorage.getItem('aptId') , httpOptions);
