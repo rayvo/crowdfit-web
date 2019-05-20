@@ -218,9 +218,8 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                         name: userData.fullname,
                         at: 'SmartBand',
                         class: myClassType,
-                        status: '1'
+                        status: 'color1'
                       });
-
                       console.log(this.attendenceList);
 
                     } else if ( daysLeft >= 0 ) {
@@ -230,7 +229,7 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                         name: userData.fullname,
                         at: 'SmartBand',
                         class: myClassType,
-                        status: '2'
+                        status: 'color2'
                       });
                     } else {
                       console.log( 'Ticket Ended' );
@@ -239,9 +238,10 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                         name: userData.fullname,
                         at: 'SmartBand',
                         class: myClassType,
-                        status: '3'
+                        status: 'color3'
                       });
                     }
+
 
                   }
                 },
