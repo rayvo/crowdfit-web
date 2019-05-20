@@ -25,7 +25,8 @@ const httpOptions2 = {
 @Injectable()
 export class UserService {
   // Crowdfit Server
-  serverUrl = 'http://192.168.1.6:8000';
+  // serverUrl = 'http://192.168.1.6:8000';
+  serverUrl = 'http://210.105.48.120:8001';
 
   // 덕문's Serve'
   // serverUrl = 'http://1.243.229.174:8000';
@@ -70,6 +71,10 @@ export class UserService {
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
     // When i logout send last feature
     // when routing update localStorage's last feature
+  }
+
+  getUser( userId ): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/users/' + userId, httpOptions );
   }
 
 
@@ -356,6 +361,22 @@ export class UserService {
     const params = new HttpParams();
     params.append('TODO', 'TODO' );
     return this.http.get( this.serverUrl + '/api/v2/TODO/', {headers: httpOptions.headers, params: params} );
+  }
+
+
+  getTicketsByApt(): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/v2/list_tickets_by_apartment/' + localStorage.getItem('aptId') , httpOptions);
+  }
+
+  createAptClassTicket( userId, aptClass, ticketType ): Observable<any> {
+    const body = {
+      user: userId,
+      apartment: localStorage.getItem('aptId'),
+      aptclass: aptClass,
+      ticket_type: ticketType,
+      is_active: true
+    };
+    return this.http.post(this.serverUrl + '/api/aptclassticket/', body, httpOptions);
   }
 
 
@@ -732,4 +753,6 @@ export class UserService {
     };
     return this.http.put(this.serverUrl + '/api/userhousehold/', body, httpOptions);
   }
+
+
 }
