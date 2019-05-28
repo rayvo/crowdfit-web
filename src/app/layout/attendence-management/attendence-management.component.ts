@@ -139,6 +139,7 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
     this.interval = setInterval(() => {
       this.attendenceList = [];
       this.getAttendanceData();
+      this.filterAndReloadTable( this.selectedA, this.selectedC);
     }, (5 * /*60 * */ 1000) );
   }
   ngOnDestroy(): void {
@@ -154,102 +155,109 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
         atData.results.forEach(element => {
           console.log('printing element');
           console.log(element);
-          this.user.getUser( element.user_id ).subscribe(
-            userData => {
-              console.log('printing userData');
-              console.log(userData);
-              this.user.getTicketsByUser( element.user_id).subscribe(
-                ticketListData => {
-                  console.log('printing ticketListData');
-                  console.log(ticketListData);
-                  for (const item of ticketListData.results) {
-                    // https://stackoverflow.com/questions/53538894/typescript-find-date-difference-in-dates-hours-minutes
-                    console.log('Calculating difference in date' );
 
-                    const myStartMonth = new Date(item.start_date).getMonth();
-                    const myCurrentMonth = new Date().getMonth(); // '2019-07-17'
-                    let monthsSince = 0;
-                    const myStartDate = new Date(item.start_date).getDate();
-                    const myCurrentDate = new Date().getDate(); // '2019-07-17')
-                    let daysSince = 0;
-                    const myTicketDays = item.ticket_type * 30;
-                    if ( myCurrentMonth === myStartMonth ) {
-                      // monthsSince = 0;
-                      daysSince = myCurrentDate - myStartDate;
-                    } else if ( myCurrentMonth > myStartMonth ) {
-                      monthsSince = myCurrentMonth - myStartMonth;
-                      daysSince = 30 - myStartDate + myCurrentDate;
-                    } else { // <
-                      monthsSince = 12 - myStartMonth + myCurrentMonth;
-                      daysSince = 30 - myStartDate + myCurrentDate;
+          const diffInMs = new Date().valueOf() - new Date(element.last_update).valueOf();
+          const diffInSecs = Math.floor(diffInMs / 1000);
+          if ( diffInSecs < 7/* 90 */ ) {
+            this.user.getUser( element.user_id ).subscribe(
+              userData => {
+                console.log('printing userData');
+                console.log(userData);
+                this.user.getTicketsByUser( element.user_id).subscribe(
+                  ticketListData => {
+                    console.log('printing ticketListData');
+                    console.log(ticketListData);
+                    for (const item of ticketListData.results) {
+                      // https://stackoverflow.com/questions/53538894/typescript-find-date-difference-in-dates-hours-minutes
+                      console.log('Calculating difference in date' );
+
+                      const myStartMonth = new Date(item.start_date).getMonth();
+                      const myCurrentMonth = new Date().getMonth(); // '2019-07-17'
+                      let monthsSince = 0;
+                      const myStartDate = new Date(item.start_date).getDate();
+                      const myCurrentDate = new Date().getDate(); // '2019-07-17')
+                      let daysSince = 0;
+                      const myTicketDays = item.ticket_type * 30;
+                      if ( myCurrentMonth === myStartMonth ) {
+                        // monthsSince = 0;
+                        daysSince = myCurrentDate - myStartDate;
+                      } else if ( myCurrentMonth > myStartMonth ) {
+                        monthsSince = myCurrentMonth - myStartMonth;
+                        daysSince = 30 - myStartDate + myCurrentDate;
+                      } else { // <
+                        monthsSince = 12 - myStartMonth + myCurrentMonth;
+                        daysSince = 30 - myStartDate + myCurrentDate;
+                      }
+                      const daysLeft = myTicketDays - ((monthsSince - 1) * 30) - daysSince  ;
+
+                      let myClassType = '';
+                      if ( item.aptclass === 1 ) {
+                        myClassType = 'Cycling';
+                      } else if ( item.aptclass === 2 ) {
+                        myClassType = 'Zumba';
+                      } else { // ===3 => Pilates
+                        myClassType = 'Pilates';
+                      }
+                      let myTicketType = '';
+                      if ( item.ticket_type === 1 ) {
+                        myTicketType = '30 Days';
+                      } else if ( item.ticket_type === 2 ) {
+                        myTicketType = '60 Days';
+                      } else if ( item.ticket_type === 3 ) {
+                        myTicketType = '90 Days';
+                      } else if ( item.ticket_type === 6 ) {
+                        myTicketType = '180 Days';
+                      }
+                      // this.attendenceList.push({
+                      //   // name: string;
+                      //   // img: string;
+                      //   // at: string;
+                      //   // class: string;
+                      //   // status: string;
+                      // })
+
+                      if ( daysLeft > 7 ) {
+                        console.log( 'More than 7 days left' );
+                        this.attendenceList.push({
+                          img: '/assets/images/profile/p1.jpg',
+                          name: userData.fullname,
+                          at: 'SmartBand',
+                          class: myClassType,
+                          status: 'color1'
+                        });
+                        console.log(this.attendenceList);
+
+                      } else if ( daysLeft >= 0 ) {
+                        console.log( 'Less than 7 days left' );
+                        this.attendenceList.push({
+                          img: '/assets/images/profile/p1.jpg',
+                          name: userData.fullname,
+                          at: 'SmartBand',
+                          class: myClassType,
+                          status: 'color2'
+                        });
+                      } else {
+                        console.log( 'Ticket Ended' );
+                        this.attendenceList.push({
+                          img: '/assets/images/profile/p1.jpg',
+                          name: userData.fullname,
+                          at: 'SmartBand',
+                          class: myClassType,
+                          status: 'color3'
+                        });
+                      }
+
+
                     }
-                    const daysLeft = myTicketDays - ((monthsSince - 1) * 30) - daysSince  ;
-
-                    let myClassType = '';
-                    if ( item.aptclass === 1 ) {
-                      myClassType = 'Cycling';
-                    } else if ( item.aptclass === 2 ) {
-                      myClassType = 'Zumba';
-                    } else { // ===3 => Pilates
-                      myClassType = 'Pilates';
-                    }
-                    let myTicketType = '';
-                    if ( item.ticket_type === 1 ) {
-                      myTicketType = '30 Days';
-                    } else if ( item.ticket_type === 2 ) {
-                      myTicketType = '60 Days';
-                    } else if ( item.ticket_type === 3 ) {
-                      myTicketType = '90 Days';
-                    } else if ( item.ticket_type === 6 ) {
-                      myTicketType = '180 Days';
-                    }
-                    // this.attendenceList.push({
-                    //   // name: string;
-                    //   // img: string;
-                    //   // at: string;
-                    //   // class: string;
-                    //   // status: string;
-                    // })
-
-                    if ( daysLeft > 7 ) {
-                      console.log( 'More than 7 days left' );
-                      this.attendenceList.push({
-                        img: '/assets/images/profile/p1.jpg',
-                        name: userData.fullname,
-                        at: 'SmartBand',
-                        class: myClassType,
-                        status: 'color1'
-                      });
-                      console.log(this.attendenceList);
-
-                    } else if ( daysLeft >= 0 ) {
-                      console.log( 'Less than 7 days left' );
-                      this.attendenceList.push({
-                        img: '/assets/images/profile/p1.jpg',
-                        name: userData.fullname,
-                        at: 'SmartBand',
-                        class: myClassType,
-                        status: 'color2'
-                      });
-                    } else {
-                      console.log( 'Ticket Ended' );
-                      this.attendenceList.push({
-                        img: '/assets/images/profile/p1.jpg',
-                        name: userData.fullname,
-                        at: 'SmartBand',
-                        class: myClassType,
-                        status: 'color3'
-                      });
-                    }
+                  },
+                  error => { console.log(error); }
+                );
+              },
+              error => { console.log(error); }
+            );
+          }
 
 
-                  }
-                },
-                error => { console.log(error); }
-              );
-            },
-            error => { console.log(error); }
-          );
         });
       },
       error => { console.log(error); }

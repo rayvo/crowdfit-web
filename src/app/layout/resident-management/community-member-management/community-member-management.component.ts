@@ -3,6 +3,7 @@ import { MatDialogConfig, MatPaginator, MatDialog, MatTableDataSource } from '@a
 import { UserService } from 'src/app/services/user.service';
 import { CMMPopPaamComponent } from './cmm-pop-paam.component';
 import { DatePipe } from '@angular/common';
+import { CMMPopSBComponent } from './cmm-pop-sb.component';
 
 @Component({
   selector: 'app-community-member-management',
@@ -13,9 +14,9 @@ import { DatePipe } from '@angular/common';
 export class CommunityMemberManagementComponent implements OnInit, AfterViewInit {
 
   displayedColumns1: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'applyDate',  ];
-  displayedColumns2: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType' ];
-  displayedColumns3: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType' ];
-  displayedColumns4: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType' ];
+  displayedColumns2: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType', 'sbInfo' ];
+  displayedColumns3: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType', 'sbInfo' ];
+  displayedColumns4: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType', 'sbInfo' ];
   memberWaitList: WaitList[] = [];
   memberApprovedList: ApprovedList[] = [];
   memberAlmostEndList: AlmostEndList[] = [];
@@ -167,7 +168,7 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
               if ( daysLeft > 7 ) {
                 console.log( 'More than 7 days left' );
                 this.memberApprovedList.push({
-                  id: item.id,
+                  id: myData.id,
                   name: myData.fullname,
                   phone: myData.phone,
                   classType: myClassType,
@@ -177,7 +178,7 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
               } else if ( daysLeft >= 0 ) {
                 console.log( 'Less than 7 days left' );
                 this.memberAlmostEndList.push({
-                  id: item.id,
+                  id: myData.id,
                   name: myData.fullname,
                   phone: myData.phone,
                   classType: myClassType,
@@ -187,7 +188,7 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
               } else {
                 console.log( 'Ticket Ended' );
                 this.memberEndedList.push({
-                  id: item.id,
+                  id: myData.id,
                   name: myData.fullname,
                   phone: myData.phone,
                   classType: myClassType,
@@ -279,6 +280,33 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
           this.memberEndedList = [];
           this.setMemberData();
           this.reloadAllData();
+        } // else canceled so do nothing
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  showSBInfo(person) {
+    console.log('showSBInfo Reached');
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.width = '400px';
+    dialogConfig.data = {
+      userId: person.id,
+      name: person.name,
+    };
+    const dialogRef = this.dialog.open(CMMPopSBComponent, dialogConfig );
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        console.log(result);
+        if ( result !== '' ) {
+          console.log('showSBInfo Result Reached');
+          console.log('result: ');
+          console.log(result);
         } // else canceled so do nothing
       },
       error => {

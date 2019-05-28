@@ -26,7 +26,8 @@ const httpOptions2 = {
 export class UserService {
   // Crowdfit Server
   // serverUrl = 'http://192.168.1.6:8000';
-  serverUrl = 'http://210.105.48.120:8001';
+  // serverUrl = 'http://210.105.48.120:8001'; // A malware is attacking the 8001 port
+  serverUrl = 'http://210.105.48.120:8002';
 
   // 덕문's Serve'
   // serverUrl = 'http://1.243.229.174:8000';
@@ -381,6 +382,30 @@ export class UserService {
   }
 
 
+  createUserDevice( userData, newMac ): Observable<any> {
+    const body = {
+      mac_address: newMac,
+      user: userData.userId,
+      is_active: true,
+      device_type: 2, // 2: Smartband
+    };
+    return this.http.post( this.serverUrl + '/api/v2/user_device/', body, httpOptions);
+  }
+
+  updateUserDevice( userData, newMac ): Observable<any> {
+    const body = {
+      user_id: userData.userId,
+      mac_address: newMac,
+      is_active: true,
+      device_type: 2 // 2: Smartband
+    };
+    console.log(body);
+    return this.http.put( this.serverUrl + '/api/v2/update_user_device/', body, httpOptions );
+  }
+
+  getUserDeviceByUser( userId ): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/v2/list_user_device_by_user/' + userId, httpOptions );
+  }
 
 /* ##############################################################################################
  * ##############################################################################################
