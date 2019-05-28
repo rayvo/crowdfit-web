@@ -2,19 +2,21 @@ import { Component, OnInit, AfterViewInit, QueryList, ViewChildren } from '@angu
 import { MatDialogConfig, MatPaginator, MatDialog, MatTableDataSource } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { CMMPopPaamComponent } from './cmm-pop-paam.component';
+import { DatePipe } from '@angular/common';
+import { CMMPopSBComponent } from './cmm-pop-sb.component';
 
 @Component({
   selector: 'app-community-member-management',
   templateUrl: './community-member-management.component.html',
   styleUrls: ['./community-member-management.component.css'],
-  providers: [UserService]
+  providers: [UserService, DatePipe]
 })
 export class CommunityMemberManagementComponent implements OnInit, AfterViewInit {
 
-  displayedColumns1: string[] = ['name', 'donghosu', 'phone', 'applyDate', 'classType' ];
-  displayedColumns2: string[] = ['name', 'donghosu', 'phone', 'approveDate', 'staff', 'classType' ];
-  displayedColumns3: string[] = ['name', 'donghosu', 'phone', 'typeOfUser' ];
-  displayedColumns4: string[] = ['name', 'donghosu', 'phone', 'classType', 'endDate' ];
+  displayedColumns1: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'applyDate',  ];
+  displayedColumns2: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType', 'sbInfo' ];
+  displayedColumns3: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType', 'sbInfo' ];
+  displayedColumns4: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType', 'sbInfo' ];
   memberWaitList: WaitList[] = [];
   memberApprovedList: ApprovedList[] = [];
   memberAlmostEndList: AlmostEndList[] = [];
@@ -27,14 +29,16 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
   constructor(
     private dialog: MatDialog,
     private user: UserService,
+    private datePipe: DatePipe
   ) {
-    this.setMemberData(2);
+    this.setMemberData();
     // this.setMemberData(__);
-    this.setMemberData(3);
-    this.setMemberData(5);
+    // this.setMemberData(3);
+    // this.setMemberData(5);
     this.dataSource1 = new MatTableDataSource<WaitList>(this.memberWaitList);
     this.dataSource2 = new MatTableDataSource<ApprovedList>(this.memberApprovedList);
     this.dataSource3 = new MatTableDataSource<AlmostEndList>(this.memberAlmostEndList);
+    console.log(this.dataSource4);
     this.dataSource4 = new MatTableDataSource<EndedList>(this.memberEndedList);
   }
 
@@ -59,10 +63,20 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
       return (data.name.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 ||
       data.phone.trim().toLowerCase().indexOf(filter.trim().toLowerCase()) !== -1 );
     };
-
+    // this.interval = setInterval(() => {
+    //   this.userWaitList = [];
+    //   this.userInvitedList = [];
+    //   this.userApprovedList = [];
+    //   this.userEvictedList = [];
+    //   this.setUserData(2);
+    //   this.setUserData(3);
+    //   this.setUserData(5);
+    // }, (5 * 60 * 1000) );
   }
 
-
+  // ngOnDestroy(): void {
+  //   clearInterval(this.interval);
+  // }
 
   ngAfterViewInit(): void {
     // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
@@ -80,44 +94,122 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
     this.dataSource4.filter = filterValue.trim().toLowerCase();
   }
 
-  setMemberData( statusNum ) {
-    // this.user.getUsersByStatus( localStorage.getItem('aptId'), statusNum ).subscribe(
-    //   data => {
 
-    //     if ( statusNum === 2 ) {
-    //       data.results.forEach(element => {
-    //         this.userWaitList.push({
-    //           id: element.user_id,
-    //           name: element.fullname,
-    //           donghosu: element.address_dong + '동 ' + element.household_number + '호',
-    //           phone: element.phone,
-    //         });
-    //       });
-    //     } else if ( statusNum === 3 ) {
-    //       data.results.forEach(element => {
-    //         this.userApprovedList.push({
-    //           id: element.user_id,
-    //           name: element.fullname,
-    //           donghosu: element.address_dong + '동 ' + element.household_number + '호',
-    //           phone: element.phone,
-    //           staff: element.staff,
-    //           approvedDate: new Date(Date.parse(element.last_update)),
-    //         });
-    //       });
-    //     } else if ( statusNum === 5 ) {
-    //       data.results.forEach(element => {
-    //         this.userEvictedList.push({
-    //           id: element.user_id,
-    //           name: element.fullname,
-    //           donghosu: element.address_dong + '동 ' + element.household_number + '호',
-    //           phone: element.phone,
-    //           staff: element.staff,
-    //         });
-    //       });
+  setMemberData() {
+    console.log('setMemberData REACHED');
+    this.user.getTicketsByApt().subscribe(
+      data => {
+        console.log('data REACHED');
+        console.log('printing data');
+        console.log(data);
+        for ( const item of data.results ) {
+          console.log('printing item');
+          console.log(item);
+          this.user.getUser( item.user_id ).subscribe(
+            myData => {
+              console.log('myData REACHED');
+              console.log(myData);
 
-    //     }
-    //   }
-    // );
+              // https://stackoverflow.com/questions/53538894/typescript-find-date-difference-in-dates-hours-minutes
+              console.log('Calculating difference in date' );
+
+              const myStartMonth = new Date(item.start_date).getMonth();
+              const myCurrentMonth = new Date().getMonth(); // '2019-07-17'
+              let monthsSince = 0;
+              const myStartDate = new Date(item.start_date).getDate();
+              const myCurrentDate = new Date().getDate(); // '2019-07-17')
+              let daysSince = 0;
+              const myTicketDays = item.ticket_type * 30;
+              if ( myCurrentMonth === myStartMonth ) {
+                // monthsSince = 0;
+                daysSince = myCurrentDate - myStartDate;
+              } else if ( myCurrentMonth > myStartMonth ) {
+                monthsSince = myCurrentMonth - myStartMonth;
+                daysSince = 30 - myStartDate + myCurrentDate;
+              } else { // <
+                monthsSince = 12 - myStartMonth + myCurrentMonth;
+                daysSince = 30 - myStartDate + myCurrentDate;
+              }
+
+              const daysLeft = myTicketDays - ((monthsSince - 1) * 30) - daysSince  ;
+              console.log('myStartDate');
+              console.log(myStartDate);
+              console.log('myCurrentDate');
+              console.log(myCurrentDate);
+              console.log('monthsSince');
+              console.log(monthsSince);
+              console.log('daysSince');
+              console.log(daysSince);
+              // // // Calculate ticket type's number of days
+              console.log('myTicketDays');
+              console.log(myTicketDays);
+              console.log('daysLeft');
+              console.log(daysLeft);
+
+              let myClassType = '';
+              if ( item.aptclass === 1 ) {
+                myClassType = 'Cycling';
+              } else if ( item.aptclass === 2 ) {
+                myClassType = 'Zumba';
+              } else { // ===3 => Pilates
+                myClassType = 'Pilates';
+              }
+              let myTicketType = '';
+              if ( item.ticket_type === 1 ) {
+                myTicketType = '30 Days';
+              } else if ( item.ticket_type === 2 ) {
+                myTicketType = '60 Days';
+              } else if ( item.ticket_type === 3 ) {
+                myTicketType = '90 Days';
+              } else if ( item.ticket_type === 6 ) {
+                myTicketType = '180 Days';
+              }
+
+              if ( daysLeft > 7 ) {
+                console.log( 'More than 7 days left' );
+                this.memberApprovedList.push({
+                  id: myData.id,
+                  name: myData.fullname,
+                  phone: myData.phone,
+                  classType: myClassType,
+                  startDate: item.start_date,
+                  ticketType: myTicketType
+                });
+              } else if ( daysLeft >= 0 ) {
+                console.log( 'Less than 7 days left' );
+                this.memberAlmostEndList.push({
+                  id: myData.id,
+                  name: myData.fullname,
+                  phone: myData.phone,
+                  classType: myClassType,
+                  startDate: item.start_date,
+                  ticketType: myTicketType
+                });
+              } else {
+                console.log( 'Ticket Ended' );
+                this.memberEndedList.push({
+                  id: myData.id,
+                  name: myData.fullname,
+                  phone: myData.phone,
+                  classType: myClassType,
+                  startDate: item.start_date,
+                  ticketType: myTicketType
+                });
+              }
+              this.reloadAllData();
+
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+        this.reloadAllData();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   openDialog( personInfo: any, btnType: any, newStatus: any, ) {
@@ -180,9 +272,41 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
 
     dialogRef.afterClosed().subscribe(
       result => {
+        console.log(result);
         if ( result !== '' ) {
-          this.updateMemberStatus(result, 3);
+          this.memberWaitList = [];
+          this.memberApprovedList = [];
+          this.memberAlmostEndList = [];
+          this.memberEndedList = [];
+          this.setMemberData();
           this.reloadAllData();
+        } // else canceled so do nothing
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  showSBInfo(person) {
+    console.log('showSBInfo Reached');
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.width = '400px';
+    dialogConfig.data = {
+      userId: person.id,
+      name: person.name,
+    };
+    const dialogRef = this.dialog.open(CMMPopSBComponent, dialogConfig );
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        console.log(result);
+        if ( result !== '' ) {
+          console.log('showSBInfo Result Reached');
+          console.log('result: ');
+          console.log(result);
         } // else canceled so do nothing
       },
       error => {
@@ -198,32 +322,36 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
 export interface WaitList {
   id: number;
   name: string;
-  donghosu: string;
+  // donghosu: string;
   phone: string;
+  classType: string;
   applyDate: Date;
   // type of payment
-  classType: string;
 }
+// displayedColumns1: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'applyDate',  ];
+// displayedColumns2: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType' ];
+// displayedColumns3: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType' ];
+// displayedColumns4: string[] = ['name', /*'donghosu',*/ 'phone', 'classType', 'startDate', 'ticketType' ];
 
 export interface ApprovedList {
   id: number;
   name: string;
-  donghosu: string;
+  // donghosu: string;
   phone: string;
-  approveDate: Date;
-  staff: string;
-  // type of payment
   classType: string;
+  startDate: string;
+  ticketType: string;
+  // type of payment
 }
 
 export interface AlmostEndList {
   id: number;
   name: string;
-  donghosu: string;
+  // donghosu: string;
   phone: string;
-  // cancel button
-  // resend button;
-  typeOfUser: string;
+  classType: string;
+  startDate: string;
+  ticketType: string;
 }
 
 // export interface CancelRequestList {
@@ -233,10 +361,9 @@ export interface AlmostEndList {
 export interface EndedList {
   id: number;
   name: string;
-  donghosu: string;
+  // donghosu: string;
   phone: string;
   classType: string;
-  endDate: Date;
-  // another end date?
-  // rating
+  startDate: string;
+  ticketType: string;
 }

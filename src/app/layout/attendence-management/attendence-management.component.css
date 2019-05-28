@@ -20,7 +20,7 @@ mat-card a {
   color: #444;
   margin-top: 20px;
 }
-
+/*
 .color1 {
   background: #ef9a9a;
 }
@@ -43,4 +43,14 @@ mat-card a {
 
 .color6 {
   background: #b39ddb;
+}
+*/
+.color1 {
+  background: #90caf9;
+}
+.color2 {
+  background: #ffcf44;
+}
+.color3 {
+  background: #ef9a9a;
 }

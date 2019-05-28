@@ -25,7 +25,9 @@ const httpOptions2 = {
 @Injectable()
 export class UserService {
   // Crowdfit Server
-  serverUrl = 'http://192.168.1.6:8000';
+  // serverUrl = 'http://192.168.1.6:8000';
+  // serverUrl = 'http://210.105.48.120:8001'; // A malware is attacking the 8001 port
+  serverUrl = 'http://210.105.48.120:8002';
 
   // 덕문's Serve'
   // serverUrl = 'http://1.243.229.174:8000';
@@ -70,6 +72,10 @@ export class UserService {
     // Get /api/login last feature (change, last feature will be sent to me through /api/v2/auth/)
     // When i logout send last feature
     // when routing update localStorage's last feature
+  }
+
+  getUser( userId ): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/users/' + userId, httpOptions );
   }
 
 
@@ -351,14 +357,55 @@ export class UserService {
     return this.http.get( this.serverUrl + '/api/v2/list_accepted_user/', httpOptions);
   }
 
-  // TODO
+  // GET /api/v2/list_last_checkin/
   getAttendanceData(): Observable<any> {
-    const params = new HttpParams();
-    params.append('TODO', 'TODO' );
-    return this.http.get( this.serverUrl + '/api/v2/TODO/', {headers: httpOptions.headers, params: params} );
+    return this.http.get( this.serverUrl + '/api/v2/list_last_checkin/' + localStorage.getItem('aptId'), httpOptions );
+  }
+
+  getTicketsByUser( userId ): Observable<any> {
+    return this.http.get( this.serverUrl + '/api/v2/list_tickets_by_user/' + userId, httpOptions);
+  }
+
+  getTicketsByApt(): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/v2/list_tickets_by_apartment/' + localStorage.getItem('aptId') , httpOptions);
+  }
+
+  createAptClassTicket( userId, aptClass, ticketType ): Observable<any> {
+    const body = {
+      user: userId,
+      apartment: localStorage.getItem('aptId'),
+      aptclass: aptClass,
+      ticket_type: ticketType,
+      is_active: true
+    };
+    return this.http.post(this.serverUrl + '/api/aptclassticket/', body, httpOptions);
   }
 
 
+  createUserDevice( userData, newMac ): Observable<any> {
+    const body = {
+      mac_address: newMac,
+      user: userData.userId,
+      is_active: true,
+      device_type: 2, // 2: Smartband
+    };
+    return this.http.post( this.serverUrl + '/api/v2/user_device/', body, httpOptions);
+  }
+
+  updateUserDevice( userData, newMac ): Observable<any> {
+    const body = {
+      user_id: userData.userId,
+      mac_address: newMac,
+      is_active: true,
+      device_type: 2 // 2: Smartband
+    };
+    console.log(body);
+    return this.http.put( this.serverUrl + '/api/v2/update_user_device/', body, httpOptions );
+  }
+
+  getUserDeviceByUser( userId ): Observable<any> {
+    return this.http.get(this.serverUrl + '/api/v2/list_user_device_by_user/' + userId, httpOptions );
+  }
 
 /* ##############################################################################################
  * ##############################################################################################
@@ -732,4 +779,6 @@ export class UserService {
     };
     return this.http.put(this.serverUrl + '/api/userhousehold/', body, httpOptions);
   }
+
+
 }

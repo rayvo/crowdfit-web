@@ -5,6 +5,19 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CommunityMemberManagementComponent } from './community-member-management.component';
 
 
+export interface Res {
+    value: number;
+    viewValue: string;
+}
+export interface MyClasses {
+    value: number;
+    viewValue: string;
+}
+
+export interface MyTickets {
+    value: number;
+    viewValue: string;
+}
 
 @Component({
   selector: 'app-cmm-pop-paam',
@@ -14,23 +27,39 @@ import { CommunityMemberManagementComponent } from './community-member-managemen
 })
 export class CMMPopPaamComponent {
 
-    newUser: FormGroup;
+    newTicket: FormGroup;
+    residentList: Res[] = [];
+    classList: MyClasses[] = [
+        { value: 1, viewValue: 'Cycling' },
+        { value: 2, viewValue: 'Zumba' },
+        { value: 3, viewValue: 'Pilates' }
+    ];
+    ticketList: MyTickets[] = [
+        { value: 1, viewValue: '30 Days' },
+        { value: 2, viewValue: '60 Days' },
+        { value: 3, viewValue: '90 Days' },
+        { value: 6, viewValue: '180 Days' },
+    ];
+
+    selectedRes;
+    selectedClass;
+    selectedTicket;
+
 
     constructor(
         private dialogRef: MatDialogRef<CommunityMemberManagementComponent>,
         private user: UserService,
         // @Inject(MAT_DIALOG_DATA) public data: DialogData,
     ) {
-        this.newUser = this.createFormGroup();
+        this.newTicket = this.createFormGroup();
+        this.getApprovedResidents();
     }
 
     createFormGroup() {
         return new FormGroup({
-            fullname: new FormControl('', Validators.required),
-            phone: new FormControl('', Validators.required),
-            dong: new FormControl('', Validators.required),
-            ho: new FormControl('', Validators.required),
-            // typeOfPayement
+            resident: new FormControl('', Validators.required),
+            aptClass: new FormControl('', Validators.required),
+            ticketType: new FormControl('', Validators.required)
         });
     }
 
@@ -38,7 +67,37 @@ export class CMMPopPaamComponent {
         return localStorage.getItem(key);
     }
 
-    approveNewMember() {
+    getApprovedResidents() {
+        // Get all approved Residents
+        this.user.getUsersByStatus( localStorage.getItem('aptId'), 3).subscribe(
+            data => {
+                console.log(data);
+                data.results.forEach(element => {
+                    this.residentList.push({
+                        value: element.user_id,
+                        viewValue: element.fullname,
+                    });
+                });
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
+
+    createNewTicket() {
+        console.log('#######################');
+        console.log(this.newTicket.get('resident'));
+        console.log(this.selectedRes);
+        this.dialogRef.close();
+        this.user.createAptClassTicket( this.selectedRes, this.selectedClass, this.selectedTicket ).subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                console.log(error);
+            }
+        );
         // this.user.createUserWithToken( this.newUser ).subscribe(
         //     data => {
         //         const myUserId = data.user_id;
@@ -65,30 +124,24 @@ export class CMMPopPaamComponent {
     }
 
 
-    get fullname() {
-        return this.newUser.get('fullname');
+    get resident() {
+        return this.newTicket.get('resident');
     }
-    get phone() {
-        return this.newUser.get('phone');
+    get aptClass() {
+        return this.newTicket.get('aptClass');
     }
-    get dong() {
-        return this.newUser.get('dong');
-    }
-    get ho() {
-        return this.newUser.get('ho');
+    get ticketType() {
+        return this.newTicket.get('ticketType');
     }
 
     getFullnameErrorMessage() {
-        return this.fullname.hasError('required') ? 'You must enter a name' : '';
+        return this.resident.hasError('required') ? 'You must select a resident' : '';
     }
-    getPhoneErrorMessage() {
-        return this.phone.hasError('required') ? 'You must enter a phone number' : '';
+    getAptClassErrorMessage() {
+        return this.aptClass.hasError('required') ? 'You must select a class' : '';
     }
-    getDongErrorMessage() {
-        return this.dong.hasError('required') ? 'You must enter a apartment 동' : '';
-    }
-    getHoErrorMessage() {
-        return this.ho.hasError('required') ? 'You must enter a apartment 호' : '';
+    getTicketTypeErrorMessage() {
+        return this.ticketType.hasError('required') ? 'You must select a ticket type' : '';
     }
 
 }

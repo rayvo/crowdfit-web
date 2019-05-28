@@ -68,25 +68,28 @@
           <th mat-header-cell *matHeaderCellDef>성명</th>
           <td mat-cell *matCellDef="let person">{{ person.name }}</td>
         </ng-container>
-        <ng-container matColumnDef="donghosu">
-          <th mat-header-cell *matHeaderCellDef>동호수</th>
-          <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
-        </ng-container>
         <ng-container matColumnDef="phone">
           <th mat-header-cell *matHeaderCellDef>연락처</th>
           <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
         </ng-container>
-        <ng-container matColumnDef="approveDate">
-          <th mat-header-cell *matHeaderCellDef>승인일자</th>
-          <td mat-cell *matCellDef="let person">{{ person.approveDate }}</td>
-        </ng-container>
-        <ng-container matColumnDef="staff">
-          <th mat-header-cell *matHeaderCellDef>승인자</th>
-          <td mat-cell *matCellDef="let person">{{ person.staff }}</td>
-        </ng-container>
         <ng-container matColumnDef="classType">
           <th mat-header-cell *matHeaderCellDef>등록종목</th>
           <td mat-cell *matCellDef="let person">{{ person.classType }}</td>
+        </ng-container>
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef>승작일자</th>
+          <td mat-cell *matCellDef="let person">{{ person.startDate }}</td>
+        </ng-container>
+        <ng-container matColumnDef="ticketType">
+          <th mat-header-cell *matHeaderCellDef>등록종목</th>
+          <td mat-cell *matCellDef="let person">{{ person.ticketType }}</td>
+        </ng-container>
+        <ng-container matColumnDef="sbInfo">
+          <th mat-header-cell *matHeaderCellDef>스마트밴드 정보</th>
+          <td mat-cell *matCellDef="let person">
+            <mat-icon style="cursor:pointer; margin-left: 14px;"(click)="showSBInfo(person)">
+              watch</mat-icon>
+          </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
@@ -104,17 +107,28 @@
           <th mat-header-cell *matHeaderCellDef>성명</th>
           <td mat-cell *matCellDef="let person">{{ person.name }}</td>
         </ng-container>
-        <ng-container matColumnDef="donghosu">
-          <th mat-header-cell *matHeaderCellDef>동호수</th>
-          <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
-        </ng-container>
         <ng-container matColumnDef="phone">
           <th mat-header-cell *matHeaderCellDef>연락처</th>
           <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
         </ng-container>
-        <ng-container matColumnDef="typeOfUser">
-          <th mat-header-cell *matHeaderCellDef>유형</th>
-          <td mat-cell *matCellDef="let person">{{ person.typeOfUser }}</td>
+        <ng-container matColumnDef="classType">
+          <th mat-header-cell *matHeaderCellDef>등록종목</th>
+          <td mat-cell *matCellDef="let person">{{ person.classType }}</td>
+        </ng-container>
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef>승작일자</th>
+          <td mat-cell *matCellDef="let person">{{ person.startDate }}</td>
+        </ng-container>
+        <ng-container matColumnDef="ticketType">
+          <th mat-header-cell *matHeaderCellDef>등록종목</th>
+          <td mat-cell *matCellDef="let person">{{ person.ticketType }}</td>
+        </ng-container>
+        <ng-container matColumnDef="sbInfo">
+          <th mat-header-cell *matHeaderCellDef>스마트밴드 정보</th>
+          <td mat-cell *matCellDef="let person">
+            <mat-icon style="cursor:pointer; margin-left: 14px;"(click)="showSBInfo(person)">
+              watch</mat-icon>
+          </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
@@ -132,10 +146,6 @@
           <th mat-header-cell *matHeaderCellDef>성명</th>
           <td mat-cell *matCellDef="let person">{{ person.name }}</td>
         </ng-container>
-        <ng-container matColumnDef="donghosu">
-          <th mat-header-cell *matHeaderCellDef>동호수</th>
-          <td mat-cell *matCellDef="let person">{{ person.donghosu }}</td>
-        </ng-container>
         <ng-container matColumnDef="phone">
           <th mat-header-cell *matHeaderCellDef>연락처</th>
           <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
@@ -144,9 +154,20 @@
           <th mat-header-cell *matHeaderCellDef>등록종목</th>
           <td mat-cell *matCellDef="let person">{{ person.classType }}</td>
         </ng-container>
-        <ng-container matColumnDef="endDate">
-          <th mat-header-cell *matHeaderCellDef>만료일</th>
-          <td mat-cell *matCellDef="let person">{{ person.endDate }}</td>
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef>승인일자</th>
+          <td mat-cell *matCellDef="let person">{{ person.startDate }}</td>
+        </ng-container>
+        <ng-container matColumnDef="ticketType">
+          <th mat-header-cell *matHeaderCellDef>등록종목</th>
+          <td mat-cell *matCellDef="let person">{{ person.ticketType }}</td>
+        </ng-container>
+        <ng-container matColumnDef="sbInfo">
+          <th mat-header-cell *matHeaderCellDef>스마트밴드 정보</th>
+          <td mat-cell *matCellDef="let person">
+            <mat-icon style="cursor:pointer; margin-left: 14px;"(click)="showSBInfo(person)">
+              watch</mat-icon>
+          </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns4"></tr>
