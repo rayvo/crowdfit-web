@@ -27,7 +27,7 @@ export class UserService {
   // Crowdfit Server
   // serverUrl = 'http://192.168.1.6:8000';
   // serverUrl = 'http://210.105.48.120:8001'; // A malware is attacking the 8001 port
-  serverUrl = 'http://210.105.48.120:8002';
+  serverUrl = 'http://210.105.48.120:8001';
 
   // 덕문's Serve'
   // serverUrl = 'http://1.243.229.174:8000';
