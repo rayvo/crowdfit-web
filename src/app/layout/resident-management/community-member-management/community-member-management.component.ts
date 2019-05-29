@@ -289,7 +289,6 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
   }
 
   showSBInfo(person) {
-    console.log('showSBInfo Reached');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
@@ -304,8 +303,6 @@ export class CommunityMemberManagementComponent implements OnInit, AfterViewInit
       result => {
         console.log(result);
         if ( result !== '' ) {
-          console.log('showSBInfo Result Reached');
-          console.log('result: ');
           console.log(result);
         } // else canceled so do nothing
       },

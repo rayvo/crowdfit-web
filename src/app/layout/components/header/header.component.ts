@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { HPopUUPPComponent } from './header-pop-uupp.component';
 
 @Component({
     selector: 'app-header',
@@ -11,7 +13,11 @@ export class HeaderComponent implements OnInit {
     public pushRightClass: string;
     name: string;
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(
+        private translate: TranslateService,
+        public router: Router,
+        private dialog: MatDialog
+    ) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
@@ -65,6 +71,26 @@ export class HeaderComponent implements OnInit {
 
     toUserHome() {
         this.router.navigate(['/m/home']);
+    }
+
+    updateUserPP() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = false;
+        dialogConfig.width = '400px';
+        const dialogRef = this.dialog.open( HPopUUPPComponent, dialogConfig );
+
+        dialogRef.afterClosed().subscribe(
+          result => {
+            console.log(result);
+            if ( result !== '' ) {
+              console.log(result);
+            } // else canceled so do nothing
+          },
+          error => {
+            console.log(error);
+          }
+        );
     }
 
 

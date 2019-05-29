@@ -37,6 +37,7 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SMPopInviteComponent } from './staff-management/sm-pop-invite.component';
+import { HPopUUPPComponent } from './components/header/header-pop-uupp.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,7 +59,8 @@ import { SMPopInviteComponent } from './staff-management/sm-pop-invite.component
     MatDatepickerModule,
     MatCardModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
   ],
   declarations: [
     LayoutComponent,
@@ -74,7 +76,7 @@ import { SMPopInviteComponent } from './staff-management/sm-pop-invite.component
     SMPopFileComponent,
     SMPopPaasComponent,
     SMPopInviteComponent,
-
+    HPopUUPPComponent,
 
 
   ],
@@ -84,6 +86,7 @@ import { SMPopInviteComponent } from './staff-management/sm-pop-invite.component
     SMPopFileComponent,
     SMPopPaasComponent,
     SMPopInviteComponent,
+    HPopUUPPComponent,
   ]
 })
 export class LayoutModule { }

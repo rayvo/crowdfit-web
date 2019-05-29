@@ -1,16 +1,14 @@
-<h3 mat-dialog-title>{{ data.name }} 스마트밴드</h3>
+<h3 mat-dialog-title>Change Profile Photo</h3>
 <mat-dialog-content class="mat-typography">
-  <mat-label margin>이름: {{ data.name }}</mat-label
-  ><br />
-  <mat-label margin>MAC 번호: </mat-label>
-  <input value="{{ myMac }}" [(ngModel)]="myMac" placeholder="eg) AABB3344FF" />
+  <mat-label margin>이미지 파일 첨부:</mat-label> <br>
+  <input type="file" placeholder="add_to_photos"
+            accept=".pdf,.doc,.docx,.jpg,.png">
   <button mat-button color="primary" (click)="saveClicked()">저장</button><br />
   <mat-label *ngIf="saveWasClicked">저장되었습니다</mat-label>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-flat-button color="primary" style="color: white;" mat-dialog-close [mat-dialog-close]="data.name">확인</button>
-  <button mat-button mat-dialog-close>취소</button>
+    <button mat-button mat-dialog-close>취소</button>
 </mat-dialog-actions>
 
 <style>
