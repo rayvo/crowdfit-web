@@ -1,0 +1,36 @@
+<h3 mat-dialog-title>Change Profile Photo</h3>
+<mat-dialog-content class="mat-typography">
+  <mat-label margin>이미지 파일 첨부:</mat-label> <br><br>
+  <input type="file" placeholder="add_to_photos"
+            accept=".pdf,.doc,.docx,.jpg,.png">
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-flat-button color="primary"  style="color: white;" (click)="saveClicked()">저장</button><br />
+  <mat-label *ngIf="saveWasClicked">저장되었습니다</mat-label>
+    <button mat-stroked-button mat-dialog-close>취소</button>
+
+</mat-dialog-actions>
+
+<style>
+  h3 {
+    color: gray;
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: center;
+  }
+  mat-label {
+    margin-bottom: 2rem;
+    color: gray;
+  }
+
+  button {
+    color: gray;
+  margin-left: 10px;
+  }
+  input {
+    width: 214px;
+  }
+  .margin{text-align: center;}
+</style>

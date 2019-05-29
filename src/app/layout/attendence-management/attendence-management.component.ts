@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatTableDataSource, MatDividerModule, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
+import { template } from '@angular/core/src/render3';
 
 export interface Attendance {
   value: number;
@@ -14,7 +15,7 @@ export interface Class {
 
 export interface AData {
   name: string;
-  img: string;
+  img?: HTMLImageElement;
   at: string;
   class: string;
   status: string;
@@ -89,6 +90,7 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
 
   interval: any;
 
+  imgBlub;
 
   // TODO change from fake data to real data
   attendenceList: AData[] = []; // = FAKE_DATA;
@@ -208,59 +210,65 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                       } else if ( item.ticket_type === 6 ) {
                         myTicketType = '180 Days';
                       }
-                      // this.attendenceList.push({
-                      //   // name: string;
-                      //   // img: string;
-                      //   // at: string;
-                      //   // class: string;
-                      //   // status: string;
-                      // })
 
-                      if ( daysLeft > 7 ) {
-                        console.log( 'More than 7 days left' );
-                        this.attendenceList.push({
-                          img: '/assets/images/profile/p1.jpg',
-                          name: userData.fullname,
-                          at: 'SmartBand',
-                          class: myClassType,
-                          status: 'color1'
-                        });
-                        console.log(this.attendenceList);
+                      // Parse Image URL
+                      const splitted = userData.user_avatar.split('/');
+                      // splitted = ["http:", "", "210.105.48.120:8001", "media", "pcitures", "default.jpg"]
+                      // i need splitted[4] for file name
+                      console.log( 'splitted[5] is: ' + splitted[5] );
+                      this.user.getMedia(splitted[5]).subscribe(
+                        imgReturn => {
+                          const reader = new FileReader();
+                          reader.readAsDataURL(imgReturn);
+                          reader.onloadend = (e) => {
+                            // console.log(reader.result);
+                            // temp = reader.result;
+                            // console.log(temp);
+                            // return temp;
+                            this.imgBlub = reader.result;
+                          };
+                          if ( daysLeft > 7 ) {
+                            console.log( 'More than 7 days left' );
+                            this.attendenceList.push({
+                              img: this.imgBlub,
+                              name: userData.fullname,
+                              at: 'SmartBand',
+                              class: myClassType,
+                              status: 'color1'
+                            });
+                            console.log(this.attendenceList);
 
-                      } else if ( daysLeft >= 0 ) {
-                        console.log( 'Less than 7 days left' );
-                        this.attendenceList.push({
-                          img: '/assets/images/profile/p1.jpg',
-                          name: userData.fullname,
-                          at: 'SmartBand',
-                          class: myClassType,
-                          status: 'color2'
-                        });
-                      } else {
-                        console.log( 'Ticket Ended' );
-                        this.attendenceList.push({
-                          img: '/assets/images/profile/p1.jpg',
-                          name: userData.fullname,
-                          at: 'SmartBand',
-                          class: myClassType,
-                          status: 'color3'
-                        });
-                      }
+                          } else if ( daysLeft >= 0 ) {
+                            console.log( 'Less than 7 days left' );
+                            this.attendenceList.push({
+                              img: this.imgBlub,
+                              name: userData.fullname,
+                              at: 'SmartBand',
+                              class: myClassType,
+                              status: 'color2'
+                            });
+                          } else {
+                            console.log( 'Ticket Ended' );
+                            this.attendenceList.push({
+                              img: this.imgBlub,
+                              name: userData.fullname,
+                              at: 'SmartBand',
+                              class: myClassType,
+                              status: 'color3'
+                            });
+                          }
 
 
+                        }, error => { console.log(error); }
+                      );
                     }
-                  },
-                  error => { console.log(error); }
+                  }, error => { console.log(error); }
                 );
-              },
-              error => { console.log(error); }
+              }, error => { console.log(error); }
             );
           }
-
-
         });
-      },
-      error => { console.log(error); }
+      }, error => { console.log(error); }
     );
   }
 
