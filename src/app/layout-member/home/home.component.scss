@@ -31,7 +31,7 @@ nav {
 
 .img {
   position: relative;
-  background-image: url(/assets/images/slider1.jpg);
+  background-image: url(/assets/images/sm.jpg);
   height: 40vh;
   background-size: cover;
 }
@@ -46,12 +46,12 @@ nav {
 .img .content {
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
   padding: 1rem;
   font-size: 5rem;
   color: white;
   z-index: 2;
-  text-align: left;
+  text-align: right;
 }
 h5 {
   font-size: 2rem;

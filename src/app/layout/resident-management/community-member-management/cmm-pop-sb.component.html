@@ -1,16 +1,30 @@
 
-<h2 mat-dialog-title> {{data.name }} 스마트밴드 수정 </h2>
+<h3 mat-dialog-title> {{data.name }} 스마트밴드</h3>
    <mat-dialog-content class="mat-typography">
-     <mat-label>이름: {{ data.name }}</mat-label><br />
-     <mat-label>MAC 번호: </mat-label>
-     <input value={{myMac}} [(ngModel)]="myMac" placeholder="eg) AABB3344FF">
-     <button (click)='saveClicked()'>저장</button><br>
-     <mat-label *ngIf='saveWasClicked'>저장됬습니다</mat-label>
+     <mat-label margin>이름: {{ data.name }}</mat-label><br />
+     <mat-label margin>MAC 번호: </mat-label>
+     <input value={{myMac}} [(ngModel)]="myMac" placeholder="eg) AABB3344FF" >
+     <button mat-button  color="primary"   (click)='saveClicked()'>저장</button><br>
+     <mat-label *ngIf='saveWasClicked'>저장되었습니다</mat-label>
    </mat-dialog-content>
    
    
    <mat-dialog-actions align="end">
-     <button mat-button mat-dialog-close [mat-dialog-close]="data.name">확인</button>
+     <button mat-flat-button  color="primary" style="color: white;" mat-dialog-close [mat-dialog-close]="data.name">확인</button>
      <button mat-button mat-dialog-close>취소</button>
    </mat-dialog-actions>
    
+
+
+   <style>
+     h3{ 
+       color:gray;
+        font-size: 1rem;
+        width: 100%;
+      text-align: center;}
+   mat-label{margin-bottom: 2rem;
+    color: gray;}
+
+   button{color: gray;}
+  input{width: 214px;}
+   </style>
