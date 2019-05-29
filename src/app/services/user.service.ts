@@ -21,13 +21,25 @@ const httpOptions2 = {
     'Content-Type': 'application/json'
   })
 };
+const httpOptionsImage = {
+  headers: new HttpHeaders({
+    'Authorization': 'Token ' + localStorage.getItem('token'),
+    'Content-Type': 'image/jpeg'
+  })
+};
+const httpOptionsBlob = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  })
+};
 
 @Injectable()
 export class UserService {
   // Crowdfit Server
   // serverUrl = 'http://192.168.1.6:8000';
   // serverUrl = 'http://210.105.48.120:8001'; // A malware is attacking the 8001 port
-  serverUrl = 'http://210.105.48.120:8002';
+  serverUrl = 'http://210.105.48.120:8001';
 
   // 덕문's Serve'
   // serverUrl = 'http://1.243.229.174:8000';
@@ -405,6 +417,19 @@ export class UserService {
 
   getUserDeviceByUser( userId ): Observable<any> {
     return this.http.get(this.serverUrl + '/api/v2/list_user_device_by_user/' + userId, httpOptions );
+  }
+
+  getMedia( fileName ): Observable<Blob> {
+    return this.http.get<Blob>(this.serverUrl + '/api/v2/media/pictures/' + fileName,
+    { headers: httpOptionsBlob.headers, responseType: 'blob' as 'json'});
+  }
+
+  updateUserProfilePhoto( userId, imgFile ): Observable<any> {
+    const body = {
+      user_id: userId,
+      img_file: imgFile
+    };
+    return this.http.put(this.serverUrl + '/api/v2/update_user_avatar/', body, httpOptions );
   }
 
 /* ##############################################################################################
