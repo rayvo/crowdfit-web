@@ -424,10 +424,13 @@ export class UserService {
     { headers: httpOptionsBlob.headers, responseType: 'blob' as 'json'});
   }
 
-  updateUserProfilePhoto( userId, imgFile ): Observable<any> {
+  updateUserProfilePhoto( imgFile ): Observable<any> {
+    // const body = new FormData();
+    // body.append('user_id', localStorage.getItem('id') );
+    // body.append('user_avatar', imgFile );
+    // console.log(body.get('img_file').toString());
     const body = {
-      user_id: userId,
-      img_file: imgFile
+      'user_avatar': imgFile
     };
     return this.http.put(this.serverUrl + '/api/v2/update_user_avatar/', body, httpOptions );
   }
