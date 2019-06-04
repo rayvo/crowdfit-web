@@ -90,7 +90,7 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
 
   interval: any;
 
-  imgBlub;
+  // imgBlub;
 
   // TODO change from fake data to real data
   attendenceList: AData[] = []; // = FAKE_DATA;
@@ -213,11 +213,13 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
 
                       // Parse Image URL
                       const splitted = userData.user_avatar.split('/');
-                      // splitted = ["http:", "", "210.105.48.120:8001", "media", "pcitures", "default.jpg"]
+                      // splitted = ["http:", "", "210.105.48.120:8001", "media", "pictures", "default.jpg"]
                       // i need splitted[4] for file name
-                      console.log( 'splitted[5] is: ' + splitted[5] );
-                      this.user.getMedia(splitted[5]).subscribe(
+                      // console.log(splitted);
+                      console.log( 'splitted[splitted.length - 1] is: ' + splitted[splitted.length - 1] );
+                      this.user.getMedia(splitted[splitted.length - 1]).subscribe(
                         imgReturn => {
+                          let imgBlub;
                           const reader = new FileReader();
                           reader.readAsDataURL(imgReturn);
                           reader.onloadend = (e) => {
@@ -225,38 +227,70 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                             // temp = reader.result;
                             // console.log(temp);
                             // return temp;
-                            this.imgBlub = reader.result;
+                            imgBlub = reader.result;
+                            if ( daysLeft > 7 ) {
+                              console.log( 'More than 7 days left' );
+                              this.attendenceList.push({
+                                img: imgBlub,
+                                name: userData.fullname,
+                                at: 'SmartBand',
+                                class: myClassType,
+                                status: 'color1'
+                              });
+                              console.log(this.attendenceList);
+  
+                            } else if ( daysLeft >= 0 ) {
+                              console.log( 'Less than 7 days left' );
+                              this.attendenceList.push({
+                                img: imgBlub,
+                                name: userData.fullname,
+                                at: 'SmartBand',
+                                class: myClassType,
+                                status: 'color2'
+                              });
+                            } else {
+                              console.log( 'Ticket Ended' );
+                              this.attendenceList.push({
+                                img: imgBlub,
+                                name: userData.fullname,
+                                at: 'SmartBand',
+                                class: myClassType,
+                                status: 'color3'
+                              });
+                            }
                           };
-                          if ( daysLeft > 7 ) {
-                            console.log( 'More than 7 days left' );
-                            this.attendenceList.push({
-                              img: this.imgBlub,
-                              name: userData.fullname,
-                              at: 'SmartBand',
-                              class: myClassType,
-                              status: 'color1'
-                            });
-                            console.log(this.attendenceList);
+                          
+                          
+                          // if ( daysLeft > 7 ) {
+                          //   console.log( 'More than 7 days left' );
+                          //   this.attendenceList.push({
+                          //     img: imgBlub,
+                          //     name: userData.fullname,
+                          //     at: 'SmartBand',
+                          //     class: myClassType,
+                          //     status: 'color1'
+                          //   });
+                          //   console.log(this.attendenceList);
 
-                          } else if ( daysLeft >= 0 ) {
-                            console.log( 'Less than 7 days left' );
-                            this.attendenceList.push({
-                              img: this.imgBlub,
-                              name: userData.fullname,
-                              at: 'SmartBand',
-                              class: myClassType,
-                              status: 'color2'
-                            });
-                          } else {
-                            console.log( 'Ticket Ended' );
-                            this.attendenceList.push({
-                              img: this.imgBlub,
-                              name: userData.fullname,
-                              at: 'SmartBand',
-                              class: myClassType,
-                              status: 'color3'
-                            });
-                          }
+                          // } else if ( daysLeft >= 0 ) {
+                          //   console.log( 'Less than 7 days left' );
+                          //   this.attendenceList.push({
+                          //     img: imgBlub,
+                          //     name: userData.fullname,
+                          //     at: 'SmartBand',
+                          //     class: myClassType,
+                          //     status: 'color2'
+                          //   });
+                          // } else {
+                          //   console.log( 'Ticket Ended' );
+                          //   this.attendenceList.push({
+                          //     img: imgBlub,
+                          //     name: userData.fullname,
+                          //     at: 'SmartBand',
+                          //     class: myClassType,
+                          //     status: 'color3'
+                          //   });
+                          // }
 
 
                         }, error => { console.log(error); }
