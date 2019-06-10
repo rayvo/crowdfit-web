@@ -160,7 +160,8 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
 
           const diffInMs = new Date().valueOf() - new Date(element.last_update).valueOf();
           const diffInSecs = Math.floor(diffInMs / 1000);
-          if ( diffInSecs < 7/* 90 */ ) {
+          console.log(diffInSecs);
+          if ( diffInSecs < 5/* 90 */ ) {
             this.user.getUser( element.user_id ).subscribe(
               userData => {
                 console.log('printing userData');
@@ -259,8 +260,8 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                               });
                             }
                           };
-                          
-                          
+
+
                           // if ( daysLeft > 7 ) {
                           //   console.log( 'More than 7 days left' );
                           //   this.attendenceList.push({
