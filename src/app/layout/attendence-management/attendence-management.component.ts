@@ -238,8 +238,6 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                                 class: myClassType,
                                 status: 'color1'
                               });
-                              console.log(this.attendenceList);
-  
                             } else if ( daysLeft >= 0 ) {
                               console.log( 'Less than 7 days left' );
                               this.attendenceList.push({
@@ -259,6 +257,7 @@ export class AttendenceManagementComponent implements OnInit, OnDestroy {
                                 status: 'color3'
                               });
                             }
+                            this.filterAndReloadTable(this.selectedA, this.selectedC);
                           };
 
 
